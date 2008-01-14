@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="GWT_HOME/gwt-user.jar"/>
+	<classpathentry kind="var" path="GWT_HOME/gwt-dev-windows.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gwt-framework-base"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
