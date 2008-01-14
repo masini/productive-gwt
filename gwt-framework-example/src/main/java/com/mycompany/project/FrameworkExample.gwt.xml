@@ -1,4 +1,8 @@
 <module>
+
+	<define-property name="org.googlecode.Menu" values="com_mycompany_project_client_menu_MyMenu"/>
+
+
 	<inherits name="org.googlecode.gwt.base.Base"/>
 	<inherits name="org.googlecode.gwt.bootstrap.Bootstrap"/>
 	<inherits name='org.googlecode.gwt.template.Template'/>

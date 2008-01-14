@@ -8,8 +8,9 @@
 	<classpathentry kind="lib" path="/gwt-framework-bootstrap/lib/esselunga-commons-1.0.0030.jar"/>
 	<classpathentry kind="lib" path="/gwt-framework-bootstrap/lib/gwt-commons-logging-src.jar"/>
 	<classpathentry kind="lib" path="/gwt-framework-bootstrap/lib/GWTx-20070605.jar"/>
-	<classpathentry kind="lib" path="C:/sviluppo/gwt-windows-1.4.61/gwt-dev-windows.jar"/>
-	<classpathentry kind="lib" path="C:/sviluppo/gwt-windows-1.4.61/gwt-user.jar"/>
+	<classpathentry kind="var" path="GWT_HOME/gwt-dev-windows.jar"/>
+	<classpathentry kind="var" path="GWT_HOME/gwt-user.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gwt-framework-bootstrap"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gwt-framework-menu"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
