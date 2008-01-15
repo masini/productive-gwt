@@ -29,7 +29,7 @@ public abstract class MenuModel {
 	/**
 	 * Elenco dei nodi figli
 	 * 
-	 * @gwt.typeArgs <it.esselunga.commons.gwt.framework.client.navigation.MenuModel>
+	 * @gwt.typeArgs <org.googlecode.gwt.menu.client.model.MenuModel>
 	 */
 	private List/* <MenuModel> */children = null;
 

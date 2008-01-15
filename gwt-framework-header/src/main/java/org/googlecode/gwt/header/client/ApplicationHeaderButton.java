@@ -10,9 +10,6 @@ import com.google.gwt.user.client.ui.Image;
  */
 public class ApplicationHeaderButton extends BaseInfoPanelHeaderButton {
 	
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#onLoad()
-	 */
 	private ApplicationContext applicationContext; 
 	
 	public ApplicationHeaderButton(ApplicationContext applicationContext) {
@@ -29,16 +26,10 @@ public class ApplicationHeaderButton extends BaseInfoPanelHeaderButton {
 		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#getPopupImage()
-	 */
 	protected Image getPopupImage() {
 		return HeaderImagesFactory.getInstance().getApplicationInfoIcon().createImage();
 	}
 	
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#addLabels()
-	 */
 	protected void addLabels() {
 		add(HeaderImagesFactory.getInstance().getApplicationInfoIcon().createImage());
 	}

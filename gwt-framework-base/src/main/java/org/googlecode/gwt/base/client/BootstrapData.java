@@ -9,13 +9,13 @@ import java.io.Serializable;
 public class BootstrapData implements Serializable {
     private static final long serialVersionUID = 1L;
     private long systemTime;
-    private String applicationName; // ex: "Checklist"
-    private String applicationCode; // ex: "CKL000"
-    private String applicationVersion; // ex: 3.0.1
-    private String serverName; // ex: app1
-    private String clusterName; // ex: cluster-produzione
-    private String serverHostName; // ex: weblogic2.mil.esselunga.net
-    private String homePageURLString; // ex: http://intra.esselunga.net/validationnet/home.aspx?valcate=HOME01 
+    private String applicationName; 
+    private String applicationCode; 
+    private String applicationVersion; 
+    private String serverName; 
+    private String clusterName; 
+    private String serverHostName; 
+    private String homePageURLString;  
 
     private UserInfo userInfo;
 

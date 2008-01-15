@@ -37,17 +37,10 @@ public class MenuRenderSimple extends Composite{
 
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.menu.render.MenuRender#setMenuModel(it.esselunga.commons.gwt.framework.client.navigation.MenuModel)
-	 */
 	public void setMenuModel(MenuModel menuModel) {
 		this.menuModel = menuModel;
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.menu.render.MenuRender#onResize(int,
-	 *      int)
-	 */
 	public void onResize(int width) {
 		panel.setWidth(width + "px");
 	}
