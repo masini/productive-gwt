@@ -15,9 +15,6 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton impleme
 	 */
 	private InfoPopupPanel popup;
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseHeaderButton#onLoad()
-	 */
 	protected void onLoad() {
 		super.onLoad();
 
@@ -53,10 +50,6 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton impleme
 		popup.add(label, value);
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseHeaderButton#onClick(com.google.gwt.user.client.ui.Widget,
-	 *      boolean)
-	 */
 	protected void onClick(Widget sender, boolean isClicked) {
 		popup.show();
 		updatePopupSizeAndPosition(sender);

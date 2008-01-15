@@ -6,5 +6,4 @@
 	<extend-property name="locale" values="en"/>
 	
 	<stylesheet src='css/Base.css'/>
-	<!-- entry-point class="it.esselunga.commons.gwt.data.client.Base"/ -->
 </module>

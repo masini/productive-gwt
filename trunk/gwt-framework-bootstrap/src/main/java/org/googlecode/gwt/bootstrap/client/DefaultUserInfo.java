@@ -9,9 +9,6 @@ import org.googlecode.gwt.base.client.UserInfo;
 /**
  * Base class useful to sesnd to a gwt client information about the user.
  *
- * @author Davide Baroncelli <davide.baroncelli@esselunga.it>
- *         Date: 24-ago-2007
- *         Time: 20.16.07
  */
 public class DefaultUserInfo implements UserInfo {
     private String username;

@@ -22,9 +22,6 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		this.applicationContext=applicationContext;
 	}
 	
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#onLoad()
-	 */
 	protected void onLoad() {
 		super.onLoad();
 
@@ -34,16 +31,10 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#getPopupImage()
-	 */
 	protected Image getPopupImage() {
 		return HeaderImagesFactory.getInstance().getUserInfoIcon().createImage();
 	}
 
-	/**
-	 * @see it.esselunga.commons.gwt.framework.client.homepage.impl.header.BaseInfoPanelHeaderButton#addLabels()
-	 */
 	protected void addLabels() {
 		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
 
