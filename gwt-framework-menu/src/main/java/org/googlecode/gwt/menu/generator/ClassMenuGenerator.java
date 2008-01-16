@@ -87,12 +87,10 @@ public class ClassMenuGenerator {
 			this.role = role;
 		}
 		public void addChild(int position, MyMenuModel child) {
-			if(childs.size()<position){
-				childs.add(child);
+			while(childs.size()<position){
+				childs.add(null);
 			}
-			else{
-				childs.add(position - 1, child);
-			}
+			childs.set((position-1), child);
 		}
 		
 		public String getNomeItem(){
@@ -279,7 +277,7 @@ public class ClassMenuGenerator {
 	/*
 	 * creo i metodi che l'interfaccia mi richiede
 	 */
-	private void createMethod_createMenuModel() {
+	private void createMethod_createMenuModel() throws MenuGeneratorException {
 		sw.println("public " + MenuModel.class.getName() + " getMenuModel(){");
 		sw.indent();
 		{
@@ -297,10 +295,15 @@ public class ClassMenuGenerator {
 
 	}
 //
-	private void writeMethod_MenuModel(MyMenuModel myMenuModel){
+	private void writeMethod_MenuModel(MyMenuModel myMenuModel) throws MenuGeneratorException{
 		List<MyMenuModel> childs = myMenuModel.getChilds();
 		for (int i = 0; i < childs.size(); i++) {
 			MyMenuModel model = childs.get(i);
+			
+			if(model==null){
+				String msg = "Non sono stati valorizzati nel modo corretto i valori della gwt annotation @" + META_ITEM_POSITION + ". Il numero della posizione non può avere buchi.";
+				throw new MenuGeneratorException(msg);
+			}
 		
 			if(model.isMenu()){
 				sw.println(model.getMenu());
@@ -372,7 +375,7 @@ public class ClassMenuGenerator {
 				return null;
 			}
 			else if( meta.length > 1){
-				String msg = "Non Ã¨ possibile specificare più di una gwt annotation @" + META_ITEM_ICON + " per item.";
+				String msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_ICON + " per item.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				log.error(GENERIC_MESSAGE,e);
 				throw e;
