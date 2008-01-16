@@ -24,7 +24,7 @@ public class PlaceHolder {
 	public static final PlaceHolderConstant FOOTER = new PlaceHolderConstant(IdUtil.getNextToken());
 	public static final PlaceHolderConstant EAST = new PlaceHolderConstant(IdUtil.getNextToken());
 	public static final PlaceHolderConstant WEST = new PlaceHolderConstant(IdUtil.getNextToken());
-	public static final PlaceHolderConstant CENTER = new PlaceHolderConstant(IdUtil.getNextToken());
+	public static final PlaceHolderConstant CONTENT = new PlaceHolderConstant(IdUtil.getNextToken());
 	public static final PlaceHolderConstant APPLICATION_TITLE = new PlaceHolderConstant(IdUtil.getNextToken());
 	
 	public static final PlaceHolderConstant NAVIGATION = new PlaceHolderConstant(IdUtil.getNextToken());
