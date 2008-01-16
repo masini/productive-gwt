@@ -15,6 +15,6 @@ public class PrimoCommand implements Command{
 		s.add(new Label("PrimoCommand eseguito"));
 		
 		
-		TemplateManager.setNavigationContent(new Label("PrimoCommand"));
+		TemplateManager.setNavigationContent(new Label("PrimoCommand"),false);
 	}
 }
