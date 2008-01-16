@@ -21,7 +21,7 @@ public class FrameworkExample implements EntryPoint {
 
         primoPanel.setWidth("100%");
 
-        TemplateManager.setFirstContent(primoPanel,new Label("aaaaaa"));
+        TemplateManager.setHomePage(primoPanel,new Label("aaaaaa"));
 
 		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
 
