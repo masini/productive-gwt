@@ -83,7 +83,8 @@ public class TemplateManager {
 		root.add(hp);
 		
 		hp.add(new HTML(SPACE+TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()+SPACE));
-		hp.add(widget);
+		if(widget!=null)
+			hp.add(widget);
 	}
 	
 	public static void setFirstContent(Widget content,Widget navigation)throws PlaceHolderException{
@@ -142,6 +143,7 @@ public class TemplateManager {
 		else{
 			RootPanel root = get(PlaceHolder.NAVIGATION);
 			root.clear();
+			setNavigationContent(null,false);
 		}
 	}	
 	
