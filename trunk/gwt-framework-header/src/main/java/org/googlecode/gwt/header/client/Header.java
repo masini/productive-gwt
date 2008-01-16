@@ -2,8 +2,9 @@ package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
-import org.googlecode.gwt.base.client.PlaceHolder;
 import org.googlecode.gwt.base.client.util.StyleUtil;
+import org.googlecode.gwt.template.client.PlaceHolder;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.DOM;
@@ -11,6 +12,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -40,9 +42,9 @@ public class Header implements EntryPoint {
 	 */
 	private SimplePanel title = new SimplePanel();
 	public void onModuleLoad() {
-		RootPanel root =  PlaceHolder.get(PlaceHolder.HEADER);
 		panel = new VerticalPanel();
-		root.add(panel);
+		
+		TemplateManager.setHeader(panel);
 		
 		panel.setWidth("100%");
 
@@ -69,11 +71,7 @@ public class Header implements EntryPoint {
 		table.getCellFormatter().setHorizontalAlignment(0, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		table.getCellFormatter().setWidth(0, 2, "30%");
 
-		/* Stringa di contesto */
-		//panel.add(createPageContext());
-		RootPanel nav = PlaceHolder.get(PlaceHolder.NAVIGATION);
-		nav.setStyleName("navigazione-homePage");
-		nav.add(new Label(HeaderConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()));
+
 		
 	}
 	
@@ -96,7 +94,7 @@ public class Header implements EntryPoint {
 	}
 	
 	/**
-	 * Restituisce il pannello con le informaizoni relative all'utente,
+	 * Restituisce il pannello con le informazioni relative all'utente,
 	 * all'applicazione, al contesto
 	 * 
 	 * @return

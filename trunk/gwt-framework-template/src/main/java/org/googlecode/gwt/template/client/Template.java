@@ -1,12 +1,14 @@
 package org.googlecode.gwt.template.client;
 
-import org.googlecode.gwt.base.client.PlaceHolder;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -20,11 +22,26 @@ public class Template implements EntryPoint {
 		RootPanel.get().add(dockPanel);
 		dockPanel.setWidth("100%");
 		
-		dockPanel.setBorderWidth(1);
+		//dockPanel.setBorderWidth(1);
 		
 		
 		SimplePanel header = new SimplePanel();
-		SimplePanel navigation = new SimplePanel();
+		AbsolutePanel navigation = new AbsolutePanel();
+		/* Stringa di contesto */
+		//panel.add(createPageContext());
+		SimplePanel nav = new SimplePanel();
+		
+		navigation.add(nav);
+		
+		nav.setStyleName("navigazione-homePage");
+		HTML html = new HTML("<a href='javascript:;'> Home Page </a>",true);
+		html.addClickListener(new ClickListener(){
+			public void onClick(Widget sender) {
+				TemplateManager.setReloadFirstPanel();
+			}
+		});
+		nav.add(html);
+		
 		SimplePanel menu = new SimplePanel();
 		
 		

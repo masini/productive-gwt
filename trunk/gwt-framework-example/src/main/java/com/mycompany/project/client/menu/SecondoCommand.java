@@ -1,18 +1,18 @@
 package com.mycompany.project.client.menu;
 
-import org.googlecode.gwt.base.client.PlaceHolder;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 public class SecondoCommand implements Command {
 
 	public void execute() {
-		RootPanel page = PlaceHolder.get(PlaceHolder.CENTER);
-
-		page.clear();
-		page.add(new Label("SecondoCommand eseguito"));
+		SimplePanel s = new SimplePanel();
+		TemplateManager.setApplicationContent(s);
+		s.clear();
+		s.add(new Label("SecondoCommand eseguito"));
 	}
 
 }

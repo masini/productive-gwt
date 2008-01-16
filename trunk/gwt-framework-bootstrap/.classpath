@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="GWT_HOME/gwt-user.jar"/>
-	<classpathentry kind="lib" path="lib/gwt-commons-logging-src.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/esselunga-commons-1.0.0030.jar"/>
 	<classpathentry kind="lib" path="lib/wso-v01r03b04.jar"/>
@@ -13,5 +12,7 @@
 	<classpathentry kind="lib" path="lib/gwt-sl-1.4.01.jar"/>
 	<classpathentry kind="lib" path="lib/GWTx-20070605.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gwt-framework-base"/>
+	<classpathentry kind="lib" path="lib/gwt-commons-logging-0.2.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-commons-logging-service-0.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

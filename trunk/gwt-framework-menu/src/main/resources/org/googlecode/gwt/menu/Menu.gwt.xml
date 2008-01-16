@@ -1,8 +1,8 @@
 <module>
 	<inherits name="org.googlecode.gwt.base.Base" />
-	<entry-point class="org.googlecode.gwt.menu.client.Menu" />
+	
 
 	<generate-with class="org.googlecode.gwt.menu.generator.MenuGenerator">
-		<when-type-assignable class="org.googlecode.gwt.menu.client.MarkMenu" />
+		<when-type-assignable class="org.googlecode.gwt.menu.client.SMenu" />
 	</generate-with>
 </module>

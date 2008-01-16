@@ -1,4 +1,4 @@
-package org.googlecode.gwt.base.client;
+package org.googlecode.gwt.template.client;
 
 import org.googlecode.gwt.base.client.util.IdUtil;
 

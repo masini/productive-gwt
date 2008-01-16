@@ -1,22 +1,20 @@
 package org.googlecode.gwt.footer.client;
 
-import org.googlecode.gwt.base.client.PlaceHolder;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Footer implements EntryPoint {
 	public void onModuleLoad() {
-		RootPanel footer = PlaceHolder.get(PlaceHolder.FOOTER);
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
-		footer.add(absolutePanel);
+		TemplateManager.setFooter(absolutePanel);
 		 
 		absolutePanel.setSize("100%", "100%");
 		
