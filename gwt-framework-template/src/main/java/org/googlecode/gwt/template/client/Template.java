@@ -49,6 +49,9 @@ public class Template implements EntryPoint {
 		DOM.setElementAttribute(east.getElement(), ID, PlaceHolder.EAST.getId());
 		DOM.setElementAttribute(west.getElement(), ID, PlaceHolder.WEST.getId());
 		DOM.setElementAttribute(center.getElement(), ID, PlaceHolder.CONTENT.getId());
+		
+		
+		TemplateManager.setNavigationContent(null,false);
 	
 	}
 }
