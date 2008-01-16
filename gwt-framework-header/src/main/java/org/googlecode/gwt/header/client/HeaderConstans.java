@@ -14,16 +14,6 @@ public interface HeaderConstans extends Constants {
 	String INTRANET_PAGE_CONTEXT_LABEL();
 
 	/**
-	 * Label della homepage
-	 */
-	String HOME_PAGE_CONTEXT_LABEL();
-
-	/**
-	 * Separatore del path
-	 */
-	String PAGE_CONTEXT_SEPARATOR();
-
-	/**
 	 * Stringa di benvenuto
 	 */
 	String WELCOME_LABEL();

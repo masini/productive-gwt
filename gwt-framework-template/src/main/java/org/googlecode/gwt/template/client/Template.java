@@ -34,7 +34,7 @@ public class Template implements EntryPoint {
 		navigation.add(nav);
 		
 		nav.setStyleName("navigazione-homePage");
-		HTML html = new HTML("<a href='javascript:;'> Home Page </a>",true);
+		HTML html = new HTML("<a href='javascript:;'> "+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+" </a>",true);
 		html.addClickListener(new ClickListener(){
 			public void onClick(Widget sender) {
 				TemplateManager.setReloadFirstPanel();

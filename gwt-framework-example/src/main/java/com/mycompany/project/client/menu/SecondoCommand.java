@@ -13,6 +13,8 @@ public class SecondoCommand implements Command {
 		TemplateManager.setApplicationContent(s);
 		s.clear();
 		s.add(new Label("SecondoCommand eseguito"));
+		
+		TemplateManager.setNavigationContent(new Label("SecondoCommand"),true);
 	}
 
 }

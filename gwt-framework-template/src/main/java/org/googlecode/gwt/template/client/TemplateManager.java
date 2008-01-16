@@ -13,6 +13,7 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -53,7 +54,7 @@ public class TemplateManager {
 		root.add(widget);
 	}
 	
-	public static void setNavigationContent(Widget widget)throws PlaceHolderException{
+	public static void setNavigationContent(Widget widget,boolean append)throws PlaceHolderException{
 		
 		RootPanel root = get(PlaceHolder.NAVIGATION);
 		
@@ -61,7 +62,9 @@ public class TemplateManager {
 			throw new PlaceHolderException("");
 		}
 		
-		root.clear();
+		if(!append)
+			root.clear();
+		root.add(new Label(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()));
 		root.add(widget);
 	}
 	
@@ -71,7 +74,7 @@ public class TemplateManager {
 		firstPanel = content;
 		firstNavigation = navigation;
 		setApplicationContent(firstPanel);
-		setNavigationContent(firstNavigation);
+		setNavigationContent(firstNavigation,false);
 	}
 	
 	public static void setMenu(final SMenu menu) {
@@ -118,7 +121,7 @@ public class TemplateManager {
 		}
 		
 		if(firstNavigation!=null){
-			setNavigationContent(firstNavigation);
+			setNavigationContent(firstNavigation,false);
 		}
 		else{
 			RootPanel root = get(PlaceHolder.NAVIGATION);
