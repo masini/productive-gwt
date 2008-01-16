@@ -2,7 +2,6 @@ package org.googlecode.gwt.template.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -22,38 +21,16 @@ public class Template implements EntryPoint {
 		RootPanel.get().add(dockPanel);
 		dockPanel.setWidth("100%");
 		
-		//dockPanel.setBorderWidth(1);
-		
-		
 		SimplePanel header = new SimplePanel();
-		AbsolutePanel navigation = new AbsolutePanel();
-		/* Stringa di contesto */
-		//panel.add(createPageContext());
-		SimplePanel nav = new SimplePanel();
-		
-		navigation.add(nav);
-		
-		nav.setStyleName("navigazione-homePage");
-		HTML html = new HTML("<a href='javascript:;'> "+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+" </a>",true);
-		html.addClickListener(new ClickListener(){
-			public void onClick(Widget sender) {
-				TemplateManager.setReloadFirstPanel();
-			}
-		});
-		nav.add(html);
-		
+
+		SimplePanel navigation = new SimplePanel();
+
 		SimplePanel menu = new SimplePanel();
-		
-		
-		
-		//header.setWidth("100%");
 		SimplePanel footer = new SimplePanel();
-//		footer.setWidth("100%");
 		SimplePanel east = new SimplePanel();
-		//east.setWidth("100%");
 		SimplePanel west = new SimplePanel();
-		//west.setWidth("100%");
 		SimplePanel center = new SimplePanel();
+		
 		center.setWidth("100%");
 		
 		dockPanel.add(header, DockPanel.NORTH);
@@ -71,7 +48,7 @@ public class Template implements EntryPoint {
 		DOM.setElementAttribute(footer.getElement(), ID, PlaceHolder.FOOTER.getId());
 		DOM.setElementAttribute(east.getElement(), ID, PlaceHolder.EAST.getId());
 		DOM.setElementAttribute(west.getElement(), ID, PlaceHolder.WEST.getId());
-		DOM.setElementAttribute(center.getElement(), ID, PlaceHolder.CENTER.getId());
+		DOM.setElementAttribute(center.getElement(), ID, PlaceHolder.CONTENT.getId());
 	
 	}
 }

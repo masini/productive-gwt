@@ -13,16 +13,25 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManager {
+	private static final String NAVIGATION_CSS = "navigazione-homePage";
+	private static final String ERR_MSG = "Non trovata la zona ";
+	private static final String SPACE = "&nbsp;";
 
+	private static HTML home = null;
+	private static Widget firstPanel = null;
+	private static Widget firstNavigation = null;
+	
 	public static void setApplicationTitle(Widget widget) throws PlaceHolderException{
 		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
 		if(root==null){
-			throw new PlaceHolderException("");
+			throw new PlaceHolderException(ERR_MSG+"APPLICATION_TITLE");
 		}
 		root.add(widget);
 	}
@@ -30,7 +39,7 @@ public class TemplateManager {
 	public static void setHeader(Widget widget) throws PlaceHolderException{
 		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if(root==null){
-			throw new PlaceHolderException("");
+			throw new PlaceHolderException(ERR_MSG+"HEADER");
 		}
 		root.add(widget);
 	}
@@ -38,45 +47,52 @@ public class TemplateManager {
 	public static void setFooter(Widget widget) throws PlaceHolderException{
 		RootPanel root = PlaceHolder.get(PlaceHolder.FOOTER);
 		if(root==null){
-			throw new PlaceHolderException("");
+			throw new PlaceHolderException(ERR_MSG+"FOOTER");
 		}
 		root.add(widget);
 	}
 	
 	public static void setApplicationContent(Widget widget)throws PlaceHolderException{
-		
-		RootPanel root = get(PlaceHolder.CENTER);
+		RootPanel root = get(PlaceHolder.CONTENT);
 		
 		if(root==null){
-			throw new PlaceHolderException("");
+			throw new PlaceHolderException(ERR_MSG+"CONTENT");
 		}
 		root.clear();
 		root.add(widget);
 	}
 	
 	public static void setNavigationContent(Widget widget,boolean append)throws PlaceHolderException{
-		
 		RootPanel root = get(PlaceHolder.NAVIGATION);
 		
 		if(root==null){
-			throw new PlaceHolderException("");
+			throw new PlaceHolderException(ERR_MSG+"NAVIGATION");
+		}
+		HorizontalPanel hp = new HorizontalPanel();
+		if(!append){
+			root.clear();
+			hp.add(homePage());
 		}
 		
-		if(!append)
-			root.clear();
-		root.add(new Label(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()));
-		root.add(widget);
+		hp.setStyleName(NAVIGATION_CSS);
+		for(int i =0;i<root.getWidgetCount();i++){
+			Widget w = root.getWidget(i);
+			hp.add(w);
+		}
+		
+		root.add(hp);
+		
+		hp.add(new HTML(SPACE+TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()+SPACE));
+		hp.add(widget);
 	}
 	
-	private static Widget firstPanel;
-	private static Widget firstNavigation;
 	public static void setFirstContent(Widget content,Widget navigation)throws PlaceHolderException{
 		firstPanel = content;
 		firstNavigation = navigation;
 		setApplicationContent(firstPanel);
 		setNavigationContent(firstNavigation,false);
 	}
-	
+
 	public static void setMenu(final SMenu menu) {
 		ApplicationContextFactory.getApplicationContext(new AsyncCallback() {
 			public void onFailure(Throwable caught) {
@@ -103,7 +119,7 @@ public class TemplateManager {
 				/* Show menu */
 				RootPanel root = get(PlaceHolder.MENU);
 				if(root==null){
-					throw new PlaceHolderException("");
+					throw new PlaceHolderException(ERR_MSG+"MENU");
 				}
 				root.setSize("100%", "100%");
 				root.add(render);
@@ -116,7 +132,7 @@ public class TemplateManager {
 			setApplicationContent(firstPanel);
 		}
 		else{
-			RootPanel root = get(PlaceHolder.CENTER);
+			RootPanel root = get(PlaceHolder.CONTENT);
 			root.clear();
 		}
 		
@@ -127,15 +143,23 @@ public class TemplateManager {
 			RootPanel root = get(PlaceHolder.NAVIGATION);
 			root.clear();
 		}
-		
-		
 	}	
 	
-	private static RootPanel get(PlaceHolderConstant constant)throws PlaceHolderException{
+	private static RootPanel get(PlaceHolderConstant constant){
 		RootPanel root = PlaceHolder.get(constant);
 		return root;
 	}
 
-
+	private static HTML homePage() {
+		if(home==null){
+			home = new HTML("<a href='javascript:;'> "+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+" </a>",true);
+			home.addClickListener(new ClickListener(){
+				public void onClick(Widget sender) {
+					TemplateManager.setReloadFirstPanel();
+				}
+			});
+		}
+		return home;		
+	}
 
 }
