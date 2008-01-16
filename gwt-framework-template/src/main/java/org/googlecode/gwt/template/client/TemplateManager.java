@@ -4,14 +4,11 @@ import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
-import org.googlecode.gwt.menu.client.filter.MenuFilter;
-import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 import org.googlecode.gwt.menu.client.render.DefaultMenuRender;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
@@ -20,7 +17,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManager {
-	private static final String NAVIGATION_CSS = "navigazione-homePage";
 	private static final String ERR_MSG = "Non trovata la zona ";
 	private static final String SPACE = "&nbsp;";
 
@@ -74,7 +70,6 @@ public class TemplateManager {
 			hp.add(homePage());
 		}
 		
-		hp.setStyleName(NAVIGATION_CSS);
 		for(int i =0;i<root.getWidgetCount();i++){
 			Widget w = root.getWidget(i);
 			hp.add(w);
@@ -87,7 +82,7 @@ public class TemplateManager {
 			hp.add(widget);
 	}
 	
-	public static void setFirstContent(Widget content,Widget navigation)throws PlaceHolderException{
+	public static void setHomePage(Widget content,Widget navigation)throws PlaceHolderException{
 		firstPanel = content;
 		firstNavigation = navigation;
 		setApplicationContent(firstPanel);
@@ -109,9 +104,9 @@ public class TemplateManager {
 				MenuModel menuModel = menu.getMenuModel();
 
 				/* Apply security policy (server mode only)*/
-				if (GWT.isScript()) {
-					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
-				}
+//				if (GWT.isScript()) {
+//					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
+//				}
 
 				/* Render */
 				DefaultMenuRender render = new DefaultMenuRender();
@@ -128,7 +123,7 @@ public class TemplateManager {
 		});
 	}
 	
-	public static void setReloadFirstPanel() {
+	private static void setReloadFirstPanel() {
 		if(firstPanel!=null){
 			setApplicationContent(firstPanel);
 		}
