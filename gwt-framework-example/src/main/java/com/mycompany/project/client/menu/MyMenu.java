@@ -1,6 +1,8 @@
 package com.mycompany.project.client.menu;
 
-public interface MyMenu {
+import org.googlecode.gwt.menu.client.SMenu;
+
+public interface MyMenu extends SMenu{
 
 	/**
 	 * @gwt.item_position 3

@@ -1,26 +1,30 @@
 package com.mycompany.project.client;
 
-import org.googlecode.gwt.base.client.PlaceHolder;
+import org.googlecode.gwt.menu.client.SMenu;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.mycompany.project.client.menu.MyMenu;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class FrameworkExample implements EntryPoint {
 
-	public void onModuleLoad() {
+    public void onModuleLoad() {
 
-		RootPanel rootTitle = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
-		rootTitle.add(new Label("PRIMA APP"));
+        TemplateManager.setApplicationTitle(new Label("PRIMA APP"));
 
-		RootPanel page = PlaceHolder.get(PlaceHolder.CENTER);
+        PrimoPanel primoPanel = new PrimoPanel();
 
-		PrimoPanel primoPanel = new PrimoPanel();
-		primoPanel.setWidth("100%");
-		page.add(primoPanel);
+        primoPanel.setWidth("100%");
 
-	}
+        TemplateManager.setFirstContent(primoPanel,new Label("aaaaaa"));
+
+		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
+
+    }
+
 }

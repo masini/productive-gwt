@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.googlecode.gwt.menu.client.MarkMenu;
+import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
 import com.google.gwt.core.ext.GeneratorContext;
@@ -32,7 +32,7 @@ public class ClassMenuGenerator {
 	private static JClassType requestedJClassType = null;
 	private TypeOracle typeOracle;
 //
-	private static final String SUPER_INTERFACE = MarkMenu.class.getName();
+	private static final String SUPER_INTERFACE = SMenu.class.getName();
 	private static final Log log = LogFactory.getLog(ClassMenuGenerator.class);
 	private static final String GENERIC_MESSAGE = "Errore durante la generazione della classe di navigazione.";
 
@@ -139,7 +139,16 @@ public class ClassMenuGenerator {
 		}
 
 		private void writeRow(final String nomeItem,final String property,String value, StringBuffer a) {
-			a.append(nomeItem+".set"+property+"(\""+value+"\");");
+			a.append(nomeItem+".set"+property+"(");
+			if(value!=null){
+				a.append("\""+value+"\"");
+			}
+			else{
+				a.append("null");
+			}
+			
+			a.append(");");
+			
 		}
 		public List<MyMenuModel> getChilds() {
 			return childs;
@@ -360,7 +369,7 @@ public class ClassMenuGenerator {
 		}
 		if(META_ITEM_ICON.equals(key)){
 			if (meta.length == 0) {
-				return "null";
+				return null;
 			}
 			else if( meta.length > 1){
 				String msg = "Non Ã¨ possibile specificare più di una gwt annotation @" + META_ITEM_ICON + " per item.";
