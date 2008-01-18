@@ -4,11 +4,14 @@ import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
+import org.googlecode.gwt.menu.client.filter.MenuFilter;
+import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 import org.googlecode.gwt.menu.client.render.DefaultMenuRender;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
@@ -104,9 +107,9 @@ public class TemplateManager {
 				MenuModel menuModel = menu.getMenuModel();
 
 				/* Apply security policy (server mode only)*/
-//				if (GWT.isScript()) {
-//					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
-//				}
+				if (GWT.isScript()) {
+					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
+				}
 
 				/* Render */
 				DefaultMenuRender render = new DefaultMenuRender();
