@@ -1,0 +1,98 @@
+/**
+ * ScrollTable
+ */
+.gwt-ScrollTable {
+  	border: 3px solid #C3DAF9;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-header-wrapper {
+  	background: #C3DAF9;
+  	border-bottom: 1px solid #6F99CF;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-footer-wrapper {
+	border-top: 1px solid #6F99CF;
+  	background: #C3DAF9;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-data td, .gwt-ScrollTable .gwt-ScrollTable-dataDispari td {
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 3px;
+	background: #F5F5F5;
+	border-top: 1px solid #EEE;
+	border-right: 1px solid #EEE;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-dataDispari td {
+	background: #FFF;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-header td,
+.gwt-ScrollTable .gwt-ScrollTable-footer td {
+  	color: #fff;
+  	background: transparent url(images/grid-hrow.gif) repeat-x;
+  	color: #10428C;
+  	font-weight: bold;
+  	padding-bottom: 10px;
+}
+	
+.gwt-ScrollTable .gwt-ScrollTable-data tr.selected {
+  	background: #7AA5D6;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-data tr.hovering {
+  background: #C3D9FF;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-data td.hovering {
+  border: 1px solid #10428C;
+  cursor: hand;
+  cursor: pointer;
+}
+
+.gwt-ScrollTable .pagingOptions {
+  /*QUI*/background: #D4E0F2;
+  border-top: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  padding: 1px 0px;
+}
+
+.gwt-ScrollTable .pagingOptions .errorLabel {
+	color: red;
+}
+
+.gwt-CellEditor {
+	border: 3px solid #7AA5D6;
+	padding: 4px;
+	background: white;
+}
+.gwt-CellEditor td {
+  padding: 4px;
+}
+
+/**
+ * TabPanel
+ */
+.gwt-TabBar {
+}
+.gwt-TabBar .gwt-TabBarFirst {
+	border-right: 1px solid blue;
+}
+.gwt-TabBar .gwt-TabBarRest {
+}
+.gwt-TabBar .gwt-TabBarItem {
+	padding: 7px;
+	background: #EEEEEE;
+	border-right: 1px solid blue;
+	border-top: 1px solid blue;
+}
+.gwt-TabBar .gwt-TabBarItem-selected {
+	background: #FFFF00;
+}
+.gwt-TabPanel {
+}
+.gwt-TabPanelBottom {
+  padding: 5px;
+  border: 2px solid blue;
+}
