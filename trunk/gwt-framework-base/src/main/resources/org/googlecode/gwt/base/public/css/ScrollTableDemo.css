@@ -9,23 +9,27 @@
   	background: #C3DAF9;
   	border-bottom: 1px solid #6F99CF;
 }
-
+ 
 .gwt-ScrollTable .gwt-ScrollTable-footer-wrapper {
-	border-top: 1px solid #6F99CF;
   	background: #C3DAF9;
+  	border-top: 1px solid #6F99CF;
 }
 
-.gwt-ScrollTable .gwt-ScrollTable-data td, .gwt-ScrollTable .gwt-ScrollTable-dataDispari td {
+.gwt-ScrollTable .gwt-ScrollTable-data td {
 	white-space: nowrap;
 	overflow: hidden;
 	padding: 3px;
-	background: #F5F5F5;
-	border-top: 1px solid #EEE;
-	border-right: 1px solid #EEE;
+	border-top: 1px solid #DDD;
+	border-right: 1px solid #DDD;	
 }
 
-.gwt-ScrollTable .gwt-ScrollTable-dataDispari td {
-	background: #FFF;
+.gwt-ScrollTable .gwt-ScrollTable-header td,
+.gwt-ScrollTable .gwt-ScrollTable-footer td {
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 3px;
+	border-top: 1px solid #FFF;
+	border-right: 1px solid #FFF;	
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-header td,
@@ -34,28 +38,37 @@
   	background: transparent url(images/grid-hrow.gif) repeat-x;
   	color: #10428C;
   	font-weight: bold;
-  	padding-bottom: 10px;
+  	padding-bottom: 5px;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-data tr {
+  	background: #EEE;
+}
+
+.gwt-ScrollTable .gwt-ScrollTable-data tr.dispari {
+  	background: #FFF;
 }
 	
-.gwt-ScrollTable .gwt-ScrollTable-data tr.selected {
-  	background: #7AA5D6;
+.gwt-ScrollTable .gwt-ScrollTable-data tr.selected,
+.gwt-ScrollTable .gwt-ScrollTable-data tr.selected td {
+  	background: #316AC5;
+  	color: #FFF;
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-data tr.hovering {
-  background: #C3D9FF;
+  	background: #D9E8FB;
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-data td.hovering {
-  border: 1px solid #10428C;
-  cursor: hand;
-  cursor: pointer;
+  	border: 1px solid #10428C;
+  	cursor: hand;
+  	cursor: pointer;
 }
 
 .gwt-ScrollTable .pagingOptions {
-  /*QUI*/background: #D4E0F2;
-  border-top: 1px solid #aaa;
-  border-right: 1px solid #aaa;
-  padding: 1px 0px;
+ 	background: #D4E0F2;
+  	border-top: 1px solid #A9BFD3;
+  	padding: 1px 0px;
 }
 
 .gwt-ScrollTable .pagingOptions .errorLabel {
@@ -68,7 +81,7 @@
 	background: white;
 }
 .gwt-CellEditor td {
-  padding: 4px;
+  	padding: 4px;
 }
 
 /**
