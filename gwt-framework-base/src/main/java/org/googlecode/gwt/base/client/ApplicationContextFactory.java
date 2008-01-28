@@ -15,7 +15,7 @@ public class ApplicationContextFactory implements EntryPoint {
 	/**
 	 * @gwt.typeArgs<com.google.gwt.user.client.rpc.AsyncCallback>
 	 */
-	private static List callBacks;
+	private static List callBacks=new ArrayList();
 	private static ApplicationContext applicationContext;
 	
 	private ApplicationContextFactory() {
@@ -33,21 +33,19 @@ public class ApplicationContextFactory implements EntryPoint {
 	}
 	
 	/**
-	 * Get application contex
+	 * Get application context
 	 * @return ApplicationContext - ApplicationContext
 	 */
 	public static void getApplicationContext(AsyncCallback callback) {
-		if(callBacks == null) {
-			callBacks = new ArrayList();
-		}
-		callBacks.add(callback);
 		if(applicationContext != null) {
 			callback.onSuccess(applicationContext);
+		}
+		else{
+			callBacks.add(callback);
 		}
 	}
 
 	public void onModuleLoad() {
-		// TODO Auto-generated method stub
 		
 	}
 }
