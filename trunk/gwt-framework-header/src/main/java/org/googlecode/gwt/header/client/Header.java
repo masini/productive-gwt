@@ -67,9 +67,6 @@ public class Header implements EntryPoint {
 		table.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_TOP);
 		table.getCellFormatter().setHorizontalAlignment(0, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		table.getCellFormatter().setWidth(0, 2, "30%");
-
-
-		
 	}
 	
 	/**
@@ -83,12 +80,21 @@ public class Header implements EntryPoint {
 
 		logo.addClickListener(new ClickListener() {
 			public void onClick(Widget sender) {
-				Window.open("http://intra.esselunga.net","","");
+				//Window.open("http://intra.esselunga.net","","");
+				redirect("http://intra.esselunga.net/");
 			}
 		});
 
 		return logo;
 	}
+	
+	/**
+	 * Cambia la pagina corrente
+	 * @param url
+	 */
+	public static native void redirect(String url)/*-{
+	    $wnd.location = url;
+	}-*/;
 	
 	/**
 	 * Restituisce il pannello con le informazioni relative all'utente,
