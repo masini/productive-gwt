@@ -74,6 +74,10 @@ public class DefaultUserInfo implements UserInfo {
     public String getUserParameter( String parameterName ) {
         return ( String )userParameters.get( parameterName );
     }
+    
+    public String[] getUserParameterNames() {
+    	return ( String[] )userParameters.keySet().toArray( new String[ userParameters.size() ] );
+    }
 
     public void setUsername( String username ) {
         this.username = username;
