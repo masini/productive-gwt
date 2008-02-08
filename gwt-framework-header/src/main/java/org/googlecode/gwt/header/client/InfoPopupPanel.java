@@ -27,6 +27,16 @@ public class InfoPopupPanel extends PopupPanel {
 	private static final String INFO_POPUP_PANEL_TABLE_CLASS = "table";
 
 	/**
+	 * Classe associata alla colonna delle informazioni
+	 */
+	private static final String INFO_POPUP_PANEL_INFO_CLASS = "info";
+	
+	/**
+	 * Classe associata alla colonna dell'immagine
+	 */
+	private static final String INFO_POPUP_PANEL_ICON_CLASS = "icon";
+
+	/**
 	 * Classe associata alle label
 	 */
 	private static final String INFO_POPUP_PANEL_LABEL_CLASS = "label";
@@ -35,13 +45,7 @@ public class InfoPopupPanel extends PopupPanel {
 	 * Classe associata ai valori
 	 */
 	private static final String INFO_POPUP_PANEL_VALUE_CLASS = "value";
-	
-	/**
-	 * Classe asseciata
-	 */
-	private static final String INFO_POPUP_PANEL_ICON_CLASS = "icon";
-	private static final String INFO_POPUP_PANEL_INFO_CLASS = "info";
-	
+
 	/**
 	 * Icona associata al popup
 	 */

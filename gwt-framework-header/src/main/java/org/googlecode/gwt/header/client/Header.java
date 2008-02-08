@@ -1,5 +1,7 @@
 package org.googlecode.gwt.header.client;
 
+import java.util.Date;
+
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.util.StyleUtil;
@@ -7,27 +9,35 @@ import org.googlecode.gwt.template.client.PlaceHolder;
 import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Header implements EntryPoint {
+
+	/**
+	 * Classe del pulsante al passaggio del mouse o quando selezionato
+	 */
+	public static final String INFO_WIDGET_STYLE_NAME = "header-info-widget";
+
+
 	/**
 	 * Pannello principale del componente
 	 */
-	private VerticalPanel panel = null;
+	private FlowPanel panel = null;
 
 	/**
 	 * Pannello con i pulsanti dell'header
@@ -38,35 +48,29 @@ public class Header implements EntryPoint {
 	 * Widget che implementa il titolo dell'applicazione
 	 */
 	private SimplePanel title = new SimplePanel();
+	
+	
 	public void onModuleLoad() {
-		panel = new VerticalPanel();
-		
+		panel = new FlowPanel();
 		TemplateManager.setHeader(panel);
-		
 		panel.setWidth("100%");
+		
+		TemplateManager.setInfo(createInfoPanel());
 
 		FlexTable table = new FlexTable();
 		panel.add(table);
-		table.setWidth("100%");
 
 		/* Logo intranet */
 		table.setWidget(0, 0, createIntranetLogo());
 		table.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_MIDDLE);
 		table.getCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_LEFT);
-		table.getCellFormatter().setWidth(0, 0, "29%");
 
 		/* titolo */
 		DOM.setElementAttribute(title.getElement(), "id", PlaceHolder.APPLICATION_TITLE.getId());
 		table.setWidget(0, 1, this.title);
 		table.getCellFormatter().setVerticalAlignment(0, 1, HasVerticalAlignment.ALIGN_TOP);
 		table.getCellFormatter().setHorizontalAlignment(0, 1, HasHorizontalAlignment.ALIGN_CENTER);
-		table.getCellFormatter().setWidth(0, 1, "40%");
-
-		/* Info */
-		table.setWidget(0, 2, createInfoPanel());
-		table.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_TOP);
-		table.getCellFormatter().setHorizontalAlignment(0, 2, HasHorizontalAlignment.ALIGN_RIGHT);
-		table.getCellFormatter().setWidth(0, 2, "30%");
+		table.getCellFormatter().setWidth(0, 1, "100%");
 	}
 	
 	/**
@@ -104,7 +108,8 @@ public class Header implements EntryPoint {
 	 */
 	protected Widget createInfoPanel() {
 		infoPanel = new HorizontalPanel();
-
+		infoPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		
 		ApplicationContextFactory.getApplicationContext(new AsyncCallback() {
 
 			public void onFailure(Throwable caught) {
@@ -113,8 +118,12 @@ public class Header implements EntryPoint {
 			}
 
 			public void onSuccess(Object result) {
-				addButton(new UserHeaderButton((ApplicationContext)result));
-				addButton(new ApplicationHeaderButton((ApplicationContext)result));
+				addInfoWidget(new UserHeaderButton((ApplicationContext)result));
+				addInfoWidget(new ApplicationHeaderButton((ApplicationContext)result));
+				
+				Label date = new Label(DateTimeFormat.getFormat("dd/MM/yyyy").format(new Date()));
+				date.setStyleName(INFO_WIDGET_STYLE_NAME);
+				addInfoWidget(date);
 			}
 		});
 		
@@ -127,7 +136,7 @@ public class Header implements EntryPoint {
 	 * @param button
 	 *            Pulsante da aggiungere
 	 */
-	public void addButton(BaseHeaderButton button) {
+	public void addInfoWidget(Widget button) {
 		infoPanel.add(button);
 	}
 	
