@@ -1,32 +1,64 @@
 /*
+ * PlaceHolder top
+ */
+.placeholder-top {
+	background-color: #ebf3ff;
+}
+
+.placeholder-top .gwt-Label {
+	display: inline;
+	font-size: 12px;
+	color: #000070;
+}
+
+.placeholder-top .gwt-HTML {
+	display: inline;
+	font-size: 12px;
+	color: #000070;
+}
+
+.placeholder-navigation {
+	padding-left: 5px;
+}
+
+.placeholder-info {
+	padding-right: 5px;
+}
+
+
+/*
  * InfoPopupPanel
  */
 .info-popup {
-	width: 200px;
-	padding: 3px;
-	border: 1px solid #CCCCCC;
-	background-color: #EEEEEE;
+	width: 250px;
+	border: 1px solid #C3D9FF;
+	background-color: #C3D9FF;
 }
 
 .info-popup .table {
+	width: 100%;
 }
 
 .info-popup .icon {
-
+	width: 20px;
+	padding: 3px;
 }
 
 .info-popup .info {
-	margin-left: 5px;
+	width: 100%;
+	background-color: white;
+	border-left: 1px solid #C3D9FF
 }
 
 .info-popup .info .label {
+	padding: 2px 0 2px 5px;
 	font-size: 12px;
 	font-weight: bold;
 	color: #000099;
 }
 
 .info-popup .info .value {
-	margin-bottom: 5px;
+	padding: 2px 0 2px 10px;
 	font-size: 12px;
 	font-style: italic;
 	color: #000000;
@@ -35,27 +67,19 @@
 /*
  * BaseHeaderButton
  */
+.header-info-widget {
+	padding: 3px;
+}
+
+.header-info-widget .gwt-Image {
+	vertical-align: middle;
+}
+ 
 .header-button {
-	border: 1px solid #FFFFFF;
+	border: 1px solid #ebf3ff;
 }
 
 .header-button-clicked {
-	border: 1px solid #CCCCCC;
+	border: 1px solid #ebf3ff;
 	background-image: url(../images/gradient.jpg)
 }
-
-/*
- * UserHeaderButton
- */
-.header-button .userName {
-	font-size: 12px;
-	color: #000070;
-}
-
-.header-button-clicked .userName {
-	font-size: 12px;
-	color: #000070;
-}
-
-
-

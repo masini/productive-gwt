@@ -8,19 +8,26 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Implementazione di pulsante per l'header per la visualizzazione di un popup
  */
-public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton implements PopupListener {
+public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton {
 
 	/**
 	 * Poupup visualizzato al click sul pulsante
 	 */
 	private InfoPopupPanel popup;
 
+	/**
+	 * @see org.googlecode.gwt.header.client.BaseHeaderButton#onLoad()
+	 */
 	protected void onLoad() {
 		super.onLoad();
 
 		/* Creo il popup */
 		popup = new InfoPopupPanel(true, getPopupImage());
-		popup.addPopupListener(this);
+		popup.addPopupListener(new PopupListener() {
+			public void onPopupClosed(PopupPanel sender, boolean autoClosed) {
+				BaseInfoPanelHeaderButton.this.setClicked(false);
+			}
+		});
 		
 		addLabels();
 		add(HeaderImagesFactory.getInstance().getArrowDownIcon().createImage());
@@ -50,6 +57,9 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton impleme
 		popup.add(label, value);
 	}
 
+	/**
+	 * @see org.googlecode.gwt.header.client.BaseHeaderButton#onClick(com.google.gwt.user.client.ui.Widget, boolean)
+	 */
 	protected void onClick(Widget sender, boolean isClicked) {
 		popup.show();
 		updatePopupSizeAndPosition(sender);
@@ -70,17 +80,5 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton impleme
 		int top = sender.getAbsoluteTop() + sender.getOffsetHeight() + 1;
 
 		popup.setPopupPosition(left, top);
-	}
-
-	/*
-	 * PopupListener
-	 */
-
-	/**
-	 * @see com.google.gwt.user.client.ui.PopupListener#onPopupClosed(com.google.gwt.user.client.ui.PopupPanel,
-	 *      boolean)
-	 */
-	public void onPopupClosed(PopupPanel sender, boolean autoClosed) {
-		this.setClicked(false);
 	}
 }
