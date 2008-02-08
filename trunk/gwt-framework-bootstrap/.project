@@ -3,6 +3,7 @@
 	<name>gwt-framework-bootstrap</name>
 	<comment></comment>
 	<projects>
+		<project>gwt-framework-base</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
