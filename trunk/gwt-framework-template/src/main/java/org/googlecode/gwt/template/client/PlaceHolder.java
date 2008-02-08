@@ -28,6 +28,7 @@ public class PlaceHolder {
 	public static final PlaceHolderConstant APPLICATION_TITLE = new PlaceHolderConstant(IdUtil.getNextToken());
 	
 	public static final PlaceHolderConstant NAVIGATION = new PlaceHolderConstant(IdUtil.getNextToken());
+	public static final PlaceHolderConstant INFO = new PlaceHolderConstant(IdUtil.getNextToken());
 	public static final PlaceHolderConstant MENU = new PlaceHolderConstant(IdUtil.getNextToken());
 	
 	public static RootPanel get(PlaceHolderConstant placeHolderConstant){

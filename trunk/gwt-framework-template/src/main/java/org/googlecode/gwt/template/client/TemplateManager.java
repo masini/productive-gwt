@@ -14,8 +14,8 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -39,6 +39,14 @@ public class TemplateManager {
 		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if(root==null){
 			throw new PlaceHolderException(ERR_MSG+"HEADER");
+		}
+		root.add(widget);
+	}
+	
+	public static void setInfo(Widget widget) throws PlaceHolderException{
+		RootPanel root = PlaceHolder.get(PlaceHolder.INFO);
+		if(root==null){
+			throw new PlaceHolderException(ERR_MSG+"INFO");
 		}
 		root.add(widget);
 	}
@@ -67,7 +75,7 @@ public class TemplateManager {
 		if(root==null){
 			throw new PlaceHolderException(ERR_MSG+"NAVIGATION");
 		}
-		HorizontalPanel hp = new HorizontalPanel();
+		FlowPanel hp = new FlowPanel();
 		if(!append){
 			root.clear();
 			hp.add(homePage());
@@ -152,7 +160,7 @@ public class TemplateManager {
 
 	private static HTML homePage() {
 		if(home==null){
-			home = new HTML("<a href='javascript:;'> "+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+" </a>",true);
+			home = new HTML("<a href='javascript:;'>"+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+"</a>",true);
 			home.addClickListener(new ClickListener(){
 				public void onClick(Widget sender) {
 					TemplateManager.setReloadFirstPanel();
