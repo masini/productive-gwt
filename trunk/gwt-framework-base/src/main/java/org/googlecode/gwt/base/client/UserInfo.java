@@ -18,6 +18,8 @@ public interface UserInfo extends Serializable {
     boolean isUserInRole(String role);
     
     String getUserParameter( String parameterName );
+    
+    String[] getUserParameterNames ();
 
     String getFirstName();
 
