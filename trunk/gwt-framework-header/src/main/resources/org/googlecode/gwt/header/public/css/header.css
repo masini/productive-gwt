@@ -17,6 +17,24 @@
 	color: #000070;
 }
 
+.placeholder-top .gwt-Image {
+	vertical-align: middle;
+}
+
+.placeholder-top BUTTON {
+	vertical-align: middle;
+}
+
+.placeholder-top TABLE {
+	display: inline;
+	vertical-align: middle;
+}
+
+.placeholder-top TD {
+	font-size: 12px;
+	color: #000070;
+}
+
 .placeholder-navigation {
 	padding-left: 5px;
 }
