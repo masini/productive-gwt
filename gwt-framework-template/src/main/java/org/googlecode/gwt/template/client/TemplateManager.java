@@ -14,7 +14,6 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -75,22 +74,16 @@ public class TemplateManager {
 		if(root==null){
 			throw new PlaceHolderException(ERR_MSG+"NAVIGATION");
 		}
-		FlowPanel hp = new FlowPanel();
+		
 		if(!append){
 			root.clear();
-			hp.add(homePage());
+			root.add(homePage());
 		}
 		
-		for(int i =0;i<root.getWidgetCount();i++){
-			Widget w = root.getWidget(i);
-			hp.add(w);
+		if(widget!=null) {
+			root.add(new HTML(SPACE+TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()+SPACE));
+			root.add(widget);
 		}
-		
-		root.add(hp);
-		
-		hp.add(new HTML(SPACE+TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()+SPACE));
-		if(widget!=null)
-			hp.add(widget);
 	}
 	
 	public static void setHomePage(Widget content,Widget navigation)throws PlaceHolderException{
