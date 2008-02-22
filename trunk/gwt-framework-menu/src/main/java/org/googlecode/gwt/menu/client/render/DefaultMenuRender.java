@@ -25,8 +25,13 @@ public class DefaultMenuRender extends Composite {
 	private void buildMenu() {
 		if (model != null && model.hasChildren()) {
 			MenuItem[] menuItem = getMenuItems(model.getChildren());
-			
-			for (int i = 0; i < menuItem.length; i++) {
+
+			menuItem[0].addStyleName("menu-applicativo");
+			menu.addItem(menuItem[0]);
+
+			for (int i = 1; i < menuItem.length; i++) {
+				menuItem[i].addStyleName("menu-applicativo");
+				menuItem[i].addStyleName("menu-applicativo-border");
 				menu.addItem(menuItem[i]);
 			}
 		}
@@ -39,7 +44,6 @@ public class DefaultMenuRender extends Composite {
 			
 			if (menuItemModel[i].hasChildren()) {
 				MenuBar subMenu = new MenuBar(true);
-				
 				MenuItem[] subMenuItem = getMenuItems(menuItemModel[i].getChildren());
 				for (int j = 0; j < subMenuItem.length; j++) {
 					subMenu.addItem(subMenuItem[j]);
@@ -50,7 +54,7 @@ public class DefaultMenuRender extends Composite {
 				menuItem[i] = new MenuItem(getMenuItemLabel(menuItemModel[i]), true, menuItemModel[i].getCommand());
 			}
 		}
-		
+
 		return menuItem;
 	}
 	

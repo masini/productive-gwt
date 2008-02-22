@@ -1,5 +1,5 @@
 /*
- * PlaceHolder top
+ * PlaceHolder 
  */
 .placeholder-top {
 	background-color: #ebf3ff;
@@ -43,10 +43,35 @@
 	padding-right: 5px;
 }
 
+/*
+ * Label navigazione
+ */
+.navigazione, .benvenuto, .menu-applicativo {
+	color: #15428B;
+}
+.menu-applicativo {
+	text-decoration: underline;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	font-size: 11px;
+	font: bold;
+}
+
+.menu-applicativo-border {
+	border-top: 1px solid #C3D9FF;
+	border-left: 1px solid #15428B;
+	border-bottom: 1px solid #C3D9FF;
+}
 
 /*
  * InfoPopupPanel
  */
+.benvenuto {
+	font: bold;
+}
+
 .info-popup {
 	width: 250px;
 	border: 1px solid #C3D9FF;
