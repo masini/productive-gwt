@@ -51,7 +51,9 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 
 		add(HeaderImagesFactory.getInstance().getEmptyShortIcon().createImage());
 		
-		Label info = new Label(HeaderConstantsFactory.getInstance().WELCOME_LABEL() + " " + userInfo.getFirstName() + " " + userInfo.getLastName());
+		Label info = new Label(userInfo.getFirstName() + " " + userInfo.getLastName());
+		info.addStyleName("benvenuto");
+		add(new Label(HeaderConstantsFactory.getInstance().WELCOME_LABEL() + " "));
 		add(info);
 	}
 	

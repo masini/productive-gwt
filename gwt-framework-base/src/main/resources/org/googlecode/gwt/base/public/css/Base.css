@@ -293,3 +293,32 @@ a:visited {
 	background-color: #e8eef7;
 	cursor: hand;
 }
+
+.gwt-Button {
+	background: url(../images/btn-sprite.gif) repeat-x;
+	vertical-align: middle;
+	text-align: center;
+	padding: 2px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	border: 1px solid #BBB;
+	font-size: 11px;
+}
+
+.gwt-TextBox, .gwt-PasswordTextBox, .gwt-TextArea, .gwt-ListBox {
+	padding: 1px 3px;
+	background: #fff url(../images/text-bg.gif) repeat-x 0 0;
+	border: 1px solid #B5B8C8;
+	font-size: 12px;
+}
+
+.gwt-Label {
+	font-size: 11px;
+} 
+
+.gwt-RadioButton label, .gwt-CheckBox label {
+	font-size: 11px;
+	vertical-align: middle;
+	margin-left: 2px;
+}
+
