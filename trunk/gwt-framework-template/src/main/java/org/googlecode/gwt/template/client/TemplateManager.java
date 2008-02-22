@@ -15,6 +15,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -153,7 +154,10 @@ public class TemplateManager {
 
 	private static HTML homePage() {
 		if(home==null){
-			home = new HTML("<a href='javascript:;'>"+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+"</a>",true);
+			//Image a = new Image("");
+			//RootPanel.get().add(a);
+			home = new HTML("<img src='./images/ico_home.gif' style='cursor:pointer;margin-right:4px' align:buttom/><a href='javascript:;'>"+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+"</a>",true);
+			home.addStyleName("navigazione");
 			home.addClickListener(new ClickListener(){
 				public void onClick(Widget sender) {
 					TemplateManager.setReloadFirstPanel();
