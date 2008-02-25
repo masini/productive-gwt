@@ -20,7 +20,8 @@
 	overflow: hidden;
 	padding: 3px;
 	border-top: 1px solid #DDD;
-	border-right: 1px solid #DDD;	
+	border-right: 1px solid #DDD;
+	font-size: 11px;	
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-header td,
@@ -51,7 +52,7 @@
 	
 .gwt-ScrollTable .gwt-ScrollTable-data tr.selected,
 .gwt-ScrollTable .gwt-ScrollTable-data tr.selected td {
-  	background: #316AC5;
+  	background: #DDD;
   	color: #FFF;
 }
 
@@ -69,6 +70,7 @@
  	background: #D4E0F2;
   	border-top: 1px solid #A9BFD3;
   	padding: 1px 0px;
+  	font-size: 11px;
 }
 
 .gwt-ScrollTable .pagingOptions .errorLabel {
