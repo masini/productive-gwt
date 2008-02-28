@@ -18,10 +18,10 @@ public interface HeaderImages extends ImageBundle {
 	 */
 	public AbstractImagePrototype getEmptyShortIcon();
 
-	/**
-	 * @gwt.resource org/googlecode/gwt/header/public/images/logo.bmp
-	 */
-	public AbstractImagePrototype getIntranetIcon();
+//	/**
+//	 * @gwt.resource org/googlecode/gwt/header/public/images/logo.bmp
+//	 */
+//	public AbstractImagePrototype getIntranetIcon();
 
 	/**
 	 * @gwt.resource org/googlecode/gwt/header/public/images/bullet_arrow_down.gif
@@ -51,5 +51,4 @@ public interface HeaderImages extends ImageBundle {
 	 * @gwt.resource org/googlecode/gwt/header/public/images/application_put.png
 	 */
 	public AbstractImagePrototype getLogIconStop();
-
 }

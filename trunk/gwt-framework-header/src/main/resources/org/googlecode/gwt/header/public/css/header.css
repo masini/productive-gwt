@@ -8,13 +8,13 @@
 .placeholder-top .gwt-Label {
 	display: inline;
 	font-size: 12px;
-	color: #000070;
+	color: #15428B;
 }
 
 .placeholder-top .gwt-HTML {
 	display: inline;
 	font-size: 12px;
-	color: #000070;
+	color: #15428B;
 }
 
 .placeholder-top .gwt-Image {
@@ -32,23 +32,31 @@
 
 .placeholder-top TD {
 	font-size: 12px;
-	color: #000070;
+	color: #15428B;
 }
 
 .placeholder-navigation {
 	padding-left: 5px;
 }
 
+.placeholder-navigation .intranet-logo {
+	margin-right: 0.5em;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
 .placeholder-info {
 	padding-right: 5px;
 }
 
+
 /*
  * Label navigazione
  */
-.navigazione, .benvenuto, .menu-applicativo {
+.menu-applicativo {
 	color: #15428B;
 }
+
 .menu-applicativo {
 	text-decoration: underline;
 	padding-left: 8px;
@@ -56,7 +64,7 @@
 	margin-left: 8px;
 	margin-right: 8px;
 	font-size: 11px;
-	font: bold;
+	font-weight: bold;
 }
 
 .menu-applicativo-border {
@@ -68,13 +76,10 @@
 /*
  * InfoPopupPanel
  */
-.benvenuto {
-	font: bold;
-}
 
 .info-popup {
 	width: 250px;
-	border: 1px solid #C3D9FF;
+	border: 1px solid #15428B;
 	background-color: #C3D9FF;
 }
 
@@ -110,12 +115,27 @@
 /*
  * BaseHeaderButton
  */
+ .header-title {
+ 	width: 100%;
+ 	background-image: url(../images/logo.bmp);
+ 	background-position: left center;
+	background-repeat: no-repeat; 	
+ }
+ 
+.header-title TABLE{
+ 	width: 100%;
+ }
+ 
 .header-info-widget {
 	padding: 3px;
 }
 
 .header-info-widget .gwt-Image {
 	vertical-align: middle;
+}
+
+.header-info-widget .benvenuto {
+	font-weight: bold;
 }
  
 .header-button {
