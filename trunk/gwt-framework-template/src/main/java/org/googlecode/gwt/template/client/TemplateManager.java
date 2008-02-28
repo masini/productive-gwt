@@ -20,84 +20,91 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManager {
+	private static String INTRANET_LOGO_STYLE_NAME = "intranet-logo";
+	
 	private static final String ERR_MSG = "Non trovata la zona ";
-	private static final String SPACE = "&nbsp;";
+	private static TemplateImageImageBundle images = (TemplateImageImageBundle) GWT.create(TemplateImageImageBundle.class);
 
 	private static HTML home = null;
+	private static HTML intranet = null;
+	private static Image intranetLogo = null;
 	private static Widget firstPanel = null;
 	private static Widget firstNavigation = null;
-	
-	public static void setApplicationTitle(Widget widget) throws PlaceHolderException{
+
+	public static void setApplicationTitle(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"APPLICATION_TITLE");
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "APPLICATION_TITLE");
 		}
 		root.add(widget);
 	}
-	
-	public static void setHeader(Widget widget) throws PlaceHolderException{
+
+	public static void setHeader(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"HEADER");
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "HEADER");
 		}
 		root.add(widget);
 	}
-	
-	public static void setInfo(Widget widget) throws PlaceHolderException{
+
+	public static void setInfo(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.INFO);
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"INFO");
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "INFO");
 		}
 		root.add(widget);
 	}
-	
-	public static void setFooter(Widget widget) throws PlaceHolderException{
+
+	public static void setFooter(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.FOOTER);
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"FOOTER");
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "FOOTER");
 		}
 		root.add(widget);
 	}
-	
-	public static void setApplicationContent(Widget widget)throws PlaceHolderException{
+
+	public static void setApplicationContent(Widget widget) throws PlaceHolderException {
 		RootPanel root = get(PlaceHolder.CONTENT);
-		
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"CONTENT");
+
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "CONTENT");
 		}
 		root.clear();
 		root.add(widget);
 	}
-	
-	public static void setNavigationContent(Widget widget,boolean append)throws PlaceHolderException{
+
+	public static void setNavigationContent(Widget widget, boolean append) throws PlaceHolderException {
 		RootPanel root = get(PlaceHolder.NAVIGATION);
-		
-		if(root==null){
-			throw new PlaceHolderException(ERR_MSG+"NAVIGATION");
+
+		if (root == null) {
+			throw new PlaceHolderException(ERR_MSG + "NAVIGATION");
 		}
-		
-		if(!append){
+
+		if (!append) {
 			root.clear();
-			root.add(homePage());
+			root.add(getIntranetLogo());
+			root.add(getIntranetLink());
+			root.add(newSeparator());
+			root.add(getHomePageLink());
 		}
-		
-		if(widget!=null) {
-			root.add(new HTML(SPACE+TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR()+SPACE));
+
+		if (widget != null) {
+			root.add(newSeparator());
 			root.add(widget);
 		}
 	}
-	
-	public static void setHomePage(Widget content,Widget navigation)throws PlaceHolderException{
+
+	public static void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
 		firstPanel = content;
 		firstNavigation = navigation;
 		setApplicationContent(firstPanel);
-		setNavigationContent(firstNavigation,false);
+		setNavigationContent(firstNavigation, false);
 	}
 
 	public static void setMenu(final SMenu menu) {
 		ApplicationContextFactory.getApplicationContext(new AsyncCallback() {
 			public void onFailure(Throwable caught) {
-				//TODO: Mange failure on loading
+				// TODO: Mange failure on loading
 			}
 
 			public void onSuccess(Object result) {
@@ -108,7 +115,7 @@ public class TemplateManager {
 				/* Model */
 				MenuModel menuModel = menu.getMenuModel();
 
-				/* Apply security policy (server mode only)*/
+				/* Apply security policy (server mode only) */
 				if (GWT.isScript()) {
 					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
 				}
@@ -116,55 +123,95 @@ public class TemplateManager {
 				/* Render */
 				DefaultMenuRender render = new DefaultMenuRender();
 				render.setMenuModel(menuModel);
-				
+
 				/* Show menu */
 				RootPanel root = get(PlaceHolder.MENU);
-				if(root==null){
-					throw new PlaceHolderException(ERR_MSG+"MENU");
+				if (root == null) {
+					throw new PlaceHolderException(ERR_MSG + "MENU");
 				}
 				root.setSize("100%", "100%");
 				root.add(render);
 			}
 		});
 	}
-	
-	private static void setReloadFirstPanel() {
-		if(firstPanel!=null){
-			setApplicationContent(firstPanel);
-		}
-		else{
-			RootPanel root = get(PlaceHolder.CONTENT);
-			root.clear();
-		}
-		
-		if(firstNavigation!=null){
-			setNavigationContent(firstNavigation,false);
-		}
-		else{
-			RootPanel root = get(PlaceHolder.NAVIGATION);
-			root.clear();
-			setNavigationContent(null,false);
-		}
-	}	
-	
-	private static RootPanel get(PlaceHolderConstant constant){
+
+	private static RootPanel get(PlaceHolderConstant constant) {
 		RootPanel root = PlaceHolder.get(constant);
 		return root;
 	}
+	
+	/*
+	 * Path di navigaizone
+	 */
 
-	private static HTML homePage() {
-		if(home==null){
-			//Image a = new Image("");
-			//RootPanel.get().add(a);
-			home = new HTML("<img src='./images/ico_home.gif' style='cursor:pointer;margin-right:4px' align:buttom/><a href='javascript:;'>"+TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL()+"</a>",true);
-			home.addStyleName("navigazione");
-			home.addClickListener(new ClickListener(){
+	private static Image getIntranetLogo() {
+		if (intranetLogo == null) {
+			intranetLogo = images.getHomeIcon().createImage();
+			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
+			intranetLogo.addClickListener(new ClickListener() {
 				public void onClick(Widget sender) {
-					TemplateManager.setReloadFirstPanel();
+					openIntranet();
 				}
 			});
 		}
-		return home;		
+
+		return intranetLogo;
 	}
 
+	private static HTML getIntranetLink() {
+		if (intranet == null) {
+			intranet = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+			intranet.addClickListener(new ClickListener() {
+				public void onClick(Widget sender) {
+					openIntranet();
+				}
+			});
+		}
+		return intranet;
+	}
+
+	private static HTML getHomePageLink() {
+		if (home == null) {
+			home = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
+			home.addClickListener(new ClickListener() {
+				public void onClick(Widget sender) {
+					TemplateManager.reloadFirstPanel();
+				}
+			});
+		}
+		return home;
+	}
+	
+	private static HTML newSeparator() {
+		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
+	}
+	
+	/*
+	 * Navigaizone
+	 */
+	
+	private static void reloadFirstPanel() {
+		if (firstPanel != null) {
+			setApplicationContent(firstPanel);
+		} else {
+			RootPanel root = get(PlaceHolder.CONTENT);
+			root.clear();
+		}
+
+		if (firstNavigation != null) {
+			setNavigationContent(firstNavigation, false);
+		} else {
+			RootPanel root = get(PlaceHolder.NAVIGATION);
+			root.clear();
+			setNavigationContent(null, false);
+		}
+	}
+
+	public static void openIntranet() {
+		redirect("http://intra.esselunga.net/");
+	}
+
+	public static native void redirect(String url)/*-{
+			    $wnd.location = url;
+			}-*/;
 }
