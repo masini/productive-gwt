@@ -52,12 +52,11 @@
 	
 .gwt-ScrollTable .gwt-ScrollTable-data tr.selected,
 .gwt-ScrollTable .gwt-ScrollTable-data tr.selected td {
-  	background: #DDD;
-  	color: #FFF;
+  	background: #D9E8FB;
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-data tr.hovering {
-  	background: #D9E8FB;
+  	background: #DDD;
 }
 
 .gwt-ScrollTable .gwt-ScrollTable-data td.hovering {
