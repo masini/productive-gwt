@@ -8,6 +8,7 @@ import org.googlecode.gwt.menu.client.filter.MenuFilter;
 import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 import org.googlecode.gwt.menu.client.render.DefaultMenuRender;
+import org.googlecode.gwt.menu.client.render.ShortcutMenuRender;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
@@ -121,8 +122,16 @@ public class TemplateManager {
 				}
 
 				/* Render */
-				DefaultMenuRender render = new DefaultMenuRender();
-				render.setMenuModel(menuModel);
+				Widget render;
+				if(menuModel.existShortcut()){
+					render = new ShortcutMenuRender();
+					((ShortcutMenuRender)render).setMenuModel(menuModel);
+					
+				}
+				else{
+					render = new DefaultMenuRender();
+					((DefaultMenuRender)render).setMenuModel(menuModel);
+				}
 
 				/* Show menu */
 				RootPanel root = get(PlaceHolder.MENU);

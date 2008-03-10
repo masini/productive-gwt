@@ -39,17 +39,22 @@ public class ClassMenuGenerator {
 	private static final String STARTCOMMAND = "public "+Command.class.getName()+" getCommand() {";
 	private static final String NULLCOMMAND = "return null;";
 	private static final String ENDCOMMAND = "}";
+	private static final int MAX_SHORTCUT_LENGHT = 4;
 
 	private static final String META_PREFIX_GWT = "gwt.";
 	private static final String META_USER_ROLE = META_PREFIX_GWT + "user_role";
 	private static final String META_ITEM_POSITION = META_PREFIX_GWT + "item_position";
 	private static final String META_ITEM_LABEL = META_PREFIX_GWT + "item_label";
 	private static final String META_ITEM_ICON = META_PREFIX_GWT + "item_icon";
-	private static final String[] ALL_META = { META_USER_ROLE,  META_ITEM_POSITION, META_ITEM_LABEL, META_ITEM_ICON };
+	private static final String META_ITEM_SHORTCUT = META_PREFIX_GWT + "item_shortcut";
+	
+	private static final String[] ALL_META = { META_USER_ROLE,  META_ITEM_POSITION, META_ITEM_LABEL, META_ITEM_ICON ,META_ITEM_SHORTCUT};
 	
 	private Map<String,String> roles = new HashMap<String, String>();
 	private Map<String, MyContext> contextCommand = new HashMap<String, MyContext>();
 	private Map<String, String> nameMethod = new HashMap<String, String>();
+	
+	private Map<String, String> shortcutItem = new HashMap<String, String>();
 
 	/*
 	 * classe di utility interna 
@@ -76,15 +81,17 @@ public class ClassMenuGenerator {
 		private String icon = null;
 		private String role = null;
 		private List<MyMenuModel> childs = new ArrayList<MyMenuModel>();
+		private String shortcut;
 		public MyMenuModel() {
 		}
 		
-		public MyMenuModel(String name, String label, String icon, String role) {
+		public MyMenuModel(String name, String label, String icon, String role,String shortcut) {
 			super();
 			this.name = name;
 			this.label = label;
 			this.icon = icon;
 			this.role = role;
+			this.shortcut = shortcut;
 		}
 		public void addChild(int position, MyMenuModel child) {
 			while(childs.size()<position){
@@ -110,7 +117,7 @@ public class ClassMenuGenerator {
 			writeRow(getNomeItem(),"Label",label, ret);
 			writeRow(getNomeItem(),"Icon", icon,ret);
 			writeRow(getNomeItem(),"Role", role,ret);
-			
+			writeRow(getNomeItem(),"Shortcut", shortcut,ret);
 			return ret.toString();
 		}
 		
@@ -221,7 +228,7 @@ public class ClassMenuGenerator {
 			String labelMenu = getValueMeta(META_ITEM_LABEL, inJClazz.getMetaData(META_ITEM_LABEL));
 			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, inJClazz.getMetaData(META_ITEM_POSITION))).intValue();
 			
-			MyMenuModel menuModel = new MyMenuModel(clazz.getSimpleName(),labelMenu,iconMenu,null);
+			MyMenuModel menuModel = new MyMenuModel(clazz.getSimpleName(),labelMenu,iconMenu,null,null);
 			parent.addChild(positionMenu, menuModel);
 			
 			elabClass(clazz,false,menuModel);
@@ -233,7 +240,7 @@ public class ClassMenuGenerator {
 		for (int i = 0; i < methods.length; i++) {
 			JMethod metodo = methods[i];
 			if (nameMethod.containsKey(metodo.getName())) {
-				String msg = "I metodi dei metoid devono avere un nome univoco all'interno del descrittore.";
+				String msg = "I metodi dei metodi devono avere un nome univoco all'interno del descrittore.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				log.error(GENERIC_MESSAGE, e);
 				throw e;
@@ -266,9 +273,21 @@ public class ClassMenuGenerator {
 //			carico l'appoggio per il menuModel
 			String iconMenu = getValueMeta(META_ITEM_ICON, metodo.getMetaData(META_ITEM_ICON));
 			String labelMenu = getValueMeta(META_ITEM_LABEL, metodo.getMetaData(META_ITEM_LABEL));
+			String shortcutMenu = getValueMeta(META_ITEM_SHORTCUT, metodo.getMetaData(META_ITEM_SHORTCUT));
+			
+			if(shortcutMenu!=null){
+				if(shortcutItem.containsKey(shortcutMenu)){
+					String msg = "I shortcut devono avere un nome univoco all'interno del descrittore.";
+					MenuGeneratorException e = new MenuGeneratorException(msg);
+					log.error(GENERIC_MESSAGE, e);
+					throw e;
+				}
+				shortcutItem.put(shortcutMenu, shortcutMenu);
+			}
+			
 			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, metodo.getMetaData(META_ITEM_POSITION))).intValue();
 				
-			MyMenuModel myMenuModel = new MyMenuModel(metodo.getName(),labelMenu,iconMenu,role);
+			MyMenuModel myMenuModel = new MyMenuModel(metodo.getName(),labelMenu,iconMenu,role,shortcutMenu);
 			menuModel.addChild(positionMenu, myMenuModel);
 			
 		}
@@ -382,6 +401,28 @@ public class ClassMenuGenerator {
 			}
 			else{
 				return meta[0][0];
+			}
+		}
+		if(META_ITEM_SHORTCUT.equals(key)){
+			if (meta.length == 0) {
+				return null;
+			}
+			else if( meta.length > 1){
+				String msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_SHORTCUT + " per item.";
+				MenuGeneratorException e = new MenuGeneratorException(msg);
+				log.error(GENERIC_MESSAGE,e);
+				throw e;
+			}
+			else{
+				String text = meta[0][0];
+				if(text.trim().length() > MAX_SHORTCUT_LENGHT){
+					String msg = "Non è possibile specificare un @" + META_ITEM_SHORTCUT + " con un testo maggiore di "+MAX_SHORTCUT_LENGHT+". Traovo il testo <"+text+">";
+					MenuGeneratorException e = new MenuGeneratorException(msg);
+					log.error(GENERIC_MESSAGE,e);
+					
+					throw e;
+				}
+				return text;
 			}
 		}
 		if(META_ITEM_LABEL.equals(key)){
