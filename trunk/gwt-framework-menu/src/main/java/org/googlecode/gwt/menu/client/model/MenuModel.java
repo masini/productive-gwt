@@ -25,7 +25,11 @@ public abstract class MenuModel {
 	 */
 	private String role = null;
 
-
+	/**
+	 * ShortCut da digitare 
+	 */
+	private String shortcut = null;
+	
 	/**
 	 * Elenco dei nodi figli
 	 * 
@@ -135,5 +139,39 @@ public abstract class MenuModel {
 
 	protected void setParent(MenuModel parent) {
 		this.parent = parent;
+	}
+
+	public String getShortcut() {
+		return shortcut;
+	}
+
+	public void setShortcut(String shortcut) {
+		this.shortcut = shortcut;
+	}
+	
+	
+	public boolean existShortcut(){
+		return getMenuItems(getChildren(),false);
+	}
+	
+	public boolean existLevelShortcut(MenuModel[] menuItemModel){
+		return getMenuItems(menuItemModel,true);
+	}
+	
+	private boolean getMenuItems(MenuModel[] menuItemModel,boolean checkMonoLevel) {
+		for (int i = 0; i < menuItemModel.length; i++) {
+			if (menuItemModel[i].hasChildren() && !checkMonoLevel) {
+				boolean ret = getMenuItems(menuItemModel[i].getChildren(),checkMonoLevel);
+				if(ret)
+					return ret;
+				
+			} else {
+				String shortcut = menuItemModel[i].getShortcut();
+				if (shortcut!= null && !shortcut.equals("")) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

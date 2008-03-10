@@ -73,6 +73,15 @@
 	border-bottom: 1px solid #C3D9FF;
 }
 
+.menu-applicativo-shortcut {
+	width: 30px; 
+	font-size:75%;
+	font-weight: bold;
+	background: url(../images/mso-hd.gif) repeat-x top left;
+	color: green;
+	margin: -1px;
+}
+
 /*
  * InfoPopupPanel
  */
