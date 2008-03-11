@@ -95,6 +95,13 @@ public abstract class MenuModel {
 	}
 
 	/**
+	 * Rimuove tutti i filgli del nodo
+	 */
+	public void removeChildren() {
+		children.clear();
+	}
+
+	/**
 	 * Restituisce l'elenco completo dei figli del nodo.
 	 * 
 	 * @return Restituisce un vettore con i figli del nodo. Se il nodo non ha
@@ -109,6 +116,27 @@ public abstract class MenuModel {
 		return child;
 	}
 
+	/**
+	 * Restituisce una nuova istanza dello stesso oggetto
+	 * 
+	 * @return nuova istanza
+	 */
+	public MenuModel clone() {
+		MenuModel internal = new MenuModel(){
+
+			public Command getCommand() {
+				return MenuModel.this.getCommand();
+			}
+		};
+		internal.setIcon(getIcon());
+		internal.setLabel(getLabel());
+		internal.setShortcut(getShortcut());
+		internal.setRole(getRole());
+		
+		return internal;
+	}
+	
+	
 	public String getLabel() {
 		return label;
 	}
@@ -159,15 +187,17 @@ public abstract class MenuModel {
 	}
 	
 	private boolean getMenuItems(MenuModel[] menuItemModel,boolean checkMonoLevel) {
+		
 		for (int i = 0; i < menuItemModel.length; i++) {
 			if (menuItemModel[i].hasChildren() && !checkMonoLevel) {
 				boolean ret = getMenuItems(menuItemModel[i].getChildren(),checkMonoLevel);
-				if(ret)
+				if(ret){
 					return ret;
+				}
 				
 			} else {
-				String shortcut = menuItemModel[i].getShortcut();
-				if (shortcut!= null && !shortcut.equals("")) {
+				String shortcut2 = menuItemModel[i].getShortcut();
+				if (shortcut2!= null && !shortcut2.equals("")) {
 					return true;
 				}
 			}

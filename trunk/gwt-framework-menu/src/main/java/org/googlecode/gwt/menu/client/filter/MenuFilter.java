@@ -2,43 +2,10 @@ package org.googlecode.gwt.menu.client.filter;
 
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
-import com.google.gwt.user.client.Command;
-
 /**
  * 
  */
 public class MenuFilter {
-
-	/**
-	 * 
-	 */
-	private static class CopiedMenuModel extends MenuModel {
-
-		/**
-		 * Original MenuModel
-		 */
-		MenuModel model = null;
-
-		/**
-		 * Constructor
-		 * 
-		 * @param model
-		 *            Original MenuModel
-		 */
-		public CopiedMenuModel(MenuModel model) {
-			this.model = model;
-			this.setLabel(model.getLabel() != null ? new String(model.getLabel()) : null);
-			this.setIcon(model.getIcon() != null ? new String(model.getIcon()) : null);
-			this.setRole(model.getRole() != null ? new String(model.getRole()) : null);
-		}
-
-		/**
-		 * @see org.googlecode.gwt.menu.client.model.MenuModel#getCommand()
-		 */
-		public Command getCommand() {
-			return model.getCommand();
-		}
-	}
 
 	/**
 	 * Execute the passed FilterAction on passed MenuModel.<br>
@@ -53,7 +20,9 @@ public class MenuFilter {
 	 * @return A new instance of MenuModel
 	 */
 	public static MenuModel filter(MenuModel model, FilterAction action) {
-		MenuModel copy = copy(model);
+		MenuModel copy = null;
+		
+		copy = copy(model);
 
 		if (action != null) {
 			execute(copy, action);
@@ -70,7 +39,7 @@ public class MenuFilter {
 	 * @param action
 	 *            Action to be executed
 	 */
-	public static void execute(MenuModel model, FilterAction action) {
+	protected static void execute(MenuModel model, FilterAction action) {
 		if (model != null) {
 			if (!model.hasChildren()) {
 				if (action.isToExecuteOnLeaf(model)) {
@@ -98,12 +67,13 @@ public class MenuFilter {
 	 * 
 	 * @return A copy of the passed MenuModel or null.
 	 */
-	private static MenuModel copy(MenuModel model) {
+	private static MenuModel copy(MenuModel model)  {
 		MenuModel copiedMenuModel = null;
 
 		if (model != null) {
-			copiedMenuModel = new CopiedMenuModel(model);
+			copiedMenuModel = model.clone();
 
+			copiedMenuModel.removeChildren();
 			if (model.hasChildren()) {
 				MenuModel[] child = model.getChildren();
 
