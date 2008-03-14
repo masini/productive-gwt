@@ -19,7 +19,6 @@ public class BootstrapData implements Serializable {
 	private String homePageURLString;
 
 	private UserInfo userInfo;
-	private CicsInfo cicsInfo;
 
 	/**
 	 * Get the systemTime
@@ -176,11 +175,6 @@ public class BootstrapData implements Serializable {
 			l_bsStringBuffer.append(userInfo.toString());
 			l_bsStringBuffer.append("]");
 		}
-		if (cicsInfo != null) {
-			l_bsStringBuffer.append("[");
-			l_bsStringBuffer.append(cicsInfo.toString());
-			l_bsStringBuffer.append("]");
-		}
 
 		return l_bsStringBuffer.toString();
 	}
@@ -193,11 +187,5 @@ public class BootstrapData implements Serializable {
 		this.homePageURLString = homePageURLString;
 	}
 
-	public CicsInfo getCicsInfo() {
-		return cicsInfo;
-	}
 
-	public void setCicsInfo(CicsInfo cicsInfo) {
-		this.cicsInfo = cicsInfo;
-	}
 }

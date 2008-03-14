@@ -2,7 +2,6 @@ package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.BootstrapData;
-import org.googlecode.gwt.base.client.CicsInfo;
 
 import com.google.gwt.user.client.ui.Image;
 
@@ -26,12 +25,6 @@ public class ApplicationHeaderButton extends BaseInfoPanelHeaderButton {
 		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_NAME_LABEL() + " ", bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion());
 		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
 		
-		CicsInfo cicsInfo = bootstrapData.getCicsInfo();
-		
-		if (cicsInfo != null) {
-			addInfo(HeaderConstantsFactory.getInstance().CICS_SERVER_NAME() + " ", cicsInfo.getServerName());
-			addInfo(HeaderConstantsFactory.getInstance().CICS_TRANSACTION_GATEWAY_ADDRESS() + " ", cicsInfo.getTransactionGatewayAddress());
-		}
 	}
 
 	protected Image getPopupImage() {

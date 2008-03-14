@@ -56,9 +56,15 @@ public class ValidationUserInfoResolver implements UserInfoResolver {
 
         Map authorizationParameters = extractAuthorizationParameters( authData );
 
-        DefaultUserInfo userInfo = new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
+        UserInfo userInfo = newUserInfo( username, firstName, lastName, roles, authorizationParameters );
+        //DefaultUserInfo userInfo = new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
         return userInfo;
     }
+    
+    protected UserInfo newUserInfo( String username, String firstName, String lastName, String[] roles, Map authorizationParameters ) {
+        return new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
+    }
+    
 
     @SuppressWarnings( "unchecked" )
     private AuthorizationData getAuthorizationData( final ValidationData data ) {
