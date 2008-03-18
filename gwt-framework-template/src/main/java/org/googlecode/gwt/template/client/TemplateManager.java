@@ -169,7 +169,7 @@ public class TemplateManager {
 
 	private static HTML getIntranetLink() {
 		if (intranet == null) {
-			intranet = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
 			intranet.addClickListener(new ClickListener() {
 				public void onClick(Widget sender) {
 					openIntranet();
@@ -217,7 +217,7 @@ public class TemplateManager {
 	}
 
 	public static void openIntranet() {
-		redirect("http://intra.esselunga.net/");
+		redirect("http://intra.esselunga.net/validationnet/home.aspx");
 	}
 
 	public static native void redirect(String url)/*-{
