@@ -73,6 +73,10 @@
   	font-size: 11px;
 }
 
+.gwt-ScrollTable .pagingOptions .gwt-HTML {
+	font-size: 12px;
+}
+
 .gwt-ScrollTable .pagingOptions .errorLabel {
 	color: red;
 }
