@@ -143,6 +143,20 @@ public class TemplateManager {
 			}
 		});
 	}
+	
+	/**
+	 * This method set the value of HistoryToken of homepage. 
+	 * @param tokenName HomePage token name
+	 */
+	public static void setHomePageHistoryToken(String homePageHistoryToken) {
+		if (home == null) getHomePageLink();
+		
+		if (homePageHistoryToken == null) {
+			home.setHTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+		} else {
+			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+		}
+	}
 
 	private static RootPanel get(PlaceHolderConstant constant) {
 		RootPanel root = PlaceHolder.get(constant);
