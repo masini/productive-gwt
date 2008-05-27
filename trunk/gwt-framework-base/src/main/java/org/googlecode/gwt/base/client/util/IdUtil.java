@@ -4,7 +4,7 @@ public class IdUtil {
 	/**
 	 * Id seguenziale per la generazione del token
 	 */
-	private static long id = 0;
+	private static int id = 0;
 
 	/**
 	 * Prefisso aggiunto alla stringa del token
