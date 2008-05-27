@@ -58,7 +58,7 @@ public class Template implements EntryPoint {
 		info.setStyleName(INFO_STYLE_NAME);
 
 		center.setWidth("100%");
-		
+
 		DOM.setElementAttribute(header.getElement(), ID, PlaceHolder.HEADER.getId());
 		DOM.setElementAttribute(navigation.getElement(), ID, PlaceHolder.NAVIGATION.getId());
 		DOM.setElementAttribute(info.getElement(), ID, PlaceHolder.INFO.getId());
