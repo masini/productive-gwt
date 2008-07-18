@@ -60,16 +60,16 @@ public class ClassMenuGenerator {
 	 * classe di utility interna 
 	 */
 	private class MyContext{
-		String role;
+		String[] role;
 		String name;
-		public MyContext(String role, String name) {
+		public MyContext(String[] role, String name) {
 			this.role = role;
 			this.name = name;
 		}
 		public String getName() {
 			return name;
 		}
-		public String getRole() {
+		public String[] getRole() {
 			return role;
 		}
 	}
@@ -79,13 +79,13 @@ public class ClassMenuGenerator {
 		private String name = null;
 		private String label = null;
 		private String icon = null;
-		private String role = null;
+		private String[] role = null;
 		private List<MyMenuModel> childs = new ArrayList<MyMenuModel>();
 		private String shortcut;
 		public MyMenuModel() {
 		}
 		
-		public MyMenuModel(String name, String label, String icon, String role,String shortcut) {
+		public MyMenuModel(String name, String label, String icon, String[] role,String shortcut) {
 			super();
 			this.name = name;
 			this.label = label;
@@ -116,7 +116,7 @@ public class ClassMenuGenerator {
 			StringBuffer ret = createInstance(true);
 			writeRow(getNomeItem(),"Label",label, ret);
 			writeRow(getNomeItem(),"Icon", icon,ret);
-			writeRow(getNomeItem(),"Role", role,ret);
+			writeRows(getNomeItem(),"Role", role,ret);
 			writeRow(getNomeItem(),"Shortcut", shortcut,ret);
 			return ret.toString();
 		}
@@ -155,6 +155,25 @@ public class ClassMenuGenerator {
 			a.append(");");
 			
 		}
+
+		private void writeRows(final String nomeItem,final String property,String[] value, StringBuffer a) {
+			a.append(nomeItem+".set"+property+"(");
+			if(value!=null){
+				a.append("new String[]{");
+				for (int i = 0; i < value.length; i++) {
+					if (i > 0) a.append(", ");
+					a.append("\""+value[i]+"\"");
+				}
+				a.append("}");
+			}
+			else{
+				a.append("null");
+			}
+			
+			a.append(");");
+			
+		}
+
 		public List<MyMenuModel> getChilds() {
 			return childs;
 		}
@@ -256,7 +275,7 @@ public class ClassMenuGenerator {
 			String typetype = returnType.getQualifiedSourceName();
 			Class clazz = Class.forName(typetype);
 			
-			String role = getValueMeta(META_USER_ROLE,metodo.getMetaData(META_USER_ROLE));
+			String[] role = getValueMeta(META_USER_ROLE,metodo.getMetaData(META_USER_ROLE)).split(" ");
 			
 			//carico l'appoggio per il contesto
 			if(instanceOf(clazz, Command.class)){
@@ -382,11 +401,16 @@ public class ClassMenuGenerator {
 				throw e;
 			}
 			else{
-				String ruolo = meta[0][0];
-				if(!roles.containsKey(ruolo)){
-					roles.put(ruolo, ruolo);
+				StringBuffer ruoli = new StringBuffer();
+				for (int i = 0; i < meta[0].length; i++) {
+					String ruolo = meta[0][i];
+					if(!roles.containsKey(ruolo)){
+						roles.put(ruolo, ruolo);
+					}
+					if (i > 0) ruoli.append(" ");
+					ruoli.append(ruolo);
 				}
-				return ruolo;
+				return ruoli.toString();
 			}
 		}
 		if(META_ITEM_ICON.equals(key)){

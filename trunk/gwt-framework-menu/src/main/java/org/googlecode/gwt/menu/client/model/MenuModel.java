@@ -23,7 +23,7 @@ public abstract class MenuModel {
 	/**
 	 * Ruolo necessario alla visualizzazione / utilizzo della voce di menu
 	 */
-	private String role = null;
+	private String[] role = null;
 
 	/**
 	 * ShortCut da digitare 
@@ -153,11 +153,11 @@ public abstract class MenuModel {
 		this.icon = icon;
 	}
 
-	public String getRole() {
+	public String[] getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(String[] role) {
 		this.role = role;
 	}
 
