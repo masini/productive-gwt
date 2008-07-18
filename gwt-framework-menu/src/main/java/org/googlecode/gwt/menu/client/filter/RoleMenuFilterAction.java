@@ -18,8 +18,12 @@ public class RoleMenuFilterAction implements FilterAction {
 	 * @see org.googlecode.gwt.menu.client.filter.FilterAction#isToExecuteOnLeaf(org.googlecode.gwt.menu.client.model.MenuModel)
 	 */
 	public boolean isToExecuteOnLeaf(MenuModel leaf) {
-		if (user != null && user.isUserInRole(leaf.getRole())) {
-			return false;
+		String[] role = leaf.getRole();
+		
+		for(int i = 0; i < role.length; i++) {
+			if (user != null && user.isUserInRole(role[i])) {
+				return false;
+			}
 		}
 
 		return true;
