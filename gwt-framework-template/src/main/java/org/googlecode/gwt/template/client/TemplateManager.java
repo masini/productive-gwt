@@ -31,6 +31,8 @@ public class TemplateManager {
 	private static Image intranetLogo = null;
 	private static Widget firstPanel = null;
 	private static Widget firstNavigation = null;
+	
+	private static boolean showIntranetLink = true;
 
 	public static void setApplicationTitle(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
@@ -83,9 +85,11 @@ public class TemplateManager {
 
 		if (!append) {
 			root.clear();
-			root.add(getIntranetLogo());
-			root.add(getIntranetLink());
-			root.add(newSeparator());
+			if (showIntranetLink) {
+				root.add(getIntranetLogo());
+				root.add(getIntranetLink());
+				root.add(newSeparator());
+			}
 			root.add(getHomePageLink());
 		}
 
@@ -237,4 +241,8 @@ public class TemplateManager {
 	public static native void redirect(String url)/*-{
 			    $wnd.location = url;
 			}-*/;
+
+	public static void setShowIntranetLink(boolean showIntranetLink) {
+		TemplateManager.showIntranetLink = showIntranetLink;
+	}
 }
