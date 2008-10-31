@@ -245,4 +245,8 @@ public class TemplateManager {
 	public static void setShowIntranetLink(boolean showIntranetLink) {
 		TemplateManager.showIntranetLink = showIntranetLink;
 	}
+
+	public static void setHome(HTML home) {
+		TemplateManager.home = home;
+	}
 }
