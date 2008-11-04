@@ -17,6 +17,12 @@
 	color: #15428B;
 }
 
+.placeholder-top .gwt-Hyperlink{
+	display: inline;
+	font-size: 12px;
+	color: #15428B;
+}
+
 .placeholder-top .gwt-Image {
 	vertical-align: middle;
 }
