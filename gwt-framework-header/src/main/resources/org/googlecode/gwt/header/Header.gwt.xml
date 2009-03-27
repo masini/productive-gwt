@@ -1,7 +1,0 @@
-<module>
-	<inherits name="org.googlecode.gwt.base.Base"/>
-	<inherits name='org.googlecode.gwt.template.Template'/>
-	
-	<stylesheet src='css/header.css'/>
-	<entry-point class="org.googlecode.gwt.header.client.Header"/>
-</module>
