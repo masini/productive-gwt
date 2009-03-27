@@ -1,0 +1,4 @@
+<module>
+	<inherits name='org.googlecode.gwt.template.Template'/>
+	<entry-point class="org.googlecode.gwt.footer.client.Footer"/>
+</module>
