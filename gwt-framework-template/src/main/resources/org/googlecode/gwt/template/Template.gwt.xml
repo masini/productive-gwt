@@ -1,4 +1,0 @@
-<module>
-	<inherits name="org.googlecode.gwt.base.Base"/>
-	<entry-point class="org.googlecode.gwt.template.client.Template"/>
-</module>
