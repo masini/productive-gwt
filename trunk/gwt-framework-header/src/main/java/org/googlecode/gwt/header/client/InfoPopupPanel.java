@@ -54,12 +54,12 @@ public class InfoPopupPanel extends PopupPanel {
 	/**
 	 * Elenco delle label delle voci presenti nel pannello.
 	 */
-	protected List labels = new ArrayList();
+	protected List<String> labels = new ArrayList<String>();
 
 	/**
 	 * Valori associati alle voci del pannello
 	 */
-	protected List values = new ArrayList();
+	protected List<String> values = new ArrayList<String>();
 
 	/**
 	 * Costruttore.
@@ -97,11 +97,11 @@ public class InfoPopupPanel extends PopupPanel {
 		infoPanel.setStyleName(INFO_POPUP_PANEL_INFO_CLASS);
 		
 		for (int i = 0; i < labels.size(); i++) {
-			Label title = new HTML((String) labels.get(i));
+			Label title = new HTML(labels.get(i));
 			infoPanel.add(title);
 			title.setStyleName(INFO_POPUP_PANEL_LABEL_CLASS);
 
-			Label info = new HTML((String) values.get(i));
+			Label info = new HTML(values.get(i));
 			infoPanel.add(info);
 			info.setStyleName(INFO_POPUP_PANEL_VALUE_CLASS);
 		}

@@ -1,7 +1,6 @@
 package org.googlecode.gwt.menu.client.render;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
 import com.google.gwt.user.client.ui.Button;
@@ -15,7 +14,6 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  */
 public class MenuRenderSimple extends Composite{
-	public static Log log = LogFactory.getLog(MenuRenderSimple.class);
 
 	/**
 	 * Modello del menu
