@@ -78,15 +78,15 @@ public class Header implements EntryPoint {
 		infoPanel = new HorizontalPanel();
 		infoPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
-		ApplicationContextFactory.getApplicationContext(new AsyncCallback() {
+		ApplicationContextFactory.getApplicationContext(new AsyncCallback<ApplicationContext>() {
 
 			public void onFailure(Throwable caught) {
 				//TODO: Gestire?
 			}
 
-			public void onSuccess(Object result) {
-				addInfoWidget(new UserHeaderButton((ApplicationContext)result));
-				addInfoWidget(new ApplicationHeaderButton((ApplicationContext)result));
+			public void onSuccess(ApplicationContext result) {
+				addInfoWidget(new UserHeaderButton(result));
+				addInfoWidget(new ApplicationHeaderButton(result));
 				
 				Label date = new Label(DateTimeFormat.getFormat("dd/MM/yyyy").format(new Date()));
 				date.setStyleName(INFO_WIDGET_STYLE_NAME);

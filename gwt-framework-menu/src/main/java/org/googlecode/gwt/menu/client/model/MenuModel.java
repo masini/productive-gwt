@@ -33,12 +33,11 @@ public abstract class MenuModel {
 	/**
 	 * Elenco dei nodi figli
 	 * 
-	 * @gwt.typeArgs <org.googlecode.gwt.menu.client.model.MenuModel>
 	 */
-	private List/* <MenuModel> */children = null;
+	private List <MenuModel> children = null;
 
 	/**
-	 * Nodo padre
+	 * Nodo padrea 
 	 */
 	private MenuModel parent = null;
 
@@ -46,7 +45,7 @@ public abstract class MenuModel {
 	 * Costruttore
 	 */
 	public MenuModel() {
-		children = new ArrayList/* <MenuModel> */();
+		children = new ArrayList<MenuModel>();
 	}
 
 	/*

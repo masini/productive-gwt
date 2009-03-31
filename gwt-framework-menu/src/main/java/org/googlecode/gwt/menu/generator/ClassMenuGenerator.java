@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
@@ -28,12 +27,11 @@ public class ClassMenuGenerator {
 	private TreeLogger logger;
 	private GeneratorContext context;
 	private SourceWriter sw;
-	private static Class requestedClass = null;
+	private static Class<?> requestedClass = null;
 	private static JClassType requestedJClassType = null;
 	private TypeOracle typeOracle;
 //
 	private static final String SUPER_INTERFACE = SMenu.class.getName();
-	private static final Log log = LogFactory.getLog(ClassMenuGenerator.class);
 	private static final String GENERIC_MESSAGE = "Errore durante la generazione della classe di navigazione.";
 
 	private static final String STARTCOMMAND = "public "+Command.class.getName()+" getCommand() {";
@@ -228,7 +226,7 @@ public class ClassMenuGenerator {
 	}
 
 //	
-	private void elabClass(Class inClass,boolean firstLevel,MyMenuModel parent) throws MenuGeneratorException, NotFoundException, ClassNotFoundException {
+	private void elabClass(Class<?> inClass,boolean firstLevel,MyMenuModel parent) throws MenuGeneratorException, NotFoundException, ClassNotFoundException {
 		
 		JClassType inJClass = typeOracle.getType(inClass.getCanonicalName());
 
@@ -236,9 +234,9 @@ public class ClassMenuGenerator {
 		elabMethod(inJClass,firstLevel,parent);
 			
 		//le classi sono i menu
-		Class[] interfaces = inClass.getDeclaredClasses();
+		Class<?>[] interfaces = inClass.getDeclaredClasses();
 		for (int i = 0; i < interfaces.length; i++) {
-			Class clazz = interfaces[i];
+			Class<?> clazz = interfaces[i];
 			JClassType inJClazz = typeOracle.getType(clazz.getCanonicalName());
 			
 			String[] metas = inJClazz.getMetaDataTags();
@@ -261,7 +259,6 @@ public class ClassMenuGenerator {
 			if (nameMethod.containsKey(metodo.getName())) {
 				String msg = "I metodi dei metodi devono avere un nome univoco all'interno del descrittore.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE, e);
 				throw e;
 			}
 
@@ -273,7 +270,7 @@ public class ClassMenuGenerator {
 			
 			JType returnType = metodo.getReturnType();
 			String typetype = returnType.getQualifiedSourceName();
-			Class clazz = Class.forName(typetype);
+			Class<?> clazz = Class.forName(typetype);
 			
 			String[] role = getValueMeta(META_USER_ROLE,metodo.getMetaData(META_USER_ROLE)).split(" ");
 			
@@ -285,7 +282,6 @@ public class ClassMenuGenerator {
 			else{
 				String msg = "I metodi possono tornare classi solo di tipo "+Command.class.getName();
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			
@@ -298,7 +294,6 @@ public class ClassMenuGenerator {
 				if(shortcutItem.containsKey(shortcutMenu)){
 					String msg = "I shortcut devono avere un nome univoco all'interno del descrittore.";
 					MenuGeneratorException e = new MenuGeneratorException(msg);
-					log.error(GENERIC_MESSAGE, e);
 					throw e;
 				}
 				shortcutItem.put(shortcutMenu, shortcutMenu);
@@ -380,7 +375,6 @@ public class ClassMenuGenerator {
 		if(!find){
 			String msg = "Trovata una gwt annotation non gestita: @"+meta;
 			MenuGeneratorException e = new MenuGeneratorException(msg);
-			log.error(GENERIC_MESSAGE, e);
 			throw e;
 		}
 	}
@@ -397,7 +391,6 @@ public class ClassMenuGenerator {
 					msg = "Non è possibile specificare più di una gwt annotation @" + META_USER_ROLE + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			else{
@@ -420,7 +413,6 @@ public class ClassMenuGenerator {
 			else if( meta.length > 1){
 				String msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_ICON + " per item.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			else{
@@ -434,16 +426,13 @@ public class ClassMenuGenerator {
 			else if( meta.length > 1){
 				String msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_SHORTCUT + " per item.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			else{
 				String text = meta[0][0];
 				if(text.trim().length() > MAX_SHORTCUT_LENGHT){
 					String msg = "Non è possibile specificare un @" + META_ITEM_SHORTCUT + " con un testo maggiore di "+MAX_SHORTCUT_LENGHT+". Traovo il testo <"+text+">";
-					MenuGeneratorException e = new MenuGeneratorException(msg);
-					log.error(GENERIC_MESSAGE,e);
-					
+					MenuGeneratorException e = new MenuGeneratorException(msg);				
 					throw e;
 				}
 				return text;
@@ -461,7 +450,6 @@ public class ClassMenuGenerator {
 					msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_LABEL + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			else{
@@ -485,7 +473,6 @@ public class ClassMenuGenerator {
 					msg = "Non è possibile specificare più di una gwt annotation @" + META_ITEM_POSITION + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
-				log.error(GENERIC_MESSAGE,e);
 				throw e;
 			}
 			else{
@@ -499,7 +486,7 @@ public class ClassMenuGenerator {
 	/*
 	 * controllo se la classe passata è del tipo che mi aspetto
 	 */
-	private boolean instanceOf(Class myClass,Class superInterfaces){
+	private boolean instanceOf(Class<?> myClass,Class<?> superInterfaces){
 		try{
 			myClass.asSubclass(superInterfaces);
 		}
