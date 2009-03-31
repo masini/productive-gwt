@@ -107,14 +107,14 @@ public class TemplateManager {
 	}
 
 	public static void setMenu(final SMenu menu) {
-		ApplicationContextFactory.getApplicationContext(new AsyncCallback() {
+		ApplicationContextFactory.getApplicationContext(new AsyncCallback<ApplicationContext>() {
 			public void onFailure(Throwable caught) {
 				// TODO: Mange failure on loading
 			}
 
-			public void onSuccess(Object result) {
+			public void onSuccess(ApplicationContext result) {
 				/* User info */
-				ApplicationContext context = (ApplicationContext) result;
+				ApplicationContext context = result;
 				UserInfo user = context.getBootstrapData().getUserInfo();
 
 				/* Model */
