@@ -25,7 +25,7 @@ public class BackofficeValidationUserInfoResolver extends BarebonesValidationUse
 	@Override
     public UserInfo getCurrentUserInfo( HttpServletRequest request ) {
         DefaultUserInfo userInfo = ( DefaultUserInfo )super.getCurrentUserInfo( request );
-        Map map = userInfo.getUserParameters();
+        Map<String,String> map = userInfo.getUserParameters();
         String location = ( String )map.get( UserInfo.DEFAULT_LOCATION_PARAM_NAME );
         String storeCode = ( String )map.get( UserInfo.DEFAULT_CODNEG_PARAM_NAME );
         if (storeRequired || (location != null && storeCode != null) || hasRoleStoreRequired(userInfo.getRole())) { 

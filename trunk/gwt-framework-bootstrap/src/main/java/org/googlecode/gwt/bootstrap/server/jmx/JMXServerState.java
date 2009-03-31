@@ -5,13 +5,9 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.naming.InitialContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 
 public class JMXServerState {
 	
-	private final static Log log = LogFactory.getLog(JMXServerState.class); 
     private final static String RUNTIMESERVICE = "com.bea:Name=RuntimeService,Type=weblogic.management.mbeanservers.runtime.RuntimeServiceMBean";
 	
 	public static Object getServerConfigurationAttribute(String attribute) throws AttributeNotFoundException {
@@ -40,7 +36,6 @@ public class JMXServerState {
 		try {
 			retVal = getServerConfigurationAttribute(attribute).toString();
 		} catch (Exception e) {
-			log.error("error getting JMX server configuration", e);
 		}
 		
 		return retVal;

@@ -54,14 +54,14 @@ public class ValidationUserInfoResolver implements UserInfoResolver {
         System.arraycopy( validationRoles, 0, roles, 0, validationRoles.length );
         System.arraycopy( j2eeRoles, 0, roles, validationRoles.length, j2eeRoles.length );
 
-        Map authorizationParameters = extractAuthorizationParameters( authData );
+        Map<String,String> authorizationParameters = extractAuthorizationParameters( authData );
 
         UserInfo userInfo = newUserInfo( username, firstName, lastName, roles, authorizationParameters );
         //DefaultUserInfo userInfo = new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
         return userInfo;
     }
     
-    protected UserInfo newUserInfo( String username, String firstName, String lastName, String[] roles, Map authorizationParameters ) {
+    protected UserInfo newUserInfo( String username, String firstName, String lastName, String[] roles, Map<String,String> authorizationParameters ) {
         return new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
     }
     
@@ -97,13 +97,13 @@ public class ValidationUserInfoResolver implements UserInfoResolver {
         return validationPrincipal;
     }
 
-    protected Map extractAuthorizationParameters( final AuthorizationData authData ) {
+    protected Map<String,String> extractAuthorizationParameters( final AuthorizationData authData ) {
         Map<String, String> authorizationParameters = new HashMap<String, String>();
         Parameters parameters = authData.getParameters();
-        Enumeration parameterNames = parameters.getNames();
+        Enumeration<String> parameterNames = parameters.getNames();
         while ( parameterNames.hasMoreElements() ) {
-            String parameterName = ( String )parameterNames.nextElement();
-            String parameterValue = parameters.get( parameterName );
+            String parameterName = parameterNames.nextElement();
+            String parameterValue = (String) parameters.get( parameterName );
             //noinspection unchecked
             authorizationParameters.put( parameterName, parameterValue );
         }
@@ -113,8 +113,8 @@ public class ValidationUserInfoResolver implements UserInfoResolver {
     private String[] extractRoles( final AuthorizationData authData ) {
         List<String> roleList = new ArrayList<String>();
         Roles roles = authData.getRoles();
-        for ( Iterator iterator = roles.iterator(); iterator.hasNext() ; ) {
-            String roleName = ( String )iterator.next();
+        for ( Iterator<String> iterator = roles.iterator(); iterator.hasNext() ; ) {
+            String roleName =(String) iterator.next();
             // String roleDescription = (String)roles.getRolesDescriptions().get(roleName);
             roleList.add( roleName );
         }

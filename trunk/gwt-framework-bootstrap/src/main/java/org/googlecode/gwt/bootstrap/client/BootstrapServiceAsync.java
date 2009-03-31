@@ -1,6 +1,5 @@
 package org.googlecode.gwt.bootstrap.client;
 
-import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -15,7 +14,7 @@ public interface BootstrapServiceAsync {
 	 * Get bootstrapData
 	 * @param callback the callback to return BootstrapData - BootstrapData
 	 */
-	void getBootstrapData(AsyncCallback callback);
+	void getBootstrapData(AsyncCallback<BootstrapData> callback);
 	
 	/**
 	 * 
@@ -23,5 +22,5 @@ public interface BootstrapServiceAsync {
 	 * @param appContext
 	 * @param callback the callback to return String of XML data for help tree
 	 */
-	void getApplicationContextData(String appContextName, AsyncCallback callback);
+	void getApplicationContextData(String appContextName, AsyncCallback<String> callback);
 }

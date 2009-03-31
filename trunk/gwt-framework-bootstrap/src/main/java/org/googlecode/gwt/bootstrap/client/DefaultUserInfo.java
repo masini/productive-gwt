@@ -14,23 +14,17 @@ public class DefaultUserInfo implements UserInfo {
     private String username;
     private String firstName;
     private String lastName;
-    /**
-     * @gwt.typeArgs <java.lang.String,java.lang.String>
-     */
-    private Map roleDescriptions;
-    /**
-     * @gwt.typeArgs <java.lang.String,java.lang.String>
-     */
-    private Map userParameters;
+    private Map<String,String> roleDescriptions;
+    private Map<String,String> userParameters;
 
     private static final long serialVersionUID = 1931201066080419627L;
 
-    public DefaultUserInfo( String username, String firstName, String lastName, String[] roles, Map userParameters ) {
+    public DefaultUserInfo( String username, String firstName, String lastName, String[] roles, Map<String,String> userParameters ) {
         this.username = username;
-        this.userParameters = userParameters != null ? new HashMap( userParameters) : null;
+        this.userParameters = userParameters != null ? new HashMap<String,String>( userParameters) : null;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.roleDescriptions = new HashMap();
+        this.roleDescriptions = new HashMap<String,String>();
         //noinspection ForLoopReplaceableByForEach
         for ( int i = 0; i < roles.length ; i++ ) {
             String role = roles[ i ];
@@ -39,12 +33,12 @@ public class DefaultUserInfo implements UserInfo {
         }
     }
 
-    public DefaultUserInfo( String username, String firstName, String lastName, Map roleDescriptions, Map userParameters ) {
+    public DefaultUserInfo( String username, String firstName, String lastName, Map<String,String> roleDescriptions, Map<String,String> userParameters ) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.roleDescriptions = roleDescriptions != null ? new HashMap(roleDescriptions) : null;
-        this.userParameters = userParameters != null ? new HashMap( userParameters) : null;
+        this.roleDescriptions = roleDescriptions != null ? new HashMap<String,String>(roleDescriptions) : null;
+        this.userParameters = userParameters != null ? new HashMap<String,String>( userParameters) : null;
     }
 
     public DefaultUserInfo() {}
@@ -111,11 +105,11 @@ public class DefaultUserInfo implements UserInfo {
         return buffer.toString();
     }
 
-    public Map getRoleDescriptions() {
+    public Map<String,String> getRoleDescriptions() {
         return roleDescriptions;
     }
 
-    public Map getUserParameters() {
+    public Map<String,String> getUserParameters() {
         return userParameters;
     }
 }

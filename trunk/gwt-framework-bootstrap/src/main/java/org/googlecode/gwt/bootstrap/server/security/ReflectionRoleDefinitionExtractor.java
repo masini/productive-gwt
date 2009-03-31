@@ -11,8 +11,6 @@ import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.bootstrap.client.exception.BootstrapClientException;
 import org.googlecode.gwt.bootstrap.server.MenuInterfaceRegistry;
 import org.googlecode.gwt.bootstrap.server.exception.BootstrapModelException;
@@ -21,7 +19,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class ReflectionRoleDefinitionExtractor implements RoleDefinitionExtractor{
-	private static final Log log = LogFactory.getLog(ReflectionRoleDefinitionExtractor.class);
 
     public String[] extractAllRoles() {
 		return getAllDeclaredRoles(MenuInterfaceRegistry.getMenuInterfaceClass());
@@ -32,17 +29,15 @@ public class ReflectionRoleDefinitionExtractor implements RoleDefinitionExtracto
 			String cleanedMenuInterfaceName = cleanName(menuInterfaceName);
 			
 			try {
-				Class menuInterface = Class.forName(cleanedMenuInterfaceName);
+				Class<?> menuInterface = Class.forName(cleanedMenuInterfaceName);
 				List<String> pannelli = new ArrayList<String>();
 				elabClass(menuInterface, pannelli);
 				
 				return pannelli.toArray(new String[pannelli.size()]);
 			} catch (ClassNotFoundException e) {
 				String msg = "Non trovata la classe dei menu: " + cleanedMenuInterfaceName;
-				log.error(msg, e);
 				throw new BootstrapClientException(msg);
 			} catch (BootstrapModelException e) {
-				log.error(e.getMessage(), e);
 				throw new BootstrapClientException(e.getMessage());
 			}
 			

@@ -3,8 +3,6 @@ package org.googlecode.gwt.bootstrap.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
@@ -24,16 +22,15 @@ import com.google.gwt.user.client.Window;
 public class BootstrapEntryPoint implements EntryPoint {
 	protected BootstrapData bootstrapData;	
     protected static final BootstrapConstants bsConstants;
-    private List bootstrapEventListeners;
+    private List<BootstrapEventListener> bootstrapEventListeners;
     
-    private final static Log log = LogFactory.getLog(BootstrapEntryPoint.class);
 
     static {
         bsConstants = ( BootstrapConstants )GWT.create( BootstrapConstants.class );
     }
 
     protected BootstrapEntryPoint() {
-        bootstrapEventListeners = new ArrayList();
+        bootstrapEventListeners = new ArrayList<BootstrapEventListener>();
     }
 
     /**
@@ -69,7 +66,7 @@ public class BootstrapEntryPoint implements EntryPoint {
      * Get list of registered AuthenticationEventListener objects
      * @return List - list of AuthenticationEventListener
      */
-    public List getBootstrapEventListeners() {
+    public List<BootstrapEventListener> getBootstrapEventListeners() {
         return bootstrapEventListeners;
     }
 
@@ -103,7 +100,6 @@ public class BootstrapEntryPoint implements EntryPoint {
         public void onUncaughtException( Throwable e ) {
         	//MessageBox.alert( bsConstants.errore_title() + " generico", "Uncaught Exception\n" + ( e == null ? "null" : e.toString() ) );
         	Window.alert(bsConstants.errore_title() + " generico Uncaught Exception\n" + ( e == null ? "null" : e.toString() ) );
-        	log.error("MyUncaughtExceptionHandler", e);        	
         }
     }
 }
