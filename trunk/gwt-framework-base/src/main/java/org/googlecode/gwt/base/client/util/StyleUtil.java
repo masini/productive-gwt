@@ -73,11 +73,11 @@ public class StyleUtil {
 		DOM.setStyleAttribute(obj.getElement(), "align", style);
 	}
 
-	public static void setStyle(UIObject obj, HashMap styles) {
+	public static void setStyle(UIObject obj, HashMap<String, String> styles) {
 		if (styles != null && !styles.isEmpty()) {
-			Set set = styles.entrySet();
-			for (Iterator iter = set.iterator(); iter.hasNext();) {
-				Map.Entry element = (Map.Entry) iter.next();
+			Set<Map.Entry<String, String>> set = styles.entrySet();
+			for (Iterator<Map.Entry<String, String>> iter = set.iterator(); iter.hasNext();) {
+				Map.Entry<String,String> element = iter.next();
 				DOM.setStyleAttribute(obj.getElement(), (String) element.getKey(), (String) element.getValue());
 			}
 		}

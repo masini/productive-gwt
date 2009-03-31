@@ -12,10 +12,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public class ApplicationContextFactory implements EntryPoint {
 
-	/**
-	 * @gwt.typeArgs<com.google.gwt.user.client.rpc.AsyncCallback>
-	 */
-	private static List callBacks=new ArrayList();
+	private static List<AsyncCallback<ApplicationContext>> callBacks=new ArrayList<AsyncCallback<ApplicationContext>>();
 	private static ApplicationContext applicationContext;
 	
 	private ApplicationContextFactory() {
@@ -26,7 +23,7 @@ public class ApplicationContextFactory implements EntryPoint {
 		applicationContext = new ApplicationContext(bootstrapData);
 		if(callBacks != null) {
 			for(int i=0;i<callBacks.size();i++) {
-				AsyncCallback callback = (AsyncCallback)callBacks.get(i);
+				AsyncCallback<ApplicationContext> callback = (AsyncCallback<ApplicationContext>)callBacks.get(i);
 				callback.onSuccess(applicationContext);
 			}
 		}
@@ -36,7 +33,7 @@ public class ApplicationContextFactory implements EntryPoint {
 	 * Get application context
 	 * @return ApplicationContext - ApplicationContext
 	 */
-	public static void getApplicationContext(AsyncCallback callback) {
+	public static void getApplicationContext(AsyncCallback<ApplicationContext> callback) {
 		if(applicationContext != null) {
 			callback.onSuccess(applicationContext);
 		}
