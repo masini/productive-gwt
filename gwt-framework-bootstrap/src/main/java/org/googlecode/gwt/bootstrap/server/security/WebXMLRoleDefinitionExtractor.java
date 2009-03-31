@@ -9,8 +9,6 @@ import javax.annotation.Resource;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -18,7 +16,6 @@ import org.xml.sax.helpers.DefaultHandler;
 @Resource(name="web.xml")
 public class WebXMLRoleDefinitionExtractor implements RoleDefinitionExtractor {
 
-	private final static Log log = LogFactory.getLog(WebXMLRoleDefinitionExtractor.class);
 	
 	private static final String[] EMPTYSTRINGARRAY = new String[0];
 	private String[] extractedRoles;
@@ -72,7 +69,6 @@ public class WebXMLRoleDefinitionExtractor implements RoleDefinitionExtractor {
 		try {			
 			extractedRoles = extractRolesFromWebXML(webXML);
 		} catch (Exception e) {
-			log.error("errore NON BLOCCANTE nella lettura di web.xml, uso ruoli riflettivi.",e);
 			extractedRoles = EMPTYSTRINGARRAY;
 		}
 		

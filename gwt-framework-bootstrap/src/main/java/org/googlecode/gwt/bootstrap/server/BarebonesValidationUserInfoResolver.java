@@ -15,8 +15,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 
@@ -29,7 +27,6 @@ import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
  */
 public class BarebonesValidationUserInfoResolver implements UserInfoResolver {
 
-	private static Log log = LogFactory.getLog(BarebonesValidationUserInfoResolver.class);
 	
     public String getCurrentUsername( HttpServletRequest request ) {
         Principal userPrincipal = getCurrentPrincipal( request );
@@ -69,25 +66,24 @@ public class BarebonesValidationUserInfoResolver implements UserInfoResolver {
         }
         catch(Exception e)
         {
-        	log.error("Exception thrown while getting UserPrincipal: ", e);
         }
 
-        Map roleMap = extractRoles( request );
-        Map authorizationParameters = extractAuthorizationParameters( request );
+        Map<String,String> roleMap = extractRoles( request );
+        Map<String,String> authorizationParameters = extractAuthorizationParameters( request );
 
         UserInfo userInfo = newUserInfo( username, firstName, lastName, roleMap, authorizationParameters );
         return userInfo;
     }
 
-    protected UserInfo newUserInfo( String username, String firstName, String lastName, Map roles, Map authorizationParameters ) {
+    protected UserInfo newUserInfo( String username, String firstName, String lastName, Map<String,String> roles, Map<String,String> authorizationParameters ) {
         return new DefaultUserInfo( username, firstName, lastName, roles, authorizationParameters );
     }
 
-    protected Map extractAuthorizationParameters( HttpServletRequest request ) {
+    protected Map<String,String> extractAuthorizationParameters( HttpServletRequest request ) {
         AuthorizationData authData = ( AuthorizationData )request.getSession().getAttribute( AuthFilter.AUTHDATA_SESSION_ATTR );
-        Map authorizationParameters = new HashMap();
+        Map<String,String> authorizationParameters = new HashMap<String,String>();
         Parameters parameters = authData.getParameters();
-        Enumeration parameterNames = parameters.getNames();
+        Enumeration<String> parameterNames = parameters.getNames();
         while ( parameterNames.hasMoreElements() ) {
             String parameterName = ( String )parameterNames.nextElement();
             String parameterValue = parameters.get( parameterName );
@@ -97,11 +93,11 @@ public class BarebonesValidationUserInfoResolver implements UserInfoResolver {
         return authorizationParameters;
     }
 
-    protected Map extractRoles( HttpServletRequest request ) {
+    protected Map<String,String> extractRoles( HttpServletRequest request ) {
         AuthorizationData authData = ( AuthorizationData )request.getSession().getAttribute( AuthFilter.AUTHDATA_SESSION_ATTR );
         Map<String,String> roleMap = new HashMap<String,String>();
         Roles roles = authData.getRoles();
-        for ( Iterator iterator = roles.iterator(); iterator.hasNext() ; ) {
+        for ( Iterator<String> iterator = roles.iterator(); iterator.hasNext() ; ) {
             String roleName = ( String )iterator.next();
             String roleDescription = (String)roles.getRolesDescriptions().get(roleName);
             roleMap.put( roleName, roleDescription != null ? roleDescription : roleName);

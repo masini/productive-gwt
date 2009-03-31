@@ -20,8 +20,5 @@ public interface HostedModeBootstrapService extends BootstrapService {
 	 */
     BootstrapData getBootstrapData(String menuInterfaceClass);
     
-    /**
-     * @gwt.typeArgs roles <java.lang.String>
-     */
-    BootstrapData getBootstrapData(List roles);
+    BootstrapData getBootstrapData(List<String> roles);
 }

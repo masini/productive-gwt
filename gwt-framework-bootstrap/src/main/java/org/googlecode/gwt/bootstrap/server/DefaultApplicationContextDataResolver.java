@@ -2,13 +2,10 @@ package org.googlecode.gwt.bootstrap.server;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 
 public class DefaultApplicationContextDataResolver implements ApplicationContextDataResolver {
 
-	private static Log log = LogFactory.getLog(DefaultApplicationContextDataResolver.class);
 
 	private BootstrapDataResolver bootstrapDataResolver;
 	

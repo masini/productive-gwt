@@ -12,9 +12,9 @@ import org.googlecode.gwt.base.client.BootstrapData;
  */
 public class BootstrapAsyncCallback extends LoggingChainingCallback {
 
-    private List listeners;
+    private List<BootstrapEventListener> listeners;
 
-    public BootstrapAsyncCallback( List listeners ) {
+    public BootstrapAsyncCallback( List< BootstrapEventListener> listeners ) {
         this.listeners = listeners;
         setAsyncCallback( this );
     }

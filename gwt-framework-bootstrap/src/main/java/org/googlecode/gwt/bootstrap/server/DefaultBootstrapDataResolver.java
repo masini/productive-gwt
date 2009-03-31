@@ -2,8 +2,6 @@ package org.googlecode.gwt.bootstrap.server;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
@@ -28,7 +26,6 @@ public class DefaultBootstrapDataResolver implements BootstrapDataResolver {
     private String serverNameProperty = DEFAULT_SERVER_NAME_PROPERTY;
     private String clusterNameProperty = DEFAULT_CLUSTER_NAME_PROPERTY;
 
-    private static Log log = LogFactory.getLog(DefaultBootstrapDataResolver.class);
     public static final String DEFAULT_SERVER_NAME_PROPERTY = "weblogic.Name";
     private static final String DEFAULT_CLUSTER_NAME_PROPERTY = "weblogic.Domain";
 
