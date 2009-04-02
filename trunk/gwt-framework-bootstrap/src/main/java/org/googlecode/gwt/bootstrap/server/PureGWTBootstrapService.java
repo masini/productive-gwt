@@ -8,7 +8,8 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.bootstrap.client.HostedModeBootstrapService;
@@ -19,9 +20,12 @@ import org.googlecode.gwt.bootstrap.server.security.ReflectionRoleDefinitionExtr
 import org.googlecode.gwt.bootstrap.server.security.WebOrReflectionRoleDefinitionExtractor;
 import org.googlecode.gwt.bootstrap.server.security.WebXMLRoleDefinitionExtractor;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class PureGWTBootstrapService extends RemoteServiceServlet implements HostedModeBootstrapService {
+
+	private final static Log log = LogFactory.getLog(PureGWTBootstrapService.class);
 	
 	private static final long serialVersionUID = 1L;
 
@@ -61,6 +65,7 @@ public class PureGWTBootstrapService extends RemoteServiceServlet implements Hos
 			appContextDataResolver = new DefaultApplicationContextDataResolver(resolver);									
 			
 		} catch (Exception e) {
+			log.error(e);
 			throw new ServletException(e);
 		}
 	}
