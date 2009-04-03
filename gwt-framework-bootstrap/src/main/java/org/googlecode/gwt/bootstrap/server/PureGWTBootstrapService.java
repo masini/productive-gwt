@@ -8,24 +8,19 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.bootstrap.client.HostedModeBootstrapService;
-import org.googlecode.gwt.bootstrap.server.dummy.HostedModeJavaEESecurityExtractor;
 import org.googlecode.gwt.bootstrap.server.security.DefaultJavaEESecurityExtractor;
 import org.googlecode.gwt.bootstrap.server.security.JavaEESecurityExtractor;
 import org.googlecode.gwt.bootstrap.server.security.ReflectionRoleDefinitionExtractor;
+import org.googlecode.gwt.bootstrap.server.security.RoleDefinitionExtractor;
 import org.googlecode.gwt.bootstrap.server.security.WebOrReflectionRoleDefinitionExtractor;
 import org.googlecode.gwt.bootstrap.server.security.WebXMLRoleDefinitionExtractor;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class PureGWTBootstrapService extends RemoteServiceServlet implements HostedModeBootstrapService {
-
-	private final static Log log = LogFactory.getLog(PureGWTBootstrapService.class);
 	
 	private static final long serialVersionUID = 1L;
 
@@ -48,12 +43,16 @@ public class PureGWTBootstrapService extends RemoteServiceServlet implements Hos
 			ReflectionRoleDefinitionExtractor reflectionRoleDefinitionExtractor = new ReflectionRoleDefinitionExtractor();  
 			
 			JavaEESecurityExtractor javaEESecurityExtractor;
+
+				
+			RoleDefinitionExtractor roleDefinitionExtractor = new WebOrReflectionRoleDefinitionExtractor(reflectionRoleDefinitionExtractor, webXMLRoleDefinitionExtractor);
 			
-			if(ServerUtility.isHostedMode() || getInitParameterOrDefault("forceHostedMode", false)){
-				 javaEESecurityExtractor = new HostedModeJavaEESecurityExtractor(new WebOrReflectionRoleDefinitionExtractor(reflectionRoleDefinitionExtractor, webXMLRoleDefinitionExtractor));
+			if(ServerUtility.isHostedMode() || getInitParameterOrDefault("forceHostedMode", false) || getServletConfig().getInitParameter("javaEESecurityExtractor")!=null){
+				String javaEESecurityExtractorClassName = getInitParameterOrDefault("javaEESecurityExtractor", "org.googlecode.gwt.bootstrap.server.dummy.HostedModeJavaEESecurityExtractor");
+				javaEESecurityExtractor = (JavaEESecurityExtractor) Class.forName(javaEESecurityExtractorClassName).getConstructor(RoleDefinitionExtractor.class).newInstance(roleDefinitionExtractor);
 			}
 			else{
-				 javaEESecurityExtractor = new DefaultJavaEESecurityExtractor(new WebOrReflectionRoleDefinitionExtractor(reflectionRoleDefinitionExtractor, webXMLRoleDefinitionExtractor));				
+				 javaEESecurityExtractor = new DefaultJavaEESecurityExtractor(roleDefinitionExtractor);				
 			}
 			
 			userInfoResolver.setJavaEESecurityExtractor(javaEESecurityExtractor);
@@ -65,7 +64,6 @@ public class PureGWTBootstrapService extends RemoteServiceServlet implements Hos
 			appContextDataResolver = new DefaultApplicationContextDataResolver(resolver);									
 			
 		} catch (Exception e) {
-			log.error(e);
 			throw new ServletException(e);
 		}
 	}
