@@ -1,237 +1,92 @@
 package org.googlecode.gwt.template.client;
 
-import org.googlecode.gwt.base.client.ApplicationContext;
-import org.googlecode.gwt.base.client.ApplicationContextFactory;
-import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
-import org.googlecode.gwt.menu.client.filter.MenuFilter;
-import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
-import org.googlecode.gwt.menu.client.model.MenuModel;
-import org.googlecode.gwt.menu.client.render.DefaultMenuRender;
-import org.googlecode.gwt.menu.client.render.ShortcutMenuRender;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManager {
-	private static String INTRANET_LOGO_STYLE_NAME = "intranet-logo";
-	
-	private static final String ERR_MSG = "Non trovata la zona ";
-	private static TemplateImageImageBundle images = (TemplateImageImageBundle) GWT.create(TemplateImageImageBundle.class);
 
-	private static HTML home = null;
-	private static HTML intranet = null;
-	private static Image intranetLogo = null;
-	private static Widget firstPanel = null;
-	private static Widget firstNavigation = null;
-	
-	private static boolean showIntranetLink = true;
+	private static TemplateManagerImpl impl = GWT.create(TemplateManagerImpl.class);
 
+	public static void setApplicationTitle(String applicationTitle) throws PlaceHolderException {
+		impl.setApplicationTitle(applicationTitle);
+	}
+	
 	public static void setApplicationTitle(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "APPLICATION_TITLE");
-		}
-		root.add(widget);
+		impl.setApplicationTitle(widget);
 	}
 
 	public static void setHeader(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "HEADER");
-		}
-		root.add(widget);
-	}
+		impl.setHeader(widget);	}
 
 	public static void setInfo(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.INFO);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "INFO");
-		}
-		root.add(widget);
+		impl.setInfo(widget);
 	}
 
 	public static void setFooter(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.FOOTER);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "FOOTER");
-		}
-		root.add(widget);
+		impl.setFooter(widget);
 	}
 
 	public static void setApplicationContent(Widget widget) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.CONTENT);
-
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "CONTENT");
-		}
-		root.clear();
-		root.add(widget);
+		impl.setApplicationContent(widget);
 	}
 
 	public static void setNavigationContent(Widget widget, boolean append) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.NAVIGATION);
-
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "NAVIGATION");
-		}
-
-		if (!append) {
-			root.clear();
-			if (showIntranetLink) {
-				root.add(getIntranetLogo());
-				root.add(getIntranetLink());
-				root.add(newSeparator());
-			}
-			root.add(getHomePageLink());
-		}
-
-		if (widget != null) {
-			root.add(newSeparator());
-			root.add(widget);
-		}
+		impl.setNavigationContent(widget, append);
 	}
 
 	public static void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
-		firstPanel = content;
-		firstNavigation = navigation;
-		setApplicationContent(firstPanel);
-		setNavigationContent(firstNavigation, false);
+		impl.setHomePage(content, navigation);
 	}
 
 	public static void setMenu(final SMenu menu) {
-		ApplicationContextFactory.getApplicationContext(new AsyncCallback<ApplicationContext>() {
-			public void onFailure(Throwable caught) {
-				// TODO: Mange failure on loading
-			}
-
-			public void onSuccess(ApplicationContext result) {
-				/* User info */
-				ApplicationContext context = result;
-				UserInfo user = context.getBootstrapData().getUserInfo();
-
-				/* Model */
-				MenuModel menuModel = menu.getMenuModel();
-
-				/* Apply security policy (server mode only) */
-				if (GWT.isScript()) {
-					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
-				}
-
-				/* Render */
-				Widget render;
-				if(menuModel.existShortcut()){
-					render = new ShortcutMenuRender();
-					((ShortcutMenuRender)render).setMenuModel(menuModel);
-					
-				}
-				else{
-					render = new DefaultMenuRender();
-					((DefaultMenuRender)render).setMenuModel(menuModel);
-				}
-
-				/* Show menu */
-				RootPanel root = get(PlaceHolder.MENU);
-				if (root == null) {
-					throw new PlaceHolderException(ERR_MSG + "MENU");
-				}
-				root.setSize("100%", "100%");
-				root.add(render);
-			}
-		});
+		impl.setMenu(menu);
 	}
-	
+
 	/**
 	 * This method set the value of HistoryToken of homepage. 
 	 * @param tokenName HomePage token name
 	 */
 	public static void setHomePageHistoryToken(String homePageHistoryToken) {
-		if (home == null) getHomePageLink();
-		
-		if (homePageHistoryToken == null) {
-			home.setHTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
-		} else {
-			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
-		}
+		impl.setHomePageHistoryToken(homePageHistoryToken);
 	}
 
-	private static RootPanel get(PlaceHolderConstant constant) {
-		RootPanel root = PlaceHolder.get(constant);
-		return root;
+	protected static RootPanel get(PlaceHolderConstant constant) {
+		return impl.get(constant);
 	}
-	
+
 	/*
 	 * Path di navigaizone
 	 */
 
-	private static Image getIntranetLogo() {
-		if (intranetLogo == null) {
-			intranetLogo = images.getHomeIcon().createImage();
-			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
-			intranetLogo.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
-					openIntranet();
-				}
-			});
-		}
-
-		return intranetLogo;
+	protected static Image getIntranetLogo() {
+		return impl.getIntranetLogo();
 	}
 
-	private static HTML getIntranetLink() {
-		if (intranet == null) {
-			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
-			intranet.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
-					openIntranet();
-				}
-			});
-		}
-		return intranet;
+	protected static HTML getIntranetLink() {
+		return impl.getIntranetLink();
 	}
 
-	private static HTML getHomePageLink() {
-		if (home == null) {
-			home = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
-			home.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
-					TemplateManager.reloadFirstPanel();
-				}
-			});
-		}
-		return home;
+	protected static HTML getHomePageLink() {
+		return impl.getHomePageLink();
 	}
-	
-	private static HTML newSeparator() {
+
+	protected static HTML newSeparator() {
 		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
 	}
-	
+
 	/*
 	 * Navigaizone
 	 */
-	
-	private static void reloadFirstPanel() {
-		if (firstPanel != null) {
-			setApplicationContent(firstPanel);
-		} else {
-			RootPanel root = get(PlaceHolder.CONTENT);
-			root.clear();
-		}
 
-		if (firstNavigation != null) {
-			setNavigationContent(firstNavigation, false);
-		} else {
-			RootPanel root = get(PlaceHolder.NAVIGATION);
-			root.clear();
-			setNavigationContent(null, false);
-		}
+	protected static void reloadFirstPanel() {
+		impl.reloadFirstPanel();
 	}
 
 	public static void openIntranet() {
@@ -243,10 +98,10 @@ public class TemplateManager {
 			}-*/;
 
 	public static void setShowIntranetLink(boolean showIntranetLink) {
-		TemplateManager.showIntranetLink = showIntranetLink;
+		impl.setShowIntranetLink(showIntranetLink);
 	}
 
 	public static void setHome(HTML home) {
-		TemplateManager.home = home;
+		TemplateManagerImpl.home = home;
 	}
 }

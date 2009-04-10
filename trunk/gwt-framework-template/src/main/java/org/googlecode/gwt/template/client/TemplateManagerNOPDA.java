@@ -7,7 +7,8 @@ import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.filter.MenuFilter;
 import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
 import org.googlecode.gwt.menu.client.model.MenuModel;
-import org.googlecode.gwt.menu.client.render.MenuRenderSimplePDA;
+import org.googlecode.gwt.menu.client.render.DefaultMenuRender;
+import org.googlecode.gwt.menu.client.render.ShortcutMenuRender;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
@@ -15,25 +16,22 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TemplateManagerPDA extends TemplateManagerImpl{
-	
-	private String applicationTitle;
-	/* Render */
-	private Widget render;
-	
-	public void setApplicationTitle(String applicationTitle) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.NAVIGATION);
+public class TemplateManagerNOPDA extends TemplateManagerImpl{
+
+
+	public void setApplicationTitle(Widget widget) throws PlaceHolderException {
+		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "APPLICATION_TITLE");
 		}
-		this.applicationTitle=applicationTitle;
-		root.add(getHomePageLink());
+		root.add(widget);
 	}
 
-	public void setHeader(Widget widget) throws PlaceHolderException {
+	public  void setHeader(Widget widget) throws PlaceHolderException {
 		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "HEADER");
@@ -69,30 +67,27 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 
 	public  void setNavigationContent(Widget widget, boolean append) throws PlaceHolderException {
 		RootPanel root = get(PlaceHolder.NAVIGATION);
-
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "NAVIGATION");
 		}
 
 		if (!append) {
 			root.clear();
-//			if (showIntranetLink) {
-//				root.add(getIntranetLogo());
-//				root.add(getIntranetLink());
-//				root.add(newSeparator());
-//			}
-//			root.add(getHomePageLink());
+			if (showIntranetLink) {
+				root.add(getIntranetLogo());
+				root.add(getIntranetLink());
+				root.add(newSeparator());
+			}
+			root.add(getHomePageLink());
 		}
 
 		if (widget != null) {
-//			root.add(newSeparator());
+			root.add(newSeparator());
 			root.add(widget);
 		}
 	}
-	
 
-
-	public  void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
+	public void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
 		firstPanel = content;
 		firstNavigation = navigation;
 		setApplicationContent(firstPanel);
@@ -118,10 +113,18 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 					menuModel = MenuFilter.filter(menuModel, new RoleMenuFilterAction(user));
 				}
 
-				render = new MenuRenderSimplePDA();
-				((MenuRenderSimplePDA)render).setMenuModel(menuModel);
+				/* Render */
+				Widget render;
+				if(menuModel.existShortcut()){
+					render = new ShortcutMenuRender();
+					((ShortcutMenuRender)render).setMenuModel(menuModel);
 
-				
+				}
+				else{
+					render = new DefaultMenuRender();
+					((DefaultMenuRender)render).setMenuModel(menuModel);
+				}
+
 				/* Show menu */
 				RootPanel root = get(PlaceHolder.MENU);
 				if (root == null) {
@@ -132,14 +135,14 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 			}
 		});
 	}
-	
+
 	/**
 	 * This method set the value of HistoryToken of homepage. 
 	 * @param tokenName HomePage token name
 	 */
 	public  void setHomePageHistoryToken(String homePageHistoryToken) {
 		if (home == null) getHomePageLink();
-		
+
 		if (homePageHistoryToken == null) {
 			home.setHTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		} else {
@@ -151,60 +154,58 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		RootPanel root = PlaceHolder.get(constant);
 		return root;
 	}
-	
+
 	/*
 	 * Path di navigaizone
 	 */
 
-//	protected  Image getIntranetLogo() {
-//		if (intranetLogo == null) {
-//			intranetLogo = images.getHomeIcon().createImage();
-//			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
-//			intranetLogo.addClickListener(new ClickListener() {
-//				public void onClick(Widget sender) {
-//					openIntranet();
-//				}
-//			});
-//		}
-//
-//		return intranetLogo;
-//	}
-//
-//	protected  HTML getIntranetLink() {
-//		if (intranet == null) {
-//			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
-//			intranet.addClickListener(new ClickListener() {
-//				public void onClick(Widget sender) {
-//					openIntranet();
-//				}
-//			});
-//		}
-//		return intranet;
-//	}
-//
+	protected  Image getIntranetLogo() {
+		if (intranetLogo == null) {
+			intranetLogo = images.getHomeIcon().createImage();
+			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
+			intranetLogo.addClickListener(new ClickListener() {
+				public void onClick(Widget sender) {
+					openIntranet();
+				}
+			});
+		}
+
+		return intranetLogo;
+	}
+
+	protected  HTML getIntranetLink() {
+		if (intranet == null) {
+			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+			intranet.addClickListener(new ClickListener() {
+				public void onClick(Widget sender) {
+					openIntranet();
+				}
+			});
+		}
+		return intranet;
+	}
+
 	protected  HTML getHomePageLink() {
 		if (home == null) {
-			home = new HTML(" <a href='javascript:;'>" + applicationTitle + "</a> ", true);
+			home = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
 			home.addClickListener(new ClickListener() {
 				public void onClick(Widget sender) {
 					TemplateManager.reloadFirstPanel();
-					render.setVisible(true);
 				}
 			});
-			home.setStylePrimaryName("pda-label");
 		}
 		return home;
 	}
-//	
-//	protected  HTML newSeparator() {
-//		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
-//	}
-	
+
+	protected  HTML newSeparator() {
+		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
+	}
+
 	/*
 	 * Navigaizone
 	 */
-	
-	protected  void reloadFirstPanel() {
+
+	protected void reloadFirstPanel() {
 		if (firstPanel != null) {
 			setApplicationContent(firstPanel);
 		} else {
@@ -217,10 +218,9 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		} else {
 			RootPanel root = get(PlaceHolder.NAVIGATION);
 			root.clear();
-			root.add(getHomePageLink());
+			setNavigationContent(null, false);
 		}
 	}
-	
 
 	public  void openIntranet() {
 		redirect("http://intra.esselunga.net/validationnet/home.aspx");
@@ -231,15 +231,10 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 			}-*/;
 
 	public  void setShowIntranetLink(boolean showIntranetLink) {
-		TemplateManagerPDA.showIntranetLink = showIntranetLink;
+		TemplateManagerNOPDA.showIntranetLink = showIntranetLink;
 	}
 
 	public  void setHome(HTML home) {
-		TemplateManagerPDA.home = home;
+		TemplateManagerNOPDA.home = home;
 	}
-	
-	public void hideRender(){
-		render.setVisible(false);
-	}
-	
 }
