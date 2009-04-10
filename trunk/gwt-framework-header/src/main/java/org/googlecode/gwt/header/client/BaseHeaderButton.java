@@ -77,7 +77,7 @@ public abstract class BaseHeaderButton extends Composite {
 		/* Pannello per la label */
 		main = new FlowPanel();
 		panel.add(main);
-		main.setStyleName(Header.INFO_WIDGET_STYLE_NAME);
+		main.setStyleName(HeaderImpl.INFO_WIDGET_STYLE_NAME);
 	}
 
 	/**

@@ -13,7 +13,10 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton {
 	/**
 	 * Poupup visualizzato al click sul pulsante
 	 */
-	private InfoPopupPanel popup;
+	//private InfoPopupPanel popup;
+	
+	// PASSATO A PROTECTED DA ANDREA TODESCHINI
+	protected InfoPopupPanel popup;
 
 	/**
 	 * @see org.googlecode.gwt.header.client.BaseHeaderButton#onLoad()
@@ -30,7 +33,7 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton {
 		});
 		
 		addLabels();
-		add(HeaderImagesFactory.getInstance().getArrowDownIcon().createImage());
+		//add(HeaderImagesFactory.getInstance().getArrowDownIcon().createImage());
 	}
 
 	/**
