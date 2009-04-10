@@ -17,19 +17,19 @@ public class PDAValidationAccessor extends StaticValidationAccessor {
 		StaticValidationAccessor testValidationAccessor = this;
 		
 		ValidationPrincipal validationPrincipal = new ValidationPrincipal();
-		validationPrincipal.setUsername("cslgp1");
-		validationPrincipal.setFirstName("Luca");
-		validationPrincipal.setLastName("PDAUser");
+		validationPrincipal.setUsername("utentePDA");
+		validationPrincipal.setFirstName("LucaPDA");
+		validationPrincipal.setLastName("MasiniPDA");
 		validationPrincipal.setSoc("1");
 		validationPrincipal.setCodaz("56848");
 		testValidationAccessor.setPrincipal(validationPrincipal);
 
 		ValidationRole role = new ValidationRole();
-		role.setCode("DIRNEG");
-		role.setDescr("Ruolo direttore negozio");
+		role.setCode("PDAROLE");
+		role.setDescr("Ruolo PDA");
 		
 		ValidationProfile profile = new ValidationProfile();
-		profile.setCode("prof_DIRNEG");
+		profile.setCode("PDAROLE");
 		profile.setDescr("Profilo direttore negozio");
 
 		profile.addParameter("CODNEG", "112");
@@ -43,6 +43,10 @@ public class PDAValidationAccessor extends StaticValidationAccessor {
 		data.setRoles(roles);
 		testValidationAccessor.setData(data);
 		
+	}
+	@Override
+	public ValidationPrincipal getPrincipal(String username) {
+		return super.getPrincipal(username);
 	}
 
 }
