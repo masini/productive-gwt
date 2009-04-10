@@ -52,22 +52,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<distributionManagement>
-		<repository>
-			<id>esselunga.distribution</id>
-			<name>Esselunga Distribution Repository</name>
-			<url>
-				http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/releases 
-			</url>
-		</repository>
-		<snapshotRepository>
-			<id>esselunga.snapshots</id>
-			<name>Esselunga Snapshot Repository</name>
-			<url>
-				http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/snapshots 
-			</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
