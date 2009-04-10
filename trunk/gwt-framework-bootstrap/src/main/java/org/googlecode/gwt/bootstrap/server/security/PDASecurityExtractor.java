@@ -10,7 +10,7 @@ public class PDASecurityExtractor extends DefaultJavaEESecurityExtractor {
 	}
 
 	public String getCurrentUsername(HttpServletRequest request) {
-		return "R:"+ request.getRemoteAddr() + " L:" +request.getLocalAddr();
+		return request.getLocalAddr();
 	}
 	
 //	public String[] getJavaEERoles(HttpServletRequest request) {
