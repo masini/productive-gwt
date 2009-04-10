@@ -3,6 +3,7 @@ package org.googlecode.gwt.header.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasAlignment;
@@ -73,6 +74,8 @@ public class InfoPopupPanel extends PopupPanel {
 		super(true);
 		this.icon = icon;
 	}
+	
+	
 
 	/**
 	 * @see com.google.gwt.user.client.ui.Panel#onLoad()

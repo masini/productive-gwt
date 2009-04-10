@@ -161,3 +161,15 @@
 	border: 1px solid #ebf3ff;
 	background-image: url(../images/gradient.jpg)
 }
+
+
+/*
+ * Stili per PDA 
+ */
+
+.pda-header-close{
+    height:13px;
+    width:13px;
+    background-image: url(../images/close.gif);
+    background-repeat: no-repeat;
+}
