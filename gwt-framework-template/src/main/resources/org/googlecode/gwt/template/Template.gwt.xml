@@ -33,7 +33,7 @@
         <when-property-is name="template.pdauseragent" value="ie6pda" />
     </replace-with>
        
-    <replace-with class="org.googlecode.gwt.template.client.TemplateManagerIE6">
+    <replace-with class="org.googlecode.gwt.template.client.TemplateManagerNOPDA">
         <when-type-is class="org.googlecode.gwt.template.client.TemplateManagerImpl" />
         <when-property-is name="template.pdauseragent" value="other" />
     </replace-with>
