@@ -1,8 +1,9 @@
-package it.esselunga.generator.client;
+package org.googlecode.reflection.client;
 
-import it.esselunga.generator.client.converters.Converter;
 
 import java.util.Date;
+
+import org.googlecode.reflection.client.converters.Converter;
 
 import com.google.gwt.core.client.GWT;
 
@@ -34,7 +35,7 @@ public class MyOwnPojo implements DataBindable {
 	private Stati stato;
 	private Boolean bella;
 	
-	@Converter("it.esselunga.generator.client.MyOwnPojo.IndirizzoConverter")
+	@Converter("org.googlecode.reflection.client.MyOwnPojo.IndirizzoConverter")
 	private Indirizzo indirizzo;
 	
 	public Indirizzo getIndirizzo() {

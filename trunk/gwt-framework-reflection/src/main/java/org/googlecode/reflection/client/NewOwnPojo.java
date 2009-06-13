@@ -1,4 +1,4 @@
-package it.esselunga.generator.client;
+package org.googlecode.reflection.client;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
-package it.esselunga.generator.rebind;
+package org.googlecode.reflection.rebind;
 
-import it.esselunga.generator.client.converters.Converter;
-import it.esselunga.generator.client.converters.NoConverter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +9,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.googlecode.reflection.client.converters.Converter;
+import org.googlecode.reflection.client.converters.NoConverter;
 
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -31,9 +32,9 @@ import freemarker.template.TemplateException;
 
 public class DataBindGenerator extends Generator {
 	
-	private static final String INTEGER_CONVERTER_NAME = "it.esselunga.generator.client.converters.IntegerConverter";
-	private static final String LONG_CONVERTER_NAME = "it.esselunga.generator.client.converters.LongConverter";
-	private static final String BOOLEAN_CONVERTER_NAME = "it.esselunga.generator.client.converters.BooleanConverter";
+	private static final String INTEGER_CONVERTER_NAME = "org.googlecode.reflection.client.converters.IntegerConverter";
+	private static final String LONG_CONVERTER_NAME = "org.googlecode.reflection.client.converters.LongConverter";
+	private static final String BOOLEAN_CONVERTER_NAME = "org.googlecode.reflection.client.converters.BooleanConverter";
 
 	private static final String FIELDS_KEY = "fields";
 	private static final String PREFIX_GET = "get";

@@ -1,4 +1,4 @@
-package it.esselunga.generator.client;
+package org.googlecode.reflection.client;
 
 public interface WrapperFactory<T> {
 

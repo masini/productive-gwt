@@ -1,9 +1,10 @@
-package it.esselunga.generator.client;
+package org.googlecode.reflection.client;
 
-import it.esselunga.generator.client.MyOwnPojo.Indirizzo;
-import it.esselunga.generator.client.WrapperFactory.Wrapper;
 
 import java.util.Date;
+
+import org.googlecode.reflection.client.MyOwnPojo.Indirizzo;
+import org.googlecode.reflection.client.WrapperFactory.Wrapper;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;

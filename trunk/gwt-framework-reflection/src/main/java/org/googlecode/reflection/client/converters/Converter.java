@@ -1,4 +1,4 @@
-package it.esselunga.generator.client.converters;
+package org.googlecode.reflection.client.converters;
 
 import static java.lang.annotation.ElementType.FIELD;
 
