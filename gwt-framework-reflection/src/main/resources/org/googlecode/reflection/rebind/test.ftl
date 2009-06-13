@@ -78,7 +78,7 @@
 
 	}
 
-	public it.esselunga.generator.client.WrapperFactory.Wrapper<MyOwnPojo> createWrapper(
+	public org.googlecode.reflection.client.WrapperFactory.Wrapper<MyOwnPojo> createWrapper(
 			final MyOwnPojo instance) {
 		// TODO Auto-generated method stub
 		return new WrappedPojo(instance);

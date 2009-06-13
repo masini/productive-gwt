@@ -1,6 +1,6 @@
-package it.esselunga.generator.client.converters;
+package org.googlecode.reflection.client.converters;
 
-import it.esselunga.generator.client.WrapperFactory.Converter;
+import org.googlecode.reflection.client.WrapperFactory.Converter;
 
 public class NoConverter implements Converter<Object> {
 
