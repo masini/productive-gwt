@@ -72,12 +72,20 @@
 				</configuration>
 				<executions>
 					<execution>
+						<id>clean</id>
 						<phase>clean</phase>
 						<goals>
 							<goal>clean</goal>
 							<!--<goal>i18n</goal>-->
 							<!--<goal>compile</goal> -->
 							<!--<goal>test</goal>-->
+						</goals>
+					</execution>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>test</goal>
+							<!--<goal>i18n</goal>-->
 						</goals>
 					</execution>
 				</executions>
