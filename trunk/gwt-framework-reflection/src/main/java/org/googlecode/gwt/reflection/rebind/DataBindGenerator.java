@@ -4,6 +4,7 @@ package org.googlecode.gwt.reflection.rebind;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -92,7 +93,7 @@ public class DataBindGenerator extends Generator {
 			if(printWriter!=null) {
 				Map<String, Object> rootMap = createRootMap(requestedClass);
 
-				StringWriter generatedClassSource = processTemplate(rootMap);
+				Writer generatedClassSource = processTemplate(rootMap);
 
 				writeSource(requestedClass, getSourceWriter(logger, context, packageName,
 						wrapperClassName, this.pojoClassName, printWriter), generatedClassSource.toString());				
