@@ -1,10 +1,10 @@
-package org.googlecode.reflection.client;
+package org.googlecode.gwt.reflection.client;
 
 
 import java.util.Date;
 
-import org.googlecode.reflection.client.MyOwnPojo.Indirizzo;
-import org.googlecode.reflection.client.WrapperFactory.Wrapper;
+import org.googlecode.gwt.reflection.client.MyOwnPojo.Indirizzo;
+import org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;

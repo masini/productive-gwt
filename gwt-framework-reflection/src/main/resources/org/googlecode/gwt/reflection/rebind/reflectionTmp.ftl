@@ -97,18 +97,18 @@
 
 	}
 
-	public org.googlecode.reflection.client.WrapperFactory.Wrapper<${pojoClassName}> createWrapper(
+	public org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper<${pojoClassName}> createWrapper(
 			final ${pojoClassName} instance) {
 		return new WrappedPojo(instance);
 	}
 	
 	public <P> void registerConverter(String property,
-			org.googlecode.reflection.client.WrapperFactory.Converter<P> converter) {
+			org.googlecode.gwt.reflection.client.WrapperFactory.Converter<P> converter) {
 
 		convertersRegister.put(property, converter);
 	}
 
-	public <P> org.googlecode.reflection.client.WrapperFactory.Converter<P> getConverter(
+	public <P> org.googlecode.gwt.reflection.client.WrapperFactory.Converter<P> getConverter(
 			String property) {
 		return convertersRegister.get(property);
 	}	

@@ -1,4 +1,4 @@
-package org.googlecode.reflection.client;
+package org.googlecode.gwt.reflection.client;
 
 import java.util.List;
 

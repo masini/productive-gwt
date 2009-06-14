@@ -1,4 +1,4 @@
-package org.googlecode.reflection.client.converters;
+package org.googlecode.gwt.reflection.client.converters;
 
 import static java.lang.annotation.ElementType.FIELD;
 

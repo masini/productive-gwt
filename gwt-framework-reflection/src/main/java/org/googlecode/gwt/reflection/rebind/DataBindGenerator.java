@@ -1,4 +1,4 @@
-package org.googlecode.reflection.rebind;
+package org.googlecode.gwt.reflection.rebind;
 
 
 import java.io.IOException;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.googlecode.reflection.client.converters.Converter;
-import org.googlecode.reflection.client.converters.NoConverter;
+import org.googlecode.gwt.reflection.client.converters.Converter;
+import org.googlecode.gwt.reflection.client.converters.NoConverter;
 
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -32,9 +32,9 @@ import freemarker.template.TemplateException;
 
 public class DataBindGenerator extends Generator {
 	
-	private static final String INTEGER_CONVERTER_NAME = "org.googlecode.reflection.client.converters.IntegerConverter";
-	private static final String LONG_CONVERTER_NAME = "org.googlecode.reflection.client.converters.LongConverter";
-	private static final String BOOLEAN_CONVERTER_NAME = "org.googlecode.reflection.client.converters.BooleanConverter";
+	private static final String INTEGER_CONVERTER_NAME = "org.googlecode.gwt.reflection.client.converters.IntegerConverter";
+	private static final String LONG_CONVERTER_NAME = "org.googlecode.gwt.reflection.client.converters.LongConverter";
+	private static final String BOOLEAN_CONVERTER_NAME = "org.googlecode.gwt.reflection.client.converters.BooleanConverter";
 
 	private static final String FIELDS_KEY = "fields";
 	private static final String PREFIX_GET = "get";
