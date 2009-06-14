@@ -1,9 +1,9 @@
-package org.googlecode.reflection.client;
+package org.googlecode.gwt.reflection.client;
 
 
 import java.util.Date;
 
-import org.googlecode.reflection.client.converters.Converter;
+import org.googlecode.gwt.reflection.client.converters.Converter;
 
 import com.google.gwt.core.client.GWT;
 
@@ -35,7 +35,7 @@ public class MyOwnPojo implements DataBindable {
 	private Stati stato;
 	private Boolean bella;
 	
-	@Converter("org.googlecode.reflection.client.MyOwnPojo.IndirizzoConverter")
+	@Converter("org.googlecode.gwt.reflection.client.MyOwnPojo.IndirizzoConverter")
 	private Indirizzo indirizzo;
 	
 	public Indirizzo getIndirizzo() {

@@ -1,6 +1,6 @@
-package org.googlecode.reflection.client.converters;
+package org.googlecode.gwt.reflection.client.converters;
 
-import org.googlecode.reflection.client.WrapperFactory.Converter;
+import org.googlecode.gwt.reflection.client.WrapperFactory.Converter;
 
 public class BooleanConverter implements Converter<Boolean> {
 

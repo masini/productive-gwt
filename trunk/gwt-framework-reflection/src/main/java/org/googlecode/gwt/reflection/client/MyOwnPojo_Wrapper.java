@@ -1,31 +1,31 @@
-package org.googlecode.reflection.client;
+package org.googlecode.gwt.reflection.client;
 
 import java.util.Map;
 import java.util.Date;
 import java.util.HashMap;
 
-public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.reflection.client.MyOwnPojo> {
+public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.gwt.reflection.client.MyOwnPojo> {
   	@SuppressWarnings("unchecked")
   	private final Map<String, Converter> convertersRegister = new HashMap<String, Converter>();
   	{
-  			registerConverter("nome", new org.googlecode.reflection.client.converters.NoConverter());
-  		registerConverter("eta", new org.googlecode.reflection.client.converters.IntegerConverter());
-  		registerConverter("dataNascita", new org.googlecode.reflection.client.converters.NoConverter());
-  		registerConverter("stato", new org.googlecode.reflection.client.converters.NoConverter());
-  		registerConverter("bella", new org.googlecode.reflection.client.converters.BooleanConverter());
-  		registerConverter("indirizzo", new org.googlecode.reflection.client.MyOwnPojo.IndirizzoConverter());
+  			registerConverter("nome", new org.googlecode.gwt.reflection.client.converters.NoConverter());
+  		registerConverter("eta", new org.googlecode.gwt.reflection.client.converters.IntegerConverter());
+  		registerConverter("dataNascita", new org.googlecode.gwt.reflection.client.converters.NoConverter());
+  		registerConverter("stato", new org.googlecode.gwt.reflection.client.converters.NoConverter());
+  		registerConverter("bella", new org.googlecode.gwt.reflection.client.converters.BooleanConverter());
+  		registerConverter("indirizzo", new org.googlecode.gwt.reflection.client.MyOwnPojo.IndirizzoConverter());
   	}
   
   
   
-  	class WrappedPojo extends org.googlecode.reflection.client.MyOwnPojo implements
-  			WrapperFactory.Wrapper<org.googlecode.reflection.client.MyOwnPojo> {
+  	class WrappedPojo extends org.googlecode.gwt.reflection.client.MyOwnPojo implements
+  			WrapperFactory.Wrapper<org.googlecode.gwt.reflection.client.MyOwnPojo> {
   
-  		private final org.googlecode.reflection.client.MyOwnPojo instance;
+  		private final org.googlecode.gwt.reflection.client.MyOwnPojo instance;
   
   		private java.util.List<com.google.gwt.event.logical.shared.ValueChangeHandler<String>> handlers = new java.util.ArrayList<com.google.gwt.event.logical.shared.ValueChangeHandler<String>>(); 
   
-  		public WrappedPojo(org.googlecode.reflection.client.MyOwnPojo instance) {
+  		public WrappedPojo(org.googlecode.gwt.reflection.client.MyOwnPojo instance) {
   			super();
   
   			this.instance = instance;
@@ -76,7 +76,7 @@ public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.reflecti
   				return;
   			}
   			if ("stato".equals(name)) {
-  				instance.setStato((org.googlecode.reflection.client.MyOwnPojo.Stati) value);
+  				instance.setStato((org.googlecode.gwt.reflection.client.MyOwnPojo.Stati) value);
   				firePropertyChange("stato", value);
   				return;
   			}
@@ -86,7 +86,7 @@ public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.reflecti
   				return;
   			}
   			if ("indirizzo".equals(name)) {
-  				instance.setIndirizzo((org.googlecode.reflection.client.MyOwnPojo.Indirizzo) value);
+  				instance.setIndirizzo((org.googlecode.gwt.reflection.client.MyOwnPojo.Indirizzo) value);
   				firePropertyChange("indirizzo", value);
   				return;
   			}
@@ -119,7 +119,7 @@ public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.reflecti
   		}
   		
   
-  		public org.googlecode.reflection.client.MyOwnPojo getWrapperObject() {
+  		public org.googlecode.gwt.reflection.client.MyOwnPojo getWrapperObject() {
   			// TODO Auto-generated method stub
   			return instance;
   		}
@@ -139,18 +139,18 @@ public class MyOwnPojo_Wrapper implements WrapperFactory<org.googlecode.reflecti
   
   	}
   
-  	public org.googlecode.reflection.client.WrapperFactory.Wrapper<org.googlecode.reflection.client.MyOwnPojo> createWrapper(
-  			final org.googlecode.reflection.client.MyOwnPojo instance) {
+  	public org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper<org.googlecode.gwt.reflection.client.MyOwnPojo> createWrapper(
+  			final org.googlecode.gwt.reflection.client.MyOwnPojo instance) {
   		return new WrappedPojo(instance);
   	}
   	
   	public <P> void registerConverter(String property,
-  			org.googlecode.reflection.client.WrapperFactory.Converter<P> converter) {
+  			org.googlecode.gwt.reflection.client.WrapperFactory.Converter<P> converter) {
   
   		convertersRegister.put(property, converter);
   	}
   
-  	public <P> org.googlecode.reflection.client.WrapperFactory.Converter<P> getConverter(
+  	public <P> org.googlecode.gwt.reflection.client.WrapperFactory.Converter<P> getConverter(
   			String property) {
   		return convertersRegister.get(property);
   	}	

@@ -8,10 +8,10 @@
 	<inherits name='com.google.gwt.user.User' />
    <inherits name='com.google.gwt.user.theme.standard.Standard'/>     
 
-	<entry-point class='org.googlecode.reflection.client.GeneratorTestEntryPoint' />
+	<entry-point class='org.googlecode.gwt.reflection.client.GeneratorTestEntryPoint' />
 	
-	<generate-with class="org.googlecode.reflection.rebind.DataBindGenerator">
-		<when-type-assignable class="org.googlecode.reflection.client.DataBindable" />
+	<generate-with class="org.googlecode.gwt.reflection.rebind.DataBindGenerator">
+		<when-type-assignable class="org.googlecode.gwt.reflection.client.DataBindable" />
 	</generate-with>	
 
 </module>
