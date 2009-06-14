@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>productive-gwt</groupId>
-  <artifactId>generator-test</artifactId>
+  <artifactId>gwt-framework-reflection</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
 	<properties>
@@ -15,14 +15,6 @@
 			Include SOURCE in output artifact for GWT (GWT libraries must include
 			source)
 		-->
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
 		<outputDirectory>war/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -57,6 +49,7 @@
 		        <artifactId>gwt-maven-plugin</artifactId>
 		        <version>1.1-SNAPSHOT</version>
 				<configuration>
+					<module>org.googlecode.gwt.reflection.Reflection</module>
 					<compileTargets>
 						<value>org.googlecode.gwt.reflection.GeneratorTest</value>
 					</compileTargets>
@@ -76,16 +69,14 @@
 						<phase>clean</phase>
 						<goals>
 							<goal>clean</goal>
-							<!--<goal>i18n</goal>-->
-							<!--<goal>compile</goal> -->
-							<!--<goal>test</goal>-->
 						</goals>
 					</execution>
 					<execution>
 						<goals>
 							<goal>compile</goal>
 							<goal>test</goal>
-							<!--<goal>i18n</goal>-->
+							<goal>resources</goal>
+<!--							<goal>i18n</goal>-->
 						</goals>
 					</execution>
 				</executions>
@@ -155,7 +146,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.5</version>
+			<version>3.8.1</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
