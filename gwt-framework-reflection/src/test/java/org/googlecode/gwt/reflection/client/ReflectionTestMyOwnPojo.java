@@ -1,9 +1,6 @@
 package org.googlecode.gwt.reflection.client;
 
 
-import org.googlecode.gwt.reflection.client.WrapperFactory;
-import org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -25,6 +22,11 @@ public class ReflectionTestMyOwnPojo extends GWTTestCase {
 		
 		assertNotNull("Wrapper generato", wrapper);
 	}
+	
+	public static void testNullPojo() {
+		
+		assertEquals("0", wrapper.getPropertyAsString("eta"));
+	}	
 	
 	@Override
 	public String getModuleName() {

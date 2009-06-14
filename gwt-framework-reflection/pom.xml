@@ -32,6 +32,15 @@
 				<configuration>
 					<filesets>
 						<fileset>
+							<directory>src/main/generated</directory>
+						</fileset>
+						<fileset>
+							<directory>.gwt-tmp</directory>
+						</fileset>
+						<fileset>
+							<directory>tomcat</directory>
+						</fileset>
+						<fileset>
 							<directory>war/${moduleName}</directory>
 						</fileset>
 						<fileset>
@@ -57,11 +66,9 @@
 					<logLevel>INFO</logLevel>
 					<style>DETAILED</style>
 					<noServer>${noServer}</noServer>
-					<extraJvmArgs>-Xms512m -Xmx512m</extraJvmArgs>
+					<extraJvmArgs>-Xmx512m -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
 					<gwtVersion>${gwtVersion}</gwtVersion>
 					<!-- output>../SimpleGridWEB/src/main/webapp</output -->
-					<gen>src/main/generated</gen>
-					<generated>src/main/generated</generated>
 				</configuration>
 				<executions>
 					<execution>
@@ -118,7 +125,23 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
+		<profile>
+			<id>gwt-debug</id>
+			<properties>
+				<debugAgent>-agentlib:jdwp=transport=dt_socket,suspend=y,server=y,address=localhost:8080</debugAgent>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
 	</profiles>
+	<repositories>
+		<repository>
+			<id>gwt-math</id>
+			<url>http://gwt-math.googlecode.com/svn/maven2/</url>
+		</repository>
+	
+	</repositories>
 
 	<pluginRepositories>
        <pluginRepository>
@@ -155,6 +178,12 @@
 	  		<artifactId>freemarker</artifactId>
 	  		<version>2.3.9</version>
 	  	</dependency>
+		<dependency>
+	  		<groupId>com.googlecode</groupId>
+	  		<artifactId>gwt-math</artifactId>
+	  		<version>2.0.3</version>
+	  	</dependency>
+	  	
 	</dependencies>
   
 </project>
