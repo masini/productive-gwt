@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class TestEntryPoint implements EntryPoint {
+public class ReflectionEntryPoint implements EntryPoint {
 
 	public void onModuleLoad() {
 
