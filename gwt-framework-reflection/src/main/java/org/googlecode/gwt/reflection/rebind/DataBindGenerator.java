@@ -95,8 +95,8 @@ public class DataBindGenerator extends Generator {
 
 				Writer generatedClassSource = processTemplate(rootMap);
 
-				writeSource(requestedClass, getSourceWriter(logger, context, packageName,
-						wrapperClassName, this.pojoClassName, printWriter), generatedClassSource.toString());				
+				writeSource(requestedClass, getSourceWriter(logger, packageName, wrapperClassName,
+						this.pojoClassName, printWriter), generatedClassSource.toString());				
 			}
 
 			return qualifiedWrapperClassName;
@@ -185,8 +185,8 @@ public class DataBindGenerator extends Generator {
 	}
 
 	protected SourceWriter getSourceWriter(TreeLogger logger,
-			GeneratorContext context, String packageName, String className,
-			String typeName, PrintWriter printWriter) {
+			String packageName, String className, String typeName,
+			PrintWriter printWriter) {
 		ClassSourceFileComposerFactory composerFactory = new ClassSourceFileComposerFactory(
 				packageName, className);
 

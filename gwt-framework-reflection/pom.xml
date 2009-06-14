@@ -9,12 +9,9 @@
 		<runTarget>${moduleName}/GeneratorTest.html</runTarget>
 		<noServer>false</noServer>
 		<gwtVersion>1.6.4</gwtVersion>
+		<debugAgent></debugAgent>
 	</properties>
 	<build>
-		<!--
-			Include SOURCE in output artifact for GWT (GWT libraries must include
-			source)
-		-->
 		<outputDirectory>war/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
