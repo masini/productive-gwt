@@ -1,6 +1,9 @@
 package org.googlecode.gwt.reflection.client;
 
 
+import org.googlecode.gwt.reflection.client.WrapperFactory;
+import org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 
