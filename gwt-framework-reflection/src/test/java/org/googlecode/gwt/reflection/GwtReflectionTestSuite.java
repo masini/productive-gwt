@@ -1,4 +1,7 @@
-package org.googlecode.gwt.reflection.client;
+package org.googlecode.gwt.reflection;
+
+
+import org.googlecode.gwt.reflection.client.ReflectionTestMyOwnPojo;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
