@@ -46,7 +46,6 @@ public class DataBindGenerator extends Generator {
 	private static final String PROPERTY_TYPE_PROPERTY = "propertyType";
 	private static final String PROPERTY_NAME_PROPERTY = "propertyName";
 	private static final String PREFIX_PROPERTY = "prefix";
-	private static final String CAMEL_CASE_PN_PROPERTY = "camelCasePropertyName";
 	private static final String CONVERTER_PROPERTY = "converter";
 
 	private static final String TEMPLATE_NAME = "reflectionTmp.ftl";
@@ -154,7 +153,6 @@ public class DataBindGenerator extends Generator {
 			StringBuilder camelCase = new StringBuilder(jField.getName());
 			camelCase.replace(0, 1, jField.getName().substring(0, 1)
 					.toUpperCase());
-			field.put(CAMEL_CASE_PN_PROPERTY, camelCase.toString());
 
 			String prefix = PREFIX_GET;
 
@@ -195,7 +193,6 @@ public class DataBindGenerator extends Generator {
 		composerFactory.addImport(Date.class.getName());
 		composerFactory.addImport(Map.class.getName());
 		composerFactory.addImport(HashMap.class.getName());
-
 		return composerFactory.createSourceWriter(context, printWriter);
 	}
 
