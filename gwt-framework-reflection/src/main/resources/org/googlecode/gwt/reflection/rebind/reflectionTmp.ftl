@@ -96,7 +96,8 @@
 		}
 		
 		public String[] getPropertiesName(){
-			return {<#list fields as field>"${field.propertyName}"<#if fields[(fields?size)-1].propertyName!=field.propertyName>,</#if></#list>};
+			String[] propNameArray = {<#list fields as field>"${field.propertyName}"<#if fields[(fields?size)-1].propertyName!=field.propertyName>,</#if></#list>}; 
+			return propNameArray;
 		}		
 
 	}
