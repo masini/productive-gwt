@@ -50,9 +50,9 @@
 
 		public void setProperty(String name, Object value) {
 		
-			<#list fields as field>		
+			<#list fields as field>	
 			if ("${field.propertyName}".equals(name)) {
-				instance.set${field.camelCasePropertyName}((${field.propertyType}) value);
+				instance.set${field.propertyName?cap_first}((${field.propertyType}) value);
 				firePropertyChange("${field.propertyName}", value);
 				return;
 			}
@@ -67,9 +67,9 @@
 		<#list fields as field>			
 			if ("${field.propertyName}".equals(name)) {
 				<#if field.isPrimitive>
-					return (ReturnType) new ${field.propertyType}(instance.get${field.camelCasePropertyName}());
+					return (ReturnType) new ${field.propertyType}(instance.get${field.propertyName?cap_first}());
 				<#else>
-					return (ReturnType) instance.${field.prefix}${field.camelCasePropertyName}();
+					return (ReturnType) instance.${field.prefix}${field.propertyName?cap_first}();
 				</#if>
 			}
 		</#list>	
@@ -93,6 +93,10 @@
 			Converter converter = getConverter(name);
 
 			setProperty(name, converter.convertFromString(value));
+		}
+		
+		public String[] getPropertiesName(){
+			return {<#list fields as field>"${field.propertyName}"<#if fields[(fields?size)-1].propertyName!=field.propertyName>,</#if></#list>};
 		}		
 
 	}
