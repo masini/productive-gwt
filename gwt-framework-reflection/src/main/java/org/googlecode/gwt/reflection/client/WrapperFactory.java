@@ -18,6 +18,8 @@ public interface WrapperFactory<T> {
 		public void addValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener);
 		public void removeValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener);
 		
+		public String[] getPropertiesName();
+		
 	}
 
 	public interface Converter<P> {
