@@ -10,6 +10,7 @@ public interface WrapperFactory<T> {
 	public interface Wrapper<T> {
 		public void setProperty(String name, Object value);	
 		public <ReturnType> ReturnType getProperty(String name);
+
 		public T getWrapperObject();
 
 		public void setPropertyAsString(String name, String value);	

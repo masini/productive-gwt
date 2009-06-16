@@ -10,7 +10,8 @@
 		<when-type-assignable class="org.googlecode.gwt.reflection.client.DataBindable" />
 	</generate-with>	
 
+	<!-- Fake Entry Point Utile solo per provare a compilare la libreria -->
 	<entry-point class='org.googlecode.gwt.reflection.client.GeneratorTestEntryPoint' />
-
+ 
 </module>
 
