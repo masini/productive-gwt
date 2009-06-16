@@ -7,6 +7,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 
 public class ReflectionTestComplexModel extends GWTTestCase {
 
+	private static final String STATO = "01";
 	private static WrapperFactory<Articolo> factory;
 	private static WrapperFactory.Wrapper<Articolo> wrapper;
 //	private static String[] fieldName = {"nome","eta","dataNascita","stato","bella","indirizzo"};
@@ -30,6 +31,17 @@ public class ReflectionTestComplexModel extends GWTTestCase {
 	public static void testNullProperty() {
 		
 		assertNull("Peso deve essere null su oggetto appena instanziato", wrapper.getPropertyAsString("peso"));
+	}
+	
+	public static void testStatoArticolo() {
+		
+		StatoArticolo stato = new StatoArticolo();
+		stato.setCodice(STATO);
+		
+		wrapper.getWrappedObject().setStato(stato);
+		
+		assertEquals("Codice non corretto in StatoArticolo", STATO, wrapper.getPropertyAsString("stato"));
+		
 	}
 	
 //	public static void testGetPropertiesName(){
