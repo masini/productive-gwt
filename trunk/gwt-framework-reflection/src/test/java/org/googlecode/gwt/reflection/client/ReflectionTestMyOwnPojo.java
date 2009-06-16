@@ -1,5 +1,7 @@
 package org.googlecode.gwt.reflection.client;
 
+import java.util.Arrays;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -32,7 +34,8 @@ public class ReflectionTestMyOwnPojo extends GWTTestCase {
 	public static void testGetPropertiesName(){
 		
 		String[] propName = wrapper.getPropertiesName();
-		assertEquals("Property name list estratta", propName, fieldName);
+		
+		assertTrue("Property name list estratta", Arrays.equals(propName, fieldName));
 		
 	}
 	@Override
