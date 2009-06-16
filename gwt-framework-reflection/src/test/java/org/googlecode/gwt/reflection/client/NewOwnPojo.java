@@ -3,7 +3,7 @@ package org.googlecode.gwt.reflection.client;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class NewOwnPojo implements DataBindable {
+public class NewOwnPojo implements Reflectable {
 
 	private long longField;
 	private List<String> listField;

@@ -34,12 +34,12 @@ public class ReflectionEntryPoint implements EntryPoint {
 				GWT.log("event: "+event.getValue(), null);
 			}});
 		
-		myOwnPojo.getWrapperObject().setDataNascita(new Date());
-		myOwnPojo.getWrapperObject().setNome("Graziella");
-		myOwnPojo.getWrapperObject().setEta(80);
+		myOwnPojo.getWrappedObject().setDataNascita(new Date());
+		myOwnPojo.getWrappedObject().setNome("Graziella");
+		myOwnPojo.getWrappedObject().setEta(80);
 		
 		MyOwnPojo.Indirizzo indirizzo = new Indirizzo("milano", 30, "giambellino");
-		myOwnPojo.getWrapperObject().setIndirizzo(indirizzo);
+		myOwnPojo.getWrappedObject().setIndirizzo(indirizzo);
 		
 		
 		MyTextBox<MyOwnPojo> myTextBoxEta = new MyTextBox<MyOwnPojo>(myOwnPojo, MyOwnPojo.class, "eta");
@@ -47,7 +47,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		myTextBoxEta.addChangeHandler(new ChangeHandler(){
 
 			public void onChange(ChangeEvent ce) {
-				GWT.log("Eta: "+myOwnPojo.getWrapperObject().getEta(), null);
+				GWT.log("Eta: "+myOwnPojo.getWrappedObject().getEta(), null);
 			}
 
 		});
@@ -57,7 +57,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		myTextBoxNome.addChangeHandler(new ChangeHandler(){
 
 			public void onChange(ChangeEvent ce) {
-				GWT.log("Nome: "+myOwnPojo.getWrapperObject().getNome(), null);
+				GWT.log("Nome: "+myOwnPojo.getWrappedObject().getNome(), null);
 			}
 
 		});
@@ -65,7 +65,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		myDateBoxData.addValueChangeHandler(new ValueChangeHandler<Date>(){
 
 			public void onValueChange(ValueChangeEvent<Date> arg0) {
-				GWT.log("Data Nascita: "+myOwnPojo.getWrapperObject().getDataNascita(), null);
+				GWT.log("Data Nascita: "+myOwnPojo.getWrappedObject().getDataNascita(), null);
 			}
 		});
 		
@@ -74,7 +74,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		myTextBoxIndirizzo.addChangeHandler(new ChangeHandler(){
 
 			public void onChange(ChangeEvent ce) {
-				GWT.log("Indirizzo: "+myOwnPojo.getWrapperObject().getIndirizzo(), null);
+				GWT.log("Indirizzo: "+myOwnPojo.getWrappedObject().getIndirizzo(), null);
 			}
 
 		});		
@@ -89,7 +89,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		
 	}
 
-	public class MyTextBox<T extends DataBindable> extends TextBox implements ChangeHandler {
+	public class MyTextBox<T extends Reflectable> extends TextBox implements ChangeHandler {
 
 		private final WrapperFactory.Wrapper<T> wrapper;
 		private final String property;
@@ -111,7 +111,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		
 	}
 	
-	public class MyDateBox<T extends DataBindable> extends DateBox implements ValueChangeHandler<Date>{
+	public class MyDateBox<T extends Reflectable> extends DateBox implements ValueChangeHandler<Date>{
 
 		private final WrapperFactory.Wrapper<T> wrapper;
 		private final String property;
