@@ -7,7 +7,7 @@
 	<inherits name="com.googlecode.gwt.math.Math"/>
 	
 	<generate-with class="org.googlecode.gwt.reflection.rebind.DataBindGenerator">
-		<when-type-assignable class="org.googlecode.gwt.reflection.client.DataBindable" />
+		<when-type-assignable class="org.googlecode.gwt.reflection.client.Reflectable" />
 	</generate-with>	
 
 	<!-- Fake Entry Point Utile solo per provare a compilare la libreria -->

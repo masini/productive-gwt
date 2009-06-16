@@ -36,16 +36,26 @@
 				super(instance);
 			}
 		}
-		
+
+		private boolean enableFireProperty = true;
 
 		private void firePropertyChange(String propertyName, Object value) {
-			com.google.gwt.core.client.GWT.log(propertyName+" = "+value,null);
 			
-			com.google.gwt.event.logical.shared.ValueChangeEvent<String> event = new E(propertyName); 
-			
-			for(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener: handlers) {
-				listener.onValueChange(event);
-			}
+			if(enableFireProperty) {
+				enableFireProperty = false;
+				try {
+					
+					com.google.gwt.event.logical.shared.ValueChangeEvent<String> event = new E(propertyName); 
+					
+					for(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener: handlers) {
+						listener.onValueChange(event);
+					}
+				}
+				finally {
+					enableFireProperty = true;
+				}				
+			}			
+		
 		}
 
 		public void setProperty(String name, Object value) {
@@ -77,7 +87,7 @@
 		}
 		
 
-		public ${pojoClassName} getWrapperObject() {
+		public ${pojoClassName} getWrappedObject() {
 			// TODO Auto-generated method stub
 			return instance;
 		}

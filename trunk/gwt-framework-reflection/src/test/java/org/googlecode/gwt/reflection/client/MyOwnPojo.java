@@ -7,7 +7,7 @@ import org.googlecode.gwt.reflection.client.converters.Converter;
 
 import com.google.gwt.core.client.GWT;
 
-public class MyOwnPojo implements DataBindable {
+public class MyOwnPojo implements Reflectable {
 	
 	public static final class IndirizzoConverter implements WrapperFactory.Converter<Indirizzo>{
 

@@ -1,5 +1,5 @@
 package org.googlecode.gwt.reflection.client;
 
-public interface DataBindable {
+public interface Reflectable {
 
 }

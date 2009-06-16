@@ -48,6 +48,8 @@ public class ReflectionTestPubSubscribe extends GWTTestCase {
 				
 				assertEquals("Valore Proprietà scorretto", 5L, wrapper.getProperty(event.getValue()));
 				
+				wrapper.setProperty("bigDecimal", new BigDecimal(PI));
+				
 				monitor.add(new Object());
 			}
 		});
@@ -57,6 +59,12 @@ public class ReflectionTestPubSubscribe extends GWTTestCase {
 		assertTrue("Non e' stato chiamato il listener !!", monitor.size()==1);
 	}
 		
+	public static void testPublish() { 
+		
+		wrapper.setProperty("longField", 5L);
+	}
+	
+	
 	@Override
 	public String getModuleName() {
 		return "org.googlecode.gwt.reflection.Reflection";

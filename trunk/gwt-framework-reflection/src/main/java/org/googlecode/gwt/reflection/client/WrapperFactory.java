@@ -11,7 +11,7 @@ public interface WrapperFactory<T> {
 		public void setProperty(String name, Object value);	
 		public <ReturnType> ReturnType getProperty(String name);
 
-		public T getWrapperObject();
+		public T getWrappedObject();
 
 		public void setPropertyAsString(String name, String value);	
 		public String getPropertyAsString(String name);
