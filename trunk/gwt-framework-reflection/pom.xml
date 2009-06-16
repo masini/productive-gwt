@@ -81,6 +81,7 @@
 					<noServer>${noServer}</noServer>
 					<extraJvmArgs>-Xmx512m -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
 					<gwtVersion>${gwtVersion}</gwtVersion>
+					<testTimeOut>600</testTimeOut>
 					<!-- output>../SimpleGridWEB/src/main/webapp</output -->
 				</configuration>
 				<executions>
