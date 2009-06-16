@@ -2,12 +2,16 @@ package org.googlecode.gwt.reflection.client.complexmodel;
 
 import java.math.BigDecimal;
 
+import org.googlecode.gwt.reflection.client.converters.Converter;
+
 
 public class Articolo extends GenericModel{
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@Converter("org.googlecode.gwt.reflection.client.complexmodel.StatoArticoloConverter")
 	private StatoArticolo stato;
 	private Compratore compratore;
 	private BigDecimal peso;
