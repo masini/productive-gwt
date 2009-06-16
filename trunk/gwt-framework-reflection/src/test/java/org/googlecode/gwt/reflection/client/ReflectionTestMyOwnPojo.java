@@ -23,10 +23,10 @@ public class ReflectionTestMyOwnPojo extends GWTTestCase {
 		assertNotNull("Wrapper generato", wrapper);
 	}
 	
-	public static void testNullPojo() {
+	public static void testNullProperty() {
 		
-		assertEquals("0", wrapper.getPropertyAsString("eta"));
-	}	
+		assertNull("Nome deve essere null su oggetto appena instanziato", wrapper.getPropertyAsString("nome"));
+	}
 	
 	@Override
 	public String getModuleName() {
