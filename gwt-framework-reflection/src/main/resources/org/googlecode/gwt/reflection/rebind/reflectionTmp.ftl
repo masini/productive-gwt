@@ -61,11 +61,13 @@
 		public void setProperty(String name, Object value) {
 		
 			<#list fields as field>	
+			<#if field.canWrite>
 			if ("${field.propertyName}".equals(name)) {
 				instance.set${field.propertyName?cap_first}((${field.propertyType}) value);
 				firePropertyChange("${field.propertyName}", value);
 				return;
 			}
+			</#if>
 			</#list>
 
 			throw new UnsupportedOperationException(name);
@@ -74,14 +76,16 @@
 		@SuppressWarnings("unchecked")
 		public <ReturnType> ReturnType getProperty(String name) {
 		
-		<#list fields as field>			
+		<#list fields as field>	
+		<#if field.canRead>		
 			if ("${field.propertyName}".equals(name)) {
 				<#if field.isPrimitive>
-					return (ReturnType) new ${field.propertyType}(instance.get${field.propertyName?cap_first}());
+					return (ReturnType) new ${field.propertyType}(instance.${field.prefix}${field.propertyName?cap_first}());
 				<#else>
 					return (ReturnType) instance.${field.prefix}${field.propertyName?cap_first}();
 				</#if>
 			}
+		</#if>
 		</#list>	
 			throw new UnsupportedOperationException(name);
 		}
