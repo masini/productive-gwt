@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.googlecode.gwt.reflection.client.WrapperFactory;
 import org.googlecode.gwt.reflection.client.converters.Converter;
 import org.googlecode.gwt.reflection.client.converters.NoConverter;
 
@@ -47,6 +48,9 @@ public class DataBindGenerator extends Generator {
 	private static final String PROPERTY_NAME_PROPERTY = "propertyName";
 	private static final String PREFIX_PROPERTY = "prefix";
 	private static final String CONVERTER_PROPERTY = "converter";
+	private static final String CAN_READ_PROPERTY = "canRead";
+	private static final String CAN_WRITE_PROPERTY = "canWrite";
+	
 
 	private static final String TEMPLATE_NAME = "reflectionTmp.ftl";
 	private static final String CLASS_SUFFIX = "_Wrapper";
@@ -149,21 +153,43 @@ public class DataBindGenerator extends Generator {
 					.isPrimitive().getQualifiedBoxedSourceName()
 					: jField.getType().getQualifiedSourceName();
 			field.put(PROPERTY_TYPE_PROPERTY, type_property);
+			
+			
 
 			StringBuilder camelCase = new StringBuilder(jField.getName());
 			camelCase.replace(0, 1, jField.getName().substring(0, 1)
 					.toUpperCase());
 
+			
 			String prefix = PREFIX_GET;
-
+			boolean canRead = false;
+			boolean canWrite = false;
+			
 			try {
 				classType.getMethod(PREFIX_IS + camelCase, new JType[] {});
 
 				prefix = PREFIX_IS;
+				
+				canRead = true;
 			} catch (Exception e) {
 			}
 
+			try {
+				classType.getMethod(PREFIX_GET + camelCase, new JType[] {});
+				canRead = true;
+			} catch (Exception e) {
+			}
+
+			try {
+				classType.getMethod("set" + camelCase, new JType[] {jField.getType()});
+				canWrite = true;
+			} catch (Exception e) {
+			}
+			
 			field.put(PREFIX_PROPERTY, prefix);
+			field.put(CAN_READ_PROPERTY, canRead);
+			field.put(CAN_WRITE_PROPERTY, canWrite);
+			
 			Converter c = jField.getAnnotation(Converter.class);
 			if(c != null){
 				field.put(CONVERTER_PROPERTY, c.value());
@@ -193,6 +219,7 @@ public class DataBindGenerator extends Generator {
 		composerFactory.addImport(Date.class.getName());
 		composerFactory.addImport(Map.class.getName());
 		composerFactory.addImport(HashMap.class.getName());
+		composerFactory.addImport(WrapperFactory.class.getName());
 		return composerFactory.createSourceWriter(context, printWriter);
 	}
 
