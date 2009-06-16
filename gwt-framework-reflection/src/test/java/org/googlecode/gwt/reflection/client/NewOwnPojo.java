@@ -1,12 +1,21 @@
 package org.googlecode.gwt.reflection.client;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class NewOwnPojo implements DataBindable {
 
 	private long longField;
-	
 	private List<String> listField;
+	private BigDecimal bigDecimal;
+	
+	public BigDecimal getBigDecimal() {
+		return bigDecimal;
+	}
+
+	public void setBigDecimal(BigDecimal bigDecimal) {
+		this.bigDecimal = bigDecimal;
+	}
 
 	public long getLongField() {
 		return longField;
@@ -15,7 +24,6 @@ public class NewOwnPojo implements DataBindable {
 	public void setLongField(long longField) {
 		this.longField = longField;
 	}
-
 	
 	public List<String> getListField() {
 		return listField;
