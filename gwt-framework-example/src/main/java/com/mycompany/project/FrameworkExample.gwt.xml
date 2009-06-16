@@ -6,6 +6,7 @@
 	<inherits name='org.googlecode.gwt.header.Header'/>
 	<inherits name='org.googlecode.gwt.footer.Footer'/>
 	<inherits name='org.googlecode.gwt.menu.Menu'/>
+	<inherits name='org.googlecode.gwt.reflection.Reflection'/>
 	
 	<entry-point class="com.mycompany.project.client.FrameworkExample"/>
 </module>
