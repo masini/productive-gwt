@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.TreeLogger.Type;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JField;
+import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
@@ -132,6 +134,17 @@ public class DataBindGenerator extends Generator {
 
 		return returnCode;
 	}
+	
+	private void calculateFields(JClassType classType, Map<JField, JClassType> jFieldMap) {
+		
+		for(JField field : classType.getFields()){
+			jFieldMap.put(field, classType);
+		}
+		
+		if(classType.getSuperclass() != null){
+			calculateFields(classType.getSuperclass(), jFieldMap);
+		}
+	}
 
 	private Map<String, Object> createRootMap(JClassType classType) {
 		Map<String, Object> root = new HashMap<String, Object>();
@@ -142,67 +155,73 @@ public class DataBindGenerator extends Generator {
 
 		root.put(FIELDS_KEY, fields);
 
-		for (JField jField : classType.getFields()) {
-			Map<String, Object> field = new HashMap<String, Object>();
-
-			field.put(IS_PRIMITIVE_PROPERTY,
-					jField.getType().isPrimitive() != null);
-			field.put(PROPERTY_NAME_PROPERTY, jField.getName());
-			
-			String type_property = (jField.getType().isPrimitive() != null) ? jField.getType()
-					.isPrimitive().getQualifiedBoxedSourceName()
-					: jField.getType().getQualifiedSourceName();
-			field.put(PROPERTY_TYPE_PROPERTY, type_property);
-			
-			
-
-			StringBuilder camelCase = new StringBuilder(jField.getName());
-			camelCase.replace(0, 1, jField.getName().substring(0, 1)
-					.toUpperCase());
-
-			
-			String prefix = PREFIX_GET;
-			boolean canRead = false;
-			boolean canWrite = false;
-			
-			try {
-				classType.getMethod(PREFIX_IS + camelCase, new JType[] {});
-
-				prefix = PREFIX_IS;
+		Map<JField, JClassType> jFieldMap = new HashMap<JField, JClassType>();
+		calculateFields(classType, jFieldMap);
+		//classType.getFields()
+		for (JField jField : jFieldMap.keySet()) {
+				Map<String, Object> field = new HashMap<String, Object>();
+	
+				field.put(IS_PRIMITIVE_PROPERTY,
+						jField.getType().isPrimitive() != null);
+				field.put(PROPERTY_NAME_PROPERTY, jField.getName());
 				
-				canRead = true;
-			} catch (Exception e) {
-			}
-
-			try {
-				classType.getMethod(PREFIX_GET + camelCase, new JType[] {});
-				canRead = true;
-			} catch (Exception e) {
-			}
-
-			try {
-				classType.getMethod("set" + camelCase, new JType[] {jField.getType()});
-				canWrite = true;
-			} catch (Exception e) {
-			}
-			
-			field.put(PREFIX_PROPERTY, prefix);
-			field.put(CAN_READ_PROPERTY, canRead);
-			field.put(CAN_WRITE_PROPERTY, canWrite);
-			
-			Converter c = jField.getAnnotation(Converter.class);
-			if(c != null){
-				field.put(CONVERTER_PROPERTY, c.value());
-			}
-			else if(converterMap.get(type_property) != null){
-				field.put(CONVERTER_PROPERTY, converterMap.get(type_property));	
-			}else{
-				field.put(CONVERTER_PROPERTY, NoConverter.class.getName());
-			}
-			
-
-			
-			fields.add(field);
+				String type_property = (jField.getType().isPrimitive() != null) ? jField.getType()
+						.isPrimitive().getQualifiedBoxedSourceName()
+						: jField.getType().getQualifiedSourceName();
+				field.put(PROPERTY_TYPE_PROPERTY, type_property);
+				
+				
+	
+				StringBuilder camelCase = new StringBuilder(jField.getName());
+				camelCase.replace(0, 1, jField.getName().substring(0, 1)
+						.toUpperCase());
+	
+				
+				String prefix = PREFIX_GET;
+				boolean canRead = false;
+				boolean canWrite = false;
+				
+				try {
+					JMethod method = jFieldMap.get(jField).getMethod(PREFIX_IS + camelCase, new JType[] {});
+					
+					prefix = PREFIX_IS;
+					if(method.isPublic()){
+						canRead = true;
+					}
+				} catch (Exception e) {
+				}
+	
+				try {
+					JMethod method = jFieldMap.get(jField).getMethod(PREFIX_GET + camelCase, new JType[] {});
+					if(method.isPublic()){
+						canRead = true;
+					}
+				} catch (Exception e) {
+				}
+	
+				try {
+					JMethod method = jFieldMap.get(jField).getMethod("set" + camelCase, new JType[] {jField.getType()});
+					if(method.isPublic()){
+					canWrite = true;
+					}
+				} catch (Exception e) {
+				}
+				
+				field.put(PREFIX_PROPERTY, prefix);
+				field.put(CAN_READ_PROPERTY, canRead);
+				field.put(CAN_WRITE_PROPERTY, canWrite);
+				
+				Converter c = jField.getAnnotation(Converter.class);
+				if(c != null){
+					field.put(CONVERTER_PROPERTY, c.value());
+				}
+				else if(converterMap.get(type_property) != null){
+					field.put(CONVERTER_PROPERTY, converterMap.get(type_property));	
+				}else{
+					field.put(CONVERTER_PROPERTY, NoConverter.class.getName());
+				}
+				
+				fields.add(field);
 		}
 		return root;
 
