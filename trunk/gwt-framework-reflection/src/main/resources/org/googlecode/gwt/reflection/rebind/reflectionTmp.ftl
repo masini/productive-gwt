@@ -2,7 +2,9 @@
 	private final Map<String, Converter> convertersRegister = new HashMap<String, Converter>();
 	{
 	<#list fields as field>
+		<#if field.canWrite | field.canRead>
 		registerConverter("${field.propertyName}", new ${field.converter}());
+		</#if>
 	</#list>	
 	}
 
@@ -110,7 +112,7 @@
 		}
 		
 		public String[] getPropertiesName(){
-			String[] propNameArray = {<#list fields as field>"${field.propertyName}"<#if fields[(fields?size)-1].propertyName!=field.propertyName>,</#if></#list>}; 
+			String[] propNameArray = {<#list fields as field><#if field.canWrite | field.canRead>"${field.propertyName}"<#if fields[(fields?size)-1].propertyName!=field.propertyName>,</#if></#if></#list>}; 
 			return propNameArray;
 		}		
 
