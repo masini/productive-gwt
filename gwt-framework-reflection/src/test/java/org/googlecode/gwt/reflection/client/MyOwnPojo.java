@@ -35,7 +35,7 @@ public class MyOwnPojo implements Reflectable {
 	private Stati stato;
 	private Boolean bella;
 	
-	@Converter("org.googlecode.gwt.reflection.client.MyOwnPojo.IndirizzoConverter")
+	@Converter(IndirizzoConverter.class)
 	private Indirizzo indirizzo;
 	
 	public Indirizzo getIndirizzo() {

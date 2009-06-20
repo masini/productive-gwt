@@ -11,7 +11,7 @@ public class Articolo extends GenericModel{
 
 	private Long id;
 	
-	@Converter("org.googlecode.gwt.reflection.client.complexmodel.StatoArticoloConverter")
+	@Converter(org.googlecode.gwt.reflection.client.complexmodel.StatoArticoloConverter.class)
 	private StatoArticolo stato;
 	private Compratore compratore;
 	private BigDecimal peso;

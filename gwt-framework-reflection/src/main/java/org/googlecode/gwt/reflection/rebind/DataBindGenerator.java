@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -154,9 +153,9 @@ public class DataBindGenerator extends Generator {
 		List<Map<String, Object>> fields = new ArrayList<Map<String, Object>>();
 
 		root.put(FIELDS_KEY, fields);
-
 		Map<JField, JClassType> jFieldMap = new HashMap<JField, JClassType>();
 		calculateFields(classType, jFieldMap);
+		
 		//classType.getFields()
 		for (JField jField : jFieldMap.keySet()) {
 				Map<String, Object> field = new HashMap<String, Object>();
@@ -213,7 +212,7 @@ public class DataBindGenerator extends Generator {
 				
 				Converter c = jField.getAnnotation(Converter.class);
 				if(c != null){
-					field.put(CONVERTER_PROPERTY, c.value());
+					field.put(CONVERTER_PROPERTY, c.value().getCanonicalName());
 				}
 				else if(converterMap.get(type_property) != null){
 					field.put(CONVERTER_PROPERTY, converterMap.get(type_property));	
