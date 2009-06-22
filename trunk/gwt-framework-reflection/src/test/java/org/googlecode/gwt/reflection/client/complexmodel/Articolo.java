@@ -11,7 +11,7 @@ public class Articolo extends GenericModel{
 
 	private Long id;
 	
-	@Converter(org.googlecode.gwt.reflection.client.complexmodel.StatoArticoloConverter.class)
+
 	private StatoArticolo stato;
 	private Compratore compratore;
 	private BigDecimal peso;
@@ -71,15 +71,18 @@ public class Articolo extends GenericModel{
 	public void setFlInFattura(boolean flInFattura) {
 		this.flInFattura = flInFattura;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
+	
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	@Converter(org.googlecode.gwt.reflection.client.complexmodel.StatoArticoloConverter.class)
 	public StatoArticolo getStato() {
 		return stato;
 	}
