@@ -65,7 +65,7 @@
 			<#list fields as field>	
 			<#if field.canWrite>
 			if ("${field.propertyName}".equals(name)) {
-				instance.set${field.propertyName?cap_first}((${field.propertyType}) value);
+				instance.${field.propDesc.writeMethod.name}((${field.propertyType}) value);
 				firePropertyChange("${field.propertyName}", value);
 				return;
 			}
@@ -82,9 +82,9 @@
 		<#if field.canRead>		
 			if ("${field.propertyName}".equals(name)) {
 				<#if field.isPrimitive>
-					return (ReturnType) new ${field.propertyType}(instance.${field.prefix}${field.propertyName?cap_first}());
+					return (ReturnType) new ${field.propertyType}(instance.${field.propDesc.readMethod.name}());
 				<#else>
-					return (ReturnType) instance.${field.prefix}${field.propertyName?cap_first}();
+					return (ReturnType) instance.${field.propDesc.readMethod.name}();
 				</#if>
 			}
 		</#if>
