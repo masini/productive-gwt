@@ -35,9 +35,10 @@ public class MyOwnPojo implements Reflectable {
 	private Stati stato;
 	private Boolean bella;
 	
-	@Converter(IndirizzoConverter.class)
+	
 	private Indirizzo indirizzo;
 	
+	@Converter(IndirizzoConverter.class)
 	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
