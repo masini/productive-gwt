@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+	<!DOCTYPE document SYSTEM
+	"http://google-web-toolkit.googlecode.com/svn/releases/1.5/distro-source/core/src/gwt-module.dtd">
+-->
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff.                        -->
+	<inherits name="com.google.gwt.user.User"/>
+
+	<!-- Table di gwt-incubator -->
+	<inherits name="com.google.gwt.gen2.table.Table"/>
+
+	<stylesheet src="css/SimpleGrid.css"/> 
+
+	<!-- Source path -->
+  	<source path="client"/>
+  	<source path="shared"/>
+  	
+</module>
