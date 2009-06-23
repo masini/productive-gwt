@@ -20,16 +20,19 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>xxxx.distribution</id>
-			<name>xxxx Distribution Repository</name>
-			<url>http://miltom0.mil.xxxx.net/nexus-1.1.0/content/repositories/releases</url>
+			<id>${company.name}.distribution</id>
+			<url>http://${company.repository}/nexus-1.1.0/content/repositories/releases</url>
 		</repository>
-		<!-- <snapshotRepository>
-			<id>xxxx.snapshots</id>
-			<name>xxxx Snapshot Repository</name>
-			<url>http://miltom0.mil.xxxx.net/nexus-1.1.0/content/repositories/snapshots</url>
-		</snapshotRepository> -->
+		<snapshotRepository>
+			<id>${company.name}.snapshots</id>
+			<url>http://${company.repository}/nexus-1.1.0/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
+	<parent>
+		<artifactId>gwt-framework</artifactId>
+		<groupId>productive-gwt</groupId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
 	
 	<build>
 		<!--
@@ -147,14 +150,9 @@
 	</profiles>
 	
 	<repositories>
-		<!--
-			<repository> <id>gwt-maven</id>
-			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
-			</repository>
-		-->
 		<repository>
-			<id>xxxx.thirdparty</id>
-			<url>http://miltom0.mil.xxxx.net/nexus-1.1.0/content/repositories/thirdparty</url>
+			<id>${company.name}.thirdparty</id>
+			<url>http://${company.repository}/nexus-1.1.0/content/repositories/thirdparty</url>
 		</repository>
 	</repositories>
 
