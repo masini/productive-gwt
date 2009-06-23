@@ -7,10 +7,12 @@
 <listEntry value="4"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ALLOW_TERMINATE" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.maven.ide.eclipse.launchconfig.classpathProvider"/>
 <mapAttribute key="org.eclipse.jdt.launching.CONNECT_MAP">
 <mapEntry key="port" value="8000"/>
 <mapEntry key="hostname" value="localhost"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="gwt-framework-example"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.maven.ide.eclipse.launchconfig.sourcepathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_CONNECTOR_ID" value="org.eclipse.jdt.launching.socketAttachConnector"/>
 </launchConfiguration>

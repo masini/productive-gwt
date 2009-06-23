@@ -6,7 +6,21 @@
 	<inherits name='org.googlecode.gwt.header.Header'/>
 	<inherits name='org.googlecode.gwt.footer.Footer'/>
 	<inherits name='org.googlecode.gwt.menu.Menu'/>
+	<inherits name='org.googlecode.gwt.simplegrid.SimpleGrid' />
 	<inherits name='org.googlecode.gwt.reflection.Reflection'/>
 	
+	<!-- stylesheets -->
+	<stylesheet src="css/SimpleGridDemo.css"/> 
+	
+	<!-- Source path -->
+  	<source path="client"/>
+  	<source path="shared"/>
+	
 	<entry-point class="com.mycompany.project.client.FrameworkExample"/>
+	
+	<!-- SimpleGrid servlets -->
+	<servlet class="com.mycompany.project.server.DataServiceSerialImpl" path="/datasourceSerial"/>
+	<servlet class="com.mycompany.project.server.DataServiceBeanImpl" path="/datasourceBean"/>
+	<servlet class="com.mycompany.project.server.DataServiceBeanImpl2" path="/newDatasourceBean"/>
+	
 </module>
