@@ -41,7 +41,7 @@ public class ReflectionTestPubSubscribe extends GWTTestCase {
 
 		final List<Object> monitor = new ArrayList<Object>();
 		
-		wrapper.addValueChangeListener(new ValueChangeHandler<String>(){
+		wrapper.addValueChangeHandler(new ValueChangeHandler<String>(){
 
 			public void onValueChange(ValueChangeEvent<String> event) {
 				assertEquals("Proprietà scorretta: "+event.getValue(), "longField", event.getValue());
