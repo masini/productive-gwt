@@ -60,7 +60,13 @@ public interface MyMenu extends SMenu{
 			 */
 			PrimoCommand terzoPanel();
 		}
-
 	}
 
+	/**
+	 * @gwt.item_position 4
+	 * @gwt.item_label SimpleGrid Demo
+	 * @gwt.item_icon images/user.png
+	 * @gwt.user_role terzoPanelPopup
+	 */
+	QuartoCommand simpleGridPanel();
 }

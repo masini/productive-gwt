@@ -8,6 +8,17 @@
   
   <artifactId>example</artifactId>
   
+    <repositories>
+		<repository>
+			<id>esselunga.thirdparty</id>
+			<url>http://miltom0.mil.xxx.net/nexus-1.1.0/content/repositories/thirdparty</url>
+		</repository>
+        <repository>
+            <id>esselunga.snapshots</id>
+            <url>http://miltom0.mil.xxx.net/nexus-1.1.0/content/repositories/snapshots</url>
+        </repository>
+	</repositories>
+	
 	<pluginRepositories>
         <pluginRepository>
             <id>gwt-maven-plugins</id>
@@ -65,7 +76,7 @@
 				<logLevel>INFO</logLevel>
 				<style>DETAILED</style>
 				<noServer>false</noServer>
-				<extraJvmArgs>-Xmx512m -da:com.google.gwt.user.client.ui.RootPanel</extraJvmArgs>
+				<extraJvmArgs>-Xmx512m -Xss2048k -da:com.google.gwt.user.client.ui.RootPanel</extraJvmArgs>
 				<gwtVersion>${gwtVersion}</gwtVersion>
 			</configuration>
 			<executions>
@@ -73,7 +84,7 @@
 					<goals>
 						<!-- <goal>mergewebxml</goal>-->
 						<!-- <goal>i18n</goal>-->
-<!--							<goal>compile</goal>							-->
+<goal>compile</goal>
 <!--                            <goal>test</goal>-->
 					</goals>
 				</execution>
@@ -156,6 +167,11 @@
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
-        
+        <dependency>
+			<groupId>productive-gwt</groupId>
+			<artifactId>simplegrid</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
     </dependencies>
 </project>
