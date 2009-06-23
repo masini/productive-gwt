@@ -28,7 +28,7 @@ public class ReflectionEntryPoint implements EntryPoint {
 		
 		final Wrapper<MyOwnPojo> myOwnPojo = wrapperFactory.createWrapper(new MyOwnPojo());
 		
-		myOwnPojo.addValueChangeListener(new ValueChangeHandler<String>(){
+		myOwnPojo.addValueChangeHandler(new ValueChangeHandler<String>(){
 
 			public void onValueChange(ValueChangeEvent<String> event) {
 				GWT.log("event: "+event.getValue(), null);
