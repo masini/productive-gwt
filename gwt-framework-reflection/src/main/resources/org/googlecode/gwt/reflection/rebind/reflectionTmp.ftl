@@ -23,14 +23,14 @@
 			this.instance = instance;
 		}
 
-		public void addValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener) {
+		public void addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
 			
-			handlers.add(listener);
+			handlers.add(handler);
 		}		
 
-		public void removeValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener) {
+		public void removeValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
 			
-			handlers.remove(listener);
+			handlers.remove(handler);
 		}		
 
 		public class E extends com.google.gwt.event.logical.shared.ValueChangeEvent<String> {
@@ -96,6 +96,15 @@
 		public ${pojoClassName} getWrappedObject() {
 			// TODO Auto-generated method stub
 			return instance;
+		}
+		
+		public Class<?> getPropertyType(String propertyName){
+		<#list fields as field>	
+			if ("${field.propertyName}".equals(propertyName)) {
+				return ${field.propertyType}.class;
+			}
+		</#list>	
+			throw new UnsupportedOperationException(propertyName);		
 		}
 		
 		public String getPropertyAsString(String name) {

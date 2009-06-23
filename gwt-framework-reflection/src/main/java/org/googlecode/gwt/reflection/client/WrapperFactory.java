@@ -16,10 +16,11 @@ public interface WrapperFactory<T> {
 		public void setPropertyAsString(String name, String value);	
 		public String getPropertyAsString(String name);
 
-		public void addValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener);
-		public void removeValueChangeListener(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener);
+		public void addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
+		public void removeValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
 		
 		public String[] getPropertiesName();
+		public Class<?> getPropertyType(String propName);
 		
 	}
 
