@@ -4,6 +4,7 @@ package org.googlecode.gwt.reflection;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.googlecode.gwt.reflection.client.ReflectionTestCollectionPojo;
 import org.googlecode.gwt.reflection.client.ReflectionTestMyOwnPojo;
 import org.googlecode.gwt.reflection.client.ReflectionTestNewOwnPojo;
 import org.googlecode.gwt.reflection.client.ReflectionTestPubSubscribe;
@@ -16,6 +17,7 @@ public class GwtReflectionTestSuite extends com.google.gwt.junit.tools.GWTTestSu
 		suite.addTestSuite(ReflectionTestNewOwnPojo.class);
 		suite.addTestSuite(ReflectionTestPubSubscribe.class);
 		suite.addTestSuite(ReflectionTestComplexModel.class);
+		suite.addTestSuite(ReflectionTestCollectionPojo.class);
 		return suite;
 	}
 }
