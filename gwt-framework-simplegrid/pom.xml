@@ -13,27 +13,12 @@
 		<gwtVersion>1.6.4</gwtVersion>
 	</properties>
 	
-	<dependencyManagement>
-		<dependencies>
-		</dependencies>
-	</dependencyManagement>
-	
-	<distributionManagement>
-		<repository>
-			<id>${company.name}.distribution</id>
-			<url>http://${company.repository}/nexus-1.1.0/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>${company.name}.snapshots</id>
-			<url>http://${company.repository}/nexus-1.1.0/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<parent>
 		<artifactId>gwt-framework</artifactId>
 		<groupId>productive-gwt</groupId>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	
+		
 	<build>
 		<!--
 			Include SOURCE in output artifact for GWT (GWT libraries must include
@@ -45,32 +30,45 @@
 			</resource>
 		</resources>
 		<plugins>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-dependency-plugin</artifactId>-->
+<!--				<version>2.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>unpack</id>-->
+<!--						<phase>compile</phase>-->
+<!--						<goals>-->
+<!--							<goal>unpack</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<artifactItems>-->
+<!--								<artifactItem>-->
+<!--									<groupId>com.google.gwt</groupId>-->
+<!--									<artifactId>gwt-dev</artifactId>-->
+<!--									<version>${gwtVersion}</version>-->
+<!--									<classifier>${platform}-libs</classifier>-->
+<!--									<type>zip</type>-->
+<!--									<overWrite>false</overWrite>-->
+<!--									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>-->
+<!--								</artifactItem>-->
+<!--							</artifactItems>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.0</version>
-				<executions>
-					<execution>
-						<id>unpack</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.google.gwt</groupId>
-									<artifactId>gwt-dev</artifactId>
-									<version>${gwtVersion}</version>
-									<classifier>${platform}-libs</classifier>
-									<type>zip</type>
-									<overWrite>false</overWrite>
-									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<file>C:\Users\ictlm1.MIL\.m2\repository\com\google\gwt\gwt-incubator\1.6\gwt-incubator-1.6.jar</file>
+					<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/</url>
+					<id>distribution</id>
+					<groupId>com.google.gwt</groupId>
+					<artifactId>gwt-incubator</artifactId>
+					<version>1.6</version>
+					<packaging>jar</packaging>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -120,7 +118,40 @@
 				</configuration>
 			</plugin>
 		</plugins>
+	    <extensions>
+	      <extension>
+	        <groupId>org.apache.maven.wagon</groupId>
+	        <artifactId>wagon-scm</artifactId>
+	        <version>1.0-beta-5</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.wagon</groupId>
+	        <artifactId>wagon-provider-api</artifactId>
+	        <version>1.0-beta-5</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.scm</groupId>
+	        <artifactId>maven-scm-manager-plexus</artifactId>
+	        <version>1.2</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.scm</groupId>
+	        <artifactId>maven-scm-provider-svnexe</artifactId>
+	        <version>1.0</version>
+	      </extension>
+	    </extensions>
+
 	</build>
+	
+	
+	
+	<distributionManagement>
+		<repository>
+			<id>distribution</id>
+			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
+		</repository>
+	</distributionManagement>	
+	
 	
 	<profiles>
 		<profile>
@@ -151,8 +182,8 @@
 	
 	<repositories>
 		<repository>
-			<id>${company.name}.thirdparty</id>
-			<url>http://${company.repository}/nexus-1.1.0/content/repositories/thirdparty</url>
+			<id>productive-gwt</id>
+			<url>http://productive-gwt.googlecode.com/svn/trunk</url>
 		</repository>
 	</repositories>
 
@@ -163,6 +194,11 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
+	<dependency>
+		        <groupId>org.apache.maven.wagon</groupId>
+	        <artifactId>wagon-provider-api</artifactId>
+	        <version>1.0-beta-2</version>
+	</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
