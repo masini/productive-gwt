@@ -15,6 +15,6 @@ import org.googlecode.gwt.base.client.BootstrapData;
  */
 public interface BootstrapDataResolver {
     BootstrapData getBootstrapData(final HttpServletRequest request);
-
     ApplicationContextData getAppContextData(final HttpServletRequest request,final String appContextName);
+    
 }

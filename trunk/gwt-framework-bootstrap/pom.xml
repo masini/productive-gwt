@@ -92,18 +92,18 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>esselunga-validation</groupId>
-			<artifactId>validation</artifactId>
-			<version>69</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>commons</groupId>
-			<artifactId>esselunga-commons</artifactId>
-			<version>1.0.0033</version>
-			<type>jar</type>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>esselunga-validation</groupId>-->
+<!--			<artifactId>validation</artifactId>-->
+<!--			<version>69</version>-->
+<!--			<type>jar</type>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>commons</groupId>-->
+<!--			<artifactId>esselunga-commons</artifactId>-->
+<!--			<version>1.0.0033</version>-->
+<!--			<type>jar</type>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>net.sf.gwt-widget</groupId>
 			<artifactId>gwt-widgets</artifactId>

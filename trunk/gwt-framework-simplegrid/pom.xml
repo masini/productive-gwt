@@ -32,44 +32,17 @@
 		<plugins>
 <!--			<plugin>-->
 <!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-dependency-plugin</artifactId>-->
-<!--				<version>2.0</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>unpack</id>-->
-<!--						<phase>compile</phase>-->
-<!--						<goals>-->
-<!--							<goal>unpack</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<artifactItems>-->
-<!--								<artifactItem>-->
-<!--									<groupId>com.google.gwt</groupId>-->
-<!--									<artifactId>gwt-dev</artifactId>-->
-<!--									<version>${gwtVersion}</version>-->
-<!--									<classifier>${platform}-libs</classifier>-->
-<!--									<type>zip</type>-->
-<!--									<overWrite>false</overWrite>-->
-<!--									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>-->
-<!--								</artifactItem>-->
-<!--							</artifactItems>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
+<!--				<artifactId>maven-deploy-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<file>C:\Users\ictlm1.MIL\.m2\repository\com\google\gwt\gwt-incubator\1.6\gwt-incubator-1.6.jar</file>-->
+<!--					<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/</url>-->
+<!--					<id>distribution</id>-->
+<!--					<groupId>com.google.gwt</groupId>-->
+<!--					<artifactId>gwt-incubator</artifactId>-->
+<!--					<version>1.6</version>-->
+<!--					<packaging>jar</packaging>-->
+<!--				</configuration>-->
 <!--			</plugin>-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<file>C:\Users\ictlm1.MIL\.m2\repository\com\google\gwt\gwt-incubator\1.6\gwt-incubator-1.6.jar</file>
-					<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/</url>
-					<id>distribution</id>
-					<groupId>com.google.gwt</groupId>
-					<artifactId>gwt-incubator</artifactId>
-					<version>1.6</version>
-					<packaging>jar</packaging>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -118,29 +91,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	    <extensions>
-	      <extension>
-	        <groupId>org.apache.maven.wagon</groupId>
-	        <artifactId>wagon-scm</artifactId>
-	        <version>1.0-beta-5</version>
-	      </extension>
-	      <extension>
-	        <groupId>org.apache.maven.wagon</groupId>
-	        <artifactId>wagon-provider-api</artifactId>
-	        <version>1.0-beta-5</version>
-	      </extension>
-	      <extension>
-	        <groupId>org.apache.maven.scm</groupId>
-	        <artifactId>maven-scm-manager-plexus</artifactId>
-	        <version>1.2</version>
-	      </extension>
-	      <extension>
-	        <groupId>org.apache.maven.scm</groupId>
-	        <artifactId>maven-scm-provider-svnexe</artifactId>
-	        <version>1.0</version>
-	      </extension>
-	    </extensions>
-
 	</build>
 	
 	
@@ -148,7 +98,7 @@
 	<distributionManagement>
 		<repository>
 			<id>distribution</id>
-			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
+			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository>
 	</distributionManagement>	
 	

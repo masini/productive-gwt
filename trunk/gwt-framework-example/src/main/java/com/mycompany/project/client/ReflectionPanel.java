@@ -21,24 +21,21 @@ public class ReflectionPanel extends Composite {
 
 	public ReflectionPanel() {
 
-//		WrapperFactory<MyOwnPojo> myOwnPojoWrapperFactory = GWT.create(MyOwnPojo.class);
-		
-//		WrapperFactory<NewOwnPojo> newOwnPojoWrapperFactory = GWT.create(NewOwnPojo.class);
 		WrapperFactory<MyOwnPojo> wrapperFactory = GWT.create(MyOwnPojo.class);
 		
 		final Wrapper<MyOwnPojo> myOwnPojo = wrapperFactory.createWrapper(new MyOwnPojo());
 		
-		myOwnPojo.addValueChangeListener(new ValueChangeHandler<String>(){
-
+		myOwnPojo.addValueChangeHandler(new ValueChangeHandler<String>(){
 			public void onValueChange(ValueChangeEvent<String> event) {
 				GWT.log("event: "+event.getValue(), null);
-			}});
+			}
+		});
 		
 		myOwnPojo.getWrappedObject().setDataNascita(new Date());
-		myOwnPojo.getWrappedObject().setNome("Graziella");
+		myOwnPojo.getWrappedObject().setNome("Nome");
 		myOwnPojo.getWrappedObject().setEta(80);
 		
-		MyOwnPojo.Indirizzo indirizzo = new MyOwnPojo.Indirizzo("milano", 30, "giambellino");
+		MyOwnPojo.Indirizzo indirizzo = new MyOwnPojo.Indirizzo("Firenze", 30, "giambellino");
 		myOwnPojo.getWrappedObject().setIndirizzo(indirizzo);
 		
 		
