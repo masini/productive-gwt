@@ -23,4 +23,9 @@
 	<servlet class="com.mycompany.project.server.DataServiceBeanImpl" path="/datasourceBean"/>
 	<servlet class="com.mycompany.project.server.DataServiceBeanImpl2" path="/newDatasourceBean"/>
 	
+	<!-- Disable compilation for all browser for speed during developemnt cycles -->
+	<set-property name="user.agent" value="ie6" />
+	<extend-property name="locale" values="it_IT"/>
+	<set-property name="locale" value="it_IT" />
+		
 </module>
