@@ -13,6 +13,8 @@
 		<module>../gwt-framework-footer</module>
 		<module>../gwt-framework-header</module>
 		<module>../gwt-framework-menu</module>
+		<module>../gwt-framework-reflection</module>
+		<module>../gwt-framework-simplegrid</module>
 		<module>../gwt-framework-template</module>
 
 	</modules>
@@ -32,23 +34,39 @@
 
 		</plugins>
 
+	    <extensions>
+	      <extension>
+	        <groupId>org.apache.maven.wagon</groupId>
+	        <artifactId>wagon-scm</artifactId>
+	        <version>1.0-beta-5</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.wagon</groupId>
+	        <artifactId>wagon-provider-api</artifactId>
+	        <version>1.0-beta-5</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.scm</groupId>
+	        <artifactId>maven-scm-manager-plexus</artifactId>
+	        <version>1.2</version>
+	      </extension>
+	      <extension>
+	        <groupId>org.apache.maven.scm</groupId>
+	        <artifactId>maven-scm-provider-svnexe</artifactId>
+	        <version>1.0</version>
+	      </extension>
+	    </extensions>
+
+
 	</build>
 	
-    <distributionManagement>
-        <repository>
-            <id>esselunga.distribution</id>
-            <name>Esselunga Distribution Repository</name>
-            <url>
-                http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/releases 
-            </url>
-        </repository>
-        <snapshotRepository>
-            <id>esselunga.snapshots</id>
-            <name>Esselunga Snapshot Repository</name>
-            <url>
-                http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/snapshots 
-            </url>
-        </snapshotRepository>
-    </distributionManagement>
+	
+	
+	<distributionManagement>
+		<repository>
+			<id>distribution</id>
+			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
+		</repository>
+	</distributionManagement>
 	
 </project>
