@@ -19,6 +19,9 @@ public interface WrapperFactory<T> {
 		public void addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
 		public void removeValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
 		
+		public void addValueChangeHandler(String property, com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
+		public void removeValueChangeHandler(String property, com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler);
+
 		public String[] getPropertiesName();
 		public Class<?> getPropertyType(String propName);
 		

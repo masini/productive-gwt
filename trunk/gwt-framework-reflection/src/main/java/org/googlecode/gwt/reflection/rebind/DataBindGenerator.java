@@ -177,6 +177,7 @@ public class DataBindGenerator extends Generator {
 		composerFactory.addImport(Date.class.getName());
 		composerFactory.addImport(Map.class.getName());
 		composerFactory.addImport(HashMap.class.getName());
+		composerFactory.addImport(ArrayList.class.getName());
 		composerFactory.addImport(WrapperFactory.class.getName());
 		return composerFactory.createSourceWriter(context, printWriter);
 	}

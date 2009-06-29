@@ -15,13 +15,25 @@
 
 		private final ${pojoClassName} instance;
 
+		private java.util.Map<String, ArrayList<com.google.gwt.event.logical.shared.ValueChangeHandler<String>>> handlersMap = new java.util.HashMap<String, ArrayList<com.google.gwt.event.logical.shared.ValueChangeHandler<String>>>();
+
 		private java.util.List<com.google.gwt.event.logical.shared.ValueChangeHandler<String>> handlers = new java.util.ArrayList<com.google.gwt.event.logical.shared.ValueChangeHandler<String>>(); 
 
 		public WrappedPojo(${pojoClassName} instance) {
 			super();
 
 			this.instance = instance;
+			initializeHandlerMap();
 		}
+		
+  		private void initializeHandlerMap() {
+		<#list fields as field>
+			<#if field.canWrite | field.canRead>
+			handlersMap.put("${field.propertyName}", new ArrayList<com.google.gwt.event.logical.shared.ValueChangeHandler<String>>());
+			</#if>
+		</#list>	
+		}
+		
 
 		public void addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
 			
@@ -31,7 +43,22 @@
 		public void removeValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
 			
 			handlers.remove(handler);
-		}		
+		}	
+		
+		public void addValueChangeHandler(String property, com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
+  			
+  			if(handlersMap.get(property)!= null){
+  				handlersMap.get(property).add(handler);
+  			}
+  		}		
+  
+  		public void removeValueChangeHandler(String property, com.google.gwt.event.logical.shared.ValueChangeHandler<String> handler) {
+  			
+ 			if(handlersMap.get(property)!= null){
+  				handlersMap.get(property).remove(handler);
+  			}
+  		}		
+			
 
 		public class E extends com.google.gwt.event.logical.shared.ValueChangeEvent<String> {
 			public E(String instance) {
@@ -52,6 +79,11 @@
 					for(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener: handlers) {
 						listener.onValueChange(event);
 					}
+  		 			if(handlersMap.get(propertyName)!= null){
+  		 				for(com.google.gwt.event.logical.shared.ValueChangeHandler<String> listener: handlersMap.get(propertyName)) {
+  	  						listener.onValueChange(event);
+  	  					}
+  		  			}  										
 				}
 				finally {
 					enableFireProperty = true;
