@@ -4,42 +4,39 @@ package com.mycompany.project.client;
 import java.util.Date;
 
 import org.googlecode.gwt.reflection.client.Reflectable;
-import org.googlecode.gwt.reflection.client.WrapperFactory;
 import org.googlecode.gwt.reflection.client.converters.Converter;
 
-import com.google.gwt.core.client.GWT;
-
-public class MyOwnPojo implements Reflectable {
+public class PersonPojo implements Reflectable {
 	
-	public static final class IndirizzoConverter implements WrapperFactory.Converter<Indirizzo>{
-
-		public Indirizzo convertFromString(String value) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String convertToString(Indirizzo value) {
-			// TODO Auto-generated method stub
-			return value.getVia()+", "+Integer.toString(value.getNumero())+ " - "+value.getCitta();
-		}
-		
-	}
-
 	public enum Stati {
-		A,
-		B,
-		C
+		CELIBE,
+		NUBILE,
+		CONIUGATO
 	}
 	
 	private String nome;
+	private String cognome;
 	private int eta;
 	private Date dataNascita;
 	private Stati stato;
-	private Boolean bella;
+	private boolean uomo;
 	
+	public String getCognome() {
+		return cognome;
+	}
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+	public boolean isUomo() {
+		return uomo;
+	}
+	public void setUomo(boolean uomo) {
+		this.uomo = uomo;
+	}
+
 	private Indirizzo indirizzo;
 	
-	@Converter(MyOwnPojo.IndirizzoConverter.class)
+	@Converter(IndirizzoConverter.class)	
 	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
@@ -91,19 +88,11 @@ public class MyOwnPojo implements Reflectable {
 		
 	}
 	
-	public Boolean isBella() {
-		return bella;
-	}
-	public void setBella(Boolean bella) {
-		GWT.log("Bella:"+bella, null);
-		this.bella = bella;
-	}
+	@Converter(StatiConverter.class)
 	public Stati getStato() {
 		return stato;
 	}
 	public void setStato(Stati stato) {
-		GWT.log("Stato:"+stato, null);
-		
 		this.stato = stato;
 	}
 	public String getNome() {
