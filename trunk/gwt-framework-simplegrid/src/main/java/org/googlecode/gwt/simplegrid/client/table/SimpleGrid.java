@@ -221,6 +221,7 @@ public class SimpleGrid<RowType> extends Composite {
 			@Override
 	        public Object getCellValue(RowType rowValue) {    	
 	        	
+	        	
 	        	Object cellValue = tableController.getColumnsWrapper().get(rowValue, columnIndex);
 	        	
 	        	if(cellValue instanceof TextCellEditor)

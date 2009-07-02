@@ -8,12 +8,14 @@ public final class SimpleGridFactory {
 	}
 
 	// Public CONSTRUCTOR methods
+	@Deprecated
 	public static <SerializableRowType extends Serializable> SimpleGrid<SerializableRowType> createSimpleGrid(String dataSource, String... columnsName) {
 		
 		return new SimpleGrid<SerializableRowType>(new DataServiceTableController<SerializableRowType>(dataSource), new TableConfigurer<SerializableRowType>(), columnsName);
 	}
 
 	// Public CONSTRUCTOR methods
+	@Deprecated
 	public static <SerializableRowType extends Serializable> SimpleGrid<SerializableRowType> createSimpleGrid(String dataSource, TableConfigurer<SerializableRowType> tableConfigurer, String... columnsName) {
 		return new SimpleGrid<SerializableRowType>(new DataServiceTableController<SerializableRowType>(dataSource), tableConfigurer, columnsName);
 	}
