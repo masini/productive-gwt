@@ -1,5 +1,10 @@
 package com.mycompany.project.client;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.googlecode.gwt.reflection.client.WrapperFactory;
 import org.googlecode.gwt.simplegrid.client.table.ListCellEditor;
 import org.googlecode.gwt.simplegrid.client.table.SimpleGrid;
 import org.googlecode.gwt.simplegrid.client.table.SimpleGridClickHandler;
@@ -11,13 +16,6 @@ import org.googlecode.gwt.simplegrid.client.table.TableController;
 import org.googlecode.gwt.simplegrid.client.table.TextCellEditor;
 import org.googlecode.gwt.simplegrid.shared.DataRequest;
 import org.googlecode.gwt.simplegrid.shared.DataResponse;
-import com.mycompany.project.shared.MyDataSourceService;
-import com.mycompany.project.shared.MyDataSourceServiceAsync;
-import com.mycompany.project.shared.PojoBean;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -37,6 +35,9 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.mycompany.project.shared.MyDataSourceService;
+import com.mycompany.project.shared.MyDataSourceServiceAsync;
+import com.mycompany.project.shared.PojoBean;
 
 public class SimpleGridPanel extends Composite {
 
@@ -168,7 +169,8 @@ public class SimpleGridPanel extends Composite {
 		 * TABLE 2 - Base Constructor (customTableController, tableConfigurer, String[] columnsName)
 		 */
 		final SimpleGrid<PojoBean> table2 = SimpleGridFactory.createSimpleGrid(
-				new MyCustomTableController(),
+				new MyCustomTableController((WrapperFactory<PojoBean>)GWT.create(PojoBean.class)),
+				//new TableController<PojoBean>(Wrapperfactory),
 				tableConfigurer,
 				"COL 1", "COL 2 (edit combo)","COL 3","COL 4", "COL 5 (edit text)");
 		
@@ -282,6 +284,10 @@ public class SimpleGridPanel extends Composite {
 	 */
 	class MyCustomTableController extends TableController<PojoBean> {
 		 
+		public MyCustomTableController(WrapperFactory<PojoBean> wrapperFactory) {
+			super(wrapperFactory);
+		}
+		
 		  /**
 		   * Override that can optionally throw an error.
 		   */
