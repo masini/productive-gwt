@@ -143,6 +143,7 @@
 			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
 	<dependencies>
 	<dependency>
 		        <groupId>org.apache.maven.wagon</groupId>
@@ -183,5 +184,11 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		 <dependency>
+            <groupId>productive-gwt</groupId>
+            <artifactId>reflection</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
 	</dependencies>
 </project>  

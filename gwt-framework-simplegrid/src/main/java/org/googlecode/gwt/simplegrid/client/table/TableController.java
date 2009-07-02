@@ -20,6 +20,8 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+import org.googlecode.gwt.reflection.client.WrapperFactory;
+import org.googlecode.gwt.reflection.client.WrapperFactory.Wrapper;
 import org.googlecode.gwt.simplegrid.shared.DataRequest;
 import org.googlecode.gwt.simplegrid.shared.DataResponse;
 import org.googlecode.gwt.simplegrid.shared.DataRequest.DataColumnSortInfo;
@@ -53,6 +55,8 @@ public abstract class TableController<RowType> extends MutableTableModel<RowType
 		private SimpleGridDoubleClickHandler doubleClickHandler;
 		private Cell clickedHTMLcell = null;
 		
+		private WrapperFactory<RowType> wrapperFactory = null; 
+		
 		//Wrapper interface  
 		public interface ColumnsWrapper<E>
 			{
@@ -70,10 +74,15 @@ public abstract class TableController<RowType> extends MutableTableModel<RowType
 		//collection of listeners
 		//private TableListenerCollectionCustom collection = new TableListenerCollectionCustom();
 		
+		public TableController(WrapperFactory<RowType> wrapperFactory) {
+			super();
+			this.wrapperFactory = wrapperFactory;
+		}
+		
 		public TableController() {
 			super();
 		}
-
+		
 		@SuppressWarnings("unchecked")
 		protected <T extends Serializable> Filter<T> createFilter() {
 			return filter;
@@ -101,6 +110,13 @@ public abstract class TableController<RowType> extends MutableTableModel<RowType
 						if(celleRigaServer.get(index) != null)
 							return celleRigaServer.get(index);
 					}
+					else if(wrapperFactory != null)
+					{
+						Wrapper<RowType> rowWrapper = wrapperFactory.createWrapper(row);
+			    		String[] propertiesName = rowWrapper.getPropertiesName();
+			    		
+			    		return rowWrapper.getProperty(propertiesName[index]);
+			        }
 					
 					return "";
 			    }
@@ -112,6 +128,13 @@ public abstract class TableController<RowType> extends MutableTableModel<RowType
 						List<Object> celleRigaServer = Arrays.asList((Object[]) row);
 						celleRigaServer.set(index, cellValue);
 			  		}
+					else if(wrapperFactory != null)
+					{
+						Wrapper<RowType> rowWrapper = wrapperFactory.createWrapper(row);
+			    		String[] propertiesName = rowWrapper.getPropertiesName();
+			    		
+			    		rowWrapper.setProperty(propertiesName[index], cellValue);
+			        }
 			    }
 			};
 		}
