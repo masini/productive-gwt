@@ -2,7 +2,9 @@ package com.mycompany.project.shared;
 
 import java.io.Serializable;
 
-public class PojoBean implements Serializable {
+import org.googlecode.gwt.reflection.client.Reflectable;
+
+public class PojoBean implements Serializable, Reflectable {
 	
 	/**
 	 * 
