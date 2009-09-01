@@ -8,36 +8,15 @@
   
   <artifactId>example</artifactId>
   
-    <repositories>
-		<repository>
-			<id>esselunga.thirdparty</id>
-			<url>http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/thirdparty</url>
-		</repository>
-		<repository>
-			<id>esselunga.releases</id>
-			<url>http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/releases</url>
-		</repository>
-        <repository>
-            <id>esselunga.snapshots</id>
-            <url>http://miltom0.mil.esselunga.net/nexus-1.1.0/content/repositories/snapshots</url>
-        </repository>
-        <repository>
-			<id>distribution</id>
-			<url>http://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
-		</repository>
-	</repositories>
-	
-	<pluginRepositories>
-        <pluginRepository>
-            <id>gwt-maven-plugins</id>
-            <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
-        </pluginRepository>
-    </pluginRepositories>    
-  
     <properties>
         <gwtVersion>1.6.4</gwtVersion>
         <targetJdk>1.5</targetJdk>
+		<moduleName>org.googlecode.gwt.reflection.GeneratorTest</moduleName>
+		<runTarget>${moduleName}/GeneratorTest.html</runTarget>
+		<noServer>false</noServer>
+		<debugAgent></debugAgent>        
     </properties>
+    
     <profiles>
         <profile>
             <id>gwt-dev-windows</id>
@@ -51,6 +30,15 @@
                 </os>
             </activation>
         </profile>
+		<profile>
+			<id>gwt-debug</id>
+			<properties>
+				<debugAgent>-agentlib:jdwp=transport=dt_socket,suspend=y,server=y,address=localhost:8080</debugAgent>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
     </profiles>
     <build>
         <resources>
@@ -71,34 +59,41 @@
                 <target>1.5</target>
             </configuration>
         </plugin>
-	    <!--  configure the GWT-Maven plugin -->
-		<plugin>
-			<groupId>com.totsp.gwt</groupId>
-			<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
-			<version>2.0-beta26</version>
-			<configuration>
-				<compileTargets>
-					<value>com.mycompany.project.FrameworkExample</value>
-				</compileTargets>
-				<runTarget>com.mycompany.project.FrameworkExample/FrameworkExample.html</runTarget>
-				<logLevel>INFO</logLevel>
-				<style>DETAILED</style>
-				<noServer>false</noServer>
-				<extraJvmArgs>-Xmx512m -Xss2048k -da:com.google.gwt.user.client.ui.RootPanel</extraJvmArgs>
-				<gwtVersion>${gwtVersion}</gwtVersion>
-			</configuration>
-			<executions>
-				<execution>
-					<goals>
-						<!-- <goal>mergewebxml</goal>-->
-						<!-- <goal>i18n</goal>-->
-<!-- <goal>compile</goal> -->
-<!--                            <goal>test</goal>-->
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-        
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>gwt-maven-plugin</artifactId>
+		        <version>1.1</version>
+				<configuration>
+					<compileTargets>
+						<value>com.mycompany.project.FrameworkExample</value>
+					</compileTargets>
+					<runTarget>com.mycompany.project.FrameworkExample/FrameworkExample.html</runTarget>
+					<runTarget>${runTarget}</runTarget>
+					<logLevel>INFO</logLevel>
+					<style>DETAILED</style>
+					<noServer>${noServer}</noServer>
+					<extraJvmArgs>-Xmx512m -Xss4096k -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
+					<gwtVersion>${gwtVersion}</gwtVersion>
+					<testTimeOut>600</testTimeOut>
+				</configuration>
+				<executions>
+					<execution>
+						<id>clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>test</goal>
+							<goal>resources</goal>
+<!--							<goal>i18n</goal>-->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
      </plugins>
     </build>
     <distributionManagement>
