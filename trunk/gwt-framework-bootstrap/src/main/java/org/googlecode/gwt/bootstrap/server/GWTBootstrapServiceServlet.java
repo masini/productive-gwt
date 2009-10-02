@@ -1,5 +1,9 @@
 package org.googlecode.gwt.bootstrap.server;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -22,33 +26,15 @@ public class GWTBootstrapServiceServlet extends RemoteServiceServlet implements 
 
 	protected transient ApplicationContextDataResolver appContextDataResolver;
 	
-	private BootstrapDataResolverFactory resolverFactory = new BootstrapDataResolverFactory() {
-
-		@Override
-		public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
-			try {
-				DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
-				
-				UserInfoResolver userInfoResolver = new DummyUserInfoResolver();
-				resolver.setUserInfoResolver(userInfoResolver);
-				
-				return resolver;
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
-		}
-	};
-	
 	@Override
 	public void init() throws ServletException {
 
 		Map<String, String> params = extractInitParameters();
 		
-		this.resolver = resolverFactory.createUserInfoResolver(params);
+		this.resolver = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver().createUserInfoResolver(params);
 		
 		appContextDataResolver = new DefaultApplicationContextDataResolver(resolver);									
 	}
-
 
 	@SuppressWarnings("unchecked")
 	private Map<String, String> extractInitParameters() {

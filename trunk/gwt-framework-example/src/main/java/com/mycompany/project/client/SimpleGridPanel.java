@@ -285,7 +285,7 @@ public class SimpleGridPanel extends Composite {
 	class MyCustomTableController extends TableController<PojoBean> {
 		 
 		public MyCustomTableController(WrapperFactory<PojoBean> wrapperFactory) {
-			super(wrapperFactory);
+			super();
 		}
 		
 		  /**

@@ -7,6 +7,7 @@
 	</parent>
   
   <artifactId>example</artifactId>
+  <packaging>war</packaging>
   
     <properties>
         <gwtVersion>1.6.4</gwtVersion>
@@ -75,6 +76,7 @@
 					<extraJvmArgs>-Xmx512m -Xss4096k -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
 					<gwtVersion>${gwtVersion}</gwtVersion>
 					<testTimeOut>600</testTimeOut>
+					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
 				</configuration>
 				<executions>
 					<execution>
