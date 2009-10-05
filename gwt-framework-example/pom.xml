@@ -12,8 +12,8 @@
     <properties>
         <gwtVersion>1.6.4</gwtVersion>
         <targetJdk>1.5</targetJdk>
-		<moduleName>org.googlecode.gwt.reflection.GeneratorTest</moduleName>
-		<runTarget>${moduleName}/GeneratorTest.html</runTarget>
+		<moduleName>com.mycompany.project.FrameworkExample</moduleName>
+		<runTarget>${moduleName}/FrameworkExample.html</runTarget>
 		<noServer>false</noServer>
 		<debugAgent></debugAgent>        
     </properties>
@@ -68,15 +68,14 @@
 					<compileTargets>
 						<value>com.mycompany.project.FrameworkExample</value>
 					</compileTargets>
-					<runTarget>com.mycompany.project.FrameworkExample/FrameworkExample.html</runTarget>
 					<runTarget>${runTarget}</runTarget>
 					<logLevel>INFO</logLevel>
 					<style>DETAILED</style>
 					<noServer>${noServer}</noServer>
-					<extraJvmArgs>-Xmx512m -Xss4096k -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
+					<extraJvmArgs>-da:com.google.gwt.user.client.ui.RootPanel -Xmx512m -Xss4096k -Dgwt.args="-gen src/main/generated" ${debugAgent}</extraJvmArgs>
 					<gwtVersion>${gwtVersion}</gwtVersion>
 					<testTimeOut>600</testTimeOut>
-					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+<!--					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>-->
 				</configuration>
 				<executions>
 					<execution>
