@@ -1,6 +1,7 @@
 package org.googlecode.gwt.bootstrap.client;
 
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +15,8 @@ public class DefaultUserInfo implements UserInfo {
     private String username;
     private String firstName;
     private String lastName;
-    private Map<String,String> roleDescriptions;
-    private Map<String,String> userParameters;
+    private Map<String,String> roleDescriptions = new HashMap<String,String>();
+    private Map<String,String> userParameters = new HashMap<String,String>();
 
     private static final long serialVersionUID = 1931201066080419627L;
 
