@@ -100,6 +100,7 @@ public class BootstrapEntryPoint implements EntryPoint {
         public void onUncaughtException( Throwable e ) {
         	//MessageBox.alert( bsConstants.errore_title() + " generico", "Uncaught Exception\n" + ( e == null ? "null" : e.toString() ) );
         	Window.alert(bsConstants.errore_title() + " generico Uncaught Exception\n" + ( e == null ? "null" : e.toString() ) );
+        	GWT.log("errore generico", e);
         }
     }
 }
