@@ -38,6 +38,6 @@ public class BootstrapServiceFactory {
 
     private static void initializeProxy(Object proxy) {
         ServiceDefTarget target = ( ServiceDefTarget )proxy;
-        target.setServiceEntryPoint( GWT.getModuleBaseURL()+"/bootstrap" );
+        target.setServiceEntryPoint( GWT.getModuleBaseURL()+"bootstrap" );
     }
 }
