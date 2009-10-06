@@ -60,7 +60,12 @@
 
 	</build>
 	
-	
+	<repositories>
+	   <repository>
+	       <id>productive-gwt</id>
+	       <url>http://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
+	   </repository>
+	</repositories>
 	
 	<distributionManagement>
 		<repository>
