@@ -84,6 +84,8 @@ public class TemplateManagerImpl {
 	 * Navigaizone
 	 */
 
+	public void backToHome() {	}
+
 	protected  void reloadFirstPanel() {
 
 	}
