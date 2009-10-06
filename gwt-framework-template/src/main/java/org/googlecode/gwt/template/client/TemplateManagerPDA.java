@@ -13,7 +13,6 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -182,15 +181,23 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 //		return intranet;
 //	}
 //
+	
+	public void backToHome() {
+		TemplateManager.reloadFirstPanel();
+		render.setVisible(true);
+	}
+
+	
 	protected  HTML getHomePageLink() {
 		if (home == null) {
-			home = new HTML(" <a href='javascript:;'>" + applicationTitle + "</a> ", true);
-			home.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
-					TemplateManager.reloadFirstPanel();
-					render.setVisible(true);
-				}
-			});
+//			home = new HTML(" <a href='javascript:;'>" + applicationTitle + "</a> ", true);
+//			home.addClickListener(new ClickListener() {
+//				public void onClick(Widget sender) {
+//					TemplateManager.reloadFirstPanel();
+//					render.setVisible(true);
+//				}
+//			});
+			home=new HTML(applicationTitle);
 			home.setStylePrimaryName("pda-label");
 		}
 		return home;
@@ -199,6 +206,8 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 //	protected  HTML newSeparator() {
 //		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
 //	}
+	
+	
 	
 	/*
 	 * Navigaizone

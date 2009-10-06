@@ -89,6 +89,10 @@ public class TemplateManager {
 		impl.reloadFirstPanel();
 	}
 
+	public static void backToHome() {
+		impl.backToHome();
+	}
+	
 	public static void openIntranet() {
 		redirect("http://intra.esselunga.net/validationnet/home.aspx");
 	}
