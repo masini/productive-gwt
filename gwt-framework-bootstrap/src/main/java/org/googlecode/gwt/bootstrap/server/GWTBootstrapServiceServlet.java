@@ -1,9 +1,5 @@
 package org.googlecode.gwt.bootstrap.server;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +10,6 @@ import javax.servlet.ServletException;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.bootstrap.client.HostedModeBootstrapService;
-import org.googlecode.gwt.bootstrap.server.dummy.DummyUserInfoResolver;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -31,7 +26,7 @@ public class GWTBootstrapServiceServlet extends RemoteServiceServlet implements 
 
 		Map<String, String> params = extractInitParameters();
 		
-		this.resolver = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver().createUserInfoResolver(params);
+		this.resolver = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(getServletConfig()).createUserInfoResolver(params);
 		
 		appContextDataResolver = new DefaultApplicationContextDataResolver(resolver);									
 	}
