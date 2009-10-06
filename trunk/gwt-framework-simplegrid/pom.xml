@@ -130,13 +130,6 @@
 		</profile>
 	</profiles>
 	
-	<repositories>
-		<repository>
-			<id>productive-gwt</id>
-			<url>http://productive-gwt.googlecode.com/svn/trunk</url>
-		</repository>
-	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>gwt-maven</id>
