@@ -6,17 +6,24 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import javax.servlet.ServletConfig;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.bootstrap.server.dummy.DummyUserInfoResolver;
 
 public interface BootstrapDataResolverFactory {
 	public BootstrapDataResolver createUserInfoResolver(Map<String, String> params);
+	public ServletConfig getServletConfig();
 	
 	public static class Utils {
-		public static BootstrapDataResolverFactory createBootstrapDataResolver() {
+		private final static Log log = LogFactory.getLog(Utils.class);
+		
+		public static BootstrapDataResolverFactory createBootstrapDataResolver(ServletConfig servletConfig) {
 			
 	        try
 	        {
-	            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/services/org.apache.commons.logging.LogFactory");
+	            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/services/org.googlecode.gwt.bootstrap.server.BootstrapDataResolverFactory");
 	            if(is != null)
 	            {
 	                BufferedReader rd;
@@ -31,13 +38,16 @@ public interface BootstrapDataResolverFactory {
 	                String factoryClassName = rd.readLine();
 	                rd.close();
 	                if(factoryClassName != null && !"".equals(factoryClassName)) {
-	                	return (BootstrapDataResolverFactory) Thread.currentThread().getContextClassLoader().loadClass(factoryClassName).newInstance();
+	                	Class<?> factory =  Thread.currentThread().getContextClassLoader().loadClass(factoryClassName);
+	                	return (BootstrapDataResolverFactory)factory.getConstructor(ServletConfig.class).newInstance(servletConfig);
 	                }
 	            }
 	        }
-	        catch(Exception ex) { }
+	        catch(Exception ex) { 
+	        	log.error("error creating BootstrapDataResolver", ex);
+	        }
 
-	        return  new BootstrapDataResolverFactory() {
+	        return  new AbstractBootstrapDataResolverFactory(servletConfig) {
 
 				public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 					try {
