@@ -39,7 +39,6 @@ public interface BootstrapDataResolverFactory {
 
 	        return  new BootstrapDataResolverFactory() {
 
-				@Override
 				public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 					try {
 						DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
