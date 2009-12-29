@@ -8,5 +8,5 @@ public interface TemplateImageImageBundle extends ImageBundle {
 	/**
 	 * @gwt.resource org/googlecode/gwt/template/public/images/house.png
 	 */
-	public AbstractImagePrototype getHomeIcon();
+	@Resource("org/googlecode/gwt/template/public/images/house.png") public AbstractImagePrototype getHomeIcon();
 }
