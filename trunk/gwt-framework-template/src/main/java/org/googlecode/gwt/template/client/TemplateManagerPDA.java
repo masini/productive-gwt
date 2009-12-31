@@ -14,7 +14,7 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManagerPDA extends TemplateManagerImpl{
@@ -24,7 +24,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	private Widget render;
 	
 	public void setApplicationTitle(String applicationTitle) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.NAVIGATION);
+		Panel root = PlaceHolder.get(PlaceHolder.NAVIGATION);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "APPLICATION_TITLE");
 		}
@@ -33,7 +33,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public void setHeader(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
+		Panel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "HEADER");
 		}
@@ -41,7 +41,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public  void setInfo(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.INFO);
+		Panel root = PlaceHolder.get(PlaceHolder.INFO);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "INFO");
 		}
@@ -49,7 +49,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public  void setFooter(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.FOOTER);
+		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "FOOTER");
 		}
@@ -57,7 +57,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public  void setApplicationContent(Widget widget) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.CONTENT);
+		Panel root = get(PlaceHolder.CONTENT);
 
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "CONTENT");
@@ -67,7 +67,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public  void setNavigationContent(Widget widget, boolean append) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.NAVIGATION);
+		Panel root = get(PlaceHolder.NAVIGATION);
 
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "NAVIGATION");
@@ -122,7 +122,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 
 				
 				/* Show menu */
-				RootPanel root = get(PlaceHolder.MENU);
+				Panel root = get(PlaceHolder.MENU);
 				if (root == null) {
 					throw new PlaceHolderException(ERR_MSG + "MENU");
 				}
@@ -146,8 +146,8 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		}
 	}
 
-	protected  RootPanel get(PlaceHolderConstant constant) {
-		RootPanel root = PlaceHolder.get(constant);
+	protected  Panel get(PlaceHolderConstant constant) {
+		Panel root = PlaceHolder.get(constant);
 		return root;
 	}
 	
@@ -217,14 +217,14 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		if (firstPanel != null) {
 			setApplicationContent(firstPanel);
 		} else {
-			RootPanel root = get(PlaceHolder.CONTENT);
+			Panel root = get(PlaceHolder.CONTENT);
 			root.clear();
 		}
 
 		if (firstNavigation != null) {
 			setNavigationContent(firstNavigation, false);
 		} else {
-			RootPanel root = get(PlaceHolder.NAVIGATION);
+			Panel root = get(PlaceHolder.NAVIGATION);
 			root.clear();
 			root.add(getHomePageLink());
 		}
