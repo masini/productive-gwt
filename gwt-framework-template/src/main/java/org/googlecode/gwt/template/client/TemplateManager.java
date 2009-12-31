@@ -7,7 +7,7 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManager {
@@ -57,7 +57,7 @@ public class TemplateManager {
 		impl.setHomePageHistoryToken(homePageHistoryToken);
 	}
 
-	protected static RootPanel get(PlaceHolderConstant constant) {
+	protected static Panel get(PlaceHolderConstant constant) {
 		return impl.get(constant);
 	}
 

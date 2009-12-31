@@ -14,17 +14,18 @@ import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 
 	public void setApplicationTitle(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
+		Panel root = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "APPLICATION_TITLE");
 		}
@@ -32,7 +33,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setHeader(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.HEADER);
+		Panel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "HEADER");
 		}
@@ -40,7 +41,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setInfo(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.INFO);
+		Panel root = PlaceHolder.get(PlaceHolder.INFO);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "INFO");
 		}
@@ -48,7 +49,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setFooter(Widget widget) throws PlaceHolderException {
-		RootPanel root = PlaceHolder.get(PlaceHolder.FOOTER);
+		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "FOOTER");
 		}
@@ -56,7 +57,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setApplicationContent(Widget widget) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.CONTENT);
+		Panel root = get(PlaceHolder.CONTENT);
 
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "CONTENT");
@@ -66,7 +67,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setNavigationContent(Widget widget, boolean append) throws PlaceHolderException {
-		RootPanel root = get(PlaceHolder.NAVIGATION);
+		Panel root = get(PlaceHolder.NAVIGATION);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "NAVIGATION");
 		}
@@ -126,7 +127,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 				}
 
 				/* Show menu */
-				RootPanel root = get(PlaceHolder.MENU);
+				Panel root = get(PlaceHolder.MENU);
 				if (root == null) {
 					throw new PlaceHolderException(ERR_MSG + "MENU");
 				}
@@ -150,8 +151,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		}
 	}
 
-	protected  RootPanel get(PlaceHolderConstant constant) {
-		RootPanel root = PlaceHolder.get(constant);
+	protected  Panel get(PlaceHolderConstant constant) {
+		Panel root = PlaceHolder.get(constant);
 		return root;
 	}
 
@@ -163,8 +164,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		if (intranetLogo == null) {
 			intranetLogo = images.getHomeIcon().createImage();
 			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
-			intranetLogo.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
+			intranetLogo.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
 					openIntranet();
 				}
 			});
@@ -176,8 +177,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	protected  HTML getIntranetLink() {
 		if (intranet == null) {
 			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
-			intranet.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
+			intranet.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
 					openIntranet();
 				}
 			});
@@ -188,8 +189,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	protected  HTML getHomePageLink() {
 		if (home == null) {
 			home = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
-			home.addClickListener(new ClickListener() {
-				public void onClick(Widget sender) {
+			home.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
 					TemplateManager.reloadFirstPanel();
 				}
 			});
@@ -209,14 +210,14 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		if (firstPanel != null) {
 			setApplicationContent(firstPanel);
 		} else {
-			RootPanel root = get(PlaceHolder.CONTENT);
+			Panel root = get(PlaceHolder.CONTENT);
 			root.clear();
 		}
 
 		if (firstNavigation != null) {
 			setNavigationContent(firstNavigation, false);
 		} else {
-			RootPanel root = get(PlaceHolder.NAVIGATION);
+			Panel root = get(PlaceHolder.NAVIGATION);
 			root.clear();
 			setNavigationContent(null, false);
 		}
