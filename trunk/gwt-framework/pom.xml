@@ -9,16 +9,18 @@
 	<modules>
 		<module>../gwt-framework-base</module>
 		<module>../gwt-framework-bootstrap</module>
-		<module>../gwt-framework-example</module>
 		<module>../gwt-framework-footer</module>
 		<module>../gwt-framework-header</module>
 		<module>../gwt-framework-menu</module>
 		<module>../gwt-framework-reflection</module>
 		<module>../gwt-framework-simplegrid</module>
 		<module>../gwt-framework-template</module>
-
+		<module>../gwt-framework-example</module>
 	</modules>
 
+	<properties>
+		<gwtVersion>2.0.0</gwtVersion>
+	</properties>
 
 	<build>
 		<plugins>
