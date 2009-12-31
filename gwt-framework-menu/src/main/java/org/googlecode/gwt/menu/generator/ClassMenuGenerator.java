@@ -6,12 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.googlecode.gwt.menu.client.SMenu;
+import org.googlecode.gwt.menu.client.SMenuItem;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
+import com.google.gwt.core.ext.typeinfo.HasAnnotations;
+import com.google.gwt.core.ext.typeinfo.HasMetaData;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
@@ -241,9 +243,9 @@ public class ClassMenuGenerator {
 			
 			String[] metas = inJClazz.getMetaDataTags();
 			rightMetasItem(metas);
-			String iconMenu = getValueMeta(META_ITEM_ICON, inJClazz.getMetaData(META_ITEM_ICON));
-			String labelMenu = getValueMeta(META_ITEM_LABEL, inJClazz.getMetaData(META_ITEM_LABEL));
-			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, inJClazz.getMetaData(META_ITEM_POSITION))).intValue();
+			String iconMenu = getValueMeta(META_ITEM_ICON, inJClazz);
+			String labelMenu = getValueMeta(META_ITEM_LABEL, inJClazz);
+			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, inJClazz)).intValue();
 			
 			MyMenuModel menuModel = new MyMenuModel(clazz.getSimpleName(),labelMenu,iconMenu,null,null);
 			parent.addChild(positionMenu, menuModel);
@@ -251,6 +253,7 @@ public class ClassMenuGenerator {
 			elabClass(clazz,false,menuModel);
 		}
 	}
+	
 //
 	private void elabMethod(JClassType inJClassType,boolean firstLevel,MyMenuModel menuModel) throws MenuGeneratorException, ClassNotFoundException {
 		JMethod[] methods = inJClassType.getMethods();
@@ -272,7 +275,7 @@ public class ClassMenuGenerator {
 			String typetype = returnType.getQualifiedSourceName();
 			Class<?> clazz = Class.forName(typetype);
 			
-			String[] role = getValueMeta(META_USER_ROLE,metodo.getMetaData(META_USER_ROLE)).split(" ");
+			String[] role = getValueMeta(META_USER_ROLE,metodo).split(" ");
 			
 			//carico l'appoggio per il contesto
 			if(instanceOf(clazz, Command.class)){
@@ -286,9 +289,9 @@ public class ClassMenuGenerator {
 			}
 			
 //			carico l'appoggio per il menuModel
-			String iconMenu = getValueMeta(META_ITEM_ICON, metodo.getMetaData(META_ITEM_ICON));
-			String labelMenu = getValueMeta(META_ITEM_LABEL, metodo.getMetaData(META_ITEM_LABEL));
-			String shortcutMenu = getValueMeta(META_ITEM_SHORTCUT, metodo.getMetaData(META_ITEM_SHORTCUT));
+			String iconMenu = getValueMeta(META_ITEM_ICON, metodo);
+			String labelMenu = getValueMeta(META_ITEM_LABEL, metodo);
+			String shortcutMenu = getValueMeta(META_ITEM_SHORTCUT, metodo);
 			
 			if(shortcutMenu!=null){
 				if(shortcutItem.containsKey(shortcutMenu)){
@@ -299,7 +302,7 @@ public class ClassMenuGenerator {
 				shortcutItem.put(shortcutMenu, shortcutMenu);
 			}
 			
-			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, metodo.getMetaData(META_ITEM_POSITION))).intValue();
+			int positionMenu = new Integer(getValueMeta(META_ITEM_POSITION, metodo)).intValue();
 				
 			MyMenuModel myMenuModel = new MyMenuModel(metodo.getName(),labelMenu,iconMenu,role,shortcutMenu);
 			menuModel.addChild(positionMenu, myMenuModel);
@@ -379,6 +382,60 @@ public class ClassMenuGenerator {
 		}
 	}
 //	
+	
+	private String getValueMeta(String key,SMenuItem menuItem) throws MenuGeneratorException{
+
+		if(META_USER_ROLE.equals(key)){
+			StringBuffer ruoli = new StringBuffer();
+			for (int i = 0; i < menuItem.userRoles().length; i++) {
+				String ruolo = menuItem.userRoles()[i];
+				if(!roles.containsKey(ruolo)){
+					roles.put(ruolo, ruolo);
+				}
+				if (i > 0) ruoli.append(" ");
+				ruoli.append(ruolo);
+			}
+			return ruoli.toString();
+		}
+		if(META_ITEM_ICON.equals(key)){
+			
+			return menuItem.label();
+		}
+		if(META_ITEM_SHORTCUT.equals(key)){
+			
+			return "".equals(menuItem.shortcut())?null:menuItem.shortcut();
+		}
+		if(META_ITEM_LABEL.equals(key)){
+			
+			return menuItem.label();
+		}
+		if(META_ITEM_POSITION.equals(key)){
+			return Integer.toString(menuItem.position());
+		}
+		
+		return null;
+	}
+	
+	private <T extends HasAnnotations> String getValueMeta(String key,T classMetaData) throws MenuGeneratorException{
+		
+		String retVal = null;
+		
+		if(classMetaData.isAnnotationPresent(SMenuItem.class)) {
+			
+			SMenuItem annotation = classMetaData.getAnnotation(SMenuItem.class);
+
+			retVal = getValueMeta(key, annotation);
+			
+		} else if(classMetaData instanceof HasMetaData){
+			
+			HasMetaData metaData = (HasMetaData) classMetaData;
+			
+			retVal = getValueMeta(key, metaData.getMetaData(key));
+		}
+		
+		return retVal;
+	}
+		
 	private String getValueMeta(String key,String[][] meta) throws MenuGeneratorException{
 		if(META_USER_ROLE.equals(key)){
 			if (meta.length == 0 || meta.length > 1) {
