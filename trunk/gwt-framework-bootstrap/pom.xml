@@ -8,7 +8,6 @@
 	</parent>
 	<artifactId>bootstrap</artifactId>
 	<properties>
-		<gwtVersion>1.5.3</gwtVersion>
 		<targetJdk>1.5</targetJdk>
 	</properties>
 	<profiles>
@@ -17,11 +16,25 @@
 			<properties>
 				<platform>windows</platform>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.google.gwt</groupId>
+					<artifactId>gwt-dev</artifactId>
+					<version>${gwtVersion}</version>
+					<classifier>${platform}-libs</classifier>
+					<type>zip</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.google.gwt</groupId>
+					<artifactId>gwt-dev</artifactId>
+					<version>${gwtVersion}</version>
+					<classifier>${platform}</classifier>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
 			<activation>
-				<activeByDefault>true</activeByDefault>
-				<os>
-					<family>windows</family>
-				</os>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 	</profiles>
@@ -57,21 +70,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwtVersion}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwtVersion}</version>
-			<classifier>${platform}-libs</classifier>
-			<type>zip</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwtVersion}</version>
-			<classifier>${platform}</classifier>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
