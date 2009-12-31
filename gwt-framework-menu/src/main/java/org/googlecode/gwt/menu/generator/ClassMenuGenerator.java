@@ -416,7 +416,7 @@ public class ClassMenuGenerator {
 		return null;
 	}
 	
-	private <T extends HasAnnotations> String getValueMeta(String key,T classMetaData) throws MenuGeneratorException{
+	private <T extends HasAnnotations & HasMetaData> String getValueMeta(String key,T classMetaData) throws MenuGeneratorException{
 		
 		String retVal = null;
 		
@@ -426,9 +426,9 @@ public class ClassMenuGenerator {
 
 			retVal = getValueMeta(key, annotation);
 			
-		} else if(classMetaData instanceof HasMetaData){
+		} else {
 			
-			HasMetaData metaData = (HasMetaData) classMetaData;
+			HasMetaData metaData = classMetaData;
 			
 			retVal = getValueMeta(key, metaData.getMetaData(key));
 		}
