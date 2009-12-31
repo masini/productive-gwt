@@ -11,7 +11,6 @@
 		<moduleName>org.googlecode.gwt.reflection.GeneratorTest</moduleName>
 		<runTarget>${moduleName}/GeneratorTest.html</runTarget>
 		<noServer>false</noServer>
-		<gwtVersion>1.6.4</gwtVersion>
 		<debugAgent></debugAgent>
 	</properties>
 	<build>
@@ -95,14 +94,6 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>test</goal>
-							<goal>resources</goal>
-<!--							<goal>i18n</goal>-->
-						</goals>
-					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -125,11 +116,25 @@
 			<properties>
 				<platform>windows</platform>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.google.gwt</groupId>
+					<artifactId>gwt-dev</artifactId>
+					<version>${gwtVersion}</version>
+					<classifier>${platform}-libs</classifier>
+					<type>zip</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.google.gwt</groupId>
+					<artifactId>gwt-dev</artifactId>
+					<version>${gwtVersion}</version>
+					<classifier>${platform}</classifier>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
 			<activation>
-				<activeByDefault>true</activeByDefault>
-				<os>
-					<family>windows</family>
-				</os>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 		<profile>
@@ -182,13 +187,12 @@
 			<version>${gwtVersion}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwtVersion}</version>
-			<classifier>${platform}</classifier>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
