@@ -8,13 +8,13 @@ import org.googlecode.gwt.template.client.PlaceHolder;
 import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -35,10 +35,11 @@ public class HeaderNOPDA extends HeaderImpl {
 		panel.add(table);
 
 		/* titolo */
-		DOM.setElementAttribute(title.getElement(), "id", PlaceHolder.APPLICATION_TITLE.getId());
-		table.add(this.title);
-		table.setCellVerticalAlignment(this.title, HasVerticalAlignment.ALIGN_TOP);
-		table.setCellHorizontalAlignment(this.title, HasHorizontalAlignment.ALIGN_CENTER);
+		Panel title = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
+		
+		table.add(title);
+		table.setCellVerticalAlignment(title, HasVerticalAlignment.ALIGN_TOP);
+		table.setCellHorizontalAlignment(title, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 	
 	/**

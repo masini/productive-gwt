@@ -30,12 +30,6 @@ public class HeaderImpl {
 	 */
 	protected HorizontalPanel infoPanel = null;
 
-	/**
-	 * Widget che implementa il titolo dell'applicazione
-	 */
-	protected SimplePanel title = new SimplePanel();
-	
-	
 	public void moduleLoad() {};
 	
 	/**
