@@ -26,7 +26,8 @@ public class GWTBootstrapServiceServlet extends RemoteServiceServlet implements 
 
 		Map<String, String> params = extractInitParameters();
 		
-		this.resolver = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(getServletConfig()).createUserInfoResolver(params);
+		BootstrapDataResolverFactory dataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(getServletConfig());
+		this.resolver = dataResolverFactory.createUserInfoResolver(params);
 		
 		appContextDataResolver = new DefaultApplicationContextDataResolver(resolver);									
 	}

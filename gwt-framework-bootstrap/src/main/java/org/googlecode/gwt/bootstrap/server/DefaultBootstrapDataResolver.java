@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
-import org.springframework.beans.factory.annotation.Required;
 
 /**
  * A {@link org.googlecode.gwt.bootstrap.server.BootstrapDataResolver } that uses a delegate {@link org.googlecode.gwt.bootstrap.server.UserInfoResolver }
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Required;
  *         Date: 24-ago-2007
  *         Time: 20.04.23
  */
-public class DefaultBootstrapDataResolver implements BootstrapDataResolver {
+public class DefaultBootstrapDataResolver implements UserInfoBootstrapDataResolver {
     protected UserInfoResolver userInfoResolver;
     protected BootstrapDataDecorator bootstrapDataDecorator;
     private String applicationCode = "unknown";
@@ -78,7 +77,6 @@ public class DefaultBootstrapDataResolver implements BootstrapDataResolver {
         }
     }
 
-    @Required
     public void setUserInfoResolver( UserInfoResolver userInfoResolver ) {
         this.userInfoResolver = userInfoResolver;
     }
