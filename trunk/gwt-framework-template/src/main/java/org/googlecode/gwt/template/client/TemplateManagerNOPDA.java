@@ -53,6 +53,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "FOOTER");
 		}
+		root.clear();
 		root.add(widget);
 	}
 
