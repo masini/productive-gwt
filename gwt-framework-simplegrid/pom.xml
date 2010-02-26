@@ -167,8 +167,7 @@
 			<artifactId>gwt-incubator</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>system</scope>
-			<systemPath>C:\progetti\productive-gwt\gwt-incubator\gwt-incubator-2.0.jar</systemPath>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
