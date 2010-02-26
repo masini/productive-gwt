@@ -19,7 +19,7 @@
 	</modules>
 
 	<properties>
-		<gwtVersion>2.0.0</gwtVersion>
+		<gwtVersion>2.0.1</gwtVersion>
 	</properties>
 
 	<build>
