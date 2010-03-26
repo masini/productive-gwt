@@ -162,4 +162,45 @@ public class RubricaEntryPoint implements EntryPoint {
 
 }
 }}}
-In the example above are set: the application title, the menu and the initial content. 
+In the example above are set: the application title, the menu and the initial content.
+
+===web.xml===
+In web.xml is defined and configured the bootstrap servlet.
+{{{
+<servlet>
+<servlet-name>GWTBootstrapServiceServlet</servlet-name>
+<servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
+<init-param>
+    <param-name>resolver</param-name>
+    <param-value>org.googlecode.gwt.bootstrap.server.WebLogicBootstrapDataResolver</param-value>
+</init-param>
+<init-param>
+    <param-name>userInfoResolver</param-name>
+    <param-value>org.googlecode.gwt.bootstrap.server.ValidationUserInfoResolver</param-value>
+</init-param>
+<init-param>
+    <param-name>javaEESecurityExtractor</param-name>
+    <param-value>org.googlecode.gwt.bootstrap.server.security.DefaultJavaEESecurityExtractor</param-value>
+</init-param>
+<init-param>
+    <param-name>applicationCode</param-name>
+    <param-value>APPLICATION_CODE</param-value>
+</init-param>
+<init-param>
+    <param-name>applicationName</param-name>
+    <param-value>APPLICATION_NAME</param-value>
+</init-param>
+<init-param>
+    <param-name>applicationVersion</param-name>
+    <param-value>APPLICATION_VERSION</param-value>
+</init-param>
+<init-param>
+    <param-name>homePageURLString</param-name>
+    <param-value>HOME_PAGE_URL</param-value>
+</init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>GWTBootstrapServiceServlet</servlet-name>
+    <url-pattern>COMPLETE_GWT_MODULE_NAME/bootstrap</url-pattern>
+</servlet-mapping>
+}}}
