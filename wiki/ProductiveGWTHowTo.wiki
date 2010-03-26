@@ -1,8 +1,6 @@
-#Productive GWT how-to
-
 == Introduction ==
 Productive GWT consists of a set of modules to be used as a basis for Web applications:
-basic templates, menus, bootstrap, header, footer.
+_basic_, _templates_, _menu_, _bootstrap_, _header_, _footer_.
 
 ==Dependencies for the Web application==
 In the pom.xml file of the Web include the following dependencies.
@@ -70,7 +68,7 @@ In the pom.xml file of the Web include the following dependencies.
 }}}
 
 ==GWT module definition==
-When you create the GWT module make sure that the files are included NomeModulo.gwt.xml inherits the elements of Productive GWT.
+When you create the GWT module make sure that the files are included _NomeModulo.gwt.xml_ inherits the elements of Productive GWT.
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0.3//EN"
@@ -91,7 +89,7 @@ When you create the GWT module make sure that the files are included NomeModulo.
 }}}
 
 ===Menu===
-The menu is created by an interface in the client package (or package in a client) of the form. This interface presents the signature of a method for each menu item.
+The menu is created by an interface in the module _client_ package (or in a _client_ subpackage). This interface presents a method signature for each menu item.
 {{{
 public interface RubricaMenu extends SMenu {
 
