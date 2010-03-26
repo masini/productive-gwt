@@ -130,3 +130,36 @@ public @interface SMenuItem {
         String[] userRoles() default {""};
 }
 }}}
+
+===Command===
+The menu interface methods return objects that implement Command. These items must then implement the execute() method.
+{{{
+public class HomeCommand implements Command {
+
+        public void execute() {
+            HomePanel homePanel = new HomePanel();
+            TemplateManager.setApplicationContent(homePanel);
+        }
+
+}
+}}}
+In the example, execute() method uses TemplateManager to change the application's main panel. In this case the user back to Home.
+===Entry Point===
+{{{
+public class RubricaEntryPoint implements EntryPoint {
+
+    public void onModuleLoad() {
+            // Titolo dell'applicazione
+        TemplateManager.setApplicationTitle(new Label("RUBRICA"));
+
+            // Creazione del menu con deferred binding
+            SMenu menu = GWT.create(RubricaMenu.class);
+         TemplateManager.setMenu(menu);
+
+            // Come default imposto la Home Page
+        TemplateManager.setApplicationContent(new HomePanel());
+    }
+
+}
+}}}
+In the example above are set: the application title, the menu and the initial content. 
