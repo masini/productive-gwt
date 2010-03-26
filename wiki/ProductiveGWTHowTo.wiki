@@ -3,7 +3,7 @@ Productive GWT consists of a set of modules to be used as a basis for Web applic
 _basic_, _templates_, _menu_, _bootstrap_, _header_, _footer_.
 
 ==Dependencies for the Web application==
-In the pom.xml file of the Web include the following dependencies.
+In the pom.xml file of the Web project include the following dependencies.
 {{{
 <dependency>
     <groupId>com.google.gwt</groupId>
@@ -68,7 +68,8 @@ In the pom.xml file of the Web include the following dependencies.
 }}}
 
 ==GWT module definition==
-When you create the GWT module make sure that the files are included _NomeModulo.gwt.xml_ inherits the elements of Productive GWT.
+When you create the GWT module make sure it inherits the elements of Productive GWT
+in the file _ModuleName.gwt.xml_.
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0.3//EN"
@@ -116,7 +117,8 @@ public interface RubricaMenu extends SMenu {
 
 }
 }}}
-In particular, the interface must extend each method sOthers menu and the menu should use the annotation @ SMenuItem. The entry has attributes that define the position of the menu entry, the label, the icon to use and professional roles.
+In particular, the interface must extend _SMenu_ and the menu should use the annotation
+_@SMenuItem_._@SMenuItem_ has attributes that define the position of the menu entry, the label, the icon to use and allowed user roles.
 {{{
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
@@ -130,7 +132,7 @@ public @interface SMenuItem {
 }}}
 
 ===Command===
-The menu interface methods return objects that implement Command. These items must then implement the execute() method.
+The menu interface methods return objects that implement Command. These objects must then implement the _execute()_ method.
 {{{
 public class HomeCommand implements Command {
 
@@ -141,7 +143,7 @@ public class HomeCommand implements Command {
 
 }
 }}}
-In the example, execute() method uses TemplateManager to change the application's main panel. In this case the user back to Home.
+In the example, _execute()_ method uses _TemplateManager_ to change the application's main panel. In this case the user back to Home.
 ===Entry Point===
 {{{
 public class RubricaEntryPoint implements EntryPoint {
@@ -163,7 +165,7 @@ public class RubricaEntryPoint implements EntryPoint {
 In the example above are set: the application title, the menu and the initial content.
 
 ===web.xml===
-In web.xml is defined and configured the bootstrap servlet.
+In web.xml must be defined and configured the bootstrap servlet.
 {{{
 <servlet>
 <servlet-name>GWTBootstrapServiceServlet</servlet-name>
