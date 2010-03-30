@@ -176,7 +176,7 @@ In web.xml must be defined and configured the bootstrap servlet.
 </init-param>
 <init-param>
     <param-name>userInfoResolver</param-name>
-    <param-value>org.googlecode.gwt.bootstrap.server.ValidationUserInfoResolver</param-value>
+    <param-value>org.googlecode.gwt.bootstrap.server.dummy.DummyUserInfoResolver</param-value>
 </init-param>
 <init-param>
     <param-name>javaEESecurityExtractor</param-name>
