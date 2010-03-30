@@ -172,7 +172,7 @@ In web.xml must be defined and configured the bootstrap servlet.
 <servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
 <init-param>
     <param-name>resolver</param-name>
-    <param-value>org.googlecode.gwt.bootstrap.server.WebLogicBootstrapDataResolver</param-value>
+    <param-value>org.googlecode.gwt.bootstrap.server.DefaultBootstrapDataResolver</param-value>
 </init-param>
 <init-param>
     <param-name>userInfoResolver</param-name>
