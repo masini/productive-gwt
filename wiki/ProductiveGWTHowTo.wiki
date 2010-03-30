@@ -180,7 +180,7 @@ In web.xml must be defined and configured the bootstrap servlet.
 </init-param>
 <init-param>
     <param-name>javaEESecurityExtractor</param-name>
-    <param-value>org.googlecode.gwt.bootstrap.server.security.DefaultJavaEESecurityExtractor</param-value>
+    <param-value>org.googlecode.gwt.bootstrap.server.dummy.HostedModeJavaEESecurityExtractor</param-value>
 </init-param>
 <init-param>
     <param-name>applicationCode</param-name>
