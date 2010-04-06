@@ -165,11 +165,11 @@ public class RubricaEntryPoint implements EntryPoint {
 In the example above are set: the application title, the menu and the initial content.
 
 ===web.xml===
-In web.xml must be defined and configured the bootstrap servlet.
+In web.xml must be defined and configured the bootstrap servlet. The bootstrap servlet task is to retrieve the application bootstrap data (ie. user info, application name ecc.).
 {{{
 <servlet>
-<servlet-name>GWTBootstrapServiceServlet</servlet-name>
-<servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
+    <servlet-name>GWTBootstrapServiceServlet</servlet-name>
+    <servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
 </servlet>
 <servlet-mapping>
     <servlet-name>GWTBootstrapServiceServlet</servlet-name>
