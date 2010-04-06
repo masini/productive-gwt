@@ -177,3 +177,6 @@ In web.xml must be defined and configured the bootstrap servlet. The bootstrap s
     <url-pattern>COMPLETE_GWT_MODULE_NAME/bootstrap</url-pattern>
 </servlet-mapping>
 }}}
+
+==Bootstrap Data Resolver==
+//TO-DO
