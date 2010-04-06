@@ -179,4 +179,5 @@ In web.xml must be defined and configured the bootstrap servlet. The bootstrap s
 }}}
 
 ==Bootstrap Data Resolver==
-//TO-DO
+The GWTBootstrapServiceServlet uses an external service to do the job, so we have to implemnt it.
+It's a simple project that exposes a _org.googlecode.gwt.bootstrap.server.BootstrapDataResolverFactoryservice_ inside the META-INF folder.
