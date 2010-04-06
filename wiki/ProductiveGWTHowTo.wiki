@@ -243,3 +243,12 @@ public class MyBootstrapDataResolver implements BootstrapDataResolver {
 
 }
 }}}
+Then we have to add the dependency in the webapp POM (here we assume the project is productive-gwt-example:my-bootstrap-validation).
+{{{
+		<dependency>
+			<groupId>productive-gwt-example</groupId>
+			<artifactId>my-bootstrap-validation</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+}}}
