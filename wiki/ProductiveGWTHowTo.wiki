@@ -210,7 +210,8 @@ public class MyBootstrapDataResolverFactory extends
 
 }
 }}}
-The class _MyBootstrapDataResolver_ in this example is very dumb.
+The class _MyBootstrapDataResolver_ in this example is very easy, we call a service
+returning us the data we need.
 {{{
 /**
  * The <b>BootstrapDataResolver</b> has the task to retrieve the
@@ -231,13 +232,13 @@ public class MyBootstrapDataResolver implements BootstrapDataResolver {
 
 		// We can use the ServletConfig or the ServletRequest
 		// to pass actual parameters to a real repository
-		Map<String, Object> dummyParameters = new HashMap<String, Object>();
+		SomeBootstrapDataServiceParameters parameters = new SomeBootstrapDataServiceParameters();
 
-                //...
+                //... fill parameters as required by the service
 
-		BootstrapData dummyBootstrapData = DummyBootstrapDataRepository.getBootstrapData(dummyParameters);
+		BootstrapData bootstrapData = SomeBootstrapDataService.getBootstrapData(parameters);
 		
-		return dummyBootstrapData;
+		return bootstrapData;
 	}
 
 }
