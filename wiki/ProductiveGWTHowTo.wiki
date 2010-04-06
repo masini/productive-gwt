@@ -210,7 +210,7 @@ public class MyBootstrapDataResolverFactory extends
 
 }
 }}}
-The class _MyBootstrapDataResolver_ in this example is very easy, we call a service
+The class _MyBootstrapDataResolver_ in this example is very easy, it call a service
 returning us the data we need.
 {{{
 /**
