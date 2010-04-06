@@ -170,6 +170,7 @@ In web.xml must be defined and configured the bootstrap servlet. The bootstrap s
 <servlet>
     <servlet-name>GWTBootstrapServiceServlet</servlet-name>
     <servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
+    <!-- Here we can put any servlet parameter useful for bootstrap data resolution -->
 </servlet>
 <servlet-mapping>
     <servlet-name>GWTBootstrapServiceServlet</servlet-name>
