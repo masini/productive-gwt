@@ -188,6 +188,15 @@ org.googlecode.gwt.example.rubrica.server.MyBootstrapDataResolverFactory
 
 We have to implement the _MyBootstrapDataResolverFactory_.
 {{{
+/**
+ * Implementation of <b>BootstrapDataResolverFactory</b>.
+ * It must be registered as service in:
+ * <i>/META-INF/services/org.googlecode.gwt.bootstrap.server.BootstrapDataResolverFactory</i>
+ * 
+ * The <b>BootstrapDataResolverFactory</b> must implements the method <b>createUserInfoResolver()</b>
+ * that return an implementation of <b>BootstrapDataResolver</b>.
+ * 
+ */
 public class MyBootstrapDataResolverFactory extends
 		AbstractBootstrapDataResolverFactory {
 
@@ -197,6 +206,35 @@ public class MyBootstrapDataResolverFactory extends
 
 	public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 		return new MyBootstrapDataResolver();
+	}
+
+}
+}}}
+The class _MyBootstrapDataResolver_ in this example is very dumb.
+{{{
+/**
+ * The <b>BootstrapDataResolver</b> has the task to retrieve the
+ * data necessary to the bootstrap of the application.
+ * The application developer can implements the service as she wants/needs.
+ */
+public class RubricaBootstrapDataResolver implements BootstrapDataResolver {
+
+	public ApplicationContextData getAppContextData(HttpServletRequest request,
+			String appContextName) {
+		ApplicationContextData applicationContextData = new ApplicationContextData();
+		return applicationContextData;
+	}
+
+	public BootstrapData getBootstrapData(HttpServletRequest request) {
+		
+		// Here we should call a real service
+
+		// We can use the ServletConfig or the ServletRequest
+		// to pass actual parameters to a real repository
+		Map<String, Object> dummyParameters = new HashMap<String, Object>();
+		BootstrapData dummyBootstrapData = DummyBootstrapDataRepository.getBootstrapData(dummyParameters);
+		
+		return dummyBootstrapData;
 	}
 
 }
