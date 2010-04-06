@@ -217,7 +217,7 @@ The class _MyBootstrapDataResolver_ in this example is very dumb.
  * data necessary to the bootstrap of the application.
  * The application developer can implements the service as she wants/needs.
  */
-public class RubricaBootstrapDataResolver implements BootstrapDataResolver {
+public class MyBootstrapDataResolver implements BootstrapDataResolver {
 
 	public ApplicationContextData getAppContextData(HttpServletRequest request,
 			String appContextName) {
@@ -232,6 +232,9 @@ public class RubricaBootstrapDataResolver implements BootstrapDataResolver {
 		// We can use the ServletConfig or the ServletRequest
 		// to pass actual parameters to a real repository
 		Map<String, Object> dummyParameters = new HashMap<String, Object>();
+
+                //...
+
 		BootstrapData dummyBootstrapData = DummyBootstrapDataRepository.getBootstrapData(dummyParameters);
 		
 		return dummyBootstrapData;
