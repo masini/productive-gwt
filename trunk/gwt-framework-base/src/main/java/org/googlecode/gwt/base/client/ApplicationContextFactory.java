@@ -15,10 +15,10 @@ public class ApplicationContextFactory implements EntryPoint {
 	private static List<AsyncCallback<ApplicationContext>> callBacks=new ArrayList<AsyncCallback<ApplicationContext>>();
 	private static ApplicationContext applicationContext;
 	
-	private ApplicationContextFactory() {
-		super();
+	static {
+		LogText.writeOnLogText("==> static " + ApplicationContextFactory.class.getName());
 	}
-
+	
 	public static void createApplicationContext(BootstrapData bootstrapData){
 		applicationContext = new ApplicationContext(bootstrapData);
 		if(callBacks != null) {
@@ -43,6 +43,5 @@ public class ApplicationContextFactory implements EntryPoint {
 	}
 
 	public void onModuleLoad() {
-		
 	}
 }
