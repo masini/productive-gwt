@@ -2,6 +2,7 @@ package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.UserInfo;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -40,7 +41,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 	 * @see org.googlecode.gwt.header.client.BaseInfoPanelHeaderButton#getPopupImage()
 	 */
 	protected Image getPopupImage() {
-		return HeaderImagesFactory.getInstance().getUserInfoIcon().createImage();
+		return new Image(TemplateManager.getImageBundle().HEADER_USER_INFO());
 	}
 
 	/**
@@ -49,7 +50,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 	protected void addLabels() {
 		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
 
-		add(HeaderImagesFactory.getInstance().getEmptyShortIcon().createImage());
+		add(new Image(TemplateManager.getImageBundle().HEADER_EMPTY_SHORT()));
 		
 		Label info = new Label(userInfo.getFirstName() + " " + userInfo.getLastName());
 		info.addStyleName("benvenuto");

@@ -6,40 +6,59 @@ import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.template.client.PlaceHolder;
 import org.googlecode.gwt.template.client.TemplateManager;
+import org.googlecode.gwt.template.client.img.TemplateImageBundle;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class HeaderNOPDA extends HeaderImpl {
-
 	
 	public void moduleLoad() {
-		panel = new FlowPanel();
-		TemplateManager.setHeader(panel);
-		panel.setStyleName(TITLE_STYLE_NAME);
 		
+		
+		panel = new FlowPanel();
+//		panel.setStyleName(TITLE_STYLE_NAME);
+		
+		// Info panel
 		TemplateManager.setInfo(createInfoPanel());
 
-		VerticalPanel table = new VerticalPanel();
-		panel.add(table);
-
-		/* titolo */
-		Panel title = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
+		// Logo and title
+		panel.add(logoAndTitlePanel());
 		
-		table.add(title);
-		table.setCellVerticalAlignment(title, HasVerticalAlignment.ALIGN_TOP);
-		table.setCellHorizontalAlignment(title, HasHorizontalAlignment.ALIGN_CENTER);
+		TemplateManager.setHeader(panel);
+	}
+
+	private HorizontalPanel logoAndTitlePanel() {
+		HorizontalPanel horizontalPanel = new HorizontalPanel();
+		horizontalPanel.setWidth("100%");
+		
+		/* Logo */
+		TemplateImageBundle imageBundle = TemplateManager.getImageBundle();
+		Image logo = new Image(imageBundle.HEADER_LOGO());
+		horizontalPanel.add(logo);
+		horizontalPanel.setCellHorizontalAlignment(logo, HorizontalPanel.ALIGN_LEFT);
+		horizontalPanel.setCellWidth(logo, "33%");
+		
+		/* App title */
+		Panel title = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
+		horizontalPanel.add(title);
+		horizontalPanel.setCellHorizontalAlignment(title, HorizontalPanel.ALIGN_CENTER);
+		
+		/* Empty cell */
+		Label emptyLabel = new Label();
+		horizontalPanel.add(emptyLabel);
+		horizontalPanel.setCellWidth(emptyLabel, "33%");
+		return horizontalPanel;
 	}
 	
 	/**
