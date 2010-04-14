@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.BootstrapData;
+import org.googlecode.gwt.base.client.LogText;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.bootstrap.client.utils.BootstrapConstants;
 
@@ -26,10 +27,12 @@ public class BootstrapEntryPoint implements EntryPoint {
     
 
     static {
+    	LogText.writeOnLogText("==> static " + BootstrapEntryPoint.class.getName());
         bsConstants = ( BootstrapConstants )GWT.create( BootstrapConstants.class );
     }
 
     protected BootstrapEntryPoint() {
+    	LogText.writeOnLogText("==> constructor " + BootstrapEntryPoint.class.getName());
         bootstrapEventListeners = new ArrayList<BootstrapEventListener>();
     }
 
@@ -74,6 +77,7 @@ public class BootstrapEntryPoint implements EntryPoint {
      * The entryPoint of all application
      */
     public void onModuleLoad() {
+    	LogText.writeOnLogText("==> onModuleLoad " + BootstrapEntryPoint.class.getName());
         GWT.setUncaughtExceptionHandler( new MyUncaughtExceptionHandler() );
 
         bootstrap( new BootstrapEventListener() {
