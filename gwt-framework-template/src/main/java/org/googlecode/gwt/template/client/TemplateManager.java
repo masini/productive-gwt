@@ -78,7 +78,7 @@ public class TemplateManager {
 	}
 
 	protected static HTML newSeparator() {
-		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
+		return new HTML(TemplateManager.getTemplateCostants().PAGE_CONTEXT_SEPARATOR());
 	}
 
 	/*
@@ -115,7 +115,7 @@ public class TemplateManager {
 	
 	protected HTML createIntranetLink(final String intranetUrl) {
 		//TODO: verificare come mai il # invece che javascript:;
-		HTML intranetLink = new HTML("<a href='"+intranetUrl+"'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+		HTML intranetLink = new HTML("<a href='"+intranetUrl+"'>" + TemplateManager.getTemplateCostants().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
 //		intranetLink.addClickHandler(new ClickHandler() {
 //			public void onClick(ClickEvent event) {
 //				redirect(intranetUrl);
