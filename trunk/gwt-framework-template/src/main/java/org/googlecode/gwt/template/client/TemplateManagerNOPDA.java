@@ -13,9 +13,9 @@ import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
@@ -48,14 +48,14 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		root.add(widget);
 	}
 
-	public  void setFooter(Widget widget) throws PlaceHolderException {
-		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "FOOTER");
-		}
-		root.clear();
-		root.add(widget);
-	}
+//	public  void setFooter(Widget widget) throws PlaceHolderException {
+//		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
+//		if (root == null) {
+//			throw new PlaceHolderException(ERR_MSG + "FOOTER");
+//		}
+//		root.clear();
+//		root.add(widget);
+//	}
 
 	public  void setApplicationContent(Widget widget) throws PlaceHolderException {
 		Panel root = get(PlaceHolder.CONTENT);
@@ -146,9 +146,9 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		if (home == null) getHomePageLink();
 
 		if (homePageHistoryToken == null) {
-			home.setHTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='javascript:;'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		} else {
-			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		}
 	}
 
@@ -177,7 +177,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 	protected  HTML getIntranetLink() {
 		if (intranet == null) {
-			intranet = new HTML("<a href='#'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+			// Il link di default non fa nulla
+			intranet = new HTML("<a href='#'>" + costants.INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
 			intranet.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					openIntranet();
@@ -189,7 +190,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 	protected  HTML getHomePageLink() {
 		if (home == null) {
-			home = new HTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
+			home = new HTML("<a href='javascript:;'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
 			home.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					TemplateManager.reloadFirstPanel();
@@ -200,7 +201,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	protected  HTML newSeparator() {
-		return new HTML(TemplateConstantsFactory.getInstance().PAGE_CONTEXT_SEPARATOR());
+		return new HTML(costants.PAGE_CONTEXT_SEPARATOR());
 	}
 
 	/*
@@ -224,19 +225,20 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		}
 	}
 
-	public  void openIntranet() {
-		redirect("http://intra.esselunga.net/validationnet/home.aspx");
-	}
-
 	public  native void redirect(String url)/*-{
 			    $wnd.location = url;
 			}-*/;
 
 	public  void setShowIntranetLink(boolean showIntranetLink) {
-		TemplateManagerNOPDA.showIntranetLink = showIntranetLink;
+		TemplateManagerImpl.showIntranetLink = showIntranetLink;
 	}
 
 	public  void setHome(HTML home) {
-		TemplateManagerNOPDA.home = home;
+		TemplateManagerImpl.home = home;
 	}
+	
+	public void openIntranet() {
+		redirect(costants.INTRANET_URL());
+	}
+	
 }
