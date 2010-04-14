@@ -7,7 +7,7 @@ import java.util.Map;
 import org.googlecode.gwt.base.client.UserInfo;
 
 /**
- * Base class useful to sesnd to a gwt client information about the user.
+ * Base class useful to send to a gwt client information about the user.
  *
  */
 public class DefaultUserInfo implements UserInfo {
@@ -21,24 +21,30 @@ public class DefaultUserInfo implements UserInfo {
 
     public DefaultUserInfo( String username, String firstName, String lastName, String[] roles, Map<String,String> userParameters ) {
         this.username = username;
-        this.userParameters = userParameters != null ? new HashMap<String,String>( userParameters) : null;
+        this.userParameters = checkNullMap(userParameters);
         this.firstName = firstName;
         this.lastName = lastName;
         this.roleDescriptions = new HashMap<String,String>();
-        //noinspection ForLoopReplaceableByForEach
-        for ( int i = 0; i < roles.length ; i++ ) {
-            String role = roles[ i ];
-            //noinspection unchecked
-            this.roleDescriptions.put( role, null );
+        if(roles != null) {
+        	//noinspection ForLoopReplaceableByForEach
+	        for ( int i = 0; i < roles.length ; i++ ) {
+	            String role = roles[ i ];
+	            //noinspection unchecked
+	            this.roleDescriptions.put( role, null );
+	        }
         }
     }
+
+	private Map<String, String> checkNullMap(Map<String, String> map) {
+		return (map == null ? new HashMap<String,String>() : new HashMap<String,String>(map));
+	}
 
     public DefaultUserInfo( String username, String firstName, String lastName, Map<String,String> roleDescriptions, Map<String,String> userParameters ) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.roleDescriptions = roleDescriptions != null ? new HashMap<String,String>(roleDescriptions) : null;
-        this.userParameters = userParameters != null ? new HashMap<String,String>( userParameters) : null;
+        this.roleDescriptions = checkNullMap(roleDescriptions);
+        this.userParameters = checkNullMap(userParameters);
     }
 
     public DefaultUserInfo() {}

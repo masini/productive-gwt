@@ -8,9 +8,6 @@
 	</parent>
 	<artifactId>bootstrap</artifactId>
         <name>bootstrap</name>
-	<properties>
-		<targetJdk>1.5</targetJdk>
-	</properties>
 	<profiles>
 		<profile>
 			<id>gwt-dev-windows</id>
@@ -54,17 +51,6 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
@@ -93,18 +79,6 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>esselunga-validation</groupId>-->
-<!--			<artifactId>validation</artifactId>-->
-<!--			<version>69</version>-->
-<!--			<type>jar</type>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>commons</groupId>-->
-<!--			<artifactId>esselunga-commons</artifactId>-->
-<!--			<version>1.0.0033</version>-->
-<!--			<type>jar</type>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>net.sf.gwt-widget</groupId>
 			<artifactId>gwt-widgets</artifactId>
