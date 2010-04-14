@@ -31,4 +31,8 @@ public interface TemplateImageBundle extends ClientBundle {
 		
 		@Source("img/application_put.png")
 		ImageResource HEADER_APPLICATION_PUT();
+		
+		@Source("img/house.png")
+		ImageResource HOME();
+		
 }

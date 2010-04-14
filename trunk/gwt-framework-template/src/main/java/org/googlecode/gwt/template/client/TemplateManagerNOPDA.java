@@ -163,7 +163,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 	protected  Image getIntranetLogo() {
 		if (intranetLogo == null) {
-			intranetLogo = images.getHomeIcon().createImage();
+			intranetLogo = new Image(getImageBundle().HOME());
 			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
 			intranetLogo.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {

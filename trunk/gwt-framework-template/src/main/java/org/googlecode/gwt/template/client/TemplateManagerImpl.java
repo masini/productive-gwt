@@ -14,7 +14,6 @@ public class TemplateManagerImpl {
 	protected static String INTRANET_LOGO_STYLE_NAME = "intranet-logo";
 
 	protected static final String ERR_MSG = "Non trovata la zona ";
-	protected static TemplateImageImageBundle images = (TemplateImageImageBundle) GWT.create(TemplateImageImageBundle.class);
 	protected static HTML home = null;
 	protected static HTML intranet = null;
 	protected static Image intranetLogo = null;
