@@ -3,7 +3,6 @@ package org.googlecode.gwt.template.client;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
-import org.googlecode.gwt.template.client.img.TemplateImageBundle;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;

@@ -1,34 +1,34 @@
-package org.googlecode.gwt.template.client.img;
+package org.googlecode.gwt.template.client;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 public interface TemplateImageBundle extends ClientBundle {
 		
-		@Source("logo.png")
+		@Source("img/logo.png")
 		ImageResource HEADER_LOGO();
 		
-		@Source("empty.png")
+		@Source("img/empty.png")
 		ImageResource HEADER_EMPTY();
 		
-		@Source("empty_short.png")
+		@Source("img/empty_short.png")
 		ImageResource HEADER_EMPTY_SHORT();
 		
-		@Source("bullet_arrow_down.gif")
+		@Source("img/bullet_arrow_down.gif")
 		ImageResource HEADER_ARROW_DOWN();
 		
-		@Source("information.png")
+		@Source("img/information.png")
 		ImageResource HEADER_INFORMATION();
 		
-		@Source("user.png")
+		@Source("img/user.png")
 		ImageResource HEADER_USER_INFO();
 		
-		@Source("help.png")
+		@Source("img/help.png")
 		ImageResource HEADER_HELP();
 		
-		@Source("application_terminal.png")
+		@Source("img/application_terminal.png")
 		ImageResource HEADER_APPLICATION_TERMINAL();
 		
-		@Source("application_put.png")
+		@Source("img/application_put.png")
 		ImageResource HEADER_APPLICATION_PUT();
 }

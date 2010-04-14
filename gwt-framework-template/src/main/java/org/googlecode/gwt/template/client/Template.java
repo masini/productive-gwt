@@ -1,6 +1,5 @@
 package org.googlecode.gwt.template.client;
 
-import org.googlecode.gwt.template.client.img.TemplateImageBundle;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
