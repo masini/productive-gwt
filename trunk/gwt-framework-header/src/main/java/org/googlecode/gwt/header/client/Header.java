@@ -1,5 +1,7 @@
  package org.googlecode.gwt.header.client;
 
+import org.googlecode.gwt.base.client.LogText;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
@@ -12,9 +14,16 @@ public class Header implements EntryPoint {
 	
 	private static HeaderImpl impl = GWT.create(HeaderImpl.class);
 
+	static {
+		LogText.writeOnLogText("==> static " + Header.class.getName());
+	}
+	
+	public Header() {
+		LogText.writeOnLogText("==> constructor " + Header.class.getName());
+	}
 	
 	public void onModuleLoad() {
-
+		LogText.writeOnLogText("==> onModuleLoad " + Header.class.getName());
 		impl.moduleLoad();
 	}
 	

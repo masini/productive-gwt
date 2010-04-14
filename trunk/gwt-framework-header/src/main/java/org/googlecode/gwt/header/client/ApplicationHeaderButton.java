@@ -2,6 +2,7 @@ package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.BootstrapData;
+import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.user.client.ui.Image;
 
@@ -28,10 +29,10 @@ public class ApplicationHeaderButton extends BaseInfoPanelHeaderButton {
 	}
 
 	protected Image getPopupImage() {
-		return HeaderImagesFactory.getInstance().getApplicationInfoIcon().createImage();
+		return new Image(TemplateManager.getImageBundle().HEADER_INFORMATION());
 	}
 	
 	protected void addLabels() {
-		add(HeaderImagesFactory.getInstance().getApplicationInfoIcon().createImage());
+		add(new Image(TemplateManager.getImageBundle().HEADER_INFORMATION()));
 	}
 }
