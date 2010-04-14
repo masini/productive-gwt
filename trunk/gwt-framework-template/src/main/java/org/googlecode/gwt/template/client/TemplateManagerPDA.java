@@ -140,9 +140,9 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		if (home == null) getHomePageLink();
 		
 		if (homePageHistoryToken == null) {
-			home.setHTML("<a href='javascript:;'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='javascript:;'>" + TemplateManager.getTemplateCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		} else {
-			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateConstantsFactory.getInstance().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateManager.getTemplateCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		}
 	}
 
