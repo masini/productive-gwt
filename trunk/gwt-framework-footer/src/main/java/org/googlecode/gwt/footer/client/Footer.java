@@ -2,9 +2,11 @@ package org.googlecode.gwt.footer.client;
 
 import java.util.Date;
 
+import org.googlecode.gwt.base.client.LogText;
 import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Label;
@@ -14,19 +16,27 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class Footer implements EntryPoint {
 	
-	@SuppressWarnings({ "deprecation" })
-	private int getYear() {
-		return new Date().getYear()+1900;
+	static {
+		LogText.writeOnLogText("==> static " + Footer.class.getName());
+	}
+	
+	public Footer() {
+		LogText.writeOnLogText("==> constructor " + Footer.class.getName());
+	}
+	
+	private String getYear() {
+		return DateTimeFormat.getFormat("yyyy").format(new Date());
 	}
 	
 	public void onModuleLoad() {
+		LogText.writeOnLogText("==> onModuleLoad " + Footer.class.getName());
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		TemplateManager.setFooter(absolutePanel);
 		 
 		absolutePanel.setSize("100%", "100%");
 		
-		Label label = new Label("Esselunga (c) "+getYear());
+		Label label = new Label(TemplateManager.getTemplateCostants().COPYRIGHT() +" "+getYear());
 		label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
 		absolutePanel.add(label);
