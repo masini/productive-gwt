@@ -1,6 +1,9 @@
 package org.googlecode.gwt.template.client;
 
+import org.googlecode.gwt.template.client.img.TemplateImageBundle;
+
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -17,6 +20,13 @@ public class Template implements EntryPoint {
 	public static final String INFO_STYLE_NAME = "placeholder-info";
 	
 	public void onModuleLoad() {
+		
+		TemplateCostants constants = GWT.create(TemplateCostants.class);
+		TemplateManager.setTemplateCostants(constants);
+		
+		TemplateImageBundle imageBundle = GWT.create(TemplateImageBundle.class);
+		TemplateManager.setImageBundle(imageBundle);
+		
 		DockPanel dockPanel = new DockPanel();
 		RootPanel.get().add(dockPanel);
 		dockPanel.setWidth("100%");

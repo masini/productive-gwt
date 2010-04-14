@@ -3,6 +3,7 @@ package org.googlecode.gwt.template.client;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
+import org.googlecode.gwt.template.client.img.TemplateImageBundle;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
@@ -13,7 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplateManager {
 
 	private static TemplateManagerImpl impl = GWT.create(TemplateManagerImpl.class);
-
+	
 	public static void setApplicationTitle(String applicationTitle) throws PlaceHolderException {
 		impl.setApplicationTitle(applicationTitle);
 	}
@@ -94,9 +95,9 @@ public class TemplateManager {
 	}
 	
 	public static void openIntranet() {
-		redirect("http://intra.esselunga.net/validationnet/home.aspx");
+		redirect("bvcbnvcbvcb");
 	}
-
+	
 	public static native void redirect(String url)/*-{
 			    $wnd.location = url;
 			}-*/;
@@ -107,5 +108,37 @@ public class TemplateManager {
 
 	public static void setHome(HTML home) {
 		TemplateManagerImpl.home = home;
+	}
+
+//	public static void setIntranetUrl(final String intranetUrl) {
+//		TemplateManagerImpl.intranet = new HTML("<a href='"+intranetUrl+"'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+//	}
+	
+	protected HTML createIntranetLink(final String intranetUrl) {
+		//TODO: verificare come mai il # invece che javascript:;
+		HTML intranetLink = new HTML("<a href='"+intranetUrl+"'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+//		intranetLink.addClickHandler(new ClickHandler() {
+//			public void onClick(ClickEvent event) {
+//				redirect(intranetUrl);
+//			}
+//		});
+		
+		return intranetLink;
+	}
+	
+	public static void setTemplateCostants(TemplateCostants costants) {
+		impl.setTemplateCostants(costants);
+	}
+
+	public static TemplateCostants getTemplateCostants() {
+		return impl.getTemplateCostants();
+	}
+	
+	public static void setImageBundle(TemplateImageBundle imageBundle) {
+		impl.setImageBundle(imageBundle);
+	}
+	
+	public static TemplateImageBundle getImageBundle() {
+		return impl.getImageBundle();
 	}
 }

@@ -48,13 +48,13 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		root.add(widget);
 	}
 
-	public  void setFooter(Widget widget) throws PlaceHolderException {
-		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
-		if (root == null) {
-			throw new PlaceHolderException(ERR_MSG + "FOOTER");
-		}
-		root.add(widget);
-	}
+//	public  void setFooter(Widget widget) throws PlaceHolderException {
+//		Panel root = PlaceHolder.get(PlaceHolder.FOOTER);
+//		if (root == null) {
+//			throw new PlaceHolderException(ERR_MSG + "FOOTER");
+//		}
+//		root.add(widget);
+//	}
 
 	public  void setApplicationContent(Widget widget) throws PlaceHolderException {
 		Panel root = get(PlaceHolder.CONTENT);
@@ -231,9 +231,9 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 	
 
-	public  void openIntranet() {
-		redirect("http://intra.esselunga.net/validationnet/home.aspx");
-	}
+//	public  void openIntranet() {
+//		redirect(intranetUrl);
+//	}
 
 	public  native void redirect(String url)/*-{
 			    $wnd.location = url;

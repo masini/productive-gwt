@@ -7,15 +7,15 @@ public class TemplateConstantsFactory {
 	/**
 	 * Variabile di istanza
 	 */
-	private static TemplateConstants constans = null;
+	private static TemplateCostants constans = null;
 	
 	/**
 	 * Restituisce l'istanza dell'oggetto che contiene le costanti standard del framework
 	 * @return
 	 */
-	public static TemplateConstants getInstance() {
+	public static TemplateCostants getInstance() {
 		if (constans == null) {
-			constans = (TemplateConstants) GWT.create(TemplateConstants.class);
+			constans = (TemplateCostants) GWT.create(TemplateCostants.class);
 		}
 		
 		return constans;

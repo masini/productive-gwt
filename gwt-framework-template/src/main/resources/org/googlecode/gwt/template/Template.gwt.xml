@@ -2,7 +2,7 @@
 	<inherits name="org.googlecode.gwt.base.Base" />
 	<inherits name="com.google.gwt.core.Core" />
 	<inherits name="com.google.gwt.user.UserAgent" />
-	    
+	
 	<stylesheet src='css/template.css'/>    
 	    
 	<!-- Browser-sensitive code should use the 'user.agent' property -->
