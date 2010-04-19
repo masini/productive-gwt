@@ -3,26 +3,29 @@ package org.googlecode.gwt.menu.client.render;
 import org.googlecode.gwt.base.client.util.StyleUtil;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.KeyboardListener;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.Widget;
 
 public class ShortcutMenuRender extends Composite {
 	private MenuModel model = null;
 	private MenuBar menu = null;
 	
-	private class MenuGo extends Composite implements ClickListener{
+	private class MenuGo extends Composite implements ClickHandler{
 		private HorizontalPanel horizontalPanel = new HorizontalPanel();
 		private TextBox menuVeloce = new TextBox();
 		private Image menuVeloceGo = new Image("./images/action_go.gif");
@@ -34,20 +37,19 @@ public class ShortcutMenuRender extends Composite {
 			menuVeloce.setHeight("18px");
 			menuVeloce.setMaxLength(4);
 			menuVeloceGo.setHeight("18px");
-			menuVeloceGo.addClickListener(this);
+			menuVeloceGo.addClickHandler(this);
 			StyleUtil.setCursorPointer(menuVeloceGo);
 			
-			menuVeloce.addKeyboardListener(new KeyboardListener(){
-				public void onKeyDown(Widget sender, char keyCode, int modifiers) {
-					if(keyCode == KEY_ENTER)
+			menuVeloce.addKeyDownHandler(new KeyDownHandler() {
+				
+				public void onKeyDown(KeyDownEvent event) {
+					if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER ) {
 						imgClick();
+					}
 					
 				}
-				public void onKeyUp(Widget sender, char keyCode, int modifiers) {}
-
-				public void onKeyPress(Widget sender, char keyCode,int modifiers) {}
-
 			});
+			
 			horizontalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 			horizontalPanel.add(menuVeloce);
 			horizontalPanel.add(menuVeloceGo);
@@ -70,10 +72,6 @@ public class ShortcutMenuRender extends Composite {
 			return null;
 		}
 		
-		public void onClick(Widget sender) {
-			imgClick();
-		}
-
 		private void imgClick() {
 			if(menuVeloce.getText().equals("")){
 				Window.alert("Nessun menù specificato");
@@ -85,6 +83,10 @@ public class ShortcutMenuRender extends Composite {
 			else{
 				Window.alert("Nessuna voce trovata con questo nome");
 			}
+		}
+
+		public void onClick(ClickEvent event) {
+			imgClick();
 		}
 	}
 	
