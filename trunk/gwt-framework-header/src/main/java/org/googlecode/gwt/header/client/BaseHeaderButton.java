@@ -2,11 +2,15 @@ package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.util.StyleUtil;
 
-import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusPanel;
-import com.google.gwt.user.client.ui.MouseListenerAdapter;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -55,22 +59,26 @@ public abstract class BaseHeaderButton extends Composite {
 		
 		/* Pannello principale con stile per clicked */
 		panel.setStyleName(BASE_HEADER_BUTTON_CLASS);
-		panel.addMouseListener(new MouseListenerAdapter() {
-			public void onMouseEnter(Widget sender) {
+		panel.addMouseOverHandler(new MouseOverHandler() {
+			
+			public void onMouseOver(MouseOverEvent event) {
 				setStyle(true);
 			}
-
-			public void onMouseLeave(Widget sender) {
+		});
+		panel.addMouseOutHandler(new MouseOutHandler() {
+			
+			public void onMouseOut(MouseOutEvent event) {
 				if (!isClicked) {
 					setStyle(false);
 				}
 			}
 		});
-		panel.addClickListener(new ClickListener() {
-			public void onClick(Widget sender) {
+		panel.addClickHandler(new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
 				isClicked = !isClicked;
 				setStyle(isClicked);
-				BaseHeaderButton.this.onClick(sender, isClicked);				
+				BaseHeaderButton.this.onClick((Widget) event.getSource(), isClicked);
 			}
 		});
 		
