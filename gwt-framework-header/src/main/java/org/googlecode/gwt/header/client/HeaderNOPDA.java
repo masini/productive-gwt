@@ -6,7 +6,7 @@ import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.template.client.PlaceHolder;
 import org.googlecode.gwt.template.client.TemplateManager;
-import org.googlecode.gwt.template.client.img.TemplateImageBundle;
+import org.googlecode.gwt.template.client.TemplateImageBundle;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
