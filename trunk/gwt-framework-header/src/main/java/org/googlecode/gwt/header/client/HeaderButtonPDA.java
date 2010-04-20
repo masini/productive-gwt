@@ -24,11 +24,11 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 
 	protected void onClick(Widget sender, boolean isClicked) {
 		BootstrapData bootstrapData = applicationContext.getBootstrapData();
-		String infoPanel=HeaderConstantsFactory.getInstance().CLUSTER_NAME_LABEL() + " "+ bootstrapData.getClusterName()+ "\n"+
-		HeaderConstantsFactory.getInstance().SERVER_NAME_LABEL() + " "+ bootstrapData.getServerName()+"\n"+
-		HeaderConstantsFactory.getInstance().APPLICATION_NAME_LABEL() + " "+ bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion()+"\n"+
-		HeaderConstantsFactory.getInstance().APPLICATION_CODE_LABEL() + " "+ bootstrapData.getApplicationCode() +"\n"+
-		HeaderConstantsFactory.getInstance().APPLICATION_VERSION_LABEL() + " "+ bootstrapData.getApplicationVersion();
+		String infoPanel=ApplicationResources.getCostants().CLUSTER_NAME_LABEL() + " "+ bootstrapData.getClusterName()+ "\n"+
+		ApplicationResources.getCostants().SERVER_NAME_LABEL() + " "+ bootstrapData.getServerName()+"\n"+
+		ApplicationResources.getCostants().APPLICATION_NAME_LABEL() + " "+ bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion()+"\n"+
+		ApplicationResources.getCostants().APPLICATION_CODE_LABEL() + " "+ bootstrapData.getApplicationCode() +"\n"+
+		ApplicationResources.getCostants().APPLICATION_VERSION_LABEL() + " "+ bootstrapData.getApplicationVersion();
 		Window.alert(infoPanel);
 		//popup.show();
 		//updatePopupSizeAndPosition(sender);
@@ -40,10 +40,10 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 		// INFO SERVER
 
 		BootstrapData bootstrapData = applicationContext.getBootstrapData();
-		addInfo(HeaderConstantsFactory.getInstance().CLUSTER_NAME_LABEL() + " ", bootstrapData.getClusterName());
-		addInfo(HeaderConstantsFactory.getInstance().SERVER_NAME_LABEL() + " ", bootstrapData.getServerName());
-		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_NAME_LABEL() + " ", bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion());
-		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
+		addInfo(ApplicationResources.getCostants().CLUSTER_NAME_LABEL() + " ", bootstrapData.getClusterName());
+		addInfo(ApplicationResources.getCostants().SERVER_NAME_LABEL() + " ", bootstrapData.getServerName());
+		addInfo(ApplicationResources.getCostants().APPLICATION_NAME_LABEL() + " ", bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion());
+		addInfo(ApplicationResources.getCostants().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
 
 		// INFO UTENTE
 
@@ -54,12 +54,12 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 
 		String[] role = userInfo.getRoles();	
 		if (role != null && role.length > 0) {
-			addInfo(HeaderConstantsFactory.getInstance().ROLES_LABEL(), getRoles(userInfo, role));
+			addInfo(ApplicationResources.getCostants().ROLES_LABEL(), getRoles(userInfo, role));
 		}
 
 		String[] parameterName = userInfo.getUserParameterNames();
 		if (parameterName != null && parameterName.length > 0) {
-			addInfo(HeaderConstantsFactory.getInstance().PARAMETERS_LABEL(), getParameters(userInfo, parameterName));
+			addInfo(ApplicationResources.getCostants().PARAMETERS_LABEL(), getParameters(userInfo, parameterName));
 		}
 	}
 

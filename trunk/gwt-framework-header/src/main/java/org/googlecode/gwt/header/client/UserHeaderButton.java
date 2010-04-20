@@ -23,17 +23,17 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 
 		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
 
-		addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
-		addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
+		addInfo(ApplicationResources.getCostants().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
+		addInfo(ApplicationResources.getCostants().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
 
 		String[] role = userInfo.getRoles();	
 		if (role != null && role.length > 0) {
-			addInfo(HeaderConstantsFactory.getInstance().ROLES_LABEL(), getRoles(userInfo, role));
+			addInfo(ApplicationResources.getCostants().ROLES_LABEL(), getRoles(userInfo, role));
 		}
 		
 		String[] parameterName = userInfo.getUserParameterNames();
 		if (parameterName != null && parameterName.length > 0) {
-			addInfo(HeaderConstantsFactory.getInstance().PARAMETERS_LABEL(), getParameters(userInfo, parameterName));
+			addInfo(ApplicationResources.getCostants().PARAMETERS_LABEL(), getParameters(userInfo, parameterName));
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		
 		Label info = new Label(userInfo.getFirstName() + " " + userInfo.getLastName());
 		info.addStyleName("benvenuto");
-		add(new Label(HeaderConstantsFactory.getInstance().WELCOME_LABEL() + " "));
+		add(new Label(ApplicationResources.getCostants().WELCOME_LABEL() + " "));
 		add(info);
 	}
 	

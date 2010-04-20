@@ -21,10 +21,10 @@ public class ApplicationHeaderButton extends BaseInfoPanelHeaderButton {
 		super.onLoad();
 
 		BootstrapData bootstrapData = applicationContext.getBootstrapData();
-		addInfo(HeaderConstantsFactory.getInstance().CLUSTER_NAME_LABEL() + " ", bootstrapData.getClusterName());
-		addInfo(HeaderConstantsFactory.getInstance().SERVER_NAME_LABEL() + " ", bootstrapData.getServerName());
-		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_NAME_LABEL() + " ", bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion());
-		addInfo(HeaderConstantsFactory.getInstance().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
+		addInfo(ApplicationResources.getCostants().CLUSTER_NAME_LABEL() + " ", bootstrapData.getClusterName());
+		addInfo(ApplicationResources.getCostants().SERVER_NAME_LABEL() + " ", bootstrapData.getServerName());
+		addInfo(ApplicationResources.getCostants().APPLICATION_NAME_LABEL() + " ", bootstrapData.getApplicationName() + " " +	bootstrapData.getApplicationVersion());
+		addInfo(ApplicationResources.getCostants().APPLICATION_CODE_LABEL() + " ", bootstrapData.getApplicationCode());
 		
 	}
 
