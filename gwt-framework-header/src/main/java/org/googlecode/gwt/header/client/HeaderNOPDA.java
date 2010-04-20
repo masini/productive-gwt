@@ -4,9 +4,10 @@ import java.util.Date;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
+import org.googlecode.gwt.base.client.ApplicationImageBundle;
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.template.client.PlaceHolder;
 import org.googlecode.gwt.template.client.TemplateManager;
-import org.googlecode.gwt.template.client.TemplateImageBundle;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -43,7 +44,7 @@ public class HeaderNOPDA extends HeaderImpl {
 		horizontalPanel.setWidth("100%");
 		
 		/* Logo */
-		TemplateImageBundle imageBundle = TemplateManager.getImageBundle();
+		ApplicationImageBundle imageBundle = ApplicationResources.getImageBundle();
 		Image logo = new Image(imageBundle.HEADER_LOGO());
 		horizontalPanel.add(logo);
 		horizontalPanel.setCellHorizontalAlignment(logo, HorizontalPanel.ALIGN_LEFT);
