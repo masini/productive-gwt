@@ -2,6 +2,7 @@ package org.googlecode.gwt.template.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.filter.MenuFilter;
@@ -146,9 +147,9 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		if (home == null) getHomePageLink();
 
 		if (homePageHistoryToken == null) {
-			home.setHTML("<a href='javascript:;'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='javascript:;'>" + ApplicationResources.getCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		} else {
-			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + ApplicationResources.getCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		}
 	}
 
@@ -163,7 +164,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 	protected  Image getIntranetLogo() {
 		if (intranetLogo == null) {
-			intranetLogo = new Image(getImageBundle().HOME());
+			intranetLogo = new Image(ApplicationResources.getImageBundle().HOME());
 			intranetLogo.setStyleName(INTRANET_LOGO_STYLE_NAME);
 			intranetLogo.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
@@ -178,7 +179,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	protected  HTML getIntranetLink() {
 		if (intranet == null) {
 			// Il link di default non fa nulla
-			intranet = new HTML("<a href='#'>" + costants.INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+			intranet = new HTML("<a href='#'>" + ApplicationResources.getCostants().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
 			intranet.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					openIntranet();
@@ -190,7 +191,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
 	protected  HTML getHomePageLink() {
 		if (home == null) {
-			home = new HTML("<a href='javascript:;'>" + costants.HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
+			home = new HTML("<a href='javascript:;'>" + ApplicationResources.getCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>", true);
 			home.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					TemplateManager.reloadFirstPanel();
@@ -201,7 +202,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	protected  HTML newSeparator() {
-		return new HTML(costants.PAGE_CONTEXT_SEPARATOR());
+		return new HTML(ApplicationResources.getCostants().PAGE_CONTEXT_SEPARATOR());
 	}
 
 	/*
@@ -238,7 +239,7 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 	
 	public void openIntranet() {
-		redirect(costants.INTRANET_URL());
+		redirect(ApplicationResources.getCostants().INTRANET_URL());
 	}
 	
 }
