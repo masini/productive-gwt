@@ -110,7 +110,7 @@ public class PrimoPanel extends Composite {
 		final RadioButton daSedeRadioButton = new RadioButton("emessoDa");
 		flexTable.setWidget(0, 4, daSedeRadioButton);
 		flexTable.getCellFormatter().setWidth(0, 4, "16%");
-		daSedeRadioButton.setChecked(true);
+		daSedeRadioButton.setValue(true);
 		daSedeRadioButton.setText("Da sede");
 
 		final RadioButton fuoriSedeRadioButton = new RadioButton("emessoDa");
