@@ -61,4 +61,7 @@ public interface ApplicationCostants  extends Constants {
 	@DefaultStringValue("Parameters")
 	String PARAMETERS_LABEL();
 	
+	@DefaultStringValue("EEE, dd MMM yyyy") // Ex. Tue, 20 Apr 2010
+	String DATE_FORMAT();
+	
 }

@@ -82,7 +82,7 @@ public class HeaderNOPDA extends HeaderImpl {
 				addInfoWidget(new UserHeaderButton(result));
 				addInfoWidget(new ApplicationHeaderButton(result));
 				
-				Label date = new Label(DateTimeFormat.getFormat("dd/MM/yyyy").format(new Date()));
+				Label date = new Label(DateTimeFormat.getFormat(ApplicationResources.getCostants().DATE_FORMAT()).format(new Date()));
 				date.setStyleName(INFO_WIDGET_STYLE_NAME);
 				addInfoWidget(date);
 			}

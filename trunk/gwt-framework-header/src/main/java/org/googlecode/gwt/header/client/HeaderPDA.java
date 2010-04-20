@@ -63,7 +63,7 @@ public class HeaderPDA extends HeaderImpl{
 //				addInfoWidget(imgClose);
 				//addInfoWidget(new ApplicationHeaderButton(result));
 //
-//				Label date = new Label(DateTimeFormat.getFormat("dd/MM/yyyy").format(new Date()));
+//				Label date = new Label(DateTimeFormat.getFormat(ApplicationResources.getCostants().DATE_FORMAT()).format(new Date()));
 //				date.setStyleName(INFO_WIDGET_STYLE_NAME);
 //				addInfoWidget(date);
 			}
