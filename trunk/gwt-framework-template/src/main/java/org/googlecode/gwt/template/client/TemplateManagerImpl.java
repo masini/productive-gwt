@@ -23,8 +23,6 @@ public class TemplateManagerImpl {
 	protected static boolean showIntranetLink = true;
 	
 	protected Widget footer = null;
-	protected TemplateCostants costants = null;
-	protected TemplateImageBundle imageBundle = null;
 
 	public  void setApplicationTitle(Widget widget) throws PlaceHolderException{}  
 
@@ -119,31 +117,5 @@ public class TemplateManagerImpl {
 
 	public  void setHome(HTML home) {
 	}
-	
-	public void setTemplateCostants(TemplateCostants costants) {
-		if(this.costants != null) {
-			GWT.log("Costants already set with class " + this.costants.getClass().getName());
-			return;
-		}
-		this.costants = costants;
-		GWT.log("Costants is: " + costants.getClass().getName());
-	}
 
-	public void setImageBundle(TemplateImageBundle imageBundle) {
-		if(this.imageBundle != null) {
-			GWT.log("Images already set with class " + this.imageBundle.getClass().getName());
-			return;
-		}
-		this.imageBundle = imageBundle;
-		GWT.log("Images is: " + imageBundle.getClass().getName());
-	}
-
-	public TemplateImageBundle getImageBundle() {
-		return this.imageBundle;
-	}
-
-	public TemplateCostants getTemplateCostants() {
-		return this.costants;
-	}
-	
 }

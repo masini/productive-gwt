@@ -1,5 +1,6 @@
 package org.googlecode.gwt.template.client;
 
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.template.client.PlaceHolder.PlaceHolderConstant;
 import org.googlecode.gwt.template.client.exception.PlaceHolderException;
@@ -77,8 +78,8 @@ public class TemplateManager {
 		return impl.getHomePageLink();
 	}
 
-	protected static HTML newSeparator() {
-		return new HTML(TemplateManager.getTemplateCostants().PAGE_CONTEXT_SEPARATOR());
+	protected HTML newSeparator() {
+		return new HTML(ApplicationResources.getCostants().PAGE_CONTEXT_SEPARATOR());
 	}
 
 	/*
@@ -109,13 +110,8 @@ public class TemplateManager {
 		TemplateManagerImpl.home = home;
 	}
 
-//	public static void setIntranetUrl(final String intranetUrl) {
-//		TemplateManagerImpl.intranet = new HTML("<a href='"+intranetUrl+"'>" + TemplateConstantsFactory.getInstance().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
-//	}
-	
 	protected HTML createIntranetLink(final String intranetUrl) {
-		//TODO: verificare come mai il # invece che javascript:;
-		HTML intranetLink = new HTML("<a href='"+intranetUrl+"'>" + TemplateManager.getTemplateCostants().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
+		HTML intranetLink = new HTML("<a href='"+intranetUrl+"'>" + ApplicationResources.getCostants().INTRANET_PAGE_CONTEXT_LABEL() + "</a>", true);
 //		intranetLink.addClickHandler(new ClickHandler() {
 //			public void onClick(ClickEvent event) {
 //				redirect(intranetUrl);
@@ -125,19 +121,4 @@ public class TemplateManager {
 		return intranetLink;
 	}
 	
-	public static void setTemplateCostants(TemplateCostants costants) {
-		impl.setTemplateCostants(costants);
-	}
-
-	public static TemplateCostants getTemplateCostants() {
-		return impl.getTemplateCostants();
-	}
-	
-	public static void setImageBundle(TemplateImageBundle imageBundle) {
-		impl.setImageBundle(imageBundle);
-	}
-	
-	public static TemplateImageBundle getImageBundle() {
-		return impl.getImageBundle();
-	}
 }

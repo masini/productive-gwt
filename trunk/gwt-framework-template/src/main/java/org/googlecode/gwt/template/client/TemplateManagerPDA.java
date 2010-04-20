@@ -2,6 +2,7 @@ package org.googlecode.gwt.template.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.filter.MenuFilter;
@@ -140,9 +141,9 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		if (home == null) getHomePageLink();
 		
 		if (homePageHistoryToken == null) {
-			home.setHTML("<a href='javascript:;'>" + TemplateManager.getTemplateCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='javascript:;'>" + ApplicationResources.getCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		} else {
-			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + TemplateManager.getTemplateCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
+			home.setHTML("<a href='#" + homePageHistoryToken + "'>" + ApplicationResources.getCostants().HOME_PAGE_CONTEXT_LABEL() + "</a>");
 		}
 	}
 
