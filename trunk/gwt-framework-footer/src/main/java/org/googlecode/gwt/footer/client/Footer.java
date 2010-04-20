@@ -2,6 +2,7 @@ package org.googlecode.gwt.footer.client;
 
 import java.util.Date;
 
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.base.client.LogText;
 import org.googlecode.gwt.template.client.TemplateManager;
 
@@ -36,7 +37,7 @@ public class Footer implements EntryPoint {
 		 
 		absolutePanel.setSize("100%", "100%");
 		
-		Label label = new Label(TemplateManager.getTemplateCostants().COPYRIGHT() +getYear());
+		Label label = new Label(ApplicationResources.getCostants().COPYRIGHT() +getYear());
 		label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
 		absolutePanel.add(label);
