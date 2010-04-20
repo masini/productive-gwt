@@ -1,7 +1,8 @@
 package org.googlecode.gwt.header.client;
 
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.PopupListener;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -26,8 +27,9 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton {
 
 		/* Creo il popup */
 		popup = new InfoPopupPanel(true, getPopupImage());
-		popup.addPopupListener(new PopupListener() {
-			public void onPopupClosed(PopupPanel sender, boolean autoClosed) {
+		popup.addCloseHandler(new CloseHandler<PopupPanel>() {
+			
+			public void onClose(CloseEvent<PopupPanel> event) {
 				BaseInfoPanelHeaderButton.this.setClicked(false);
 			}
 		});

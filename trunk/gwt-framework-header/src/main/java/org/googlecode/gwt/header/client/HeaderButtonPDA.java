@@ -1,9 +1,9 @@
 package org.googlecode.gwt.header.client;
 
 import org.googlecode.gwt.base.client.ApplicationContext;
+import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
-import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
@@ -77,7 +77,7 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 	protected void addLabels() {
 		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
 		
-		add(new Image(TemplateManager.getImageBundle().HEADER_EMPTY_SHORT()));
+		add(new Image(ApplicationResources.getImageBundle().HEADER_EMPTY_SHORT()));
 		
 		Label info = new Label(userInfo.getUsername());
 		
