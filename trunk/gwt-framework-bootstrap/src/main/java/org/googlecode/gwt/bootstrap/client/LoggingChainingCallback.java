@@ -22,13 +22,13 @@ class LoggingChainingCallback implements AsyncCallback {
 		
 	public void onFailure(Throwable caught)
 	{
-		GWT.log("RPC failure [" + GWT.getTypeName(callback) + "]", caught);
+		GWT.log("RPC failure [" + callback.getClass().getName() + "]", caught);
 		callback.onFailure(caught);
 	}
 	
 	public void onSuccess(Object result)
 	{
-		GWT.log("RPC success [" + GWT.getTypeName(callback) + "]", null);
+		GWT.log("RPC success [" + result.getClass().getName() + "]", null);
 		callback.onSuccess(result);
 	}
 }
