@@ -3,12 +3,12 @@ package org.googlecode.gwt.menu.client.render;
 
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Questa classe effettua il render del menu utilzzando un elenco di pulsanti<br>
@@ -80,8 +80,8 @@ public class MenuRenderSimplePDA extends Composite{
 		button.setText(model.getLabel());
 		button.setWidth("90%");
 		button.setStylePrimaryName("pda-menu-button");
-		button.addClickListener(new ClickListener() {
-			public void onClick(Widget sender) {
+		button.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
 				model.getCommand().execute();
 				panel.setVisible(false);
 			}
