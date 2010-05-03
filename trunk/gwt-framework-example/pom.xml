@@ -7,6 +7,7 @@
 	</parent>
   
   <artifactId>example</artifactId>
+  <name>example</name>
   <packaging>war</packaging>
   
     <properties>
