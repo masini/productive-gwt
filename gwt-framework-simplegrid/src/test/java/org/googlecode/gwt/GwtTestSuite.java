@@ -10,7 +10,7 @@ import com.google.gwt.junit.tools.GWTTestSuite;
 public class GwtTestSuite extends GWTTestSuite {
 	
     public static Test suite() {
-        TestSuite suite = new TestSuite("Simple gird lib test suite");
+        TestSuite suite = new TestSuite("Simplegrid lib test suite");
 
         suite.addTestSuite(SimpleGridModuleTst.class); 
         

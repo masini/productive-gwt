@@ -1,58 +1,35 @@
-
-/*
- * Copyright 2008 Google Inc.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package org.googlecode.gwt.simplegrid.client.table.event;
 
 import com.google.gwt.event.logical.shared.HighlightEvent;
 import com.google.gwt.gen2.table.event.client.TableEvent.Row;
 
 /**
- * Logical event fired when a cell is highlighted.
+ * Logical event fired when a row is highlighted.
  */
 public class RowHighlightEvent extends HighlightEvent<Row> {
-  /**
-   * Event Key for {@link CellHighlightEvent}.
-   */
-  //public static final Type<HighlightHandler<Cell>> TYPE = new Type<HighlightHandler<Cell>>();
-  /*{
-    
-	/*@Override
-    protected void fire(CellHighlightHandler handler, CellHighlightEvent event) {
-      handler.onCellHighlight(event);
-    }
-  };*/
+	/**
+	 * Event Key for {@link RowHighlightEvent}.
+	 */
+	//public static final Type<HighlightHandler<Row>> TYPE = new Type<HighlightHandler<Row>>();
+	/*{
 
-  /**
-   * Construct a new {@link RowHighlightEvent}.
-   * 
-   * @param rowIndex the index of the highlighted row
-   * @param cellIndex the index of the highlighted cell
-   */
-  public RowHighlightEvent(int rowIndex) {
-    this(new Row(rowIndex));
-  }
+		/*@Override
+		protected void fire(RowHighlightHandler handler, RowHighlightEvent event) {
+		  handler.onRowHighlight(event);
+		}
+	  };*/
 
-  /**
-   * Construct a new {@link RowHighlightEvent}.
-   * 
-   * @param cell the cell being highlighted
-   */
-  public RowHighlightEvent(Row row) {
-    super(row);
-  }
+	/**
+	 * @param rowIndex the index of the highlighted row
+	 */
+	public RowHighlightEvent(int rowIndex) {
+		this(new Row(rowIndex));
+	}
 
+	/**
+	 * @param row the row being highlighted
+	 */
+	public RowHighlightEvent(Row row) {
+		super(row);
+	}
 }
