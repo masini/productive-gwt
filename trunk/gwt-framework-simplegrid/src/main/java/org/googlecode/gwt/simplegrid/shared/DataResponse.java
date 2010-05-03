@@ -7,68 +7,48 @@ import java.util.List;
 import com.google.gwt.gen2.table.client.TableModelHelper.Response;
 
 
-public class DataResponse<RowType extends Serializable> extends Response<RowType>
-	implements Serializable {
-	
-	/**
-	 * 
-	 */
+public class DataResponse<ROW extends Serializable> extends Response<ROW> implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private int totalRowCount;
-	private List<RowType> resultRows;
-	
-	@SuppressWarnings("unchecked")
-	private UserData  userData;
-	
-	public <T extends Serializable> void setUserData(UserData <T> userData) {
+	private List<ROW> resultRows;
+
+	private UserData<?> userData;
+
+	public void setUserData(UserData<?> userData) {
 		this.userData = userData;
 	}
 
-	@SuppressWarnings("unchecked")
-	public <T extends Serializable> UserData <T> getUserData() {
+	public UserData<?> getUserData() {
 		return userData;
 	}
-	
-	public final static class UserData<T extends Serializable> implements Serializable {
-		
-		private static final long serialVersionUID = 1L;
-		private T currentUserData;
-		
-		public UserData () {}
-		public UserData (T ca) {
-			currentUserData = ca;
-		}
 
-		public T returnUserData() {
-			return currentUserData;
-		}
-		
-	}
-	
 	public DataResponse() {}
-	
-	public DataResponse(List<RowType> resultRows, int totalRowCount) {
+
+	public DataResponse(List<ROW> resultRows, int totalRowCount) {
 		this.resultRows = resultRows;
 		this.totalRowCount = totalRowCount;
 	}
-	
+
 	public int getTotalRowCount() {
 		return totalRowCount;
 	}
+
 	public void setTotalRowCount(int totalRowCount) {
 		this.totalRowCount = totalRowCount;
 	}
-	public List<RowType> getResultRows() {
+
+	public List<ROW> getResultRows() {
 		return resultRows;
 	}
-	public void setResultRows(List<RowType> resultRows) {
+
+	public void setResultRows(List<ROW> resultRows) {
 		this.resultRows = resultRows;
 	}
-	
+
 	//used for data table rendering
 	@Override
-	public Iterator<RowType> getRowValues() {
-	  return resultRows.iterator();
+	public Iterator<ROW> getRowValues() {
+		return resultRows.iterator();
 	}
 }

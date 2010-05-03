@@ -1,57 +1,40 @@
-
-/*
- * Copyright 2008 Google Inc.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package org.googlecode.gwt.simplegrid.client.table.event;
 
 import com.google.gwt.gen2.table.event.client.TableEvent.Cell;
 
 /**
- * Logical event fired when a cell is highlighted.
+ * Logical event fired when a cell is unhighlighted.
  */
 public class CellUnhighlightEvent extends UnhighlightEvent<Cell> {
-  /**
-   * Event Key for {@link CellHighlightEvent}.
-   */
-  //public static final Type<HighlightHandler<Cell>> TYPE = new Type<HighlightHandler<Cell>>();
-  /*{
-    
-	/*@Override
-    protected void fire(CellHighlightHandler handler, CellHighlightEvent event) {
-      handler.onCellHighlight(event);
-    }
-  };*/
+	/**
+	 * Event Key for {@link CellUnhighlightEvent}.
+	 */
+	//public static final Type<UnhighlightHandler<Cell>> TYPE = new Type<UnhighlightHandler<Cell>>();
+	/*{
 
-  /**
-   * Construct a new {@link CellUnhighlightEvent}.
-   * 
-   * @param rowIndex the index of the highlighted row
-   * @param cellIndex the index of the highlighted cell
-   */
-  public CellUnhighlightEvent(int rowIndex, int cellIndex) {
-    this(new Cell(rowIndex, cellIndex));
-  }
+		/*@Override
+		protected void fire(CellUnhighlightHandler handler, CellUnhighlightEvent event) {
+		  handler.onCellUnhighlight(event);
+		}
+	  };*/
 
-  /**
-   * Construct a new {@link CellUnhighlightEvent}.
-   * 
-   * @param cell the cell being highlighted
-   */
-  public CellUnhighlightEvent(Cell cell) {
-    super(cell);
-  }
+	/**
+	 * Construct a new {@link CellUnhighlightEvent}.
+	 *
+	 * @param rowIndex  the index of the row being unhighlighted
+	 * @param cellIndex the index of the cell being unhighlighted
+	 */
+	public CellUnhighlightEvent(int rowIndex, int cellIndex) {
+		this(new Cell(rowIndex, cellIndex));
+	}
+
+	/**
+	 * Construct a new {@link CellUnhighlightEvent}.
+	 *
+	 * @param cell the cell being unhighlighted
+	 */
+	public CellUnhighlightEvent(Cell cell) {
+		super(cell);
+	}
 
 }
