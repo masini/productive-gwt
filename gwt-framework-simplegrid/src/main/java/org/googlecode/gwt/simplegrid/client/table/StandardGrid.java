@@ -11,7 +11,7 @@ import java.io.Serializable;
 import com.google.gwt.gen2.table.client.*;
 import com.google.gwt.user.client.ui.*;
 
-public class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
+public final class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
 	extends AbstractSimpleGrid<
 		ROW,
 		StandardGrid.Controller<ROW, FILTER>,
@@ -145,7 +145,7 @@ public class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
 		return remove(sortedRowIndexes);
 	}
 
-	public final boolean populateLike(StandardGrid<ROW, FILTER> simpleGrid) {
+	public boolean populateLike(StandardGrid<ROW, FILTER> simpleGrid) {
 		if (!hasSameRowsAs(simpleGrid)) {
 			removeAllRows();
 			insert(simpleGrid.getRows());
@@ -163,7 +163,7 @@ public class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
 			public final void set(E row, int index, String cellValue) {}
 		}
 
-		public void setFilter(Filter<FILTER> filter) {
+		public final void setFilter(Filter<FILTER> filter) {
 			this.filter = filter;
 		}
 
@@ -183,12 +183,12 @@ public class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
 
 		protected abstract void requestRows(final StandardDataRequest<FILTER> request, final Callback<ROW> callback);
 
-		protected StandardDataRequest.DataColumnSortList newColumnSortList() {
+		protected final StandardDataRequest.DataColumnSortList newColumnSortList() {
 			return new StandardDataRequest.DataColumnSortList();
 		}
 	}
 
-	public static class Configurer<ROW extends Serializable, FILTER extends Serializable> extends AbstractSimpleGrid.Configurer<Configurer<ROW, FILTER>, ROW> {
+	public static final class Configurer<ROW extends Serializable, FILTER extends Serializable> extends AbstractSimpleGrid.Configurer<Configurer<ROW, FILTER>, ROW> {
 		private final ColumnsFormatter<ROW> columnsFormatter;
 		private final Controller<ROW, FILTER> controller;
 
