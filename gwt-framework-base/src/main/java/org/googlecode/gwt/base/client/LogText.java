@@ -20,7 +20,7 @@ public class LogText {
 
 	public static int getNumberOfLines() {
 		String trimmedText = LogText.logText.toString().trim(); 
-		if(trimmedText.isEmpty()) {
+		if(trimmedText.length() < 1) {
 			return 0;
 		}
 		return trimmedText.split("\n").length;
