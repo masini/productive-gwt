@@ -15,6 +15,7 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.Grid;
@@ -56,7 +57,6 @@ public class ReflectionPanel extends Composite {
 	final Wrapper<PersonPojo> wrapperPersonPojo = wrapperFactory.createWrapper(new PersonPojo());
 
 	public ReflectionPanel() {
-		
 		wrapperPersonPojo.addValueChangeHandler("nome", new ValueChangeHandler<String>() {
 		
 			public void onValueChange(ValueChangeEvent<String> event) {
@@ -104,7 +104,7 @@ public class ReflectionPanel extends Composite {
 				messageLabel.setText("Property cambiata: "+event.getValue());
 			}
 		});
-		wrapperPersonPojo.getWrappedObject().setDataNascita(new Date("08/28/1982"));
+		wrapperPersonPojo.getWrappedObject().setDataNascita(DateTimeFormat.getFormat("MM/dd/yyyy").parse("08/28/1982"));
 		wrapperPersonPojo.getWrappedObject().setNome("Mario");
 		wrapperPersonPojo.getWrappedObject().setCognome("Rossi");
 		wrapperPersonPojo.getWrappedObject().setStato(PersonPojo.Stati.CELIBE);
