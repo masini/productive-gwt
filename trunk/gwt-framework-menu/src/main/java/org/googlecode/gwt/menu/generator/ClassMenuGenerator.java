@@ -399,7 +399,7 @@ public class ClassMenuGenerator {
 		}
 		if(META_ITEM_ICON.equals(key)){
 			
-			return menuItem.label();
+			return menuItem.icon();
 		}
 		if(META_ITEM_SHORTCUT.equals(key)){
 			
