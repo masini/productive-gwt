@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.Collection;
 
 public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHandlers, HasDoubleClickHandlers {
-	private final SimpleGridPolicy.SelectionPolicy sgSelectionPolicy;
+	private SimpleGridPolicy.SelectionPolicy sgSelectionPolicy;
 	public final boolean retrieveDataOnLoad;
 	private final String[] propertyPaths;
 
@@ -41,6 +41,12 @@ public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHand
 
 	public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
 		return addDomHandler(handler, DoubleClickEvent.getType());
+	}
+
+	@Override
+	public void setSelectionPolicy(SelectionPolicy selectionPolicy) {
+		sgSelectionPolicy = SimpleGridPolicy.SelectionPolicy.valueOf(selectionPolicy.toString());
+		super.setSelectionPolicy(selectionPolicy);
 	}
 
 	// Metodo che ho dovuto ricostruire andandolo a cercare in una delle versioni di gwt-incubator (peraltro meno ovvio)
