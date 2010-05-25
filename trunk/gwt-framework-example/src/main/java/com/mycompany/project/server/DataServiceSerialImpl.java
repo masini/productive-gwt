@@ -15,10 +15,10 @@
  */
 package com.mycompany.project.server;
 
+import org.googlecode.gwt.simplegrid.shared.AbstractDataRequest;
 import org.googlecode.gwt.simplegrid.shared.DataRequest;
 import org.googlecode.gwt.simplegrid.shared.DataResponse;
 import org.googlecode.gwt.simplegrid.shared.DefaultDataSourceService;
-import org.googlecode.gwt.simplegrid.shared.DataRequest.DataColumnSortList;
 import com.mycompany.project.shared.PojoBean;
 
 import java.io.Serializable;
@@ -37,6 +37,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 /**
  * Implementation of {@link DefaultDataSourceService}.
  */
+@SuppressWarnings({"GwtServiceNotRegistered"})
 public class DataServiceSerialImpl extends RemoteServiceServlet implements DefaultDataSourceService<Serializable[]> {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +47,7 @@ public class DataServiceSerialImpl extends RemoteServiceServlet implements Defau
 
 	public DataResponse<Serializable[]> requestRows(DataRequest request) throws Exception{
 		
-		DataColumnSortList sortList = request.getColumnSortList();
+		AbstractDataRequest.DataColumnSortList sortList = request.getColumnSortList();
 		sortCol = sortList.getPrimaryColumn()+1;
 		sortAsc = sortList.isPrimaryAscending();	
 		

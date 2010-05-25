@@ -15,10 +15,7 @@
  */
 package com.mycompany.project.server;
 
-import org.googlecode.gwt.simplegrid.shared.DataRequest;
-import org.googlecode.gwt.simplegrid.shared.DataResponse;
-import org.googlecode.gwt.simplegrid.shared.DefaultDataSourceService;
-import org.googlecode.gwt.simplegrid.shared.DataRequest.DataColumnSortList;
+import org.googlecode.gwt.simplegrid.shared.*;
 import com.mycompany.project.shared.MyDataSourceService;
 import com.mycompany.project.shared.PojoBean;
 
@@ -33,6 +30,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.googlecode.gwt.simplegrid.shared.rpc.StandardDataRequest;
 
 /**
  * Implementation of {@link DefaultDataSourceService}.
@@ -46,7 +44,7 @@ public class DataServiceBeanImpl2 extends RemoteServiceServlet implements MyData
 
 	public DataResponse<PojoBean> requestRows(DataRequest request) throws Exception {
 		
-		DataColumnSortList sortList = request.getColumnSortList();
+		AbstractDataRequest.DataColumnSortList sortList = request.getColumnSortList();
 		sortCol = sortList.getPrimaryColumn()+1;
 		sortAsc = sortList.isPrimaryAscending();
 
@@ -75,7 +73,7 @@ public class DataServiceBeanImpl2 extends RemoteServiceServlet implements MyData
 		 * Setter messaggio custom in dataResponse (userData)
 		 */
 		DataResponse<PojoBean> dataResponse = new DataResponse<PojoBean>(resultOut, totalRowsNum);
-		dataResponse.setUserData(new DataResponse.UserData<String>("Table 2 - Response userData custom message!"));
+		dataResponse.setUserData(new UserData<String>("Table 2 - Response userData custom message!"));
 				
 		return dataResponse;
 	}

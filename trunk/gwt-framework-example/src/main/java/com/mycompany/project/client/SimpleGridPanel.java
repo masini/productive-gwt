@@ -38,6 +38,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.mycompany.project.shared.MyDataSourceService;
 import com.mycompany.project.shared.MyDataSourceServiceAsync;
 import com.mycompany.project.shared.PojoBean;
+import org.googlecode.gwt.simplegrid.shared.Filter;
 
 public class SimpleGridPanel extends Composite {
 
@@ -82,7 +83,7 @@ public class SimpleGridPanel extends Composite {
 								 "COL 1", "COL 2","COL 3","COL 4", "COL 5");
 		
 		// Table 1 - set filter on dataRequest
-		table1.getTableController().setFilter(new DataRequest.Filter<Integer>(Integer.parseInt(txtNumRows1.getText())));
+		table1.getTableController().setFilter(new Filter<Integer>(Integer.parseInt(txtNumRows1.getText())));
 		
 		// Table 1  listener for the "OnClick" e "OnDoucleClick" event
 		table1.getTableController().addClickHandler(new SimpleGridClickHandler(){
@@ -109,7 +110,7 @@ public class SimpleGridPanel extends Composite {
 			public void onClick(ClickEvent arg0) {
 				
 				//reload data from server
-				table1.reloadData(0, true, new DataRequest.Filter<Integer>(Integer.parseInt(txtNumRows1.getText())));
+				table1.reloadData(0, true, new Filter<Integer>(Integer.parseInt(txtNumRows1.getText())));
 				
 			}
 		});		
@@ -176,7 +177,7 @@ public class SimpleGridPanel extends Composite {
 		
 		// Table 2 - set filter sulla dataRequest
 		table2.getTableController().setFilter(
-				new DataRequest.Filter<Integer>(Integer.parseInt(txtNumRows2.getText())));
+				new Filter<Integer>(Integer.parseInt(txtNumRows2.getText())));
 		
 		// Table 2  listener for the "OnClick" event
 		/* --- MULTI ROW SELECTION IMPLEMENTED ---
@@ -197,7 +198,7 @@ public class SimpleGridPanel extends Composite {
 		btnReload2.addClickHandler(new ClickHandler(){
 			public void onClick(ClickEvent arg0) {
 				//reload data from server
-				table2.reloadData(0, true, new DataRequest.Filter<Integer>(Integer.parseInt(txtNumRows2.getText())));
+				table2.reloadData(0, true, new Filter<Integer>(Integer.parseInt(txtNumRows2.getText())));
 			}
 		});
 		
