@@ -20,7 +20,7 @@ public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHand
 
     FixedWidthGridCustom(SimpleGridPolicy.SelectionPolicy sgSelectionPolicy, boolean retrieveDataOnLoad, String... propertyPaths) {
         this.sgSelectionPolicy = sgSelectionPolicy;
-        setSelectionPolicy(sgSelectionPolicy.equivalentStandardOne);
+        super.setSelectionPolicy(sgSelectionPolicy.equivalentStandardOne);
 
         this.retrieveDataOnLoad = retrieveDataOnLoad;
 
