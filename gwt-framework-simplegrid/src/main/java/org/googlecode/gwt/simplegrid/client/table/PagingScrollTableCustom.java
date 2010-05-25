@@ -108,8 +108,10 @@ public class PagingScrollTableCustom<ROW> extends PagingScrollTable<ROW> {
 
 	@Override
 	protected void onLoad() {
+		super.onLoad();
+
 		if (getDataTable().retrieveDataOnLoad) {
-			super.onLoad();
+			gotoPage(0, true);
 		}
 	}
 }

@@ -10,9 +10,7 @@ import com.google.gwt.gen2.table.event.client.TableEvent;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.Widget;
 
-import java.util.Iterator;
 import java.util.Collection;
 
 public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHandlers, HasDoubleClickHandlers {
@@ -84,14 +82,6 @@ public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHand
         }
     }
 
-    @Override
-    // Con questo override...
-    @SuppressWarnings("unchecked")
-    // ... tacito un warning di gwt-incubator
-    public Iterator<Widget> iterator() {
-        return super.iterator();
-    }
-
     void configure(FixedWidthFlexTable headerTable, String... columnsName) {
         sgSelectionPolicy.configure(headerTable, this, columnsName);
     }
@@ -118,10 +108,10 @@ public class FixedWidthGridCustom extends FixedWidthGrid implements HasClickHand
 
         // Add the sorting to the list of sorted columns
         getColumnSortList().add(
-                propertyPaths != null && propertyPaths.length > column ?
-                        new ColumnSortInfo(column, ascending, propertyPaths[column])
-                        :
-                        new TableModelHelper.ColumnSortInfo(column, ascending)
+			propertyPaths != null && propertyPaths.length > column ?
+				new ColumnSortInfo(column, ascending, propertyPaths[column])
+				:
+				new TableModelHelper.ColumnSortInfo(column, ascending)
         );
 
         // Use the onSort method to actually sort the column
