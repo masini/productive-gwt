@@ -47,7 +47,11 @@ public abstract class RowRequestAsyncController<
 	}
 
 	protected StandardGrid.Controller.ColumnsWrapper<ROW> createColumnsWrapper() {
-		return controller.getColumnsWrapper();
+		return new StandardGrid.Controller.ReadOnlyColumnsWrapper<ROW>() {
+            public Object get(ROW row, int index) {
+                return columnsFormatter.get(row, index);
+            }
+        };
 	}
 
 	public final void setFilter(FILTER filter) {
