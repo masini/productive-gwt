@@ -1,72 +1,34 @@
 package com.mycompany.project.client.menu;
 
 import org.googlecode.gwt.menu.client.SMenu;
+import org.googlecode.gwt.menu.client.SMenuItem;
 
+@SuppressWarnings({"UnusedDeclaration"})
 public interface MyMenu extends SMenu{
 
-	/**
-	 * @gwt.item_position 3
-	 * @gwt.item_label Primo panel
-	 * @gwt.item_icon images/user.png
-	 * @gwt.user_role primoPanel
-	 */
-	SecondoCommand primoPanel();
+    @SMenuItem(position = 3,  label="Primo panel", icon="images/user.png", userRoles="primoPanel")
+	PrimoCommand primoPanel();
 	
-	/**
-	 * @gwt.item_position 1
-	 * @gwt.item_label Command
-	 * @gwt.item_icon images/user.png
-	 * @gwt.user_role primoCommand
-	 */
+    @SMenuItem(position = 1, label = "Command", icon = "images/user.png", userRoles = "primoCommand")
 	PrimoCommand primoCommand();
 	
-	/**
-	 * @gwt.item_position 2
-	 * @gwt.item_label Menu 1
-	 * @gwt.item_icon images/user.png
-	 */
+    @SMenuItem(position = 2, label = "Menu 1", icon="images/user.png")
 	interface Menu1 {
 		
-		/**
-		 * @gwt.item_position 1
-		 * @gwt.item_label Secondo Panel
-		 * @gwt.item_icon images/user.png
-		 * @gwt.user_role secondoPanel
-		 */
-		PrimoCommand secondoPanel();
+        @SMenuItem(position=1, label = "Secondo Panel", icon="images/user.png", userRoles = "secondoPanel")
+		SecondoCommand secondoPanel();
 		
+        @SMenuItem(position = 2, label = "Terzo Panel Popup", icon="images/user.png", userRoles = "terzoPanelPopup")
+		TerzoCommand terzoPanelPopup();
 		
-		/**
-		 * @gwt.item_position 2
-		 * @gwt.item_label Terzo Panel Popup
-		 * @gwt.item_icon images/user.png
-		 * @gwt.user_role terzoPanelPopup
-		 */
-		PrimoCommand terzoPanelPopup();
-		
-		
-		/**
-		 * @gwt.item_position 3
-		 * @gwt.item_label Sub Menu 1
-		 * @gwt.item_icon images/user.png
-		 */
+        @SMenuItem(position = 3, label="Sub Menu 1", icon="images/user.png")
 		interface Menu11 {
 
-			/**
-			 * @gwt.item_position 1
-			 * @gwt.item_label Terzo Panel
-			 * @gwt.item_icon images/user.png
-			 * @gwt.user_role terzoPanel
-			 */
-			PrimoCommand terzoPanel();
+            @SMenuItem(position = 1, label = "Terzo Panel", icon = "images/user.png", userRoles = "terzoPanel")
+			TerzoCommand terzoPanel();
 		}
 	}
 
-	/**
-	 * @gwt.item_position 4
-	 * @gwt.item_label SimpleGrid Demo
-	 * @gwt.item_icon images/user.png
-	 * @gwt.user_role terzoPanelPopup
-	 */
+    @SMenuItem(position = 4, label = "SimpleGrid Demo", icon = "images/user.png", userRoles = "terzoPanelPopup")
 	QuartoCommand simpleGridPanel();
 }
