@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.gen2.table.client.TableModelHelper.ColumnSortInfo;
 import com.google.gwt.gen2.table.client.TableModelHelper;
 
 /**
@@ -82,7 +81,7 @@ public abstract class AbstractDataRequest implements Serializable {
 		return columnSortList;
 	}
 
-	public static class DataColumnSortInfo implements Serializable {
+	public static abstract class DataColumnSortInfo implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		/** The column index */
@@ -91,12 +90,10 @@ public abstract class AbstractDataRequest implements Serializable {
 		/** True if the sort order is ascending */
 		private boolean ascending;
 
-		private static final DataColumnSortInfo DUMMY = new DataColumnSortInfo(-1, true);
-
 		/**
 		 * Default constructor used for RPC.
 		 */
-		public DataColumnSortInfo() {
+		protected DataColumnSortInfo() {
 			this(0, true);
 		}
 
@@ -106,18 +103,16 @@ public abstract class AbstractDataRequest implements Serializable {
 		 * @param column	the column index
 		 * @param ascending true if sorted ascending
 		 */
-		public DataColumnSortInfo(int column, boolean ascending) {
+		protected DataColumnSortInfo(int column, boolean ascending) {
 			this.column = column;
 			this.ascending = ascending;
 		}
 
-		public DataColumnSortInfo(TableModelHelper.ColumnSortList columnSortList) {
+		protected DataColumnSortInfo(TableModelHelper.ColumnSortList columnSortList) {
 			this(columnSortList.getPrimaryColumn(), columnSortList.isPrimaryAscending());
 		}
 
-		public boolean exists() {
-			return !this.equals(DUMMY);
-		}
+		public abstract boolean exists();
 
 		@Override
 		public boolean equals(Object obj) {
@@ -171,11 +166,11 @@ public abstract class AbstractDataRequest implements Serializable {
 	 * An ordered list of sorting info where each entry tells us how to sort a single column.
 	 * The first entry is the primary sort order, the second entry is the first tie-breaker, and so on.
 	 */
-	public static class DataColumnSortList implements Serializable {
+	public static abstract class DataColumnSortList implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		/**
-		 * A List used to manage the insertion/removal of {@link ColumnSortInfo}.
+		 * A List used to manage the insertion/removal of {@link com.google.gwt.gen2.table.client.TableModelHelper.ColumnSortInfo}.
 		 */
 		private List<DataColumnSortInfo> infos = new ArrayList<DataColumnSortInfo>();
 
@@ -269,9 +264,7 @@ public abstract class AbstractDataRequest implements Serializable {
 			return infos.size() > 0 ? infos.get(0) : getDummyColumnSortInfo();
 		}
 
-		protected DataColumnSortInfo getDummyColumnSortInfo() {
-			return DataColumnSortInfo.DUMMY;
-		}
+		protected abstract DataColumnSortInfo getDummyColumnSortInfo();
 
 		/**
 		 * Get the primary (first) {@link DataColumnSortInfo}'s column index.

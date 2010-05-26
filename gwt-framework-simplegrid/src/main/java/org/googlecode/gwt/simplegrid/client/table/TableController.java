@@ -11,7 +11,7 @@ import com.google.gwt.gen2.table.client.TableModelHelper.Request;
 /**
  * @deprecated use {@link StandardGrid.Controller}
  */
-public abstract class TableController<ROW> extends AbstractSimpleGrid.Controller<ROW, AbstractDataRequest.DataColumnSortList> {
+public abstract class TableController<ROW> extends AbstractSimpleGrid.Controller<ROW, DataRequest.DataColumnSortList> {
 	private Filter<?> filter;
 
 	public static abstract class ReadOnlyColumnsWrapper<E> implements ColumnsWrapper<E> {
@@ -31,17 +31,17 @@ public abstract class TableController<ROW> extends AbstractSimpleGrid.Controller
 		this.filter = filter;
 	}
 
-	protected final AbstractDataRequest.DataColumnSortInfo extractDataColumnSortInfo(Request request) {
-		return new AbstractDataRequest.DataColumnSortInfo(request.getColumnSortList());
+	protected final DataRequest.DataColumnSortInfo extractDataColumnSortInfo(Request request) {
+		return new DataRequest.DataColumnSortInfo(request.getColumnSortList());
 	}
 
-	protected final void requestRows(Request request, Callback<ROW> callback, AbstractDataRequest.DataColumnSortList columnSortList) {
+	protected final void requestRows(Request request, Callback<ROW> callback, DataRequest.DataColumnSortList columnSortList) {
 		dataTableRequestRows(new DataRequest(request.getStartRow(), request.getNumRows(), columnSortList, filter), callback);
 	}
 
 	protected abstract void dataTableRequestRows(final DataRequest request, final Callback<ROW> callback);
 
-	protected AbstractDataRequest.DataColumnSortList newColumnSortList() {
-		return new AbstractDataRequest.DataColumnSortList();
+	protected DataRequest.DataColumnSortList newColumnSortList() {
+		return new DataRequest.DataColumnSortList();
 	}
 }

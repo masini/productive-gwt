@@ -1,5 +1,7 @@
 package org.googlecode.gwt.simplegrid.shared;
 
+import com.google.gwt.gen2.table.client.TableModelHelper;
+
 import java.io.Serializable;
 
 /**
@@ -53,5 +55,37 @@ public class DataRequest extends AbstractDataRequest {
 
 	public Filter<? extends Serializable> getFilter() {
 		return filter;
+	}
+
+	public static class DataColumnSortInfo extends AbstractDataRequest.DataColumnSortInfo {
+		private static final DataColumnSortInfo DUMMY = new DataColumnSortInfo(-1, true);
+
+		/**
+		 * Construct a new {@link DataColumnSortInfo}.
+		 *
+		 * @param column	the column index
+		 * @param ascending true if sorted ascending
+		 */
+		public DataColumnSortInfo(int column, boolean ascending) {
+			super(column, ascending);
+		}
+
+		public DataColumnSortInfo() {
+			this(0, true);
+		}
+
+		public DataColumnSortInfo(TableModelHelper.ColumnSortList columnSortList) {
+			super(columnSortList);
+		}
+
+		public boolean exists() {
+			return !this.equals(DUMMY); // O forse this != DUMMY?
+		}
+	}
+
+	public static class DataColumnSortList extends AbstractDataRequest.DataColumnSortList {
+		protected DataColumnSortInfo getDummyColumnSortInfo() {
+			return DataColumnSortInfo.DUMMY;
+		}
 	}
 }

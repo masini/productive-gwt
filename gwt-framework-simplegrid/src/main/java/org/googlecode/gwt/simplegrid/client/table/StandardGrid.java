@@ -10,6 +10,9 @@ import java.io.Serializable;
 
 import com.google.gwt.gen2.table.client.*;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.dom.client.SelectElement;
 
 public final class StandardGrid<ROW extends Serializable, FILTER extends Serializable>
 	extends AbstractSimpleGrid<
@@ -39,7 +42,7 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 	 */
 	private FixedWidthGridCustom createDataTable() {
 		FixedWidthGridCustom dataTable = new FixedWidthGridCustom(
-			configurer.sgSelectionPolicy,
+			getSgSelectionPolicy(),
 			configurer.isRetrieveDataOnLoad(),
 			configurer.columnsFormatter.propertyPaths()
 		) {
@@ -72,7 +75,7 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 	public void reloadData(int page, boolean forced) {
 		super.reloadData(page, forced);
 
-		if (configurer.sgSelectionPolicy == CHECKBOX_IN_HEADER_TOO) {
+		if (getSgSelectionPolicy() == CHECKBOX_IN_HEADER_TOO) {
 			((CheckBox) pagingScrollTable.getHeaderTable().getWidget(0, 0)).setValue(false);
 		}
 	}
@@ -153,6 +156,50 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 		}
 		else {
 			return false;
+		}
+	}
+
+	public void disableSelectorsIfAny(boolean disabled) {
+		disableSelectorsIfAny(disabled, true);
+	}
+
+	public void disableHeaderSelectorsIfAny(boolean disabled) {
+		disableSelectorsIfAny(disabled, false);
+	}
+
+	private void disableSelectorsIfAny(boolean disabled, boolean dataTableToo) {
+		if (getSgSelectionPolicy().hasInputColumn()) {
+			if (getSgSelectionPolicy() == SimpleGridPolicy.SelectionPolicy.CHECKBOX_IN_HEADER_TOO) {
+				assertFirstColumnIsInputAndDisableIt(pagingScrollTable.getHeaderTable(), disabled);
+			} else if (getSgSelectionPolicy() == SimpleGridPolicy.SelectionPolicy.CHECKBOX) {
+				assertFirstColumnIsSelectAndDisableIt(pagingScrollTable.getHeaderTable(), disabled);
+			}
+
+			if (dataTableToo) {
+				assertFirstColumnIsInputAndDisableIt(pagingScrollTable.getDataTable(), disabled);
+			}
+		}
+	}
+
+	private SimpleGridPolicy.SelectionPolicy getSgSelectionPolicy() {
+		return configurer.sgSelectionPolicy;
+	}
+
+	private static void assertFirstColumnIsInputAndDisableIt(com.google.gwt.gen2.table.override.client.HTMLTable table, boolean disabled) {
+		com.google.gwt.gen2.table.override.client.HTMLTable.RowFormatter formatter = table.getRowFormatter();
+
+		for (int rowIndex = 0 ; rowIndex < table.getRowCount() ; rowIndex++) {
+			Element tr = formatter.getElement(rowIndex);
+			((InputElement) tr.getFirstChildElement()).setDisabled(disabled);
+		}
+	}
+
+	private static void assertFirstColumnIsSelectAndDisableIt(com.google.gwt.gen2.table.override.client.HTMLTable table, boolean disabled) {
+		com.google.gwt.gen2.table.override.client.HTMLTable.RowFormatter formatter = table.getRowFormatter();
+
+		for (int rowIndex = 0 ; rowIndex < table.getRowCount() ; rowIndex++) {
+			Element tr = formatter.getElement(rowIndex);
+			((SelectElement) tr.getFirstChildElement()).setDisabled(disabled ? "disabled" : "");
 		}
 	}
 
