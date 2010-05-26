@@ -44,14 +44,13 @@ public class SimpleGrid<ROW>
 	 * @return the newly created data table.
 	 */
 	protected FixedWidthGridCustom createDataTable() {
-		FixedWidthGridCustom dataTable = new FixedWidthGridCustom() {
+		FixedWidthGridCustom dataTable = new FixedWidthGridCustom(tableConfigurer.getSelectionPolicy(), tableConfigurer.isRetrieveDataOnLoad(), columnsName) {
 			//dimensione campo di selezione con checkbox
 			@Override
 			protected int getInputColumnWidth() {
 				return 80;
 			}
 		};
-		dataTable.setSelectionPolicy(tableConfigurer.getSelectionPolicy());
 		dataTable.setSelectionEnabled(true);
 
 		return dataTable;
