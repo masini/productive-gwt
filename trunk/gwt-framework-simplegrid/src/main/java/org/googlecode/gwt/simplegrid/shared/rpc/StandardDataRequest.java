@@ -107,6 +107,10 @@ public class StandardDataRequest<FILTER extends Serializable> extends AbstractDa
 			return propertyPath;
 		}
 
+		public boolean exists() {
+			return !this.equals(DUMMY); // O forse this != DUMMY?
+		}
+
 		@Override
 		public boolean equals(Object obj) {
 			return obj instanceof DataColumnSortInfo && equalsNonTrivially((DataColumnSortInfo) obj);
@@ -131,7 +135,6 @@ public class StandardDataRequest<FILTER extends Serializable> extends AbstractDa
 			return getPrimaryColumnSortInfoNullSafe().getPropertyPath();
 		}
 
-		@Override
 		protected DataColumnSortInfo getDummyColumnSortInfo() {
 			return DataColumnSortInfo.DUMMY;
 		}
