@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>productive-gwt</groupId>
 	<artifactId>gwt-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.0-SNAPSHOT</version>
-
+	<version>2.0.0</version>
+    <name>productive-gwt</name>
 	<modules>
 		<module>../gwt-framework-base</module>
 		<module>../gwt-framework-bootstrap</module>
@@ -19,7 +18,7 @@
 	</modules>
 
 	<properties>
-		<gwtVersion>2.0.1</gwtVersion>
+		<gwtVersion>2.0.3</gwtVersion>
 		<jdkVersion>1.5</jdkVersion>
 	</properties>
 
@@ -28,7 +27,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
-			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -69,6 +67,19 @@
 			</extension>
 		</extensions>
 
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                     <artifactId>maven-resources-plugin</artifactId>
+                     <version>2.2</version>
+                     <configuration>
+                         <encoding>UTF-8</encoding>
+                     </configuration>
+                 </plugin>
+	         </plugins>
+
+
+        </pluginManagement>
 
 	</build>
 
@@ -77,6 +88,11 @@
 			<id>productive-gwt</id>
 			<url>http://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository>
+        <repository>
+                <id>gwt-repo</id>
+                <url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven</url>
+                <name>Google Web Toolkit Repository</name>
+        </repository>
 	</repositories>
 
 	<distributionManagement>
@@ -89,5 +105,11 @@
 			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<scm>
+		<url>https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</url>
+		<connection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</connection>
+		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</developerConnection>
+	</scm>
 
 </project>
