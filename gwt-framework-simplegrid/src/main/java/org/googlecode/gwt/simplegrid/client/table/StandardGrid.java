@@ -94,22 +94,6 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 		return pagingScrollTable.getDataTable();
 	}
 
-	public void setData(Collection<ROW> rows) {
-		pagingScrollTable.setData(0, rows.iterator());
-	}
-
-	public void insertRow(int beforeIndex, ROW row) {
-		getDataTable().insertRow(beforeIndex);
-		setRowValue(beforeIndex, row);
-	}
-
-	public void insert(Collection<ROW> rows) {
-		int i = 0;
-		for (Iterator<ROW> rowIt = rows.iterator() ; rowIt.hasNext() ; i++) {
-			insertRow(i, rowIt.next());
-		}
-	}
-
 	public <OLD_ROW> List<ROW> insert(Collection<OLD_ROW> oldRows, Converter<OLD_ROW, ROW> converter) {
 		List<ROW> rows = new LinkedList<ROW>();
 		int i = 0;

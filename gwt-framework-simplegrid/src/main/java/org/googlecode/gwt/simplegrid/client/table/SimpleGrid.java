@@ -26,18 +26,13 @@ public class SimpleGrid<ROW>
 	SimpleGrid(TableController<ROW> tableController, TableConfigurer<ROW> tableConfigurer, String... columnsName) {
 		super(tableController, tableConfigurer, columnsName);
 		this.tableConfigurer = tableConfigurer;
-	}
 
-	@Override
-	public void onLoad() {
 		// Create the tables
 		FixedWidthGridCustom dataTable = createDataTable();
 		FixedWidthFlexTable headerTable = createHeaderTable();
 		FixedWidthFlexTable footerTable = createFooterTable();
 
 		createPagingScrollTable(headerTable, dataTable, footerTable);
-
-		super.onLoad();
 	}
 
 	/**

@@ -360,6 +360,53 @@ abstract class AbstractSimpleGrid<
 		return getRows().equals(simpleGrid.getRows());
 	}
 
+	public void setData(Collection<ROW> rows) {
+		pagingScrollTable.setData(0, rows.iterator());
+	}
+
+	public void insertRow(int beforeIndex, ROW row) {
+		getDataTable().insertRow(beforeIndex);
+		pagingScrollTable.addRow(beforeIndex, row);
+	}
+
+	public void insert(Collection<ROW> rows) {
+		int i = 0;
+		for (Iterator<ROW> rowIt = rows.iterator() ; rowIt.hasNext() ; i++) {
+			insertRow(i, rowIt.next());
+		}
+	}
+
+	public List<ROW> remove(Set<Integer> rowIndexes) {
+		Integer[] sortedRowsIndexes = rowIndexes.toArray(new Integer[rowIndexes.size()]);
+		java.util.Arrays.sort(sortedRowsIndexes);
+
+		return remove(sortedRowsIndexes);
+	}
+
+	public List<ROW> remove(Integer... sortedRowsIndexes) {
+		List<ROW> removedRows = new LinkedList<ROW>();
+
+		for (int index = sortedRowsIndexes.length - 1 ; index >= 0 ; index--) {
+			remove(removedRows, sortedRowsIndexes[index]);
+		}
+
+		return removedRows;
+	}
+
+	private void remove(List<ROW> removedRows, int rowIndex) {
+		removedRows.add(getRowValue(rowIndex));
+		getDataTable().removeRow(rowIndex);
+		pagingScrollTable.removeRow(rowIndex);
+	}
+
+	public List<ROW> removeAllRows() {
+		Integer[] sortedRowIndexes = new Integer[getRows().size()];
+		for (int i = 0 ; i < sortedRowIndexes.length ; i++) {
+			sortedRowIndexes[i] = i;
+		}
+		return remove(sortedRowIndexes);
+	}
+
 	protected static abstract class Configurer<THIS extends Configurer<THIS, ROW>, ROW> {
 		private int cellpadding = 3;
 		private int cellspacing = 0;
@@ -374,7 +421,7 @@ abstract class AbstractSimpleGrid<
 		private int pageSize = 50;
 		private Map<Integer, CellRenderer<ROW, Object>> cellRenderers = new HashMap<Integer, CellRenderer<ROW, Object>>();
 		private RowRenderer<ROW> rowRenderer;
-		private boolean retrieveDataOnLoad;
+		private boolean retrieveDataOnLoad = true;
 		private Widget topWidget;
 
 		protected Configurer() {

@@ -114,4 +114,35 @@ public class PagingScrollTableCustom<ROW> extends PagingScrollTable<ROW> {
 			gotoPage(0, true);
 		}
 	}
+
+	void addRow(int beforeIndex, ROW row) {
+		getRowValues().add(null);
+		for(int i = getRowValues().size() - 1; i > beforeIndex; i--) {
+			getRowValues().set(i, getRowValues().get(i - 1));
+		}
+
+		setRowValue(beforeIndex, row);
+
+		incrementRowCount(1);
+	}
+
+	void removeRow(int rowIndex) {
+		getRowValues().remove(rowIndex);
+		incrementRowCount(-1);
+	}
+
+	private void incrementRowCount(int delta) {
+		int count = getTableModel().getRowCount();
+		if (count == UNKNOWN_ROW_COUNT) {
+			if (delta > 0) {
+				count = delta;
+			}
+		} else {
+			count += delta;
+			if (count < 0) {
+				count = 0;
+			}
+		}
+		getTableModel().setRowCount(count);
+	}
 }
