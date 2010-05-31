@@ -3,17 +3,18 @@
 	<groupId>productive-gwt</groupId>
 	<artifactId>gwt-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>2.0.0</version>
     <name>productive-gwt</name>
 	<modules>
-		<module>../gwt-framework-base</module>
-		<module>../gwt-framework-bootstrap</module>
-		<module>../gwt-framework-footer</module>
-		<module>../gwt-framework-header</module>
-		<module>../gwt-framework-menu</module>
-		<module>../gwt-framework-reflection</module>
-		<module>../gwt-framework-simplegrid</module>
-		<module>../gwt-framework-template</module>
+		<module>gwt-framework-base</module>
+		<module>gwt-framework-bootstrap</module>
+        <module>gwt-framework-example</module>        
+		<module>gwt-framework-footer</module>
+		<module>gwt-framework-header</module>
+		<module>gwt-framework-menu</module>
+		<module>gwt-framework-reflection</module>
+		<module>gwt-framework-simplegrid</module>
+		<module>gwt-framework-template</module>
 	</modules>
 
 	<properties>
