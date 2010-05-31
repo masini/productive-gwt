@@ -1,0 +1,18 @@
+#Thu Dec 31 11:14:05 CET 2009
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;
+USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;
+USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationfalseversion1.2.102.v200905201610
+eclipse.preferences.version=1
+override=true
+suspend=false
+vals/org.eclipse.jst.jsf.ui.JSFAppConfigValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPBatchValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPContentValidator/global=TF01
+vals/org.eclipse.wst.dtd.core.dtdDTDValidator/global=TF01
+vals/org.eclipse.wst.html.ui.HTMLValidator/global=TF01
+vals/org.eclipse.wst.jsdt.web.core.JsBatchValidator/global=TF01
+vals/org.eclipse.wst.xml.core.xml/global=TF03
+vals/org.eclipse.wst.xsd.core.xsd/global=TF02162org.eclipse.wst.xsd.core.internal.validation.eclipse.Validator
+vals/org.eclipse.wst.xsl.core.xsl/global=TF02
+vf.version=3
