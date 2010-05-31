@@ -6,8 +6,7 @@
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>reflection</artifactId>
-        <name>reflection</name>
-	<version>0.0.1-SNAPSHOT</version>
+    <name>reflection</name>
 	<properties>
 		<moduleName>org.googlecode.gwt.reflection.GeneratorTest</moduleName>
 		<runTarget>${moduleName}/GeneratorTest.html</runTarget>
@@ -23,7 +22,6 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
-		<outputDirectory>war/WEB-INF/classes</outputDirectory>
 		<plugins>
        		<plugin>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -62,12 +60,9 @@
 			<plugin>
 		        <groupId>org.codehaus.mojo</groupId>
 		        <artifactId>gwt-maven-plugin</artifactId>
-		        <version>1.1</version>
+		        <version>1.3.1.google</version>
 				<configuration>
 					<module>org.googlecode.gwt.reflection.Reflection</module>
-					<compileTargets>
-						<value>org.googlecode.gwt.reflection.GeneratorTest</value>
-					</compileTargets>
 					<runTarget>${runTarget}</runTarget>
 					<logLevel>INFO</logLevel>
 					<style>DETAILED</style>
@@ -135,16 +130,6 @@
 		</repository>
 	
 	</repositories>
-
-	<pluginRepositories>
-       <pluginRepository>
-			<id>codehaus.snapshots</id>
-			<url>http://snapshots.repository.codehaus.org/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-    </pluginRepositories>  
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -169,12 +154,5 @@
 	  		<artifactId>gwt-math</artifactId>
 	  		<version>2.0.3</version>
 	  	</dependency>
-<!-- Aggiungere questa dipendenza se usato con il Maven Embedded in Eclipse -->	  	
-<!--	  	<dependency>-->
-<!--	        <groupId>org.codehaus.mojo</groupId>-->
-<!--	        <artifactId>gwt-maven-plugin</artifactId>-->
-<!--	        <version>1.1</version>-->
-<!--			<scope>test</scope>	  	-->
-<!--	  	</dependency>-->
 	</dependencies>
 </project>
