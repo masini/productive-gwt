@@ -272,15 +272,13 @@ public class ClassMenuGenerator {
 			rightMetasItem(metas); 
 			
 			JType returnType = metodo.getReturnType();
-			String typetype = returnType.getQualifiedSourceName();
-			Class<?> clazz = Class.forName(typetype);
-			
+			Class<?> clazz = Class.forName(getCanonicalName(returnType));
+
 			String[] role = getValueMeta(META_USER_ROLE,metodo).split(" ");
 			
 			//carico l'appoggio per il contesto
 			if(instanceOf(clazz, Command.class)){
-				String name = clazz.getName();
-				contextCommand.put(metodo.getName(),new MyContext(role,name));
+				contextCommand.put(metodo.getName(),new MyContext(role,clazz.getCanonicalName()));
 			}
 			else{
 				String msg = "I metodi possono tornare classi solo di tipo "+Command.class.getName();
@@ -308,6 +306,17 @@ public class ClassMenuGenerator {
 			menuModel.addChild(positionMenu, myMenuModel);
 			
 		}
+	}
+
+	private static String getCanonicalName(JType jType) {
+		String canonicalName = jType.getQualifiedSourceName();
+		if (jType instanceof JClassType) {
+			for (JClassType currentJClassType = (JClassType) jType ; currentJClassType.isMemberType() ; currentJClassType = currentJClassType.getEnclosingType()) {
+				int index = canonicalName.lastIndexOf('.');
+				canonicalName = canonicalName.substring(0, index) + "$" + canonicalName.substring(index + 1);
+			}
+		}
+		return canonicalName;
 	}
 	
 	/*
