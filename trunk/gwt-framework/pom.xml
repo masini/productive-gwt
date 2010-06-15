@@ -110,4 +110,11 @@
 		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</developerConnection>
 	</scm>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gwt-maven-plugins</id>
+			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 </project>
