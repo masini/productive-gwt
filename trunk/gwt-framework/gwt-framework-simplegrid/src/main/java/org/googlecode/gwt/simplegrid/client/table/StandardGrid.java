@@ -75,8 +75,12 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 	public void reloadData(int page, boolean forced) {
 		super.reloadData(page, forced);
 
+		checkHeaderCheckboxIfAny(false);
+	}
+
+	public void checkHeaderCheckboxIfAny(boolean checked) {
 		if (getSgSelectionPolicy() == CHECKBOX_IN_HEADER_TOO) {
-			((CheckBox) pagingScrollTable.getHeaderTable().getWidget(0, 0)).setValue(false);
+			((CheckBox) pagingScrollTable.getHeaderTable().getWidget(0, 0)).setValue(checked);
 		}
 	}
 
