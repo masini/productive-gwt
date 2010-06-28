@@ -18,6 +18,7 @@ public class StandardDataRequest<FILTER extends Serializable> extends AbstractDa
 	private static final long serialVersionUID = 1L;
 
 	private Filter<FILTER> filter;
+	private Sorter[] sorters;
 
 	public final void setFilter(Filter<FILTER> filter) {
 		this.filter = filter;
@@ -25,6 +26,14 @@ public class StandardDataRequest<FILTER extends Serializable> extends AbstractDa
 
 	public final Filter<FILTER> getFilter() {
 		return filter;
+	}
+
+	public Sorter[] getSorters() {
+		return sorters;
+	}
+
+	public void setSorters(Sorter[] sorters) {
+		this.sorters = sorters;
 	}
 
 	/**
@@ -121,6 +130,10 @@ public class StandardDataRequest<FILTER extends Serializable> extends AbstractDa
 				super.equalsNonTrivially(csi)
 				&&
 				(propertyPath != null ? propertyPath.equals(csi.getPropertyPath()) : csi.getPropertyPath() == null);
+		}
+
+		Sorter asSorter() {
+			return new Sorter(getPropertyPath(), isAscending());
 		}
 	}
 
