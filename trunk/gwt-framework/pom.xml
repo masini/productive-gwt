@@ -42,6 +42,31 @@
 					<target>${jdkVersion}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<tagBase>https://productive-gwt.googlecode.com/svn/tags/</tagBase>
+					<username>${productive-gwt-svn-username}</username>
+					<password>${productive-gwt-svn-password}</password>
+					<!--
+						Abilitando dryRun si esegue una prova indolore del release-plugin
+					-->
+					<!--					<dryRun>true</dryRun>-->
+					<providerImplementations>
+						<svn>javasvn</svn>
+					</providerImplementations>
+					<releaseProfiles>productive-gwt-release</releaseProfiles>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.code.maven-scm-provider-svnjava</groupId>
+						<artifactId>maven-scm-provider-svnjava</artifactId>
+						<version>1.9</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 
 		<extensions>
