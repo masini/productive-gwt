@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>productive-gwt</groupId>
 	<artifactId>gwt-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.1</version>
-    <name>productive-gwt</name>
+	<version>2.0.2-SNAPSHOT</version>
+	<name>productive-gwt</name>
 	<modules>
 		<module>gwt-framework-base</module>
 		<module>gwt-framework-bootstrap</module>
-        <module>gwt-framework-example</module>        
+		<module>gwt-framework-example</module>
 		<module>gwt-framework-footer</module>
 		<module>gwt-framework-header</module>
 		<module>gwt-framework-menu</module>
@@ -73,12 +74,12 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-scm</artifactId>
-				<version>1.0-beta-5</version>
+				<version>1.0-beta-6</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-provider-api</artifactId>
-				<version>1.0-beta-5</version>
+				<version>1.0-beta-6</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>
@@ -92,17 +93,17 @@
 			</extension>
 		</extensions>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                     <artifactId>maven-resources-plugin</artifactId>
-                     <version>2.2</version>
-                     <configuration>
-                         <encoding>UTF-8</encoding>
-                     </configuration>
-                 </plugin>
-	         </plugins>
-        </pluginManagement>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
 	</build>
 
@@ -111,21 +112,21 @@
 			<id>productive-gwt</id>
 			<url>http://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository>
-        <repository>
-            <id>gwt-repo</id>
-            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven</url>
-            <name>Google Web Toolkit Repository</name>
-        </repository>
+		<repository>
+			<id>gwt-repo</id>
+			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven</url>
+			<name>Google Web Toolkit Repository</name>
+		</repository>
 	</repositories>
 
 	<distributionManagement>
 		<repository>
-			<id>distribution</id>
-			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
+			<id>productive-gwt-distribution</id>
+			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshot</id>
-			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk</url>
+			<id>productive-gwt-snapshot</id>
+			<url>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/mavenrepo</url>
 		</snapshotRepository>
 	</distributionManagement>
 
