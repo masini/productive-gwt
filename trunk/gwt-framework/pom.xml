@@ -19,7 +19,7 @@
 	</modules>
 
 	<properties>
-		<gwtVersion>2.0.3</gwtVersion>
+		<gwtVersion>2.1.0</gwtVersion>
 		<jdkVersion>1.5</jdkVersion>
 	</properties>
 
@@ -112,12 +112,12 @@
 			<id>productive-gwt</id>
 			<url>http://productive-gwt.googlecode.com/svn/trunk</url>
 		</repository>
-		<repository>
-			<id>gwt-repo</id>
-			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven</url>
-			<name>Google Web Toolkit Repository</name>
-		</repository>
-	</repositories>
+        <repository>
+            <id>gwt-repo</id>
+            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0/gwt/maven</url>
+            <name>Google Web Toolkit Repository</name>
+        </repository>
+    </repositories>
 
 	<distributionManagement>
 		<repository>
@@ -138,9 +138,10 @@
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>gwt-maven-plugins</id>
-			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven/</url>
-		</pluginRepository>
+            <id>gwt-repo</id>
+            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0/gwt/maven</url>
+            <name>Google Web Toolkit Repository</name>
+        </pluginRepository>
 	</pluginRepositories>
 
 </project>

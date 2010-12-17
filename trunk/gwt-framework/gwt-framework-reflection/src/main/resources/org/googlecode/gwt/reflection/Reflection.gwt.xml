@@ -4,7 +4,6 @@
 
 	<!-- Inherit the core Web Toolkit stuff.                        -->
 	<inherits name='com.google.gwt.user.User' />
-	<inherits name="com.googlecode.gwt.math.Math"/>
 	
 	<generate-with class="org.googlecode.gwt.reflection.rebind.DataBindGenerator">
 		<when-type-assignable class="org.googlecode.gwt.reflection.client.Reflectable" />
