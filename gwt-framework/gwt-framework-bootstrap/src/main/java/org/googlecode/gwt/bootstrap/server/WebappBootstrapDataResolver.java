@@ -4,7 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.googlecode.gwt.base.client.BootstrapData;
-import org.gwtwidgets.server.spring.ServletUtils;
 
 /**
  * A {@link org.googlecode.gwt.bootstrap.server.BootstrapDataResolver } which takes the application info (version, name,etc.) from parameters
@@ -25,7 +24,7 @@ public class WebappBootstrapDataResolver extends DefaultBootstrapDataResolver {
     
     public BootstrapData getBootstrapData( HttpServletRequest request ) {
         BootstrapData data = super.getBootstrapData( request );
-        ServletContext ctx = ServletUtils.getRequest().getSession().getServletContext();
+        ServletContext ctx = request.getSession().getServletContext();
         if ( ctx != null ) {
             data.setApplicationCode( ctx.getInitParameter( appCodeParam ) );
             data.setApplicationName( ctx.getInitParameter( appNameParam ) );
