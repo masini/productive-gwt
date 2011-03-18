@@ -1,10 +1,10 @@
 package org.googlecode.gwt.bootstrap.server;
 
-import static org.googlecode.gwt.bootstrap.server.jmx.JMXServerState.getServerConfigurationAttributeAsString;
+import org.googlecode.gwt.base.client.BootstrapData;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.googlecode.gwt.base.client.BootstrapData;
+import static org.googlecode.gwt.bootstrap.server.jmx.JMXServerState.getServerConfigurationAttribute;
 
 public class WebLogicBootstrapDataResolver extends DefaultBootstrapDataResolver{
 
@@ -19,12 +19,14 @@ public class WebLogicBootstrapDataResolver extends DefaultBootstrapDataResolver{
 	@Override
 	public BootstrapData getBootstrapData(HttpServletRequest request) {
 		BootstrapData bootstrapData = super.getBootstrapData(request);
-		
+
 		if(NOTINITIALIZED.equals(serverName)){
-			serverName = getServerConfigurationAttributeAsString("Name", "");
+            Object serverNameO = getServerConfigurationAttribute("ServerConfiguration","Name");
+			serverName = (serverNameO==null)?"":serverNameO.toString();
 		}
 		if(NOTINITIALIZED.equals(clusterName)){
-			clusterName = getServerConfigurationAttributeAsString("Domain", "");
+			Object clusterNameO = getServerConfigurationAttribute("ServerConfiguration","Cluster", "Name");
+            clusterName = (clusterNameO==null)?"":clusterNameO.toString();
 		}
 		
 		bootstrapData.setServerName(serverName);
