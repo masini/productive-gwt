@@ -7,6 +7,22 @@
 	<servlet>
 		<servlet-name>bootstrap</servlet-name>
 		<servlet-class>org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet</servlet-class>
+        <init-param>
+            <param-name>applicationCode</param-name>
+            <param-value>EX000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>applicationName</param-name>
+            <param-value>Example</param-value>
+        </init-param>
+        <init-param>
+            <param-name>applicationVersion</param-name>
+            <param-value>${project.version}-r${buildNumber}</param-value>
+        </init-param>
+        <init-param>
+            <param-name>homePageURLString</param-name>
+            <param-value>http://www.google.com/</param-value>
+        </init-param>
 	</servlet>
 
 	<servlet-mapping>

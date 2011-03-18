@@ -23,14 +23,22 @@
 		<jdkVersion>1.5</jdkVersion>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+			    <groupId>junit</groupId>
+			    <artifactId>junit</artifactId>
+			    <version>4.8.2</version>
+			    <scope>test</scope>
+		    </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>1.8.5</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 	<build>
 		<plugins>
@@ -68,6 +76,28 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>false</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <providerImplementations>
+                        <svn>javasvn</svn>
+                    </providerImplementations>
+                    <username>${productive-gwt-svn-username}</username>
+                    <password>${productive-gwt-svn-password}</password>
+                </configuration>
+            </plugin>
 		</plugins>
 
 		<extensions>

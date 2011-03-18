@@ -52,7 +52,8 @@ public interface BootstrapDataResolverFactory {
 				public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 					try {
 						DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
-						
+                        resolver.useParams(params);
+
 						UserInfoResolver userInfoResolver = new DummyUserInfoResolver();
 						resolver.setUserInfoResolver(userInfoResolver);
 						

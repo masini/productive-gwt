@@ -2,11 +2,7 @@ package org.googlecode.gwt.template.client;
 
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.*;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -18,39 +14,62 @@ public class Template implements EntryPoint {
 	public static final String INFO_STYLE_NAME = "placeholder-info";
 	
 	public void onModuleLoad() {
-		
-		DockPanel dockPanel = new DockPanel();
-		RootPanel.get().add(dockPanel);
-		dockPanel.setWidth("100%");
-		
-		HorizontalPanel top = new HorizontalPanel();
-		
-		dockPanel.add(top, DockPanel.NORTH);
-		dockPanel.add(PlaceHolder.HEADER.getPanel(), DockPanel.NORTH);
-		dockPanel.add(PlaceHolder.MENU.getPanel(), DockPanel.NORTH);
-		dockPanel.add(PlaceHolder.FOOTER.getPanel(), DockPanel.SOUTH);
-		dockPanel.add(PlaceHolder.EAST.getPanel(), DockPanel.EAST);
-		dockPanel.add(PlaceHolder.WEST.getPanel(), DockPanel.WEST);
-		dockPanel.add(PlaceHolder.CONTENT.getPanel(), DockPanel.CENTER);
 
-		top.setWidth("100%");
-		top.setStyleName(TOP_STYLE_NAME);
+        //TODO: sostituire il DockPanel con un vertical che nel mezzo ha un horizontal(per fare west centro est)
 
-		top.add(PlaceHolder.NAVIGATION.getPanel());
-		top.setCellVerticalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
-		top.setCellHorizontalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasHorizontalAlignment.ALIGN_LEFT);
-		top.setCellWidth(PlaceHolder.NAVIGATION.getPanel(), "50%");
-		PlaceHolder.NAVIGATION.getPanel().setStyleName(NAVIGATION_STYLE_NAME);
+        VerticalPanel verticalPanel = new VerticalPanel();
+        verticalPanel.setWidth("100%");
 
-		top.add(PlaceHolder.INFO.getPanel());
-		top.setCellVerticalAlignment(PlaceHolder.INFO.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
-		top.setCellHorizontalAlignment(PlaceHolder.INFO.getPanel(), HasHorizontalAlignment.ALIGN_RIGHT);
-		top.setCellWidth(PlaceHolder.INFO.getPanel(), "50%");
-		PlaceHolder.INFO.getPanel().setStyleName(INFO_STYLE_NAME);
+		RootPanel.get().add(verticalPanel);
 
-		PlaceHolder.CONTENT.getPanel().setWidth("100%");
+        // TOP
+        HorizontalPanel top = createTop();
+		verticalPanel.add(top);
+
+        // HEADER
+		verticalPanel.add(PlaceHolder.HEADER.getPanel());
+
+        // MENU
+		verticalPanel.add(PlaceHolder.MENU.getPanel());
+
+        // WEST CENTER EAST
+        HorizontalPanel middle = createMiddle();
+		verticalPanel.add(middle);
+
+        // FOOTER
+        verticalPanel.add(PlaceHolder.FOOTER.getPanel());
 
 		TemplateManager.setNavigationContent(null,false);
 	
 	}
+
+    private HorizontalPanel createMiddle() {
+        HorizontalPanel middle = new HorizontalPanel();
+        middle.add(PlaceHolder.WEST.getPanel());
+        PlaceHolder.CONTENT.getPanel().setWidth("100%");
+        middle.add(PlaceHolder.CONTENT.getPanel());
+        middle.add(PlaceHolder.EAST.getPanel());
+
+        return middle;
+    }
+
+    private HorizontalPanel createTop() {
+        HorizontalPanel top = new HorizontalPanel();
+        top.setWidth("100%");
+        top.setStyleName(TOP_STYLE_NAME);
+
+        top.add(PlaceHolder.NAVIGATION.getPanel());
+        top.setCellVerticalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
+        top.setCellHorizontalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasHorizontalAlignment.ALIGN_LEFT);
+        top.setCellWidth(PlaceHolder.NAVIGATION.getPanel(), "50%");
+        PlaceHolder.NAVIGATION.getPanel().setStyleName(NAVIGATION_STYLE_NAME);
+
+        top.add(PlaceHolder.INFO.getPanel());
+        top.setCellVerticalAlignment(PlaceHolder.INFO.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
+        top.setCellHorizontalAlignment(PlaceHolder.INFO.getPanel(), HasHorizontalAlignment.ALIGN_RIGHT);
+        top.setCellWidth(PlaceHolder.INFO.getPanel(), "50%");
+        PlaceHolder.INFO.getPanel().setStyleName(INFO_STYLE_NAME);
+
+        return top;
+    }
 }
