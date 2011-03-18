@@ -6,6 +6,8 @@ import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
 
+import java.util.Map;
+
 /**
  * A {@link org.googlecode.gwt.bootstrap.server.BootstrapDataResolver } that uses a delegate {@link org.googlecode.gwt.bootstrap.server.UserInfoResolver }
  * in order to resolve meaningful user info.
@@ -126,4 +128,20 @@ public class DefaultBootstrapDataResolver implements UserInfoBootstrapDataResolv
 	public void setHomePageURLString(String homePageURLString) {
 		this.homePageURLString = homePageURLString;
 	}
+
+    public void useParams(Map<String, String> params) {
+        if(params.containsKey("applicationCode")) {
+            applicationCode = params.get("applicationCode");
+        }
+        if(params.containsKey("applicationName")) {
+            applicationName = params.get("applicationName");
+        }
+        if(params.containsKey("applicationVersion")) {
+            applicationVersion = params.get("applicationVersion");
+        }
+        if(params.containsKey("homePageURLString")) {
+            homePageURLString = params.get("homePageURLString");
+        }
+    }
+    
 }
