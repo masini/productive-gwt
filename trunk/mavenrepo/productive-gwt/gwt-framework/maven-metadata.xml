@@ -2,12 +2,12 @@
 <metadata>
   <groupId>productive-gwt</groupId>
   <artifactId>gwt-framework</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.0.0-SNAPSHOT</version>
       <version>2.0.1</version>
+      <version>2.0.3-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20100723104346</lastUpdated>
+    <lastUpdated>20110329144626</lastUpdated>
   </versioning>
 </metadata>
