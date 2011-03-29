@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>productive-gwt</groupId>
 	<artifactId>gwt-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>2.0.2</version>
 	<name>productive-gwt</name>
 	<modules>
 		<module>gwt-framework-base</module>
@@ -169,9 +168,9 @@
 	</distributionManagement>
 
 	<scm>
-		<url>https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</url>
-		<connection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</connection>
-		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.0</developerConnection>
+		<url>https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.2</url>
+		<connection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.2</connection>
+		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-2.0.2</developerConnection>
 	</scm>
 
 	<pluginRepositories>
