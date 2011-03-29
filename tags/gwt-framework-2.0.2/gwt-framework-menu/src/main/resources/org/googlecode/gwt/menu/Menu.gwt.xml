@@ -1,0 +1,11 @@
+<module>
+	<inherits name="org.googlecode.gwt.base.Base" />
+
+	<generate-with class="org.googlecode.gwt.menu.generator.MenuGenerator">
+		<when-type-assignable class="org.googlecode.gwt.menu.client.SMenu" />
+	</generate-with>
+	
+	<stylesheet src='css/menu.css'/>
+    
+    
+</module>
