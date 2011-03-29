@@ -9,7 +9,6 @@ import org.googlecode.gwt.base.client.BootstrapData;
  * Implementors of this interface will know how to resolve {@link org.googlecode.gwt.bootstrap.client.BootstrapData } instances in particular
  * application configurations.
  * 
- * @author Davide Baroncelli <davide.baroncelli@esselunga.it>
  *         Date: 24-ago-2007
  *         Time: 19.43.27
  */

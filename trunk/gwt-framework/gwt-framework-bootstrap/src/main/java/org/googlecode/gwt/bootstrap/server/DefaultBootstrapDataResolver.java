@@ -12,7 +12,6 @@ import java.util.Map;
  * A {@link org.googlecode.gwt.bootstrap.server.BootstrapDataResolver } that uses a delegate {@link org.googlecode.gwt.bootstrap.server.UserInfoResolver }
  * in order to resolve meaningful user info.
  *
- * @author Davide Baroncelli <davide.baroncelli@esselunga.it>
  *         Date: 24-ago-2007
  *         Time: 20.04.23
  */

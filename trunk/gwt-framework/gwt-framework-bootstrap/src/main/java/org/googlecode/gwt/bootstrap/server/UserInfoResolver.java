@@ -8,7 +8,6 @@ import org.googlecode.gwt.base.client.UserInfo;
  * An interface useful to abstract code that needs to resolve user related information in a web application by the actual implementation of the
  * storage.
  *
- * @author Davide Baroncelli <davide.baroncelli@esselunga.it>
  *         Date: 7-giu-2007
  *         Time: 19.06.44
  */
