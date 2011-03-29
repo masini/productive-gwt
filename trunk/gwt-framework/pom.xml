@@ -68,14 +68,13 @@
                         </providerImplementations>
                         <releaseProfiles>productive-gwt-release</releaseProfiles>
                     </configuration>
-<!--                    <dependencies>
+                    <dependencies>
                         <dependency>
                             <groupId>com.google.code.maven-scm-provider-svnjava</groupId>
                             <artifactId>maven-scm-provider-svnjava</artifactId>
                             <version>1.9</version>
                         </dependency>
                     </dependencies>
--->
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -145,6 +144,11 @@
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-webdav</artifactId>
                 <version>1.0-beta-2</version>
+            </extension>
+            <extension>
+                <groupId>com.google.code.maven-scm-provider-svnjava</groupId>
+                <artifactId>maven-scm-provider-svnjava</artifactId>
+                <version>1.9</version>
             </extension>
 		</extensions>
 
