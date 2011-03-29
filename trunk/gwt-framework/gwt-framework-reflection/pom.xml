@@ -89,7 +89,7 @@
 					<archive>
 						<index>true</index>
 						<manifestEntries>
-							<gwt-framework-reflection>${version}</gwt-framework-reflection>
+							<gwt-framework-reflection>${project.version}</gwt-framework-reflection>
 						</manifestEntries>
 					</archive>
 				</configuration>
