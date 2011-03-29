@@ -98,16 +98,6 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>gwt-noserver</id>
-			<properties>
-				<noServer>true</noServer>
-				<runTarget>http://localhost:7001/simplegrid/it.esselunga.agile.simplegridshow.SimpleGridShow/SimpleGridShow.html</runTarget>
-			</properties>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
 			<id>gwt-debug</id>
 			<properties>
 				<debugAgent>-agentlib:jdwp=transport=dt_socket,suspend=y,server=y,address=localhost:8080</debugAgent>
@@ -117,7 +107,6 @@
 			</activation>
 		</profile>
 	</profiles>
-	
 	<dependencies>
         <dependency>
             <groupId>junit</groupId>
