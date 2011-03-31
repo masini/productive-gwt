@@ -49,7 +49,7 @@ public class Template implements EntryPoint {
         PlaceHolder.CONTENT.getPanel().setWidth("100%");
         middle.add(PlaceHolder.CONTENT.getPanel());
         middle.add(PlaceHolder.EAST.getPanel());
-
+        middle.setWidth("100%");
         return middle;
     }
 
