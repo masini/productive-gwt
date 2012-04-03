@@ -1,0 +1,24 @@
+<!DOCTYPE module PUBLIC "//gwt-module/"
+        "http://google-web-toolkit.googlecode.com/svn/tags/2.1.0/distro-source/core/src/gwt-module.dtd">
+<module>
+
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name="com.google.gwt.i18n.I18N"/>
+
+    <inherits name='com.google.gwt.activity.Activity'/>
+    <inherits name='com.google.gwt.place.Place'/>
+    <inherits name='com.google.gwt.editor.Editor' />
+
+    <inherits name="com.google.gwt.json.JSON"/>
+    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+
+    <inherits name="org.googlecode.gwt.base.Base"/>
+
+    <generate-with class="org.googlecode.gwt.rest.rebind.RESTServiceGenerator">
+        <when-type-assignable class="org.googlecode.gwt.rest.client.rest.GWTRESTfulService" />
+    </generate-with>
+
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+</module>
