@@ -12,14 +12,15 @@
 		<module>gwt-framework-footer</module>
 		<module>gwt-framework-header</module>
 		<module>gwt-framework-menu</module>
+		<module>gwt-framework-rest</module>
 		<module>gwt-framework-reflection</module>
 		<module>gwt-framework-simplegrid</module>
 		<module>gwt-framework-template</module>
 	</modules>
 
 	<properties>
-		<gwtVersion>2.2.0</gwtVersion>
-		<jdkVersion>1.5</jdkVersion>
+		<gwtVersion>2.4.0</gwtVersion>
+		<jdkVersion>1.6</jdkVersion>
         <dryRun>false</dryRun>
 	</properties>
 
