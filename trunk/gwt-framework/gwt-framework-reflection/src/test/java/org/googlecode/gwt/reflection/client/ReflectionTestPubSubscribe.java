@@ -44,9 +44,9 @@ public class ReflectionTestPubSubscribe extends GWTTestCase {
 		wrapper.addValueChangeHandler(new ValueChangeHandler<String>(){
 
 			public void onValueChange(ValueChangeEvent<String> event) {
-				assertEquals("Proprietà scorretta: "+event.getValue(), "longField", event.getValue());
+				assertEquals("Proprieta' scorretta: "+event.getValue(), "longField", event.getValue());
 				
-				assertEquals("Valore Proprietà scorretto", 5L, wrapper.getProperty(event.getValue()));
+				assertEquals("Valore Proprieta' scorretto", 5L, wrapper.getProperty(event.getValue()));
 				
 				wrapper.setProperty("bigDecimal", new BigDecimal(PI));
 				
