@@ -8,6 +8,7 @@
 	<inherits name='org.googlecode.gwt.menu.Menu'/>
 	<inherits name='org.googlecode.gwt.simplegrid.SimpleGrid' />
 	<inherits name='org.googlecode.gwt.reflection.Reflection'/>
+	<inherits name='org.googlecode.gwt.rest.REST'/>
 	<!-- Inherit the default GWT style sheet.  You can change       -->
 	<!-- the theme of your GWT application by uncommenting          -->
 	<!-- any one of the following lines.                            -->
