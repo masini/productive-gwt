@@ -1,5 +1,6 @@
 package com.mycompany.project.client;
 
+import com.mycompany.project.client.rest.MyRESTfulServiceAsync;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.template.client.TemplateManager;
 
@@ -13,6 +14,8 @@ import com.mycompany.project.client.menu.MyMenu;
  */
 public class FrameworkExample implements EntryPoint {
 
+    MyRESTfulServiceAsync myRESTfulServiceAsync = GWT.create(MyRESTfulServiceAsync.class);
+    
     public void onModuleLoad() {
 
         TemplateManager.setApplicationTitle(new Label("PRIMA APP"));
