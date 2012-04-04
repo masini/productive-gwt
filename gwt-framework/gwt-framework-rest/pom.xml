@@ -46,6 +46,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>2.3.0.GA</version>
+        </dependency>
+        <dependency>
             <groupId>productive-gwt</groupId>
             <artifactId>base</artifactId>
             <version>${project.version}</version>

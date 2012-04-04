@@ -52,7 +52,8 @@
 					<!-- <gwtVersion>${gwtVersion}</gwtVersion> -->
 					<testTimeOut>600</testTimeOut>
                     <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
-				</configuration>
+                    <generateDirectory>src/gen/java</generateDirectory>
+                </configuration>
 				<executions>
 					<execution>
 						<id>clean</id>
