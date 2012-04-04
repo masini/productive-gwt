@@ -59,7 +59,7 @@ public class RESTServiceGenerator extends Generator {
                     + wrapperClassName;
 
             if (printWriter != null) {
-                Map<String, Object> rootMap = createRootMap(requestedClass);
+                Map<String, Object> rootMap = createRootMap(requestedClass, logger);
                 logger.log(Type.DEBUG, rootMap.toString());
                 Writer generatedClassSource = processTemplate(rootMap);
                 writeSource(getSourceWriter(packageName, wrapperClassName,
@@ -91,7 +91,7 @@ public class RESTServiceGenerator extends Generator {
         return returnCode;
     }
 
-    private Map<String, Object> createRootMap(JClassType requestedClass) {
+    private Map<String, Object> createRootMap(JClassType requestedClass, TreeLogger logger) {
 
         Map<String, Object> root = new HashMap<String, Object>();
         root.put(SERVICE_CLASS_NAME, requestedClass.getSimpleSourceName() + CLASS_SUFFIX);
@@ -182,6 +182,8 @@ public class RESTServiceGenerator extends Generator {
                 parameterValues.put("type", parameter.getType().getQualifiedSourceName());
                 parameterValues.put("simpleType", parameter.getType().getSimpleSourceName());
                 parameterValues.put("name", parameter.getName());
+
+                logger.log(Type.INFO, "parameter name is "+parameter.getName());
 
                 boolean isInputParameter = false;
                 boolean isPathParameter = false;
