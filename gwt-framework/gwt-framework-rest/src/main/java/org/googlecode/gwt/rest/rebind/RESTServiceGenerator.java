@@ -17,13 +17,11 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import com.google.web.bindery.autobean.shared.AutoBeanUtils;
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
+import freemarker.template.*;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
 
 import javax.ws.rs.*;
+import javax.ws.rs.QueryParam;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -91,7 +89,7 @@ public class RESTServiceGenerator extends Generator {
         return returnCode;
     }
 
-    private Map<String, Object> createRootMap(JClassType requestedClass, TreeLogger logger) {
+    private Map<String, Object> createRootMap(JClassType requestedClass, final TreeLogger logger) {
 
         Map<String, Object> root = new HashMap<String, Object>();
         root.put(SERVICE_CLASS_NAME, requestedClass.getSimpleSourceName() + CLASS_SUFFIX);
@@ -99,6 +97,16 @@ public class RESTServiceGenerator extends Generator {
         List<Map<String, Object>> methods = new ArrayList<Map<String, Object>>();
         root.put(METHODS_KEY, methods);
 
+        root.put("logger", new TemplateMethodModel() {
+            @Override
+            public Object exec(List arguments) throws TemplateModelException {
+
+                logger.log(Type.INFO, "*********"+arguments.get(0));
+
+                return "logged";
+            }
+        });
+        
         String path = requestedClass.getAnnotation(Path.class).value();
         ApplicationPath applicationPath = requestedClass.getAnnotation(ApplicationPath.class);
 
@@ -181,9 +189,9 @@ public class RESTServiceGenerator extends Generator {
 
                 parameterValues.put("type", parameter.getType().getQualifiedSourceName());
                 parameterValues.put("simpleType", parameter.getType().getSimpleSourceName());
-                parameterValues.put("name", parameter.getName());
+                parameterValues.put("nome", parameter.getName());
 
-                logger.log(Type.INFO, "parameter name is "+parameter.getName());
+                logger.log(Type.INFO, "parameter name is " + parameter.getName());
 
                 boolean isInputParameter = false;
                 boolean isPathParameter = false;

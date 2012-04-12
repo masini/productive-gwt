@@ -52,7 +52,7 @@
 					<!-- <gwtVersion>${gwtVersion}</gwtVersion> -->
 					<testTimeOut>600</testTimeOut>
                     <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
-                    <generateDirectory>src/gen/java</generateDirectory>
+                    <gen>src/gen/java</gen>
                 </configuration>
 				<executions>
 					<execution>
@@ -93,6 +93,13 @@
      </plugins>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwtVersion}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>jaxrs-api</artifactId>
