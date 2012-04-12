@@ -30,6 +30,16 @@
 		<url-pattern>/com.mycompany.project.FrameworkExample/bootstrap</url-pattern>
 	</servlet-mapping>
 
+    <servlet>
+        <servlet-name>restendpoint</servlet-name>
+        <servlet-class>com.mycompany.project.server.RestEndPointServlet</servlet-class>
+    </servlet>
+
+	<servlet-mapping>
+		<servlet-name>restendpoint</servlet-name>
+		<url-pattern>/com.mycompany.project.FrameworkExample/services/restendpoint/method/*</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>dataServiceBeanImpl2</servlet-name>
 		<servlet-class>com.mycompany.project.server.DataServiceBeanImpl2</servlet-class>

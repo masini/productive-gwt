@@ -39,17 +39,17 @@
 
             <#list method.parameters as parameter>
                 <#if parameter.isInputParameter >
-            AutoBean<${parameter.type}> ${parameter.name}AutoBean = AutoBeanUtils.getAutoBean(${parameter.name});
-            String inputJSON = AutoBeanCodex.encode(${parameter.name}AutoBean).getPayload();
+            AutoBean<${parameter.type}> ${parameter.nome}AutoBean = AutoBeanUtils.getAutoBean(${parameter.nome});
+            String inputJSON = AutoBeanCodex.encode(${parameter.nome}AutoBean).getPayload();
             inputBuilder.append(inputJSON);
             GWT.log(inputJSON);
                 <#elseif parameter.isPathParameter>
-            methodURL = methodURL.replace("${parameter.pathParam}", String.valueOf(${parameter.name}));
+            methodURL = methodURL.replace("${parameter.pathParam}", String.valueOf(${parameter.nome}));
                 <#elseif parameter.isQueryParameter>
-            if( ${parameter.name}!=null ) {
+            if( ${parameter.nome}!=null ) {
                 queryParam.append("${parameter.queryParam}");
                 queryParam.append('=');
-                queryParam.append(${parameter.name});
+                queryParam.append(${parameter.nome});
                 queryParam.append('&');
             }
                 </#if>
@@ -68,7 +68,7 @@
 
             <#list method.parameters as parameter>
                 <#if parameter.isHeaderParameter>
-            builder.setHeader("${parameter.headerParam}", String.valueOf(${parameter.name}));
+            builder.setHeader("${parameter.headerParam}", String.valueOf(${parameter.nome}));
                 </#if>
             </#list>
 

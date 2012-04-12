@@ -12,5 +12,5 @@ public interface MyRESTfulServiceAsync extends GWTRESTfulService<MyRESTfulServic
     @Path("method/{id}")
     @GET
     @Produces("application/json")
-    Request lista(@PathParam("id") long id, RESTCallback callback);
+    Request lista(@PathParam("id") long id, @QueryParam("query") String query, RESTCallback callback);
 }

@@ -1,7 +1,10 @@
 package com.mycompany.project.client;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.DeferredCommand;
 import com.mycompany.project.client.rest.MyRESTfulServiceAsync;
 import org.googlecode.gwt.menu.client.SMenu;
+import org.googlecode.gwt.rest.client.rest.RESTCallback;
 import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -15,7 +18,7 @@ import com.mycompany.project.client.menu.MyMenu;
 public class FrameworkExample implements EntryPoint {
 
     MyRESTfulServiceAsync myRESTfulServiceAsync = GWT.create(MyRESTfulServiceAsync.class);
-    
+
     public void onModuleLoad() {
 
         TemplateManager.setApplicationTitle(new Label("PRIMA APP"));
@@ -28,6 +31,7 @@ public class FrameworkExample implements EntryPoint {
 
 		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
 
+        myRESTfulServiceAsync.lista(1, "pippo", new RESTCallback() {});
     }
 
 }
