@@ -1,8 +1,9 @@
 package com.mycompany.project.client;
 
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.user.client.DeferredCommand;
+import com.google.gwt.http.client.Response;
 import com.mycompany.project.client.rest.MyRESTfulServiceAsync;
+import com.mycompany.project.client.rest.dto.ListAndSize;
+import com.mycompany.project.client.rest.dto.MyPOJO;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
 import org.googlecode.gwt.template.client.TemplateManager;
@@ -32,6 +33,14 @@ public class FrameworkExample implements EntryPoint {
 		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
 
         myRESTfulServiceAsync.lista(1, "pippo", new RESTCallback() {});
+        myRESTfulServiceAsync.listaSenzaParametri(new RESTCallback<ListAndSize>() {
+            @Override
+            public void onResponseReceived(Response response, ListAndSize entity) {
+                for(MyPOJO pojo: entity.getList()){
+                    GWT.log(pojo.toString());
+                }
+            }
+        });
     }
 
 }
