@@ -15,9 +15,10 @@ public class AsyncRequestCounter {
 
     private final static Logger LOG = Logger.getLogger(AsyncRequestCounter.class.getName());
 
-    private static int counter = 0;
+    static int counter = 0;
 
-    private final static EventBus eventBus = new SimpleEventBus();
+    static EventBus eventBus = new SimpleEventBus();
+
     private final static Map<EventHandler, HandlerRegistration> registrations = new HashMap<EventHandler, HandlerRegistration>();
 
     public static void registerCompleted(RequestsCompletedEvent.Handler handler) {

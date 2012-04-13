@@ -12,7 +12,7 @@
   
     <properties>
 		<moduleName>com.mycompany.project.FrameworkExample</moduleName>
-		<runTarget>${moduleName}/FrameworkExample.html</runTarget>
+		<runTarget>FrameworkExample.html</runTarget>
 		<noServer>false</noServer>
 		<!--suppress CheckTagEmptyBody -->
         <debugAgent />        

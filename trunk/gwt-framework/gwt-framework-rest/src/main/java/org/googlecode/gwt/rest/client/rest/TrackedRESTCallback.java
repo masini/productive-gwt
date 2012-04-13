@@ -18,6 +18,7 @@ public abstract class TrackedRESTCallback<T> extends RESTCallback<T> {
         this(serviceName, null);
     }
 
+
     protected TrackedRESTCallback(String serviceName, Integer expectedStatusCode) {
         AsyncRequestCounter.increment(serviceName);
         this.serviceName = serviceName;
