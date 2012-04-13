@@ -21,7 +21,6 @@ import freemarker.template.*;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
 
 import javax.ws.rs.*;
-import javax.ws.rs.QueryParam;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -38,6 +37,16 @@ public class RESTServiceGenerator extends Generator {
 
     private static final String TEMPLATE_NAME = "restServiceTemplate.ftl";
     private static final String CLASS_SUFFIX = "Proxy";
+
+    /*
+    static {
+        try {
+            freemarker.log.Logger.selectLoggerLibrary(freemarker.log.Logger.LIBRARY_COMMONS);
+        } catch (ClassNotFoundException e) {
+            throw new NoClassDefFoundError(e.getMessage());
+        }
+    }
+    */
 
     @Override
     public String generate(TreeLogger logger, GeneratorContext context,
