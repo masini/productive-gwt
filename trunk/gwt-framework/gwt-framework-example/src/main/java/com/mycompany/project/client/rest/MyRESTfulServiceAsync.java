@@ -17,6 +17,6 @@ public interface MyRESTfulServiceAsync extends GWTRESTfulService<MyRESTfulServic
 
     @Path("method")
     @GET
-    @Produces("application/json")
+    @Produces("application/json; charset=ISO8859-1")
     Request listaSenzaParametri(RESTCallback<ListAndSize> callback);
 }

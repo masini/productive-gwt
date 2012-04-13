@@ -6,6 +6,7 @@ import com.mycompany.project.client.rest.dto.ListAndSize;
 import com.mycompany.project.client.rest.dto.MyPOJO;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
+import org.googlecode.gwt.rest.client.rest.TrackedRESTCallback;
 import org.googlecode.gwt.template.client.TemplateManager;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -32,11 +33,12 @@ public class FrameworkExample implements EntryPoint {
 
 		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
 
-        myRESTfulServiceAsync.lista(1, "pippo", new RESTCallback() {});
-        myRESTfulServiceAsync.listaSenzaParametri(new RESTCallback<ListAndSize>() {
+        myRESTfulServiceAsync.lista(1, "pippo", new TrackedRESTCallback("lista", 200) {});
+        myRESTfulServiceAsync.listaSenzaParametri(new TrackedRESTCallback<ListAndSize>("listaSenzaParametri", 200) {
+
             @Override
-            public void onResponseReceived(Response response, ListAndSize entity) {
-                for(MyPOJO pojo: entity.getList()){
+            protected void userOnSuccess(Response response, ListAndSize entity) {
+                for (MyPOJO pojo : entity.getList()) {
                     GWT.log(pojo.toString());
                 }
             }
