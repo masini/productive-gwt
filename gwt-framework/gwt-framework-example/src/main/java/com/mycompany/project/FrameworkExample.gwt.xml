@@ -35,5 +35,7 @@
 	<!--<set-property name="user.agent" value="ie6" />-->
 	<extend-property name="locale" values="it_IT"/>
 	<set-property name="locale" value="it_IT" />
-		
+
+    <set-property name="rest.callback.tracked" value="true"/>
+
 </module>

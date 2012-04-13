@@ -21,4 +21,17 @@
 
     <inherits name="com.google.gwt.logging.Logging"/>
 
+
+    <define-property name="rest.callback.tracked" values="true, false"/>
+
+    <!-- Default to disabled -->
+    <set-property name="rest.callback.tracked" value="false"/>
+
+    <!-- Replace the DebugIdImpl -->
+    <replace-with class="org.googlecode.gwt.rest.client.rest.AsyncRequestCounterInterceptor">
+        <when-type-is class="org.googlecode.gwt.rest.client.rest.RESTCallback.CallbackInterceptorDummyImpl"/>
+        <when-property-is name="rest.callback.tracked" value="true"/>
+    </replace-with>
+
+
 </module>

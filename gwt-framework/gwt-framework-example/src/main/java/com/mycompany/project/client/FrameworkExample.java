@@ -1,18 +1,16 @@
 package com.mycompany.project.client;
 
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.user.client.ui.Label;
+import com.mycompany.project.client.menu.MyMenu;
 import com.mycompany.project.client.rest.MyRESTfulServiceAsync;
 import com.mycompany.project.client.rest.dto.ListAndSize;
 import com.mycompany.project.client.rest.dto.MyPOJO;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
-import org.googlecode.gwt.rest.client.rest.TrackedRESTCallback;
 import org.googlecode.gwt.template.client.TemplateManager;
-
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Label;
-import com.mycompany.project.client.menu.MyMenu;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -33,8 +31,8 @@ public class FrameworkExample implements EntryPoint {
 
 		TemplateManager.setMenu((SMenu)GWT.create(MyMenu.class));
 
-        myRESTfulServiceAsync.lista(1, "pippo", new TrackedRESTCallback("lista", 200) {});
-        myRESTfulServiceAsync.listaSenzaParametri(new TrackedRESTCallback<ListAndSize>("listaSenzaParametri", 200) {
+        myRESTfulServiceAsync.lista(1, "pippo", new RESTCallback(200) {});
+        myRESTfulServiceAsync.listaSenzaParametri(new RESTCallback<ListAndSize>("listaSenzaParametri", 200) {
 
             @Override
             protected void userOnSuccess(Response response, ListAndSize entity) {
