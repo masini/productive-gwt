@@ -5,7 +5,6 @@ import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 import org.googlecode.gwt.bootstrap.server.BootstrapDataResolver;
 import org.googlecode.gwt.bootstrap.server.BootstrapDataResolverFactory;
-import org.googlecode.gwt.bootstrap.server.GWTBootstrapServiceServlet;
 import org.googlecode.gwt.bootstrap.server.UserInfoResolver;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,12 +13,11 @@ import org.junit.Test;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
 
 public class TestUserInfoResolverSerlvetConfig {
 

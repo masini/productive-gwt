@@ -13,7 +13,11 @@ import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.bootstrap.server.dummy.DummyUserInfoResolver;
 
 public interface BootstrapDataResolverFactory {
-	public BootstrapDataResolver createUserInfoResolver(Map<String, String> params);
+
+    String INIT_PARAM_RESOLVER = "resolver";
+    String INIT_PARAM_USER_INFO_RESOLVER = "userInfoResolver";
+
+    public BootstrapDataResolver createUserInfoResolver(Map<String, String> params);
 	public ServletConfig getServletConfig();
 	
 	public static class Utils {
@@ -51,17 +55,23 @@ public interface BootstrapDataResolverFactory {
 
 				public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 					try {
-						DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
-                        resolver.useParams(params);
+                        UserInfoBootstrapDataResolver resolver = null;
 
-                        UserInfoResolver userInfoResolver = null;
-                        if(params.containsKey("userInfoResolver")) {
-                            // Se viene passato userInfoResolver come initParam alla servlet
-                            // viene usata quell'implementazione
-                            userInfoResolver = (UserInfoResolver) Class.forName(params.get("userInfoResolver")).newInstance();
-                        } else {
-                            userInfoResolver = new DummyUserInfoResolver();
-                        }
+                        resolver = new InstanceFromParamFactory<UserInfoBootstrapDataResolver>() {
+                            @Override
+                            UserInfoBootstrapDataResolver defaultInstance(Map<String, String> params) {
+                                DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
+                                resolver.useParams(params);
+                                return resolver;
+                            }
+                        }.newInstance(params, INIT_PARAM_RESOLVER);
+
+                        UserInfoResolver userInfoResolver = new InstanceFromParamFactory<UserInfoResolver>() {
+                            @Override
+                            UserInfoResolver defaultInstance(Map<String, String> params) {
+                                return new DummyUserInfoResolver();
+                            }
+                        }.newInstance(params, INIT_PARAM_USER_INFO_RESOLVER);
 
 						resolver.setUserInfoResolver(userInfoResolver);
 						
@@ -70,7 +80,26 @@ public interface BootstrapDataResolverFactory {
 						throw new RuntimeException(e);
 					}
 				}
+
 			};
 		}
 	}
+
+    static abstract class InstanceFromParamFactory<T> {
+
+        T newInstance(Map<String, String> params, String paramName) throws Exception {
+            T instance = null;
+            if(params.containsKey(paramName)) {
+                instance = (T) Class.forName(params.get(paramName)).newInstance();
+            } else {
+                instance = defaultInstance(params);
+            }
+
+            return instance;
+        }
+
+        abstract T defaultInstance(Map<String, String> params);
+
+    }
+
 }
