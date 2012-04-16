@@ -47,14 +47,22 @@ public interface BootstrapDataResolverFactory {
 	        	log.error("error creating BootstrapDataResolver", ex);
 	        }
 
-	        return  new AbstractBootstrapDataResolverFactory(servletConfig) {
+	        return new AbstractBootstrapDataResolverFactory(servletConfig) {
 
 				public BootstrapDataResolver createUserInfoResolver(Map<String, String> params) {
 					try {
 						DefaultBootstrapDataResolver resolver = new DefaultBootstrapDataResolver();
                         resolver.useParams(params);
 
-						UserInfoResolver userInfoResolver = new DummyUserInfoResolver();
+                        UserInfoResolver userInfoResolver = null;
+                        if(params.containsKey("userInfoResolver")) {
+                            // Se viene passato userInfoResolver come initParam alla servlet
+                            // viene usata quell'implementazione
+                            userInfoResolver = (UserInfoResolver) Class.forName(params.get("userInfoResolver")).newInstance();
+                        } else {
+                            userInfoResolver = new DummyUserInfoResolver();
+                        }
+
 						resolver.setUserInfoResolver(userInfoResolver);
 						
 						return resolver;
