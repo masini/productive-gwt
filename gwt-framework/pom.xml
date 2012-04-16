@@ -142,13 +142,18 @@
 			</extension>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-2</version>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>2.2</version>
             </extension>
             <extension>
                 <groupId>com.google.code.maven-scm-provider-svnjava</groupId>
                 <artifactId>maven-scm-provider-svnjava</artifactId>
                 <version>1.9</version>
+            </extension>
+            <extension>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>1.6.4</version>
             </extension>
 		</extensions>
 
@@ -159,11 +164,6 @@
 			<id>productive-gwt</id>
 			<url>http://productive-gwt.googlecode.com/svn/trunk</url>
 		</repository>
-        <repository>
-            <id>gwt-repo</id>
-            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0/gwt/maven</url>
-            <name>Google Web Toolkit Repository</name>
-        </repository>
     </repositories>
 
 	<distributionManagement>
