@@ -32,7 +32,7 @@ public class TestBootstrapDataResolverServletConfig {
     @Test
     public void mustUseDefaultIfNotPassed() {
 
-        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(servletConfig);
+        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolverFactory(servletConfig);
         BootstrapDataResolver userInfoResolver = bootstrapDataResolverFactory.createUserInfoResolver(params);
 
         Assert.assertTrue(userInfoResolver instanceof DefaultBootstrapDataResolver);
@@ -44,7 +44,7 @@ public class TestBootstrapDataResolverServletConfig {
 
         params.put("resolver", "org.googlecode.gwt.bootstrap.client.server.TestBootstrapDataResolverServletConfig$FakeRisolver");
 
-        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(servletConfig);
+        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolverFactory(servletConfig);
         BootstrapDataResolver userInfoResolver = bootstrapDataResolverFactory.createUserInfoResolver(params);
 
         Assert.assertTrue(userInfoResolver instanceof FakeRisolver);

@@ -23,7 +23,7 @@ public interface BootstrapDataResolverFactory {
 	public static class Utils {
 		private final static Log log = LogFactory.getLog(Utils.class);
 		
-		public static BootstrapDataResolverFactory createBootstrapDataResolver(ServletConfig servletConfig) {
+		public static BootstrapDataResolverFactory createBootstrapDataResolverFactory(ServletConfig servletConfig) {
 			
 	        try
 	        {
