@@ -35,7 +35,7 @@ public class TestUserInfoResolverSerlvetConfig {
 
         Map<String, String> params = new HashMap<String, String>();
 
-        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(servletConfig);
+        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolverFactory(servletConfig);
 
         BootstrapDataResolver bootstrapDataResolver = bootstrapDataResolverFactory.createUserInfoResolver(params);
 
@@ -52,7 +52,7 @@ public class TestUserInfoResolverSerlvetConfig {
         Map<String, String> params = new HashMap<String, String>();
         params.put("userInfoResolver", "org.googlecode.gwt.bootstrap.client.server.TestUserInfoResolverSerlvetConfig$FakeUserInfoResolver");
 
-        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolver(servletConfig);
+        BootstrapDataResolverFactory bootstrapDataResolverFactory = BootstrapDataResolverFactory.Utils.createBootstrapDataResolverFactory(servletConfig);
 
         BootstrapDataResolver bootstrapDataResolver = bootstrapDataResolverFactory.createUserInfoResolver(params);
 
