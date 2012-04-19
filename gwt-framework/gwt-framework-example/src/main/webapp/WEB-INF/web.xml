@@ -76,6 +76,15 @@
 		<url-pattern>/com.mycompany.project.FrameworkExample/datasourceSerial</url-pattern>
 	</servlet-mapping>
 
+    <servlet>
+        <servlet-name>PersoneServlet</servlet-name>
+        <servlet-class>com.mycompany.project.server.PersoneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersoneServlet</servlet-name>
+        <url-pattern>/com.mycompany.project.FrameworkExample/services/persone/*</url-pattern>
+    </servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
