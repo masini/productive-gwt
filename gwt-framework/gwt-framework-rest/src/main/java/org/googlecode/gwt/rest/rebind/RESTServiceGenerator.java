@@ -1,11 +1,8 @@
 package org.googlecode.gwt.rest.rebind;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.ext.Generator;
-import com.google.gwt.core.ext.GeneratorContext;
-import com.google.gwt.core.ext.TreeLogger;
+import com.google.gwt.core.ext.*;
 import com.google.gwt.core.ext.TreeLogger.Type;
-import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JParameter;
@@ -66,7 +63,7 @@ public class RESTServiceGenerator extends Generator {
                     + wrapperClassName;
 
             if (printWriter != null) {
-                Map<String, Object> rootMap = createRootMap(requestedClass, logger);
+                Map<String, Object> rootMap = createRootMap(requestedClass, logger, context.getPropertyOracle());
                 logger.log(Type.DEBUG, rootMap.toString());
                 Writer generatedClassSource = processTemplate(rootMap);
                 writeSource(getSourceWriter(packageName, wrapperClassName,
@@ -98,7 +95,7 @@ public class RESTServiceGenerator extends Generator {
         return returnCode;
     }
 
-    private Map<String, Object> createRootMap(JClassType requestedClass, final TreeLogger logger) {
+    private Map<String, Object> createRootMap(JClassType requestedClass, final TreeLogger logger, PropertyOracle propertyOracle) throws BadPropertyValueException {
 
         Map<String, Object> root = new HashMap<String, Object>();
         root.put(SERVICE_CLASS_NAME, requestedClass.getSimpleSourceName() + CLASS_SUFFIX);
@@ -121,8 +118,10 @@ public class RESTServiceGenerator extends Generator {
 
         path = calculateCorrectPath(path);
 
+        ConfigurationProperty a = propertyOracle.getConfigurationProperty("application.path");
+
         root.put("resourcePath", path);
-        root.put("applicationPath", applicationPath!=null?applicationPath.value():"");
+        root.put("applicationPath", applicationPath!=null?applicationPath.value():a.getValues().get(0));
 
         int counter = 0;
 

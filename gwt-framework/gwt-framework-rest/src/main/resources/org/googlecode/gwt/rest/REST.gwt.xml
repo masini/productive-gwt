@@ -23,6 +23,8 @@
 
 
     <define-property name="rest.callback.tracked" values="true, false"/>
+    <define-configuration-property name="application.path" is-multi-valued="false"/>
+    <set-configuration-property name="application.path" value=""/>
 
     <!-- Default to disabled -->
     <set-property name="rest.callback.tracked" value="false"/>

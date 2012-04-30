@@ -7,7 +7,7 @@ import org.googlecode.gwt.rest.client.rest.RESTCallback;
 
 import javax.ws.rs.*;
 
-@ApplicationPath("services")
+//@ApplicationPath("services")
 @Path("restendpoint")
 public interface MyRESTfulServiceAsync extends GWTRESTfulService<MyRESTfulServiceAsync> {
     @Path("method/{id}")
