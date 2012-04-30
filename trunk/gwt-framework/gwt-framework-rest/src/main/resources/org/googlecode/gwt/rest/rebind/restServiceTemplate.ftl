@@ -32,7 +32,8 @@
             final MyRestServiceJSONBeanFactory${method.uniqueName} myFactory${method.uniqueName} = GWT.create(MyRestServiceJSONBeanFactory${method.uniqueName}.class);
             final ${method.callbackType} finalCallback = ${method.callbackName};
 
-            String methodURL = GWT.getModuleBaseURL()+url+"${method.path}";
+            String contextPath = GWT.getModuleBaseURL().replace(GWT.getModuleName(), "");
+            String methodURL = contextPath+url+"${method.path}";
 
             StringBuilder inputBuilder = new StringBuilder();
             StringBuilder queryParam = new StringBuilder("?");

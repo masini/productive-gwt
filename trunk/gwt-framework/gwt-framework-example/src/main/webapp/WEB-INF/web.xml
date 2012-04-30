@@ -37,7 +37,7 @@
 
 	<servlet-mapping>
 		<servlet-name>restendpoint</servlet-name>
-		<url-pattern>/com.mycompany.project.FrameworkExample/services/restendpoint/method/*</url-pattern>
+		<url-pattern>/services/restendpoint/method/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
