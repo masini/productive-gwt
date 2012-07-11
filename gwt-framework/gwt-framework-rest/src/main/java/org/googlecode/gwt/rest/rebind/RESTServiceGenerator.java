@@ -15,6 +15,8 @@ import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import freemarker.template.*;
+import org.googlecode.gwt.rest.client.rest.GwtApplicationPath;
+import org.googlecode.gwt.rest.client.rest.GwtPath;
 import org.googlecode.gwt.rest.client.rest.RESTCallback;
 
 import javax.ws.rs.*;
@@ -113,15 +115,21 @@ public class RESTServiceGenerator extends Generator {
             }
         });
         
-        String path = requestedClass.getAnnotation(Path.class).value();
-        ApplicationPath applicationPath = requestedClass.getAnnotation(ApplicationPath.class);
+        String path = requestedClass.getAnnotation(GwtPath.class).value();
+        if( path==null ) {
+            path = requestedClass.getAnnotation(Path.class).value();
+        }
+        String applicationPath = requestedClass.getAnnotation(GwtApplicationPath.class).value();
+        if( applicationPath==null ) {
+            applicationPath = requestedClass.getAnnotation(ApplicationPath.class).value();
+        }
 
         path = calculateCorrectPath(path);
 
         ConfigurationProperty a = propertyOracle.getConfigurationProperty("application.path");
 
         root.put("resourcePath", path);
-        root.put("applicationPath", applicationPath!=null?applicationPath.value():a.getValues().get(0));
+        root.put("applicationPath", applicationPath!=null?applicationPath:a.getValues().get(0));
 
         int counter = 0;
 
