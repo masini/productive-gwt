@@ -6,6 +6,7 @@ import org.googlecode.gwt.base.client.UserInfo;
 
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 
 /**
  * Pulsante per la visualizzazione delle informazioni dell'utente.
@@ -21,7 +22,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 	protected void onLoad() {
 		super.onLoad();
 
-		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
+		DefaultUserInfo userInfo = new DefaultUserInfo(applicationContext.getBootstrapData().getUserInfo());
 
 		addInfo(ApplicationResources.getCostants().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
 		addInfo(ApplicationResources.getCostants().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
@@ -58,7 +59,8 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		add(info);
 	}
 	
-	private String getRoles(UserInfo userInfo, String[] role) {
+	private String getRoles(DefaultUserInfo userInfo, String[] role) {
+
 		StringBuffer roles = new StringBuffer();
 		for (int i = 0; i < role.length; i++) {
 			String roleDescription = userInfo.getRoleDescription(role[i]);
@@ -67,7 +69,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		return roles.toString();
 	}
 
-	private String getParameters(UserInfo userInfo, String[] parameterName) {
+	private String getParameters(DefaultUserInfo userInfo, String[] parameterName) {
 		StringBuffer params = new StringBuffer();
 		for (int i = 0; i < parameterName.length; i++) {
 			params.append(parameterName[i]).append(" (").append(userInfo.getUserParameter(parameterName[i])).append(")<br>");

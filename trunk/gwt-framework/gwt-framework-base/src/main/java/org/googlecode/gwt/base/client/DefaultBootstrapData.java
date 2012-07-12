@@ -1,5 +1,8 @@
 package org.googlecode.gwt.base.client;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
@@ -7,7 +10,9 @@ import java.io.Serializable;
  * the application (name, code, version, location, etc.) and the connected user
  * (username, roles, parameters, etc.)
  */
-public class BootstrapData implements Serializable {
+@XmlRootElement
+@XmlAccessorType(value = XmlAccessType.PROPERTY)
+public class DefaultBootstrapData implements Serializable, BootstrapData {
 	private static final long serialVersionUID = 1L;
 	private long systemTime;
 	private String applicationName;
@@ -25,7 +30,7 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return long - the systemTime
 	 */
-	public long getSystemTime() {
+    public long getSystemTime() {
 		return systemTime;
 	}
 
@@ -35,7 +40,7 @@ public class BootstrapData implements Serializable {
 	 * @param systemTime -
 	 *            The systemTime to set
 	 */
-	public void setSystemTime(long systemTime) {
+    public void setSystemTime(long systemTime) {
 		this.systemTime = systemTime;
 	}
 
@@ -44,7 +49,7 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return String - The applicationCode
 	 */
-	public String getApplicationCode() {
+    public String getApplicationCode() {
 		return applicationCode;
 	}
 
@@ -54,7 +59,8 @@ public class BootstrapData implements Serializable {
 	 * @param applicationCode -
 	 *            The applicationCode
 	 */
-	public void setApplicationCode(String applicationCode) {
+	
+    public void setApplicationCode(String applicationCode) {
 		this.applicationCode = applicationCode;
 	}
 
@@ -63,7 +69,8 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return String - The applicationCode
 	 */
-	public String getApplicationName() {
+	
+    public String getApplicationName() {
 		return applicationName;
 	}
 
@@ -73,7 +80,8 @@ public class BootstrapData implements Serializable {
 	 * @param applicationName -
 	 *            The applicationName
 	 */
-	public void setApplicationName(String applicationName) {
+	
+    public void setApplicationName(String applicationName) {
 		this.applicationName = applicationName;
 	}
 
@@ -82,7 +90,8 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return String - The applicationVersion
 	 */
-	public String getApplicationVersion() {
+	
+    public String getApplicationVersion() {
 		return applicationVersion;
 	}
 
@@ -92,7 +101,8 @@ public class BootstrapData implements Serializable {
 	 * @param applicationVersion -
 	 *            The applicationVersion
 	 */
-	public void setApplicationVersion(String applicationVersion) {
+	
+    public void setApplicationVersion(String applicationVersion) {
 		this.applicationVersion = applicationVersion;
 	}
 
@@ -101,7 +111,8 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return String - The serverName
 	 */
-	public String getServerName() {
+	
+    public String getServerName() {
 		return serverName;
 	}
 
@@ -111,7 +122,8 @@ public class BootstrapData implements Serializable {
 	 * @param serverName -
 	 *            The serverName
 	 */
-	public void setServerName(String serverName) {
+	
+    public void setServerName(String serverName) {
 		this.serverName = serverName;
 	}
 
@@ -121,7 +133,8 @@ public class BootstrapData implements Serializable {
 	 * @param userInfo -
 	 *            The userInfo
 	 */
-	public void setUserInfo(UserInfo userInfo) {
+	
+    public void setUserInfo(UserInfo userInfo) {
 		this.userInfo = userInfo;
 	}
 
@@ -130,23 +143,28 @@ public class BootstrapData implements Serializable {
 	 * 
 	 * @return UserInfo - The userInfo
 	 */
-	public UserInfo getUserInfo() {
+	
+    public UserInfo getUserInfo() {
 		return userInfo;
 	}
 
-	public void setClusterName(String clusterName) {
+	
+    public void setClusterName(String clusterName) {
 		this.clusterName = clusterName;
 	}
 
-	public String getClusterName() {
+	
+    public String getClusterName() {
 		return clusterName;
 	}
 
-	public void setServerHostName(String serverHostName) {
+	
+    public void setServerHostName(String serverHostName) {
 		this.serverHostName = serverHostName;
 	}
 
-	public String getServerHostName() {
+	
+    public String getServerHostName() {
 		return serverHostName;
 	}
 
@@ -179,11 +197,13 @@ public class BootstrapData implements Serializable {
 		return l_bsStringBuffer.toString();
 	}
 
-	public String getHomePageURLString() {
+	
+    public String getHomePageURLString() {
 		return homePageURLString;
 	}
 
-	public void setHomePageURLString(String homePageURLString) {
+	
+    public void setHomePageURLString(String homePageURLString) {
 		this.homePageURLString = homePageURLString;
 	}
 

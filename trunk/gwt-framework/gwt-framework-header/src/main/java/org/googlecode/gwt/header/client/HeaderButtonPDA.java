@@ -9,13 +9,14 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 
 /**
  * Pulsante per la visualizzazione delle informazioni dell'utente.
  */
 public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 
-	private ApplicationContext applicationContext; 
+	private ApplicationContext applicationContext;
 
 	public HeaderButtonPDA(ApplicationContext applicationContext) {
 		this.applicationContext=applicationContext;
@@ -47,12 +48,12 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 
 		// INFO UTENTE
 
-		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
+        DefaultUserInfo userInfo = new DefaultUserInfo(applicationContext.getBootstrapData().getUserInfo());
 
-		//addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
+        //addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
 		//addInfo(HeaderConstantsFactory.getInstance().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
 
-		String[] role = userInfo.getRoles();	
+		String[] role = userInfo.getRoles();
 		if (role != null && role.length > 0) {
 			addInfo(ApplicationResources.getCostants().ROLES_LABEL(), getRoles(userInfo, role));
 		}
@@ -76,11 +77,11 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 	 */
 	protected void addLabels() {
 		UserInfo userInfo = applicationContext.getBootstrapData().getUserInfo();
-		
+
 		add(new Image(ApplicationResources.getImageBundle().HEADER_EMPTY_SHORT()));
-		
+
 		Label info = new Label(userInfo.getUsername());
-		
+
 		//Label info = new Label("NEGOZIO X");
 		info.addStyleName("benvenuto");
 		//add(new Label(HeaderConstantsFactory.getInstance().WELCOME_LABEL() + " "));
@@ -88,7 +89,7 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 
 	}
 
-	private String getRoles(UserInfo userInfo, String[] role) {
+	private String getRoles(DefaultUserInfo userInfo, String[] role) {
 		StringBuffer roles = new StringBuffer();
 		for (int i = 0; i < role.length; i++) {
 			String roleDescription = userInfo.getRoleDescription(role[i]);
@@ -97,7 +98,7 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 		return roles.toString();
 	}
 
-	private String getParameters(UserInfo userInfo, String[] parameterName) {
+	private String getParameters(DefaultUserInfo userInfo, String[] parameterName) {
 		StringBuffer params = new StringBuffer();
 		for (int i = 0; i < parameterName.length; i++) {
 			params.append(parameterName[i]).append(" (").append(userInfo.getUserParameter(parameterName[i])).append(")<br>");

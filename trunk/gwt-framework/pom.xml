@@ -8,6 +8,7 @@
 	<modules>
 		<module>gwt-framework-base</module>
 		<module>gwt-framework-bootstrap</module>
+		<module>gwt-framework-bootstrap-validation</module>
 		<module>gwt-framework-example</module>
 		<module>gwt-framework-footer</module>
 		<module>gwt-framework-header</module>

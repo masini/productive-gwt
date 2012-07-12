@@ -1,7 +1,13 @@
 package org.googlecode.gwt.base.client;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Map;
 
+@XmlRootElement
+@XmlAccessorType(value = XmlAccessType.PUBLIC_MEMBER)
 public interface UserInfo extends Serializable {
     String DEFAULT_USER_ROLE = "UTEGEN";
     String DEFAULT_ADMIN_USER_ROLE = "UTEADM";
@@ -15,10 +21,6 @@ public interface UserInfo extends Serializable {
     
     String[] getRoles();
     
-    boolean isUserInRole(String role);
-    
-    String getUserParameter( String parameterName );
-    
     String[] getUserParameterNames ();
 
     String getFirstName();
@@ -27,5 +29,5 @@ public interface UserInfo extends Serializable {
 
     String getRoleDescription();
 
-    String getRoleDescription( String role );
+    Map<String, String> getUserParameters();
 }

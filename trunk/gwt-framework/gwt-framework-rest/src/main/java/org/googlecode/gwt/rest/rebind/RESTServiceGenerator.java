@@ -115,20 +115,19 @@ public class RESTServiceGenerator extends Generator {
             }
         });
         
-        String path = requestedClass.getAnnotation(GwtPath.class).value();
+        String path = requestedClass.getAnnotation(GwtPath.class)!=null?requestedClass.getAnnotation(GwtPath.class).value():null;
         if( path==null ) {
             path = requestedClass.getAnnotation(Path.class).value();
         }
-        String applicationPath = requestedClass.getAnnotation(GwtApplicationPath.class).value();
+        String applicationPath = requestedClass.getAnnotation(GwtApplicationPath.class)!=null?requestedClass.getAnnotation(GwtApplicationPath.class).value():null;
         if( applicationPath==null ) {
-            applicationPath = requestedClass.getAnnotation(ApplicationPath.class).value();
+            applicationPath = requestedClass.getAnnotation(ApplicationPath.class)!=null?requestedClass.getAnnotation(ApplicationPath.class).value():"";
         }
 
         path = calculateCorrectPath(path);
 
         ConfigurationProperty a = propertyOracle.getConfigurationProperty("application.path");
 
-        root.put("resourcePath", path);
         root.put("applicationPath", applicationPath!=null?applicationPath:a.getValues().get(0));
 
         int counter = 0;

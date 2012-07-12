@@ -1,5 +1,6 @@
 package org.googlecode.gwt.menu.client.filter;
 
+import org.googlecode.gwt.base.client.ExtendedUserInfo;
 import org.googlecode.gwt.base.client.UserInfo;
 import org.googlecode.gwt.menu.client.model.MenuModel;
 
@@ -8,9 +9,9 @@ import org.googlecode.gwt.menu.client.model.MenuModel;
  */
 public class RoleMenuFilterAction implements FilterAction {
 
-	private UserInfo user = null;
+	private ExtendedUserInfo user = null;
 
-	public RoleMenuFilterAction(UserInfo user) {
+	public RoleMenuFilterAction(ExtendedUserInfo user) {
 		this.user = user;
 	}
 

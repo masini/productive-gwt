@@ -4,6 +4,7 @@ import org.googlecode.gwt.base.client.ApplicationContext;
 import org.googlecode.gwt.base.client.ApplicationContextFactory;
 import org.googlecode.gwt.base.client.ApplicationResources;
 import org.googlecode.gwt.base.client.UserInfo;
+import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.filter.MenuFilter;
 import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
@@ -108,7 +109,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 			public void onSuccess(ApplicationContext result) {
 				/* User info */
 				ApplicationContext context = result;
-				UserInfo user = context.getBootstrapData().getUserInfo();
+				DefaultUserInfo user = new DefaultUserInfo(context.getBootstrapData().getUserInfo());
 
 				/* Model */
 				MenuModel menuModel = menu.getMenuModel();
@@ -135,7 +136,7 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	
 	/**
 	 * This method set the value of HistoryToken of homepage. 
-	 * @param tokenName HomePage token name
+	 * @param homePageHistoryToken HomePage token name
 	 */
 	public  void setHomePageHistoryToken(String homePageHistoryToken) {
 		if (home == null) getHomePageLink();
