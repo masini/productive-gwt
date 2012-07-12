@@ -4,13 +4,20 @@ package org.googlecode.gwt.bootstrap.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.googlecode.gwt.base.client.ExtendedUserInfo;
 import org.googlecode.gwt.base.client.UserInfo;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Base class useful to send to a gwt client information about the user.
  *
  */
-public class DefaultUserInfo implements UserInfo {
+@XmlRootElement
+@XmlAccessorType(value = XmlAccessType.PUBLIC_MEMBER)
+public class DefaultUserInfo implements ExtendedUserInfo {
     private String username;
     private String firstName;
     private String lastName;
@@ -33,6 +40,11 @@ public class DefaultUserInfo implements UserInfo {
 	            this.roleDescriptions.put( role, null );
 	        }
         }
+    }
+
+    public DefaultUserInfo(UserInfo userInfo) {
+        this(userInfo.getUsername(), userInfo.getFirstName(),
+             userInfo.getLastName(), userInfo.getRoles(), userInfo.getUserParameters());
     }
 
 	private Map<String, String> checkNullMap(Map<String, String> map) {

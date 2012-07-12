@@ -57,7 +57,7 @@ public class TestUserInfoResolverSerlvetConfig {
         BootstrapDataResolver bootstrapDataResolver = bootstrapDataResolverFactory.createUserInfoResolver(params);
 
         BootstrapData bootstrapData = bootstrapDataResolver.getBootstrapData(servletRequest);
-        UserInfo userInfo = bootstrapData.getUserInfo();
+        DefaultUserInfo userInfo = new DefaultUserInfo(bootstrapData.getUserInfo());
         Assert.assertEquals("testfirstname", userInfo.getFirstName());
         Assert.assertEquals("testlastname", userInfo.getLastName());
         Assert.assertEquals("testusername", userInfo.getUsername());

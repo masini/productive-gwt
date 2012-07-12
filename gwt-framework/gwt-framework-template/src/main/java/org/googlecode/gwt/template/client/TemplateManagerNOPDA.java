@@ -1,9 +1,7 @@
 package org.googlecode.gwt.template.client;
 
-import org.googlecode.gwt.base.client.ApplicationContext;
-import org.googlecode.gwt.base.client.ApplicationContextFactory;
-import org.googlecode.gwt.base.client.ApplicationResources;
-import org.googlecode.gwt.base.client.UserInfo;
+import org.googlecode.gwt.base.client.*;
+import org.googlecode.gwt.bootstrap.client.DefaultUserInfo;
 import org.googlecode.gwt.menu.client.SMenu;
 import org.googlecode.gwt.menu.client.filter.MenuFilter;
 import org.googlecode.gwt.menu.client.filter.RoleMenuFilterAction;
@@ -106,7 +104,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 			public void onSuccess(ApplicationContext result) {
 				/* User info */
 				ApplicationContext context = result;
-				UserInfo user = context.getBootstrapData().getUserInfo();
+				UserInfo userInfo = context.getBootstrapData().getUserInfo();
+                DefaultUserInfo user = new DefaultUserInfo(userInfo);
 
 				/* Model */
 				MenuModel menuModel = menu.getMenuModel();
@@ -140,8 +139,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	/**
-	 * This method set the value of HistoryToken of homepage. 
-	 * @param tokenName HomePage token name
+	 * This method set the value of HistoryToken of homepage.
+	 * @param homePageHistoryToken HomePage token name
 	 */
 	public  void setHomePageHistoryToken(String homePageHistoryToken) {
 		if (home == null) getHomePageLink();

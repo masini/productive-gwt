@@ -1,11 +1,11 @@
 package org.googlecode.gwt.bootstrap.server;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.googlecode.gwt.base.client.ApplicationContextData;
 import org.googlecode.gwt.base.client.BootstrapData;
+import org.googlecode.gwt.base.client.DefaultBootstrapData;
 import org.googlecode.gwt.base.client.UserInfo;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -62,13 +62,13 @@ public class DefaultBootstrapDataResolver implements UserInfoBootstrapDataResolv
 	}
 
 	protected BootstrapData newBootstrapData() {
-        return new BootstrapData();
+        return new DefaultBootstrapData();
     }
 
     /**
      * If a {@link #setBootstrapDataDecorator(org.googlecode.gwt.bootstrap.server.BootstrapDataDecorator) decorator} has been set, calls its
-     * {@link BootstrapDataDecorator#decorateBootstrapData(org.googlecode.gwt.bootstrap.client.BootstrapData) } right after resolving the
-     * {@link org.googlecode.gwt.bootstrap.client.BootstrapData } object.
+     * {@link BootstrapDataDecorator#decorateBootstrapData(org.googlecode.gwt.base.client.BootstrapData) } right after resolving the
+     * {@link org.googlecode.gwt.base.client.BootstrapData } object.
      *
      * @param data
      */

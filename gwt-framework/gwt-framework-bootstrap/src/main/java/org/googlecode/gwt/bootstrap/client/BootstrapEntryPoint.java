@@ -23,7 +23,7 @@ import com.google.gwt.user.client.Window;
 public class BootstrapEntryPoint implements EntryPoint {
 	protected BootstrapData bootstrapData;	
     protected static final BootstrapConstants bsConstants;
-    private List<BootstrapEventListener> bootstrapEventListeners;
+    protected List<BootstrapEventListener> bootstrapEventListeners;
     
 
     static {
@@ -93,11 +93,6 @@ public class BootstrapEntryPoint implements EntryPoint {
                 ApplicationContextFactory.createApplicationContext(bootstrapData);
             }
         } );
-    }
-
-    protected boolean isUserInRole( String role ) {
-        UserInfo userInfo = bootstrapData.getUserInfo();
-        return userInfo.isUserInRole( role );
     }
 
     public static class MyUncaughtExceptionHandler implements UncaughtExceptionHandler {
