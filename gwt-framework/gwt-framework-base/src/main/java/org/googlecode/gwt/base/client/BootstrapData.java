@@ -1,10 +1,8 @@
 package org.googlecode.gwt.base.client;
 
-public interface BootstrapData {
-    long getSystemTime();
+import java.io.Serializable;
 
-    void setSystemTime(long systemTime);
-
+public interface BootstrapData extends Serializable {
     String getApplicationCode();
 
     void setApplicationCode(String applicationCode);

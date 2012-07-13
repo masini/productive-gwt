@@ -1,7 +1,9 @@
 package org.googlecode.gwt.bootstrap.client;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.googlecode.gwt.base.client.ExtendedUserInfo;
@@ -24,19 +26,16 @@ public class DefaultUserInfo implements ExtendedUserInfo {
 
     private static final long serialVersionUID = 1931201066080419627L;
 
-    public DefaultUserInfo( String username, String firstName, String lastName, String[] roles, Map<String,String> userParameters ) {
+    public DefaultUserInfo( String username, String firstName, String lastName, List<String> roles, Map<String,String> userParameters ) {
         this.username = username;
         this.userParameters = checkNullMap(userParameters);
         this.firstName = firstName;
         this.lastName = lastName;
         this.roleDescriptions = new HashMap<String,String>();
         if(roles != null) {
-        	//noinspection ForLoopReplaceableByForEach
-	        for ( int i = 0; i < roles.length ; i++ ) {
-	            String role = roles[ i ];
-	            //noinspection unchecked
-	            this.roleDescriptions.put( role, null );
-	        }
+            for(String role: roles) {
+                this.roleDescriptions.put( role, null );
+            }
         }
     }
 
@@ -101,9 +100,8 @@ public class DefaultUserInfo implements ExtendedUserInfo {
         return lastName;
     }
 
-    public String[] getRoles() {
-        //noinspection unchecked
-        return ( String[] )roleDescriptions.keySet().toArray( new String[ roleDescriptions.size() ] );
+    public List<String> getRoles() {
+        return new ArrayList<String>(roleDescriptions.keySet());
     }
 
     public boolean isUserInRole( String role ) {

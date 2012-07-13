@@ -1,6 +1,7 @@
 package org.googlecode.gwt.base.client;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 public interface UserInfo extends Serializable {
@@ -14,7 +15,7 @@ public interface UserInfo extends Serializable {
 
     String getRole();
     
-    String[] getRoles();
+    List<String> getRoles();
     
     String[] getUserParameterNames ();
 
