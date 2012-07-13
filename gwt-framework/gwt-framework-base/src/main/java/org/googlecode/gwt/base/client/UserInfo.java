@@ -17,7 +17,7 @@ public interface UserInfo extends Serializable {
     
     List<String> getRoles();
     
-    String[] getUserParameterNames ();
+    List<String> getUserParameterNames();
 
     String getFirstName();
 
