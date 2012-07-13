@@ -13,6 +13,7 @@ import org.junit.Test;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class TestUserInfoResolverSerlvetConfig {
         Assert.assertEquals("", userInfo.getFirstName());
         Assert.assertEquals("", userInfo.getLastName());
         Assert.assertEquals("", userInfo.getUsername());
-        Assert.assertEquals(0, userInfo.getRoles().length);
+        Assert.assertEquals(0, userInfo.getRoles().size());
     }
 
     @Test
@@ -61,7 +62,7 @@ public class TestUserInfoResolverSerlvetConfig {
         Assert.assertEquals("testfirstname", userInfo.getFirstName());
         Assert.assertEquals("testlastname", userInfo.getLastName());
         Assert.assertEquals("testusername", userInfo.getUsername());
-        Assert.assertEquals("testrole", userInfo.getRoles()[0]);
+        Assert.assertEquals("testrole", userInfo.getRoles().get(0));
         Assert.assertEquals("value1", userInfo.getUserParameter("param1"));
     }
 
@@ -71,7 +72,7 @@ public class TestUserInfoResolverSerlvetConfig {
         public UserInfo getCurrentUserInfo(HttpServletRequest request) {
             Map<String, String> param = new HashMap<String, String>();
             param.put("param1", "value1");
-            return new DefaultUserInfo("testusername", "testfirstname", "testlastname", new String[]{"testrole"}, param);
+            return new DefaultUserInfo("testusername", "testfirstname", "testlastname", Arrays.asList("testrole"), param);
         }
     }
 

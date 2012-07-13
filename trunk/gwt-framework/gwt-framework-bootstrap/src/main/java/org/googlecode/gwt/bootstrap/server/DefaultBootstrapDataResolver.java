@@ -37,7 +37,6 @@ public class DefaultBootstrapDataResolver implements UserInfoBootstrapDataResolv
         BootstrapData bootstrapData = newBootstrapData();
         UserInfo userInfo = userInfoResolver.getCurrentUserInfo( request );
         bootstrapData.setUserInfo( userInfo );
-        bootstrapData.setSystemTime( System.currentTimeMillis() );
         bootstrapData.setApplicationCode( applicationCode );
         bootstrapData.setApplicationName( applicationName );
         bootstrapData.setApplicationVersion( applicationVersion );

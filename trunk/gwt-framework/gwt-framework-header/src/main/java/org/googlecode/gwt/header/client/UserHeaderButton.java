@@ -27,7 +27,7 @@ public class UserHeaderButton extends BaseInfoPanelHeaderButton {
 		addInfo(ApplicationResources.getCostants().CURRENT_USER_NAME_LABEL(), userInfo.getFirstName() + " " + userInfo.getLastName());
 		addInfo(ApplicationResources.getCostants().CURRENT_USER_ID_LABEL(), userInfo.getUsername());
 
-		String[] role = userInfo.getRoles();	
+		String[] role = userInfo.getRoles().toArray(new String[]{});
 		if (role != null && role.length > 0) {
 			addInfo(ApplicationResources.getCostants().ROLES_LABEL(), getRoles(userInfo, role));
 		}

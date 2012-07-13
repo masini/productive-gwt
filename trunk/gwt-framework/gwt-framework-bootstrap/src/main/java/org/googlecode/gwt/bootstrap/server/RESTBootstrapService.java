@@ -1,6 +1,8 @@
 package org.googlecode.gwt.bootstrap.server;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.googlecode.gwt.base.client.BootstrapData;
 
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.Enumeration;
@@ -46,13 +49,17 @@ public class RESTBootstrapService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JSONObject getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) throws ServletException {
-        init(servletConfig);
-        BootstrapData bootstrapData = resolver.getBootstrapData(request);
+    public String getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) {
+        try {
+            init(servletConfig);
+            BootstrapData bootstrapData = resolver.getBootstrapData(request);
 
-        ObjectMapper m = new ObjectMapper();
-
-        return new JSONObject(m.convertValue(bootstrapData, Map.class));
+            ObjectMapper m = new ObjectMapper();
+            m.configure(SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
+            return m.writeValueAsString(bootstrapData);
+        } catch (Exception e) {
+            throw new WebApplicationException(e, 500);
+        }
     }
 
 }
