@@ -1,5 +1,7 @@
 package org.googlecode.gwt.bootstrap.server;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jettison.json.JSONObject;
 import org.googlecode.gwt.base.client.BootstrapData;
 
 import javax.servlet.ServletConfig;
@@ -44,10 +46,13 @@ public class RESTBootstrapService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public BootstrapData getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) throws ServletException {
+    public JSONObject getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) throws ServletException {
         init(servletConfig);
         BootstrapData bootstrapData = resolver.getBootstrapData(request);
-        return bootstrapData;
+
+        ObjectMapper m = new ObjectMapper();
+
+        return new JSONObject(m.convertValue(bootstrapData, Map.class));
     }
 
 }
