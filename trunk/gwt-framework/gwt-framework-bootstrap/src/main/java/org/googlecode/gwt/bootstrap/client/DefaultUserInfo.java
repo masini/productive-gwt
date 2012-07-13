@@ -9,10 +9,6 @@ import java.util.Map;
 import org.googlecode.gwt.base.client.ExtendedUserInfo;
 import org.googlecode.gwt.base.client.UserInfo;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  * Base class useful to send to a gwt client information about the user.
  *
@@ -84,8 +80,8 @@ public class DefaultUserInfo implements ExtendedUserInfo {
         return ( String )userParameters.get( parameterName );
     }
     
-    public String[] getUserParameterNames() {
-    	return ( String[] )userParameters.keySet().toArray( new String[ userParameters.size() ] );
+    public List<String> getUserParameterNames() {
+    	return new ArrayList<String>(userParameters.keySet());
     }
 
     public void setUsername( String username ) {

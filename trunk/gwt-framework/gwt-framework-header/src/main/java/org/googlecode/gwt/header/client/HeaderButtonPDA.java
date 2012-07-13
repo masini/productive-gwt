@@ -58,7 +58,7 @@ public class HeaderButtonPDA extends BaseInfoPanelHeaderButton {
 			addInfo(ApplicationResources.getCostants().ROLES_LABEL(), getRoles(userInfo, role));
 		}
 
-		String[] parameterName = userInfo.getUserParameterNames();
+		String[] parameterName = userInfo.getUserParameterNames().toArray(new String[]{});
 		if (parameterName != null && parameterName.length > 0) {
 			addInfo(ApplicationResources.getCostants().PARAMETERS_LABEL(), getParameters(userInfo, parameterName));
 		}
