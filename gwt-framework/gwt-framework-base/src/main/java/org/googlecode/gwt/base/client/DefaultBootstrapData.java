@@ -10,8 +10,6 @@ import java.io.Serializable;
  * the application (name, code, version, location, etc.) and the connected user
  * (username, roles, parameters, etc.)
  */
-@XmlRootElement
-@XmlAccessorType(value = XmlAccessType.PROPERTY)
 public class DefaultBootstrapData implements Serializable, BootstrapData {
 	private static final long serialVersionUID = 1L;
 	private long systemTime;

@@ -1,11 +1,5 @@
 package org.googlecode.gwt.base.client;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-@XmlAccessorType(value = XmlAccessType.PUBLIC_MEMBER)
 public interface BootstrapData {
     long getSystemTime();
 

@@ -15,8 +15,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Base class useful to send to a gwt client information about the user.
  *
  */
-@XmlRootElement
-@XmlAccessorType(value = XmlAccessType.PUBLIC_MEMBER)
 public class DefaultUserInfo implements ExtendedUserInfo {
     private String username;
     private String firstName;
