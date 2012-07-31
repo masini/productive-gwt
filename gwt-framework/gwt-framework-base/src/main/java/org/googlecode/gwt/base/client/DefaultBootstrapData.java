@@ -1,8 +1,5 @@
 package org.googlecode.gwt.base.client;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
@@ -20,10 +17,10 @@ public class DefaultBootstrapData implements Serializable, BootstrapData {
 	private String clusterName;
 	private String serverHostName;
 	private String homePageURLString;
-
 	private UserInfo userInfo;
+    private ApplicationBootstrapData applicationBootstrapData;
 
-	/**
+    /**
 	 * Get the systemTime
 	 * 
 	 * @return long - the systemTime
@@ -205,5 +202,12 @@ public class DefaultBootstrapData implements Serializable, BootstrapData {
 		this.homePageURLString = homePageURLString;
 	}
 
+    public ApplicationBootstrapData getApplicationBootstrapData() {
+        return this.applicationBootstrapData;
+    }
+
+        public void setApplicationBootstrapData(ApplicationBootstrapData applicationBootstrapData) {
+        this.applicationBootstrapData = applicationBootstrapData;
+    }
 
 }
