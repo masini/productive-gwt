@@ -2,10 +2,11 @@ package org.googlecode.gwt.bootstrap.server;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+import org.googlecode.gwt.base.client.ApplicationBootstrapData;
 import org.googlecode.gwt.base.client.BootstrapData;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,13 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+//@RequestScoped
 @Path("bootstrap")
+@Stateless
+
 public class RESTBootstrapService {
+
+    @Inject @Bootstrap ApplicationBootstrapData applicationBootstrapData;
 
     protected transient BootstrapDataResolver resolver;
 
@@ -53,6 +59,7 @@ public class RESTBootstrapService {
         try {
             init(servletConfig);
             BootstrapData bootstrapData = resolver.getBootstrapData(request);
+            bootstrapData.setApplicationBootstrapData(applicationBootstrapData);
 
             ObjectMapper m = new ObjectMapper();
             m.configure(SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);

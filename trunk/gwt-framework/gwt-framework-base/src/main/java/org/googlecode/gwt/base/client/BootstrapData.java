@@ -1,6 +1,7 @@
 package org.googlecode.gwt.base.client;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public interface BootstrapData extends Serializable {
     String getApplicationCode();
@@ -34,4 +35,9 @@ public interface BootstrapData extends Serializable {
     String getHomePageURLString();
 
     void setHomePageURLString(String homePageURLString);
+
+    ApplicationBootstrapData getApplicationBootstrapData();
+
+    void setApplicationBootstrapData(ApplicationBootstrapData applicationBootstrapData);
+
 }
