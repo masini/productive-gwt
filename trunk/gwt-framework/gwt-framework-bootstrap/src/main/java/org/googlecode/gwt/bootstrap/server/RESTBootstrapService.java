@@ -20,10 +20,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-//@RequestScoped
 @Path("bootstrap")
-@Stateless
-
 public class RESTBootstrapService {
 
     @Inject @Bootstrap ApplicationBootstrapData applicationBootstrapData;
