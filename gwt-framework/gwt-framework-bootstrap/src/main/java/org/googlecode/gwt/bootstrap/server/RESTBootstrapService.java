@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Path("bootstrap")
+@Stateless
 public class RESTBootstrapService {
 
     @Inject @Bootstrap ApplicationBootstrapData applicationBootstrapData;
