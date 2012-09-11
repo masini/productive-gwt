@@ -109,7 +109,7 @@ public class RESTServiceGenerator extends Generator {
             @Override
             public Object exec(List arguments) throws TemplateModelException {
 
-                logger.log(Type.INFO, "*********"+arguments.get(0));
+                logger.log(Type.INFO, "*********" + arguments.get(0));
 
                 return "logged";
             }
@@ -128,7 +128,8 @@ public class RESTServiceGenerator extends Generator {
 
         ConfigurationProperty a = propertyOracle.getConfigurationProperty("application.path");
 
-        root.put("applicationPath", applicationPath!=null?applicationPath:a.getValues().get(0));
+        applicationPath = calculateCorrectApplicationPath(applicationPath != null ? applicationPath : a.getValues().get(0));
+        root.put("applicationPath", applicationPath);
 
         int counter = 0;
 
@@ -251,6 +252,22 @@ public class RESTServiceGenerator extends Generator {
             path = path.substring(0, path.length()-1);
         }
         return path;
+    }
+
+    private String calculateCorrectApplicationPath(String applicationPath) {
+
+        if( "".equals(applicationPath) ) {
+            return "";
+        }
+
+        if( !applicationPath.startsWith("/") ) {
+            applicationPath = "/"+applicationPath;
+        }
+
+        if( applicationPath.endsWith("/") ) {
+            applicationPath = applicationPath.substring(0, applicationPath.length()-1);
+        }
+        return calculateCorrectPath(applicationPath);
     }
 
     protected SourceWriter getSourceWriter(String packageName,
