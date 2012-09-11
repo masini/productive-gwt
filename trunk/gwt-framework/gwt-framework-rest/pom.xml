@@ -125,10 +125,6 @@
                     </webResources>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>beabuild-generator-plugin</artifactId>
-            </plugin>
         </plugins>
         <!--		<finalName>${project.artifactId}</finalName>-->
     </build>
