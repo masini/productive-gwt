@@ -88,13 +88,12 @@
                         LOG.fine(text);
                         <#if method.produces?? >
 
-                        if( !produces_${method.uniqueName}.contains(response.getHeader("Content-Type")) ) {
-                            finalCallback.onError(response.getStatusCode(), new RuntimeException("Content-Type should be one of '"+produces_${method.uniqueName}.toString()+"', instead is '"+response.getHeader("Content-Type")+"'"));
-
-                            return;
+                        if( produces_${method.uniqueName}.contains(response.getHeader("Content-Type")) ) {
+                            retVal = AutoBeanCodex.decode(myFactory${method.uniqueName}, ${method.callbackInnerType}.class, text).as();
                         }
-                        </#if>
+                        <#else>
                         retVal = AutoBeanCodex.decode(myFactory${method.uniqueName}, ${method.callbackInnerType}.class, text).as();
+                        </#if>
                     }
 
                     finalCallback.onResponseReceived(response,retVal);

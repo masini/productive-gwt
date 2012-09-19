@@ -207,7 +207,7 @@ public class RESTServiceGenerator extends Generator {
                 parameterValues.put("simpleType", parameter.getType().getSimpleSourceName());
                 parameterValues.put("nome", parameter.getName());
 
-                logger.log(Type.INFO, "parameter name is " + parameter.getName());
+                logger.log(Type.DEBUG, "parameter name is " + parameter.getName());
 
                 boolean isInputParameter = false;
                 boolean isPathParameter = false;
