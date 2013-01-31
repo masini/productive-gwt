@@ -1,0 +1,42 @@
+<module>
+
+	<inherits name="org.googlecode.gwt.base.Base"/>
+	<inherits name="org.googlecode.gwt.bootstrap.Bootstrap"/>
+	<inherits name='org.googlecode.gwt.template.Template'/>
+	<inherits name='org.googlecode.gwt.header.Header'/>
+	<inherits name='org.googlecode.gwt.footer.Footer'/>
+	<inherits name='org.googlecode.gwt.menu.Menu'/>
+	<inherits name='org.googlecode.gwt.simplegrid.SimpleGrid' />
+	<inherits name='org.googlecode.gwt.reflection.Reflection'/>
+	<inherits name='org.googlecode.gwt.rest.REST'/>
+	<!-- Inherit the default GWT style sheet.  You can change       -->
+	<!-- the theme of your GWT application by uncommenting          -->
+	<!-- any one of the following lines.                            -->
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+	
+	
+	<!-- stylesheets -->
+	<stylesheet src="css/SimpleGridDemo.css"/> 
+	
+	<!-- Source path -->
+  	<source path="client"/>
+  	<source path="shared"/>
+	
+	<entry-point class="com.mycompany.project.client.FrameworkExample"/>
+	
+	<!-- SimpleGrid servlets -->
+	<servlet class="com.mycompany.project.server.DataServiceSerialImpl" path="/datasourceSerial"/>
+	<servlet class="com.mycompany.project.server.DataServiceBeanImpl" path="/datasourceBean"/>
+	<servlet class="com.mycompany.project.server.DataServiceBeanImpl2" path="/newDatasourceBean"/>
+	
+	<!-- Disable compilation for all browser for speed during developemnt cycles -->
+	<!--<set-property name="user.agent" value="ie6" />-->
+	<extend-property name="locale" values="it_IT"/>
+	<set-property name="locale" value="it_IT" />
+
+    <set-property name="rest.callback.tracked" value="true"/>
+    <set-configuration-property name="application.path" value="services"/>
+
+</module>
