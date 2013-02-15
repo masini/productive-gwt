@@ -1,8 +1,11 @@
 package org.googlecode.gwt.base.client;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Map;
 
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public interface BootstrapData extends Serializable {
     String getApplicationCode();
 

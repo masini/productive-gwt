@@ -1,9 +1,12 @@
 package org.googlecode.gwt.base.client;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public interface UserInfo extends Serializable {
     String DEFAULT_USER_ROLE = "UTEGEN";
     String DEFAULT_ADMIN_USER_ROLE = "UTEADM";

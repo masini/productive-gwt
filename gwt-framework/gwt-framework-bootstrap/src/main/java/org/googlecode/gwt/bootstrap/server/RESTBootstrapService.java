@@ -4,6 +4,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.googlecode.gwt.base.client.ApplicationBootstrapData;
 import org.googlecode.gwt.base.client.BootstrapData;
+import org.googlecode.gwt.base.server.provider.NoCache;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -53,7 +54,8 @@ public class RESTBootstrapService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) {
+    @NoCache
+    public BootstrapData getBootstrapData(@Context HttpServletRequest request, @Context ServletConfig servletConfig) {
         try {
             init(servletConfig);
             BootstrapData bootstrapData = resolver.getBootstrapData(request);
@@ -61,7 +63,7 @@ public class RESTBootstrapService {
 
             ObjectMapper m = new ObjectMapper();
             m.configure(SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
-            return m.writeValueAsString(bootstrapData);
+            return bootstrapData;
         } catch (Exception e) {
             throw new WebApplicationException(e, 500);
         }
