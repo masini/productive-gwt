@@ -10,4 +10,5 @@
 
     <source path="client"/>
     <source path="rpc"/>
+    <source path="support"/>
 </module>
