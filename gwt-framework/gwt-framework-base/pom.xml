@@ -23,7 +23,13 @@
 			<version>${gwtVersion}</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.8.3</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<resources>
