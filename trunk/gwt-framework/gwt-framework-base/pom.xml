@@ -8,6 +8,10 @@
 	<artifactId>base</artifactId>
 	<name>base</name>
 
+    <properties>
+        <version.org.jboss.errai>2.2.0.Final</version.org.jboss.errai>
+    </properties>
+
 	<dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -57,6 +61,25 @@
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging-api</artifactId>
             <version>1.1</version>
+        </dependency>
+
+
+        <!-- Errai Core and ErraiBus -->
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-bus</artifactId>
+            <scope>provided</scope>
+            <version>${version.org.jboss.errai}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>jsr250-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
