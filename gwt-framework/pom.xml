@@ -19,7 +19,7 @@
 	</modules>
 
 	<properties>
-		<gwtVersion>2.4.0</gwtVersion>
+		<gwtVersion>2.5.1</gwtVersion>
 		<jdkVersion>1.6</jdkVersion>
         <dryRun>false</dryRun>
 	</properties>
