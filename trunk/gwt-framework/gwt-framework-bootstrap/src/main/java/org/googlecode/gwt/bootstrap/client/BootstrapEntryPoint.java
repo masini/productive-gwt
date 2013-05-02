@@ -1,18 +1,16 @@
 package org.googlecode.gwt.bootstrap.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.googlecode.gwt.base.client.ApplicationContextFactory;
-import org.googlecode.gwt.base.client.BootstrapData;
-import org.googlecode.gwt.base.client.LogText;
-import org.googlecode.gwt.base.client.UserInfo;
-import org.googlecode.gwt.bootstrap.client.utils.BootstrapConstants;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.Window;
+import org.googlecode.gwt.base.client.ApplicationContextFactory;
+import org.googlecode.gwt.base.client.BootstrapData;
+import org.googlecode.gwt.base.client.LogText;
+import org.googlecode.gwt.bootstrap.client.utils.BootstrapConstants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An abstract class that can be extended by GWT client application to automatically get integrated with the bootstrap process.
