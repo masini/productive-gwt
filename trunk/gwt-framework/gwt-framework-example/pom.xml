@@ -78,7 +78,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1-beta-1</version>
+                <version>2.2</version>
                 <configuration>
                     <!-- viene filtrato web.xml per aggiungere la versione -->
                     <webResources>
