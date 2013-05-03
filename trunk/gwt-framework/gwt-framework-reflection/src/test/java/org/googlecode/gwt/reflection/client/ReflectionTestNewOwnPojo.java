@@ -64,7 +64,7 @@ public class ReflectionTestNewOwnPojo extends GWTTestCase {
 		
 		assertNotNull("listField null !!", property);
 		
-		assertEquals("La stringa ritornata non � corretta", TEST,property.get(0));
+		assertEquals("La stringa ritornata non e' corretta", TEST,property.get(0));
 	}
 	
 	public static void testBigDecimalProperty() {
@@ -73,7 +73,7 @@ public class ReflectionTestNewOwnPojo extends GWTTestCase {
 		
 		assertNotNull("bigDecimal null !!", property);
 		
-		assertEquals("La stringa ritornata non � corretta", new BigDecimal(PI), property);
+		assertEquals("La stringa ritornata non e' corretta", new BigDecimal(PI), property);
 	}
 	
 	public static void testAddValueChangeListener() {
