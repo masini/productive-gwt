@@ -58,7 +58,7 @@ public class PrimoPanel extends Composite {
 		centrCostCB.addItem("bbbbb");
 		centrCostCB.addItem("bbb");
 
-		final Label nFatt = new Label("n° fatt");
+		final Label nFatt = new Label("n. fatt");
 		flexTable.setWidget(2, 0, nFatt);
 
 		final Label annoContLabel = new Label("Anno cont");
