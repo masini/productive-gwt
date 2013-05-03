@@ -207,7 +207,7 @@ public class ClassMenuGenerator {
 		}
 
 	
-		//popolo le variabili locali su cui mi baserò per scrivere i metodi reali
+		//popolo le variabili locali su cui mi basero' per scrivere i metodi reali
 		elabClass(requestedClass,true,menu);
 		
 		//creo i metodi reali
@@ -346,7 +346,7 @@ public class ClassMenuGenerator {
 			MyMenuModel model = childs.get(i);
 			
 			if(model==null){
-				String msg = "Non sono stati valorizzati nel modo corretto i valori della gwt annotation @" + META_ITEM_POSITION + ". Il numero della posizione non può avere buchi.";
+				String msg = "Non sono stati valorizzati nel modo corretto i valori della gwt annotation @" + META_ITEM_POSITION + ". Il numero della posizione non puo' avere buchi.";
 				throw new MenuGeneratorException(msg);
 			}
 		
