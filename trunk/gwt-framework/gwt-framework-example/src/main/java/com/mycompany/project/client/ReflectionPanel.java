@@ -185,7 +185,7 @@ public class ReflectionPanel extends Composite {
 			gridMap.put("Cognome", pojoTextBoxCognome);
 			gridMap.put("Indirizzo", pojoTextBoxIndirizzo);
 			gridMap.put("Data di Nascita", pojoDateBoxData);
-			gridMap.put("Età", pojoTextBoxEta);
+			gridMap.put("Eta'", pojoTextBoxEta);
 			gridMap.put("Stato", pojoListBoxStato);
 
 			Grid grid = createGridPanel(gridMap);
@@ -229,7 +229,7 @@ public class ReflectionPanel extends Composite {
 			gridMap.put("Cognome", wrapperTextBoxCognome);
 			gridMap.put("Indirizzo", wrapperTextBoxIndirizzo);
 			gridMap.put("Data di Nascita", wrapperDateBoxData);
-			gridMap.put("Età", wrapperTextBoxEta);
+			gridMap.put("Eta'", wrapperTextBoxEta);
 			gridMap.put("Stato", wrapperListBoxStato);
 
 			Grid grid = createGridPanel(gridMap);

@@ -21,7 +21,7 @@ public final class StandardGrid<ROW extends Serializable, FILTER extends Seriali
 		StandardGrid.Configurer<ROW, FILTER>
 	>
 {
-	// Attributi ridondati, perché, per esigenze di retrocompatibilita', preferisco non renderli protected nella superclasse
+	// Attributi ridondati, perche', per esigenze di retrocompatibilita', preferisco non renderli protected nella superclasse
 	private final Configurer<ROW, FILTER> configurer;
 	private final PagingScrollTableCustom<ROW> pagingScrollTable;
 

@@ -201,7 +201,7 @@ public class ClassMenuGenerator {
 		// creo la struttura della classe generata
 		sw = getSourceWriter(context, requestedJClassType.getPackage().getName(), proxyClassName);
 
-		// se e' nulla e' perche' esiste già una classe con quel nome....
+		// se e' nulla e' perche' esiste gia' una classe con quel nome....
 		if (sw == null) {
 			return requestedJClassType.getPackage().getName() + "." + proxyClassName;
 		}
@@ -232,7 +232,7 @@ public class ClassMenuGenerator {
 		
 		JClassType inJClass = typeOracle.getType(inClass.getCanonicalName());
 
-		//i metodi sono gli item del menù
+		//i metodi sono gli item del menu'
 		elabMethod(inJClass,firstLevel,parent);
 			
 		//le classi sono i menu
@@ -454,7 +454,7 @@ public class ClassMenuGenerator {
 					"Per ogni item deve essere specificato quale ruolo e' abilitato per eseguirlo.";
 				}
 				else{
-					msg = "Non e' possibile specificare più di una gwt annotation @" + META_USER_ROLE + " per item.";
+					msg = "Non e' possibile specificare piu' di una gwt annotation @" + META_USER_ROLE + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				throw e;
@@ -477,7 +477,7 @@ public class ClassMenuGenerator {
 				return null;
 			}
 			else if( meta.length > 1){
-				String msg = "Non e' possibile specificare più di una gwt annotation @" + META_ITEM_ICON + " per item.";
+				String msg = "Non e' possibile specificare piu' di una gwt annotation @" + META_ITEM_ICON + " per item.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				throw e;
 			}
@@ -490,7 +490,7 @@ public class ClassMenuGenerator {
 				return null;
 			}
 			else if( meta.length > 1){
-				String msg = "Non e' possibile specificare più di una gwt annotation @" + META_ITEM_SHORTCUT + " per item.";
+				String msg = "Non e' possibile specificare piu' di una gwt annotation @" + META_ITEM_SHORTCUT + " per item.";
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				throw e;
 			}
@@ -513,7 +513,7 @@ public class ClassMenuGenerator {
 					
 				}
 				else{
-					msg = "Non e' possibile specificare più di una gwt annotation @" + META_ITEM_LABEL + " per item.";
+					msg = "Non e' possibile specificare piu' di una gwt annotation @" + META_ITEM_LABEL + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				throw e;
@@ -533,10 +533,10 @@ public class ClassMenuGenerator {
 				String msg;
 				if(meta.length == 0){
 					msg = "Non trovata la gwt annotation @" + META_ITEM_POSITION + ". " +
-						"Per ogni item e menu deve essere specificata la posizione all'interno del menù.";
+						"Per ogni item e menu deve essere specificata la posizione all'interno del menu'.";
 				}
 				else{
-					msg = "Non e' possibile specificare più di una gwt annotation @" + META_ITEM_POSITION + " per item.";
+					msg = "Non e' possibile specificare piu' di una gwt annotation @" + META_ITEM_POSITION + " per item.";
 				}
 				MenuGeneratorException e = new MenuGeneratorException(msg);
 				throw e;
