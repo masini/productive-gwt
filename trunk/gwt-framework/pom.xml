@@ -57,8 +57,8 @@
                     <version>2.3.2</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <username>${productive-gwt-svn-username}</username>
-                        <password>${productive-gwt-svn-password}</password>
+                        <username>${google-svn-username}</username>
+                        <password>${google-svn-password}</password>
                         <!--
                             Abilitando dryRun si esegue una prova indolore del release-plugin
                         -->
@@ -113,8 +113,8 @@
                     <providerImplementations>
                         <svn>javasvn</svn>
                     </providerImplementations>
-                    <username>${productive-gwt-svn-username}</username>
-                    <password>${productive-gwt-svn-password}</password>
+                    <username>${google-svn-username}</username>
+                    <password>${google-svn-password}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
