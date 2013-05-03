@@ -1,0 +1,99 @@
+<module>
+
+    <stylesheet src='css/Base.css'/>
+    <stylesheet src='css/ScrollTableDemo.css'/>
+
+    <!-- start: Template -->
+        <stylesheet src='css/template.css'/>
+
+        <!-- Browser-sensitive code should use the 'user.agent' property -->
+        <define-property name="template.pdauseragent" values="ie6pda,other" />
+        <property-provider name="template.pdauseragent"><![CDATA[
+              var ua = navigator.userAgent.toLowerCase();
+              var makeVersion = function(result) {
+                  return (parseInt(result[1]) * 1000) + parseInt(result[2]);
+              };
+                if (ua.indexOf("msie") != -1) {
+                var result = /msie ([0-9]+)\.([0-9]+)/.exec(ua);
+                    if (result && result.length == 3) {
+                        if (makeVersion(result) >= 6000) {
+                            if(ua.indexOf("windows ce")!=-1){
+                                return "ie6pda";
+                            }
+                        }
+                    }
+                }
+              return "other";
+            ]]></property-provider>
+
+        <!--  Deferred binding of TemplateManager -->
+        <replace-with class="org.googlecode.gwt.client.ui.template.TemplateManagerPDA">
+            <when-type-is class="org.googlecode.gwt.client.ui.template.TemplateManagerImpl" />
+            <when-property-is name="template.pdauseragent" value="ie6pda" />
+        </replace-with>
+
+        <replace-with class="org.googlecode.gwt.client.ui.template.TemplateManagerNOPDA">
+            <when-type-is class="org.googlecode.gwt.client.ui.template.TemplateManagerImpl" />
+            <when-property-is name="template.pdauseragent" value="other" />
+        </replace-with>
+
+        <entry-point class="org.googlecode.gwt.client.ui.template.Template" />
+    <!-- end: Template -->
+
+
+    <!-- start: Header -->
+
+        <stylesheet src='css/header.css'/>
+
+        <!-- Browser-sensitive code should use the 'user.agent' property -->
+        <define-property name="header.pdauseragent" values="ie6pda,other" />
+        <property-provider name="header.pdauseragent"><![CDATA[
+                  var ua = navigator.userAgent.toLowerCase();
+                  var makeVersion = function(result) {
+                      return (parseInt(result[1]) * 1000) + parseInt(result[2]);
+                  };
+                    if (ua.indexOf("msie") != -1) {
+                    var result = /msie ([0-9]+)\.([0-9]+)/.exec(ua);
+                        if (result && result.length == 3) {
+                            if (makeVersion(result) >= 6000) {
+                                if(ua.indexOf("windows ce")!=-1){
+                                    return "ie6pda";
+                                }
+                            }
+                        }
+                    }
+                  return "other";
+                ]]></property-provider>
+
+        <!--  Deferred binding of TemplateManager -->
+        <replace-with class="org.googlecode.gwt.client.ui.header.HeaderPDA">
+            <when-type-is class="org.googlecode.gwt.client.ui.header.HeaderImpl" />
+            <when-property-is name="header.pdauseragent" value="ie6pda" />
+        </replace-with>
+
+        <replace-with class="org.googlecode.gwt.client.ui.header.HeaderNOPDA">
+            <when-type-is class="org.googlecode.gwt.client.ui.header.HeaderImpl" />
+            <when-property-is name="header.pdauseragent" value="other" />
+        </replace-with>
+
+
+        <entry-point class="org.googlecode.gwt.client.ui.header.Header"/>
+
+    <!-- end: Header -->
+
+    <!-- start: Menu -->
+        <stylesheet src='css/menu.css'/>
+
+        <generate-with class="org.googlecode.gwt.client.ui.menu.generator.MenuGenerator">
+            <when-type-assignable class="org.googlecode.gwt.client.ui.menu.SMenu" />
+        </generate-with>
+    <!-- end: Menu -->
+
+    <!-- start: Footer -->
+        <entry-point class="org.googlecode.gwt.client.ui.footer.Footer"/>
+    <!-- end: Footer -->
+
+    <source path="client"/>
+
+</module>
+
