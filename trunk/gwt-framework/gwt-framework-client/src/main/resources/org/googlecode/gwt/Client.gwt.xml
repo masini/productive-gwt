@@ -1,46 +1,8 @@
 <module>
 
-    <extend-property name="locale" values="it"/>
-    <extend-property name="locale" values="en"/>
 
-    <inherits name='org.googlecode.gwt.Shared'/>
+    <inherits name='org.googlecode.gwt.ClientNoEntryPoint'/>
 
-    <!-- start: REST -->
-
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-    <inherits name="com.google.gwt.i18n.I18N"/>
-
-    <inherits name='com.google.gwt.activity.Activity'/>
-    <inherits name='com.google.gwt.place.Place'/>
-    <inherits name='com.google.gwt.editor.Editor' />
-
-    <inherits name="com.google.gwt.logging.Logging"/>
-
-    <inherits name="com.google.gwt.json.JSON"/>
-    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
-
-    <generate-with class="org.googlecode.gwt.client.rest.rebind.RESTServiceGenerator">
-        <when-type-assignable class="org.googlecode.gwt.client.rest.GWTRESTfulService" />
-    </generate-with>
-
-    <define-property name="rest.callback.tracked" values="true, false"/>
-    <define-configuration-property name="application.path" is-multi-valued="false"/>
-    <set-configuration-property name="application.path" value=""/>
-
-
-    <!-- Default to disabled -->
-    <set-property name="rest.callback.tracked" value="false"/>
-
-    <!-- Replace the DebugIdImpl -->
-    <replace-with class="org.googlecode.gwt.client.rest.AsyncRequestCounterInterceptor">
-        <when-type-is class="org.googlecode.gwt.client.rest.RESTCallback.CallbackInterceptorDummyImpl"/>
-        <when-property-is name="rest.callback.tracked" value="true"/>
-    </replace-with>
-
-    <!-- end: REST -->
-
-    <source path="client"/>
 
     <entry-point class="org.googlecode.gwt.client.bootstrap.RESTBootstrapEntryPoint"/>
 
