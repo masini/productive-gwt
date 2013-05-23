@@ -3,6 +3,8 @@ package org.googlecode.gwt.client.ui.template;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
@@ -20,6 +22,7 @@ import org.googlecode.gwt.client.util.ApplicationResources;
 import org.googlecode.gwt.shared.ApplicationContext;
 import org.googlecode.gwt.shared.DefaultUserInfo;
 import org.googlecode.gwt.shared.UserInfo;
+import org.jboss.errai.ioc.client.container.IOC;
 
 public class TemplateManagerNOPDA extends TemplateManagerImpl{
 
@@ -95,6 +98,13 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 		setApplicationContent(firstPanel);
 		setNavigationContent(firstNavigation, false);
 	}
+
+    public void setHomePage(Place place) throws PlaceHolderException {
+        if (place == null) {
+            throw new PlaceHolderException(ERR_MSG + "PLACE");
+        }
+        firstPlace = place;
+    }
 
 	public  void setMenu(final SMenu menu) {
 		ApplicationContextFactory.getApplicationContext(new AsyncCallback<ApplicationContext>() {
@@ -196,7 +206,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 					TemplateManager.reloadFirstPanel();
 				}
 			});
-		}
+
+        }
 		return home;
 	}
 
@@ -223,6 +234,10 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 			root.clear();
 			setNavigationContent(null, false);
 		}
+
+        if(firstPlace != null) {
+            IOC.getBeanManager().lookupBean(PlaceController.class).getInstance().goTo(firstPlace);
+        }
 	}
 
 	public  native void redirect(String url)/*-{

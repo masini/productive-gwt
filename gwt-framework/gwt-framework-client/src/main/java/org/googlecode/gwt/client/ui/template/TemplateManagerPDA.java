@@ -1,6 +1,8 @@
 package org.googlecode.gwt.client.ui.template;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Panel;
@@ -15,6 +17,7 @@ import org.googlecode.gwt.client.ui.menu.render.MenuRenderSimplePDA;
 import org.googlecode.gwt.client.util.ApplicationResources;
 import org.googlecode.gwt.shared.ApplicationContext;
 import org.googlecode.gwt.shared.DefaultUserInfo;
+import org.jboss.errai.ioc.client.container.IOC;
 
 public class TemplateManagerPDA extends TemplateManagerImpl{
 	
@@ -96,6 +99,13 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 		setApplicationContent(firstPanel);
 		setNavigationContent(firstNavigation, false);
 	}
+
+    public void setHomePage(Place place) throws PlaceHolderException {
+        if (place == null) {
+            throw new PlaceHolderException(ERR_MSG + "PLACE");
+        }
+        firstPlace = place;
+    }
 
 	public  void setMenu(final SMenu menu) {
 		ApplicationContextFactory.getApplicationContext(new AsyncCallback<ApplicationContext>() {
@@ -227,6 +237,10 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 			root.clear();
 			root.add(getHomePageLink());
 		}
+
+        if(firstPlace != null) {
+            IOC.getBeanManager().lookupBean(PlaceController.class).getInstance().goTo(firstPlace);
+        }
 	}
 	
 
