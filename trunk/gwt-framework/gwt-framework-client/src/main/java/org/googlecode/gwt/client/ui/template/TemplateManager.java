@@ -1,6 +1,8 @@
 package org.googlecode.gwt.client.ui.template;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
@@ -8,6 +10,8 @@ import com.google.gwt.user.client.ui.Widget;
 import org.googlecode.gwt.client.ui.menu.SMenu;
 import org.googlecode.gwt.client.ui.exception.PlaceHolderException;
 import org.googlecode.gwt.client.util.ApplicationResources;
+import org.jboss.errai.ioc.client.container.IOC;
+
 
 public class TemplateManager {
 
@@ -43,6 +47,10 @@ public class TemplateManager {
 	public static void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
 		impl.setHomePage(content, navigation);
 	}
+
+    public static void setHomePage(Place place) throws PlaceHolderException {
+        impl.setHomePage(place);
+    }
 
 	public static void setMenu(final SMenu menu) {
 		impl.setMenu(menu);

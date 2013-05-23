@@ -1,6 +1,7 @@
 package org.googlecode.gwt.client.ui.template;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
@@ -16,6 +17,7 @@ public class TemplateManagerImpl {
 	protected static HTML intranet = null;
 	protected static Image intranetLogo = null;
 	protected static Widget firstPanel = null;
+	protected static Place firstPlace = null;
 	protected static Widget firstNavigation = null;
 
 	protected static boolean showIntranetLink = true;
@@ -56,6 +58,10 @@ public class TemplateManagerImpl {
 	public  void setHomePage(Widget content, Widget navigation) throws PlaceHolderException {
 
 	}
+
+    public  void setHomePage(Place place) throws PlaceHolderException {
+
+    }
 
 	public  void setMenu(final SMenu menu) {
 

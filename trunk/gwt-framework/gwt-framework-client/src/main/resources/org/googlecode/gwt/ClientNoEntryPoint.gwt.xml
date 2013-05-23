@@ -3,6 +3,9 @@
     <extend-property name="locale" values="it"/>
     <extend-property name="locale" values="en"/>
 
+    <inherits name="org.jboss.errai.ioc.Container"/>
+
+
     <inherits name='org.googlecode.gwt.Shared'/>
 
     <!-- start: REST -->

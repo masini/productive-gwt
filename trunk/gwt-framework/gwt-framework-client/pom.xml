@@ -13,7 +13,7 @@
 
     <properties>
         <gwt.version>2.5.1</gwt.version>
-        <version.org.jboss.errai>2.2.0.Final</version.org.jboss.errai>
+        <version.org.jboss.errai>2.3.0.Final</version.org.jboss.errai>
     </properties>
 
     <dependencies>
@@ -63,6 +63,23 @@
             <artifactId>errai-bus</artifactId>
             <scope>provided</scope>
             <version>${version.org.jboss.errai}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>jsr250-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-ioc</artifactId>
+            <version>${version.org.jboss.errai}</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>javax.inject</groupId>
