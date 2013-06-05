@@ -17,11 +17,6 @@ public class EJBExceptionMapper implements ExceptionMapper<Exception> {
 
     public Response toResponse(Exception exception) {
 
-        if (exception instanceof WebApplicationException || exception.getCause() instanceof WebApplicationException) {
-            WebApplicationException wae = exception.getCause() instanceof WebApplicationException?(WebApplicationException) exception.getCause():(WebApplicationException) exception;
-            return wae.getResponse();
-        }
-
         String uuid = UUID.randomUUID().toString();
 
         String errorMessage = "Errore nell'esecuzione del Bean, UUID: "+uuid;
