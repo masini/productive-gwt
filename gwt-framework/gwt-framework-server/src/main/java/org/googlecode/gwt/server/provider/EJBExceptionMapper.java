@@ -4,6 +4,7 @@ package org.googlecode.gwt.server.provider;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -16,12 +17,10 @@ public class EJBExceptionMapper implements ExceptionMapper<Exception> {
 
     public Response toResponse(Exception exception) {
 
-        /*
         if (exception instanceof WebApplicationException || exception.getCause() instanceof WebApplicationException) {
             WebApplicationException wae = exception.getCause() instanceof WebApplicationException?(WebApplicationException) exception.getCause():(WebApplicationException) exception;
             return wae.getResponse();
         }
-        */
 
         String uuid = UUID.randomUUID().toString();
 
