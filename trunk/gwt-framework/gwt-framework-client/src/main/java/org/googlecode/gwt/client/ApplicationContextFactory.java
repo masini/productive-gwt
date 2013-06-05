@@ -26,7 +26,7 @@ public class ApplicationContextFactory implements EntryPoint {
 		applicationContext = new ApplicationContext(bootstrapData);
 		if(callBacks != null) {
 			for(int i=0;i<callBacks.size();i++) {
-				AsyncCallback<ApplicationContext> callback = (AsyncCallback<ApplicationContext>)callBacks.get(i);
+				AsyncCallback<ApplicationContext> callback = callBacks.get(i);
 				callback.onSuccess(applicationContext);
 			}
 		}
@@ -47,4 +47,13 @@ public class ApplicationContextFactory implements EntryPoint {
 
 	public void onModuleLoad() {
 	}
+
+    public static void failedCreatingApplicationContext() {
+        if(callBacks != null) {
+            for(int i=0;i<callBacks.size();i++) {
+                AsyncCallback<ApplicationContext> callback = callBacks.get(i);
+                callback.onFailure(new Exception("Errore nella chiamata al bootstrap service"));
+            }
+        }
+    }
 }
