@@ -11,7 +11,7 @@ public class RESTBootstrapEntryPoint extends BootstrapEntryPoint{
     public void bootstrap(BootstrapEventListener aeListener) {
         addBootstrapEventListener( aeListener );
 
-        serviceAsync.bootstrap(new RESTCallback<BootstrapData>() {
+        serviceAsync.bootstrap(new RESTCallback<BootstrapData>("bootstrap", Response.SC_OK) {
             private final BootstrapAsyncCallback ac = new BootstrapAsyncCallback( bootstrapEventListeners );
 
             @Override
@@ -22,8 +22,7 @@ public class RESTBootstrapEntryPoint extends BootstrapEntryPoint{
             @Override
             protected boolean userOnFailure(int statusCode, Throwable throwable) {
                 ac.onFailure(throwable);
-
-                return false;
+                return true;
             }
         });
 

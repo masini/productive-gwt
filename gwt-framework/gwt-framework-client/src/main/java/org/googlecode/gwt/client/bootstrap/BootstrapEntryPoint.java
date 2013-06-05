@@ -81,9 +81,8 @@ public class BootstrapEntryPoint implements EntryPoint {
         bootstrap( new BootstrapEventListener() {
 
             public void onBootstrapFailed( BootstrapEvent bootstrapEvent ) {
-                
-            	//MessageBox.alert( "Authentication failed", bootstrapEvent.getEventDescription() );
-            	Window.alert("Authentication failed " + bootstrapEvent.getEventDescription());
+
+                ApplicationContextFactory.failedCreatingApplicationContext();
             }
 
             public void onBootstrap( BootstrapEvent bootstrapEvent ) {
