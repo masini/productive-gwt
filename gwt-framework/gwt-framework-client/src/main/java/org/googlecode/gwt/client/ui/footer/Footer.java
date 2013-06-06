@@ -36,7 +36,7 @@ public class Footer implements EntryPoint {
 		 
 		absolutePanel.setSize("100%", "100%");
 		
-		Label label = new Label(ApplicationResources.getCostants().COPYRIGHT() +getYear());
+		Label label = new Label(ApplicationResources.getCostants().COPYRIGHT(getYear()));
 		label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
 		absolutePanel.add(label);
