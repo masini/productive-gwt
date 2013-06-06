@@ -28,8 +28,8 @@ public interface ApplicationCostants  extends Constants {
 	@DefaultStringValue("javascript:;")
 	String INTRANET_URL();
 	
-	@DefaultStringValue("My Copyright (c)")
-	String COPYRIGHT();
+	@DefaultStringValue("© {0} My Copyright")
+	String COPYRIGHT(String year);
 	
 	@DefaultStringValue("Welcome")
 	String WELCOME_LABEL();
