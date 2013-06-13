@@ -41,12 +41,17 @@ public class HeaderNOPDA extends HeaderImpl {
 		Image logo = new Image(imageBundle.HEADER_LOGO());
 		horizontalPanel.add(logo);
 		horizontalPanel.setCellHorizontalAlignment(logo, HorizontalPanel.ALIGN_LEFT);
-		horizontalPanel.setCellWidth(logo, "33%");
+        horizontalPanel.setCellVerticalAlignment(logo, HasVerticalAlignment.ALIGN_MIDDLE);
+
+        horizontalPanel.setCellWidth(logo, "33%");
+        horizontalPanel.setSpacing(5);
 		
 		/* App title */
 		Panel title = PlaceHolder.get(PlaceHolder.APPLICATION_TITLE);
 		horizontalPanel.add(title);
 		horizontalPanel.setCellHorizontalAlignment(title, HorizontalPanel.ALIGN_CENTER);
+        horizontalPanel.setCellVerticalAlignment(title, HasVerticalAlignment.ALIGN_MIDDLE);
+
 		
 		/* Empty cell */
 		Label emptyLabel = new Label();

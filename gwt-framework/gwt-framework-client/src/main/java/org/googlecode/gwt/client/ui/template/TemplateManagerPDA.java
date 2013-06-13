@@ -35,7 +35,8 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	}
 
 	public void setHeader(Widget widget) throws PlaceHolderException {
-		Panel root = PlaceHolder.get(PlaceHolder.HEADER);
+		headerWidget = widget;
+        Panel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "HEADER");
 		}
@@ -263,5 +264,9 @@ public class TemplateManagerPDA extends TemplateManagerImpl{
 	public void hideRender(){
 		render.setVisible(false);
 	}
-	
+
+    public Widget getHeaderWidget() {
+        return headerWidget;
+    }
+
 }
