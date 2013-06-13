@@ -2,17 +2,19 @@ package org.googlecode.gwt.client.ui.template;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.Place;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 import org.googlecode.gwt.client.ui.exception.PlaceHolderException;
 import org.googlecode.gwt.client.ui.menu.SMenu;
 
 public class TemplateManagerImpl {
 	protected static String INTRANET_LOGO_STYLE_NAME = "intranet-logo";
 
-	protected static final String ERR_MSG = "Non trovata la zona ";
+    public static final String TOP_STYLE_NAME = "placeholder-top";
+    public static final String NAVIGATION_STYLE_NAME = "placeholder-navigation";
+    public static final String INFO_STYLE_NAME = "placeholder-info";
+
+
+    protected static final String ERR_MSG = "Non trovata la zona ";
 	protected static HTML home = null;
 	protected static HTML intranet = null;
 	protected static Image intranetLogo = null;
@@ -23,8 +25,12 @@ public class TemplateManagerImpl {
 	protected static boolean showIntranetLink = true;
 	
 	protected Widget footer = null;
+    protected Widget headerWidget;
+    HorizontalPanel top = new HorizontalPanel();
 
-	public  void setApplicationTitle(Widget widget) throws PlaceHolderException {}
+
+
+    public  void setApplicationTitle(Widget widget) throws PlaceHolderException {}
 
 	public  void setApplicationTitle(String applicationTitle) throws PlaceHolderException{}  
 
@@ -121,5 +127,46 @@ public class TemplateManagerImpl {
 
 	public  void setHome(HTML home) {
 	}
+
+    public HorizontalPanel createMiddle() {
+        HorizontalPanel middle = new HorizontalPanel();
+        middle.add(PlaceHolder.WEST.getPanel());
+        PlaceHolder.CONTENT.getPanel().setWidth("100%");
+        middle.add(PlaceHolder.CONTENT.getPanel());
+        middle.add(PlaceHolder.EAST.getPanel());
+        middle.setWidth("100%");
+        return middle;
+    }
+
+    public HorizontalPanel createTop() {
+        top.setWidth("100%");
+        top.setStyleName(TOP_STYLE_NAME);
+
+        top.add(PlaceHolder.NAVIGATION.getPanel());
+        top.setCellVerticalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
+        top.setCellHorizontalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasHorizontalAlignment.ALIGN_LEFT);
+        top.setCellWidth(PlaceHolder.NAVIGATION.getPanel(), "50%");
+        PlaceHolder.NAVIGATION.getPanel().setStyleName(NAVIGATION_STYLE_NAME);
+
+        top.add(PlaceHolder.INFO.getPanel());
+        top.setCellVerticalAlignment(PlaceHolder.INFO.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
+        top.setCellHorizontalAlignment(PlaceHolder.INFO.getPanel(), HasHorizontalAlignment.ALIGN_RIGHT);
+        top.setCellWidth(PlaceHolder.INFO.getPanel(), "50%");
+        PlaceHolder.INFO.getPanel().setStyleName(INFO_STYLE_NAME);
+
+        return top;
+    }
+
+    public Widget getTopWidget() {
+        return top;
+    }
+
+    public Widget getHeaderWidget() {
+        return null;
+    }
+
+    public Widget getFooterWidget() {
+        return footer;
+    }
 
 }

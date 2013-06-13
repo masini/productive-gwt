@@ -3,10 +3,7 @@ package org.googlecode.gwt.client.ui.template;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 import org.googlecode.gwt.client.ui.menu.SMenu;
 import org.googlecode.gwt.client.ui.exception.PlaceHolderException;
 import org.googlecode.gwt.client.util.ApplicationResources;
@@ -16,7 +13,7 @@ import org.jboss.errai.ioc.client.container.IOC;
 public class TemplateManager {
 
 	private static TemplateManagerImpl impl = GWT.create(TemplateManagerImpl.class);
-	
+
 	public static void setApplicationTitle(String applicationTitle) throws PlaceHolderException {
 		impl.setApplicationTitle(applicationTitle);
 	}
@@ -126,5 +123,24 @@ public class TemplateManager {
 		
 		return intranetLink;
 	}
-	
+
+    public static Widget getTopWidget() {
+        return impl.getTopWidget();
+    }
+
+    public static Widget getHeaderWidget() {
+        return impl.getHeaderWidget();
+    }
+
+    public static Widget getFooterWidget() {
+        return impl.getFooterWidget();
+    }
+
+    public static HorizontalPanel createTop() {
+        return impl.createTop();
+    }
+
+    public static HorizontalPanel createMiddle() {
+        return impl.createMiddle();
+    }
 }

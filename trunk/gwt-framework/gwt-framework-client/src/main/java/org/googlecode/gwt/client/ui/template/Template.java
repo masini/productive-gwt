@@ -9,9 +9,7 @@ import com.google.gwt.user.client.ui.*;
  */
 public class Template implements EntryPoint {
 	
-	public static final String TOP_STYLE_NAME = "placeholder-top";
-	public static final String NAVIGATION_STYLE_NAME = "placeholder-navigation";
-	public static final String INFO_STYLE_NAME = "placeholder-info";
+
 	
 	public void onModuleLoad() {
 
@@ -23,7 +21,7 @@ public class Template implements EntryPoint {
 		RootPanel.get().add(verticalPanel);
 
         // TOP
-        HorizontalPanel top = createTop();
+        HorizontalPanel top = TemplateManager.createTop();
 		verticalPanel.add(top);
 
         // HEADER
@@ -33,7 +31,7 @@ public class Template implements EntryPoint {
 		verticalPanel.add(PlaceHolder.MENU.getPanel());
 
         // WEST CENTER EAST
-        HorizontalPanel middle = createMiddle();
+        HorizontalPanel middle = TemplateManager.createMiddle();
 		verticalPanel.add(middle);
 
         // FOOTER
@@ -43,33 +41,4 @@ public class Template implements EntryPoint {
 	
 	}
 
-    private HorizontalPanel createMiddle() {
-        HorizontalPanel middle = new HorizontalPanel();
-        middle.add(PlaceHolder.WEST.getPanel());
-        PlaceHolder.CONTENT.getPanel().setWidth("100%");
-        middle.add(PlaceHolder.CONTENT.getPanel());
-        middle.add(PlaceHolder.EAST.getPanel());
-        middle.setWidth("100%");
-        return middle;
-    }
-
-    private HorizontalPanel createTop() {
-        HorizontalPanel top = new HorizontalPanel();
-        top.setWidth("100%");
-        top.setStyleName(TOP_STYLE_NAME);
-
-        top.add(PlaceHolder.NAVIGATION.getPanel());
-        top.setCellVerticalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
-        top.setCellHorizontalAlignment(PlaceHolder.NAVIGATION.getPanel(), HasHorizontalAlignment.ALIGN_LEFT);
-        top.setCellWidth(PlaceHolder.NAVIGATION.getPanel(), "50%");
-        PlaceHolder.NAVIGATION.getPanel().setStyleName(NAVIGATION_STYLE_NAME);
-
-        top.add(PlaceHolder.INFO.getPanel());
-        top.setCellVerticalAlignment(PlaceHolder.INFO.getPanel(), HasVerticalAlignment.ALIGN_MIDDLE);
-        top.setCellHorizontalAlignment(PlaceHolder.INFO.getPanel(), HasHorizontalAlignment.ALIGN_RIGHT);
-        top.setCellWidth(PlaceHolder.INFO.getPanel(), "50%");
-        PlaceHolder.INFO.getPanel().setStyleName(INFO_STYLE_NAME);
-
-        return top;
-    }
 }

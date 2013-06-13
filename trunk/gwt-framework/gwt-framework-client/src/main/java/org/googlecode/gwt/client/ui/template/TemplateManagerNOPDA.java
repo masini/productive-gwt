@@ -36,7 +36,8 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	}
 
 	public  void setHeader(Widget widget) throws PlaceHolderException {
-		Panel root = PlaceHolder.get(PlaceHolder.HEADER);
+        headerWidget = widget;
+        Panel root = PlaceHolder.get(PlaceHolder.HEADER);
 		if (root == null) {
 			throw new PlaceHolderException(ERR_MSG + "HEADER");
 		}
@@ -255,5 +256,9 @@ public class TemplateManagerNOPDA extends TemplateManagerImpl{
 	public void openIntranet() {
 		redirect(ApplicationResources.getCostants().INTRANET_URL());
 	}
-	
+
+    public Widget getHeaderWidget() {
+        return headerWidget;
+    }
+
 }
