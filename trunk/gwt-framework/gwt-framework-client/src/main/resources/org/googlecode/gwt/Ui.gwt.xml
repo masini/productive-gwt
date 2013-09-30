@@ -84,7 +84,7 @@
     <!-- start: Menu -->
         <stylesheet src='css/menu.css'/>
 
-        <generate-with class="org.googlecode.gwt.client.ui.menu.generator.MenuGenerator">
+        <generate-with class="org.googlecode.gwt.rebind.menu.MenuGenerator">
             <when-type-assignable class="org.googlecode.gwt.client.ui.menu.SMenu" />
         </generate-with>
     <!-- end: Menu -->

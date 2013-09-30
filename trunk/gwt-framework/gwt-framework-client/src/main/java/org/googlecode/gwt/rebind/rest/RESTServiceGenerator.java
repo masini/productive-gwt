@@ -1,4 +1,4 @@
-package org.googlecode.gwt.client.rest.rebind;
+package org.googlecode.gwt.rebind.rest;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.ext.*;
