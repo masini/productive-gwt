@@ -3,7 +3,7 @@ package org.googlecode.gwt.client.bootstrap;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Response;
 import org.googlecode.gwt.client.rest.RESTCallback;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 public class RESTBootstrapEntryPoint extends BootstrapEntryPoint{
     private final RESTBootstrapServiceAsync serviceAsync = GWT.create(RESTBootstrapServiceAsync.class);

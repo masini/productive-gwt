@@ -7,7 +7,7 @@ import com.google.gwt.user.client.Window;
 import org.googlecode.gwt.client.ApplicationContextFactory;
 import org.googlecode.gwt.client.logging.LogText;
 import org.googlecode.gwt.client.util.BootstrapConstants;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package org.googlecode.gwt.client.ui.menu.filter;
 
 import org.googlecode.gwt.client.ui.menu.model.MenuModel;
-import org.googlecode.gwt.shared.DefaultUserInfo;
-import org.googlecode.gwt.shared.UserInfo;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.UserInfo;
 
 /**
  * Implements Security policy role based on MenuModel.

@@ -1,4 +1,4 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.client;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 

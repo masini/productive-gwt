@@ -1,4 +1,6 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.server;
+
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 /**
  *         Date: 3-set-2007

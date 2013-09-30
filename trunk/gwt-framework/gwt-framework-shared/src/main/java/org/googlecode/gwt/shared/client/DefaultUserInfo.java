@@ -1,5 +1,7 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.client;
 
+
+import org.googlecode.gwt.shared.client.UserInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -3,11 +3,11 @@ package org.googlecode.gwt.client.ui.header;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.DefaultUserInfo;
-import org.googlecode.gwt.shared.UserInfo;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.UserInfo;
 
-//import org.googlecode.gwt.shared.DefaultUserInfo;
+//import org.googlecode.gwt.shared.client.DefaultUserInfo;
 
 /**
  * Pulsante per la visualizzazione delle informazioni dell'utente.

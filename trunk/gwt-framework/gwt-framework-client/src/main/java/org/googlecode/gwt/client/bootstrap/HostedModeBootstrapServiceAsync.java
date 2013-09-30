@@ -1,7 +1,7 @@
 package org.googlecode.gwt.client.bootstrap;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import java.util.List;
 

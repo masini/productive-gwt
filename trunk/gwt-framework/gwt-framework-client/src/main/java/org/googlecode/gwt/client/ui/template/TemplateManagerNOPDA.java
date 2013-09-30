@@ -19,9 +19,9 @@ import org.googlecode.gwt.client.ui.menu.model.MenuModel;
 import org.googlecode.gwt.client.ui.menu.render.DefaultMenuRender;
 import org.googlecode.gwt.client.ui.menu.render.ShortcutMenuRender;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.DefaultUserInfo;
-import org.googlecode.gwt.shared.UserInfo;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.UserInfo;
 import org.jboss.errai.ioc.client.container.IOC;
 
 public class TemplateManagerNOPDA extends TemplateManagerImpl{

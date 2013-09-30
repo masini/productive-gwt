@@ -1,10 +1,15 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.server;
+
+import org.googlecode.gwt.shared.client.ApplicationContextData;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.client.DefaultBootstrapData;
+import org.googlecode.gwt.shared.client.UserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * A {@link org.googlecode.gwt.shared.BootstrapDataResolver } that uses a delegate {@link org.googlecode.gwt.shared.UserInfoResolver }
+ * A {@link BootstrapDataResolver } that uses a delegate {@link UserInfoResolver }
  * in order to resolve meaningful user info.
  *
  *         Date: 24-ago-2007
@@ -60,9 +65,9 @@ public class DefaultBootstrapDataResolver implements UserInfoBootstrapDataResolv
     }
 
     /**
-     * If a {@link #setBootstrapDataDecorator(org.googlecode.gwt.shared.BootstrapDataDecorator) decorator} has been set, calls its
-     * {@link BootstrapDataDecorator#decorateBootstrapData(org.googlecode.gwt.shared.BootstrapData) } right after resolving the
-     * {@link org.googlecode.gwt.shared.BootstrapData } object.
+     * If a {@link #setBootstrapDataDecorator(BootstrapDataDecorator) decorator} has been set, calls its
+     * {@link BootstrapDataDecorator#decorateBootstrapData(org.googlecode.gwt.shared.client.BootstrapData) } right after resolving the
+     * {@link org.googlecode.gwt.shared.client.BootstrapData } object.
      *
      * @param data
      */

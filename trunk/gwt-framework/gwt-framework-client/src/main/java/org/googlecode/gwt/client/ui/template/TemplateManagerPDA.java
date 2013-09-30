@@ -15,8 +15,8 @@ import org.googlecode.gwt.client.ui.menu.filter.RoleMenuFilterAction;
 import org.googlecode.gwt.client.ui.menu.model.MenuModel;
 import org.googlecode.gwt.client.ui.menu.render.MenuRenderSimplePDA;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
 import org.jboss.errai.ioc.client.container.IOC;
 
 public class TemplateManagerPDA extends TemplateManagerImpl{

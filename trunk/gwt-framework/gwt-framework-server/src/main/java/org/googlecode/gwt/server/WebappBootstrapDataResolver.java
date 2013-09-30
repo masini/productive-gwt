@@ -1,13 +1,13 @@
 package org.googlecode.gwt.server;
 
-import org.googlecode.gwt.shared.BootstrapData;
-import org.googlecode.gwt.shared.DefaultBootstrapDataResolver;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.server.DefaultBootstrapDataResolver;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * A {@link org.googlecode.gwt.shared.BootstrapDataResolver } which takes the application info (version, name,etc.) from parameters
+ * A {@link org.googlecode.gwt.shared.server.BootstrapDataResolver } which takes the application info (version, name,etc.) from parameters
  * in the web.xml.
  * @author Arkady Syamtomov
  * @author Davide Baroncelli

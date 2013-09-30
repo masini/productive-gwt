@@ -1,8 +1,8 @@
 package org.googlecode.gwt.client.bootstrap;
 
 import com.google.gwt.user.client.rpc.RemoteService;
-import org.googlecode.gwt.shared.ApplicationContextData;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.ApplicationContextData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 /**
  * Define the bootstrap service

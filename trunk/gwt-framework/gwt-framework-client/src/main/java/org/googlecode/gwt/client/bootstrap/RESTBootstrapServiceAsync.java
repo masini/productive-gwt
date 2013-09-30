@@ -5,7 +5,7 @@ import org.googlecode.gwt.client.rest.GWTRESTfulService;
 import org.googlecode.gwt.client.rest.GwtApplicationPath;
 import org.googlecode.gwt.client.rest.GwtPath;
 import org.googlecode.gwt.client.rest.RESTCallback;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;

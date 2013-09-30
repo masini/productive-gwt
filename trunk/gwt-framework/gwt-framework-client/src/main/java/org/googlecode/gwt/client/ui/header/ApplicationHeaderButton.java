@@ -2,8 +2,8 @@ package org.googlecode.gwt.client.ui.header;
 
 import com.google.gwt.user.client.ui.Image;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 /**
  * Pulsante per la visualizzazione delle informazioni dell'applicazione.

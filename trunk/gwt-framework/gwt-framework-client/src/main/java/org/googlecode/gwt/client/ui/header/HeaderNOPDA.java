@@ -8,7 +8,7 @@ import org.googlecode.gwt.client.ui.template.PlaceHolder;
 import org.googlecode.gwt.client.ui.template.TemplateManager;
 import org.googlecode.gwt.client.util.ApplicationImageBundle;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
+import org.googlecode.gwt.shared.client.ApplicationContext;
 
 import java.util.Date;
 

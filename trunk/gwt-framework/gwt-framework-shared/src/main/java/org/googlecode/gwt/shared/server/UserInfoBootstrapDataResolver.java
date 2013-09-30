@@ -1,4 +1,4 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.server;
 
 public interface UserInfoBootstrapDataResolver extends BootstrapDataResolver {
 

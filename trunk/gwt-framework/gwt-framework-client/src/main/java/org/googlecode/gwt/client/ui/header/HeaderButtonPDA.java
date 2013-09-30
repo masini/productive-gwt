@@ -5,10 +5,10 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import org.googlecode.gwt.client.util.ApplicationResources;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.BootstrapData;
-import org.googlecode.gwt.shared.DefaultUserInfo;
-import org.googlecode.gwt.shared.UserInfo;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.UserInfo;
 
 /**
  * Pulsante per la visualizzazione delle informazioni dell'utente.

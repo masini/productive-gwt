@@ -1,4 +1,4 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.client;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.ElementType;
