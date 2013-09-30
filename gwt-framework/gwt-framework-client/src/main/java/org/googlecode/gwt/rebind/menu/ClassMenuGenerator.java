@@ -1,4 +1,4 @@
-package org.googlecode.gwt.client.ui.menu.generator;
+package org.googlecode.gwt.rebind.menu;
 
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;

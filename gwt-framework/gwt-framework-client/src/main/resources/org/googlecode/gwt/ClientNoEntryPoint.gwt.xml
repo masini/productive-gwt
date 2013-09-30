@@ -23,7 +23,7 @@
     <inherits name="com.google.gwt.json.JSON"/>
     <inherits name="com.google.web.bindery.autobean.AutoBean"/>
 
-    <generate-with class="org.googlecode.gwt.client.rest.rebind.RESTServiceGenerator">
+    <generate-with class="org.googlecode.gwt.rebind.rest.RESTServiceGenerator">
         <when-type-assignable class="org.googlecode.gwt.client.rest.GWTRESTfulService" />
     </generate-with>
 
