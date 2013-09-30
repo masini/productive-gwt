@@ -3,7 +3,7 @@
  */
 package org.googlecode.gwt.client.bootstrap;
 
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import java.util.List;
 

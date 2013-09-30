@@ -1,4 +1,8 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.client;
+
+import org.googlecode.gwt.shared.client.ApplicationBootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.client.UserInfo;
 
 import java.io.Serializable;
 

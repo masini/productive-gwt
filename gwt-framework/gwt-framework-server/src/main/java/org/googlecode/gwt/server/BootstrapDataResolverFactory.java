@@ -3,10 +3,10 @@ package org.googlecode.gwt.server;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.googlecode.gwt.server.dummy.DummyUserInfoResolver;
-import org.googlecode.gwt.shared.BootstrapDataResolver;
-import org.googlecode.gwt.shared.DefaultBootstrapDataResolver;
-import org.googlecode.gwt.shared.UserInfoBootstrapDataResolver;
-import org.googlecode.gwt.shared.UserInfoResolver;
+import org.googlecode.gwt.shared.server.BootstrapDataResolver;
+import org.googlecode.gwt.shared.server.DefaultBootstrapDataResolver;
+import org.googlecode.gwt.shared.server.UserInfoBootstrapDataResolver;
+import org.googlecode.gwt.shared.server.UserInfoResolver;
 
 import javax.servlet.ServletConfig;
 import java.io.BufferedReader;

@@ -1,7 +1,7 @@
 package org.googlecode.gwt.server;
 
-import org.googlecode.gwt.shared.BootstrapData;
-import org.googlecode.gwt.shared.DefaultBootstrapDataResolver;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.server.DefaultBootstrapDataResolver;
 
 import javax.servlet.http.HttpServletRequest;
 

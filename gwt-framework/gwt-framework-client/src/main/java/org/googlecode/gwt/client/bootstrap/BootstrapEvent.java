@@ -1,6 +1,6 @@
 package org.googlecode.gwt.client.bootstrap;
 
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 /**
  * Define de EventObject of return of bootstrap service 

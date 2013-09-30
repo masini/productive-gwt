@@ -3,8 +3,8 @@ package org.googlecode.gwt.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.googlecode.gwt.client.logging.LogText;
-import org.googlecode.gwt.shared.ApplicationContext;
-import org.googlecode.gwt.shared.BootstrapData;
+import org.googlecode.gwt.shared.client.ApplicationContext;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import java.util.ArrayList;
 import java.util.List;

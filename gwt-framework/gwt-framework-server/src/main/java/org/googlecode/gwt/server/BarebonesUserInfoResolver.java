@@ -1,9 +1,9 @@
 package org.googlecode.gwt.server;
 
 import org.googlecode.gwt.server.security.JavaEESecurityExtractor;
-import org.googlecode.gwt.shared.DefaultUserInfo;
-import org.googlecode.gwt.shared.UserInfo;
-import org.googlecode.gwt.shared.UserInfoResolver;
+import org.googlecode.gwt.shared.client.DefaultUserInfo;
+import org.googlecode.gwt.shared.client.UserInfo;
+import org.googlecode.gwt.shared.server.UserInfoResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;

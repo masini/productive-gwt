@@ -1,6 +1,6 @@
 package org.googlecode.gwt.server;
 
-import org.googlecode.gwt.shared.ApplicationContextData;
+import org.googlecode.gwt.shared.client.ApplicationContextData;
 
 import javax.servlet.http.HttpServletRequest;
 

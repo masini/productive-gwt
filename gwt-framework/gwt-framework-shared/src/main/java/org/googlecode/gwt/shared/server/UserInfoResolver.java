@@ -1,4 +1,6 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.server;
+
+import org.googlecode.gwt.shared.client.UserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import org.googlecode.gwt.client.ApplicationContextFactory;
 import org.googlecode.gwt.client.ui.template.TemplateManager;
-import org.googlecode.gwt.shared.ApplicationContext;
+import org.googlecode.gwt.shared.client.ApplicationContext;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.

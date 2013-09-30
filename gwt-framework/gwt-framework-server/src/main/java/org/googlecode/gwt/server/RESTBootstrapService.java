@@ -1,10 +1,10 @@
 package org.googlecode.gwt.server;
 
 import org.googlecode.gwt.server.provider.NoCache;
-import org.googlecode.gwt.shared.ApplicationBootstrapData;
-import org.googlecode.gwt.shared.Bootstrap;
-import org.googlecode.gwt.shared.BootstrapData;
-import org.googlecode.gwt.shared.BootstrapDataResolver;
+import org.googlecode.gwt.shared.client.ApplicationBootstrapData;
+import org.googlecode.gwt.shared.client.Bootstrap;
+import org.googlecode.gwt.shared.client.BootstrapData;
+import org.googlecode.gwt.shared.server.BootstrapDataResolver;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

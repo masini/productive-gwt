@@ -1,9 +1,12 @@
-package org.googlecode.gwt.shared;
+package org.googlecode.gwt.shared.server;
+
+import org.googlecode.gwt.shared.client.ApplicationContextData;
+import org.googlecode.gwt.shared.client.BootstrapData;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Implementors of this interface will know how to resolve {@link org.googlecode.gwt.shared.BootstrapData } instances in particular
+ * Implementors of this interface will know how to resolve {@link org.googlecode.gwt.shared.client.BootstrapData } instances in particular
  * application configurations.
  *
  *         Date: 24-ago-2007
