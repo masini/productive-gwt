@@ -197,13 +197,11 @@
 		</snapshotRepository>
 	</distributionManagement>
 
-    <!--
     <scm>
 		<url>https://productive-gwt.googlecode.com/svn/trunk/gwt-framework</url>
 		<connection>scm:svn:http://productive-gwt.googlecode.com/svn/trunk/gwt-framework</connection>
 		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/gwt-framework</developerConnection>
 	</scm>
-	-->
 
 	<pluginRepositories>
 		<pluginRepository>
