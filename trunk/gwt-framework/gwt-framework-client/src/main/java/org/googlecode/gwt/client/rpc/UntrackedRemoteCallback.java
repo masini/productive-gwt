@@ -1,9 +1,9 @@
 package org.googlecode.gwt.client.rpc;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.jboss.errai.bus.client.api.ErrorCallback;
-import org.jboss.errai.bus.client.api.Message;
-import org.jboss.errai.bus.client.api.RemoteCallback;
+import org.jboss.errai.bus.client.api.messaging.Message;
+import org.jboss.errai.common.client.api.ErrorCallback;
+import org.jboss.errai.common.client.api.RemoteCallback;
 
 public abstract class UntrackedRemoteCallback<T> implements AsyncCallback<T> {
 
@@ -17,7 +17,7 @@ public abstract class UntrackedRemoteCallback<T> implements AsyncCallback<T> {
     }
 
     public ErrorCallback asErrorCallback() {
-        return new ErrorCallback() {
+        return new ErrorCallback<Message>() {
             @Override
             public boolean error(Message message, Throwable throwable) {
                 onFailure(throwable);
