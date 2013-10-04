@@ -1,8 +1,8 @@
 package org.googlecode.gwt.client.rpc;
 
-import org.jboss.errai.common.client.api.ErrorCallback;
-import org.jboss.errai.bus.client.api.messaging.Message;
-import org.jboss.errai.common.client.api.RemoteCallback;
+import org.jboss.errai.bus.client.api.ErrorCallback;
+import org.jboss.errai.bus.client.api.Message;
+import org.jboss.errai.bus.client.api.RemoteCallback;
 
 public abstract class TrackedRemoteCallback<T> extends TrackedAsyncCallback<T> {
 
@@ -20,7 +20,7 @@ public abstract class TrackedRemoteCallback<T> extends TrackedAsyncCallback<T> {
     }
 
     public ErrorCallback asErrorCallback() {
-        return new ErrorCallback<Message>() {
+        return new ErrorCallback() {
             @Override
             public boolean error(Message message, Throwable throwable) {
                 onFailure(throwable);
