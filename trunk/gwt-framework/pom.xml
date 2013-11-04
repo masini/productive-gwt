@@ -97,6 +97,7 @@
                 <configuration>
                     <source>${jdkVersion}</source>
                     <target>${jdkVersion}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 			<plugin>
