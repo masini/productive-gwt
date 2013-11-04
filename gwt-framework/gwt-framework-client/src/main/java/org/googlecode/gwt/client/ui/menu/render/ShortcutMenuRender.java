@@ -61,7 +61,7 @@ public class ShortcutMenuRender extends Composite {
 		
 		private void imgClick() {
 			if(menuVeloce.getText().equals("")){
-				Window.alert("Nessun menÃ¹ specificato");
+				Window.alert("Nessun menù specificato");
 			}
 			MenuModel menuItems = getMenuItems(model.getChildren());
 			if(menuItems!=null){

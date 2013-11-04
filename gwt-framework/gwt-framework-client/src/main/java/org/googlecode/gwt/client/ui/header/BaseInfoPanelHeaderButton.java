@@ -74,7 +74,7 @@ public abstract class BaseInfoPanelHeaderButton extends BaseHeaderButton {
 	 * Aggiorna la posizione e la dimensione del popup.
 	 * 
 	 * @param sender
-	 *            Widget sul quale Ã¨ stato effettuato il click.
+	 *            Widget sul quale è stato effettuato il click.
 	 */
 	private void updatePopupSizeAndPosition(Widget sender) {
 		if (popup.getOffsetWidth() < getOffsetWidth()) {
