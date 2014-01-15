@@ -29,4 +29,8 @@ public interface UserInfo extends Serializable {
     String getRoleDescription();
 
     Map<String, String> getUserParameters();
+
+    String getCodaz();
+
+    String getSoc();
 }

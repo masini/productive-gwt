@@ -12,7 +12,6 @@ import java.util.HashMap;
 public class DummyUserInfoResolver implements UserInfoResolver {
 
 	public UserInfo getCurrentUserInfo(HttpServletRequest request) {
-		return new DefaultUserInfo("","","", new ArrayList<String>(), new HashMap<String, String>(0));
+		return new DefaultUserInfo("", "", "", "", "", new ArrayList<String>(), new HashMap<String, String>(0));
 	}
-
 }

@@ -18,7 +18,7 @@ public class BarebonesUserInfoResolver implements UserInfoResolver {
 		String username = javaEESecurityExtractor.getCurrentUsername(request);		
 		List<String> roles = Arrays.asList(javaEESecurityExtractor.getJavaEERoles(request));
 				
-		return new DefaultUserInfo(username,null,null,roles,null);
+		return new DefaultUserInfo(username, null, null, null, null, roles, null);
 	}
 
 	public void setJavaEESecurityExtractor(
