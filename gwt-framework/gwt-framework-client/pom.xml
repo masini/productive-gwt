@@ -69,6 +69,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-jaxrs-client</artifactId>
+            <version>${version.org.jboss.errai}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.18</version>
