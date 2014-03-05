@@ -75,7 +75,7 @@
                         <providerImplementations>
                             <svn>javasvn</svn>
                         </providerImplementations>
-                        <releaseProfiles>productive-gwt-release</releaseProfiles>
+                        <releaseProfiles>productive-gwt-svn</releaseProfiles>
                     </configuration>
                     <dependencies>
                         <dependency>
