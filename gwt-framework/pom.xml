@@ -4,7 +4,7 @@
     <groupId>productive-gwt</groupId>
     <artifactId>gwt-framework</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.3-SNAPSHOT</version>
+    <version>3.0.2-SNAPSHOT</version>
 	<name>productive-gwt</name>
     <modules>
         <module>gwt-framework-server</module>
