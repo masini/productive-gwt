@@ -1,0 +1,8 @@
+<module>
+
+    <!-- start: Footer -->
+    <entry-point class="org.googlecode.gwt.client.ui.footer.Footer"/>
+    <!-- end: Footer -->
+
+</module>
+
