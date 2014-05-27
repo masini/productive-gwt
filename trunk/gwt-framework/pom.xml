@@ -4,7 +4,7 @@
     <groupId>productive-gwt</groupId>
     <artifactId>gwt-framework</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.3</version>
+    <version>3.0.4-SNAPSHOT</version>
 	<name>productive-gwt</name>
     <modules>
         <module>gwt-framework-server</module>
@@ -197,9 +197,9 @@
 	</distributionManagement>
 
     <scm>
-		<url>https://productive-gwt.googlecode.com/svn/tags/gwt-framework-3.0.3</url>
-		<connection>scm:svn:http://productive-gwt.googlecode.com/svn/tags/gwt-framework-3.0.3</connection>
-		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/tags/gwt-framework-3.0.3</developerConnection>
+		<url>https://productive-gwt.googlecode.com/svn/trunk/gwt-framework</url>
+		<connection>scm:svn:http://productive-gwt.googlecode.com/svn/trunk/gwt-framework</connection>
+		<developerConnection>scm:svn:https://productive-gwt.googlecode.com/svn/trunk/gwt-framework</developerConnection>
 	</scm>
 
 	<pluginRepositories>
