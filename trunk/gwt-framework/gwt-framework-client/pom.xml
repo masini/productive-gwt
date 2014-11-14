@@ -3,15 +3,14 @@
     <parent>
         <groupId>productive-gwt</groupId>
         <artifactId>gwt-framework</artifactId>
-        <version>3.0.4-SNAPSHOT</version>
+        <version>3.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>gwt-framework-client</artifactId>
 
     <properties>
-        <gwt.version>2.5.1</gwt.version>
-        <version.org.jboss.errai>2.3.2.Final</version.org.jboss.errai>
+        <version.org.jboss.errai>3.1.0.CR1</version.org.jboss.errai>
     </properties>
 
     <dependencies>
@@ -51,7 +50,7 @@
         <dependency>
             <groupId>productive-gwt</groupId>
             <artifactId>gwt-framework-server</artifactId>
-            <version>3.0.4-SNAPSHOT</version>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
 
