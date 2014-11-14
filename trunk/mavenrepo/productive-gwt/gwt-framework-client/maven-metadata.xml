@@ -10,7 +10,8 @@
       <version>3.0.1</version>
       <version>3.0.2</version>
       <version>3.0.3</version>
+      <version>3.1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20140527111205</lastUpdated>
+    <lastUpdated>20141114075013</lastUpdated>
   </versioning>
 </metadata>
