@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>productive-gwt</groupId>
+  <artifactId>gwt-framework</artifactId>
+  <version>3.1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20141114.074942</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20141114074942</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>3.1.0-20141114.074942-1</value>
+        <updated>20141114074942</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
