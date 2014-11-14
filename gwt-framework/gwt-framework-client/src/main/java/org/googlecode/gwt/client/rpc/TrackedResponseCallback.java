@@ -1,8 +1,7 @@
 package org.googlecode.gwt.client.rpc;
 
 import com.google.gwt.http.client.Response;
-import org.jboss.errai.bus.client.api.ErrorCallback;
-import org.jboss.errai.bus.client.api.Message;
+import org.jboss.errai.common.client.api.ErrorCallback;
 import org.jboss.errai.enterprise.client.jaxrs.MarshallingWrapper;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 
@@ -44,7 +43,7 @@ public abstract class TrackedResponseCallback<T> extends TrackedAsyncCallback<T>
     public ErrorCallback asErrorCallback() {
         return new ErrorCallback() {
             @Override
-            public boolean error(Message message, Throwable throwable) {
+            public boolean error(Object message, Throwable throwable) {
                 onFailure(throwable);
                 return false;
             }
