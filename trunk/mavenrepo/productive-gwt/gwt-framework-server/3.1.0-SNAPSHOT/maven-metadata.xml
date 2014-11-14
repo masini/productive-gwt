@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>productive-gwt</groupId>
+  <artifactId>gwt-framework-server</artifactId>
+  <version>3.1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20141114.074958</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20141114074958</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>3.1.0-20141114.074958-1</value>
+        <updated>20141114074958</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>3.1.0-20141114.074958-1</value>
+        <updated>20141114074958</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
