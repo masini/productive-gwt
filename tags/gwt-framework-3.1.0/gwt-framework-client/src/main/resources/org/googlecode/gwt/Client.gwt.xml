@@ -1,0 +1,10 @@
+<module>
+
+
+    <inherits name='org.googlecode.gwt.ClientNoEntryPoint'/>
+
+
+    <entry-point class="org.googlecode.gwt.client.bootstrap.RESTBootstrapEntryPoint"/>
+
+</module>
+
